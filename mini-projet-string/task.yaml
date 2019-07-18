@@ -1,0 +1,67 @@
+accessible: true
+author: Mathieu Xhonneux
+context: |+
+    La libraire `string(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/string.3.html>`_ implémente un grand nombre de fonctions de manipulation des strings qui vous seront utiles lors de différents projets de programmation.
+
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: '[S2] strlen, strcat et strcasecmp'
+network_grading: false
+order: 27
+problems:
+    strlen:
+        type: code
+        header: |-
+            Ecrivez ici le corps de la fonction `strlen(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/strlen.3.html>`_
+
+            .. code-block:: c
+
+                size_t strlen(const char *str) {
+        name: strlen
+        language: c
+    strcat:
+        name: Coder strcat
+        header: |-
+            Entrez ici le corps de la fonction `strcat <https://sites.uclouvain.be/SystInfo/manpages/man3/strcat.3.html>`_
+
+            .. code-block:: c
+
+                char *strcat(char *destination, const char *source) {
+        language: c
+        type: code
+    strcasecmp:
+        header: |-
+            Ecrivez ici le corps de la fonction `strcasecmp(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/strcasecmp.3.html>`_
+
+            Pour cette fonction, travaillez à partir des données de ce `tableau <https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/ASCII-Table-wide.svg/2000px-ASCII-Table-wide.svg.png>`_ (vous n'avez pas accès à la fonction `tolower(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/tolower.3.html>`_ de `ctype.h`).
+
+            .. code-block:: c
+
+                int strcasecmp(const char *s1, const char *s2) {
+        type: code
+        name: Coder strcasecmp
+        language: c
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        description: ''
+        type: 2
+        name: S2
+        visible: true
+        id: ''
+    '1':
+        visible: true
+        type: 2
+        name: Pointer
+        description: Task about pointers and their use
+        id: ''
+weight: 1.0

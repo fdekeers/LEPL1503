@@ -1,0 +1,25 @@
+#! /bin/bash
+# This line parses the template and put the result in studentcode.py
+parsetemplate --output test.c template.c
+archive -a test.c
+
+gcc test.c -o test # 2> q1.err
+
+if [ $? -ne 0 ]; then
+  feedback-result "failed"
+  feedback-msg -m "Votre programme ne compile pas"
+  exit
+fi
+
+# Verify the output of the code...
+output=$(bash test.sh)
+if [ "$output" = "OK" ]; then
+        # The student succeeded
+        feedback --result success --feedback "Votre code est correct!"
+else
+        # The student failed
+        feedback --result failed --feedback "Erreur: $output"
+fi
+
+
+
