@@ -16,3 +16,5 @@ The ``student`` directory contains several types of files:
  - one or more ``test.c`` files that contain the actual tests
  
  You can find in [Report.md](Report.md) a description on how to write a bug report for an [INGInious](https://www.inginious.org) task
+
+Test
