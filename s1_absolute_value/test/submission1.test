@@ -1,0 +1,49 @@
+_id: 5c62aa7c6779dd5666b933f9
+archive: 5c62aa7e6779dd5666b933fa
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': ahennecart
+    absval: |-
+        int A
+        if(i<0){A = -i;}
+        else{A = i;}
+        return A;
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-12 12:14:04.741000
+taskid: absolute_value
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘absval’:
+        student_code.c:7:5: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘if’
+             if(i<0){A = -i;}
+             ^
+        student_code.c:7:13: error: ‘A’ undeclared (first use in this function)
+             if(i<0){A = -i;}
+                     ^
+        student_code.c:7:13: note: each undeclared identifier is reported only once for each function it appears in
+        student_code.c:10:1: error: control reaches end of non-void function [-Werror=return-type]
+         }
+         ^
+        cc1: all warnings being treated as errors
+        make: *** [student_code.o] Error 1
+
+username:
+- ahennecart
