@@ -13,4 +13,4 @@ install:
 before_script:
   - python3 travis_setup.py
 script:
-  - inginious-autotest . LEPL1503 -l
+  - inginious-autotest . LSINF1252 -l
