@@ -1,1 +1,0 @@
-int counting_zero(char* str, int length);

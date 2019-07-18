@@ -1,1 +1,0 @@
-int tab_find(int tab[], int len, int elem);
