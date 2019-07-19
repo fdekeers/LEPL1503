@@ -12,3 +12,5 @@ for item in dir:
         except:
             pass  # test directory already existing
         shutil.move('./' + item.name, 'LEPL1503/' + item.name)
+        
+print("travis_setup done") 
