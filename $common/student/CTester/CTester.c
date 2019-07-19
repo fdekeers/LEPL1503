@@ -67,8 +67,7 @@ void set_test_metadata(char *problem, char *descr, unsigned int weight)
 
 void push_info_msg(char *msg)
 {
-    //if (strstr(msg, "#") != NULL || strstr(msg, "\n") != NULL) {
-    if (strstr(msg, "#") != NULL) {
+    if (strstr(msg, "#") != NULL || strstr(msg, "\n") != NULL) {
         test_metadata.err = EINVAL;
         return;
     }
