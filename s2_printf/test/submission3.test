@@ -1,0 +1,60 @@
+_id: 5c6967996779dd56677be067
+archive: 5c69679c6779dd56677be068
+courseid: LSINF1252
+custom: {}
+grade: 50.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': jerdelforge
+    digit: printf("The magic number is %d.\n", number);
+    example: pi = 3.1415
+    simple: printf("foo\n");
+    sprintf: sprintf("Mister %1$ %2$. has %3$ eggs",name, initial, d, buffer);
+problems:
+    digit:
+    - success
+    - |+
+        * Test digit formatting
+
+          => réussi (1/1) pts)
+
+
+    example:
+    - failed
+    - Votre réponse est incorrecte. (0/1 pts) Rappelez-vous que la fonction printf
+        va arrondir le nombre.
+    simple:
+    - success
+    - |+
+        * Test simple printf
+
+          => réussi (1/1) pts)
+
+
+    sprintf:
+    - failed
+    - |+
+        * Test sprintf
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault.
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-17 14:54:33.771000
+taskid: printf
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- jerdelforge

@@ -1,0 +1,47 @@
+_id: 5c60069d6779dd5668a5dc6a
+archive: 5c60069f6779dd5668a5dc6b
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': anmoureaux
+    tab_find: |-
+        int i;
+        int index;
+        for (i=0;i<len;i++){
+            if (elem == tab[i]){
+                index = i;
+            }
+        }
+        if (i == len) {
+            index = -1;
+        }
+        return index;
+problems:
+    tab_find:
+    - failed
+    - |+
+        * Test function tab find
+
+          => échoué (0/1) pts)
+
+          Info: Your function does not return the correct index.
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-10 12:10:21.313000
+taskid: tab_find
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- anmoureaux

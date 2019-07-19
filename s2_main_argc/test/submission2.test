@@ -1,0 +1,59 @@
+_id: 5c89826e6779dd43dd28d090
+archive: 5c8982706779dd43dd28d091
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': adargent
+    q1: |
+        int main(int argc, char *argv[]){
+            char a='a';
+            char b='b';
+            char c='c';
+            char d='d';
+            char e='e';
+            char F='f';
+            char g='g';
+            printf("%c %c %c %c \n",a,c,e,g);
+            return 0;
+        }
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-13 23:21:34.964000
+taskid: main_argc
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘main2’:
+        student_code.c:11:9: error: implicit declaration of function ‘printf’ [-Werror=implicit-function-declaration]
+                 printf("%c %c %c %c \n",a,c,e,g);
+                 ^
+        student_code.c:11:9: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror]
+        student_code.c:9:14: error: unused variable ‘F’ [-Werror=unused-variable]
+                 char F='f';
+                      ^
+        student_code.c:7:14: error: unused variable ‘d’ [-Werror=unused-variable]
+                 char d='d';
+                      ^
+        student_code.c:5:14: error: unused variable ‘b’ [-Werror=unused-variable]
+                 char b='b';
+                      ^
+        cc1: all warnings being treated as errors
+        make: *** [student_code.o] Error 1
+
+username:
+- adargent

@@ -1,0 +1,52 @@
+_id: 5c8bbb3a6779dd43da149a85
+archive: 5c8bbb3e6779dd43da149a86
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': acmathot
+    facto: |-
+        int factorial(int i)
+        {
+            int b = 1;
+            if (i == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                int a;
+                for(a = 1; a <= i; a++)
+                {
+                    b = b*a;
+                }
+            }
+            return b;
+        }
+problems:
+    facto:
+    - success
+    - |+
+        * test the function factorial
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-15 15:48:26.267000
+taskid: factorial
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- acmathot

@@ -1,0 +1,53 @@
+_id: 5c6328d66779dd5668a5ebd9
+archive: 5c6328d86779dd5668a5ebda
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': acmathot
+    facto: |-
+        int factorial(int i) {
+            int b = 1;
+            if (i == 0)
+                b = 1;
+            else
+                int a = 1;
+                for(int a;a<=i;a++)
+                    b = b*a
+            return b;}
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-12 21:13:10.669000
+taskid: factorial
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘factorial’:
+        student_code.c:9:13: error: expected expression before ‘int’
+                     int a = 1;
+                     ^
+        student_code.c:12:9: error: expected ‘;’ before ‘return’
+                 return b;}
+                 ^
+        student_code.c:12:9: error: control reaches end of non-void function [-Werror=return-type]
+                 return b;}
+                 ^
+        cc1: all warnings being treated as errors
+        make: *** [student_code.o] Error 1
+
+username:
+- acmathot

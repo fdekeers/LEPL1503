@@ -1,0 +1,37 @@
+_id: 5c7578196779dd5666ba652c
+archive: 5c75781d6779dd5666ba652d
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': abazi
+    q1: |-
+        uint8_t a = x >> 29;
+        return a;
+problems:
+    q1:
+    - success
+    - |+
+        * Test of function test_get_3_leftmost_bits
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-26 18:32:09.919000
+taskid: bits_leftmost
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- abazi

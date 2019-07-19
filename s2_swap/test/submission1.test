@@ -1,0 +1,28 @@
+_id: 5c83a32b6779dd43db0617a7
+archive: 5c83a32d6779dd43db0617a8
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': amadavid
+    q1: |-
+        struct fract_t temp;
+        temp = *a;
+        *a = *b;
+        *b=temp;
+problems: {}
+response_type: HTML
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-09 12:27:39.389000
+taskid: swap
+tests: {}
+text: Votre code est correct!
+username:
+- amadavid

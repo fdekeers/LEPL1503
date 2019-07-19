@@ -1,0 +1,104 @@
+accessible: true
+author: Arthur van Stratum
+context: ''
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S2] Swap my integers '
+network_grading: false
+order: 15
+problems:
+    q1:
+        type: code
+        default: ''
+        language: c
+        name: Swap
+        header: |-
+            Write the body of the function *swap* which exchanges the values pointed by *i* and *j*.
+
+            .. code-block:: c
+
+                void swap(int *i, int *j) {
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '3':
+        description: Your code does not compile.
+        visible: true
+        name: Not compile
+        type: 1
+        id: not_compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+    '10':
+        description: Level 1
+        name: Level 1
+        type: 2
+        visible: true
+        id: ''
+    '11':
+        visible: true
+        name: S2
+        type: 2
+        description: ''
+        id: ''
+    '9':
+        visible: true
+        description: Task about pointers and their use
+        type: 2
+        name: Pointer
+        id: ''
+weight: 1.0

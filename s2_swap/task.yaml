@@ -1,0 +1,122 @@
+accessible: true
+author: Fabien Duchêne & Christoph Paasch
+context: |-
+    Soit la définition de la structure représentant des fractions entières suivante:
+
+    .. code-block:: c
+
+        struct fract_t {
+                int num;
+                int denum;
+        };
+
+    On veut pouvoir swapper (échanger) les valeurs de deux fractions en utilisant la fonction ``void swap(struct fract_t *a, struct fract_t *b)``. Ecrivez le code de cette fonction.
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '128'
+    output: '5210'
+    time: '30'
+name: '[S2] Echange de valeurs de fractions'
+network_grading: false
+order: 16
+problems:
+    q1:
+        type: code
+        default: ''
+        language: c
+        name: ''
+        header: |+
+            Complétez ici le code
+
+            .. code-block:: c
+
+                void swap(struct fract_t *a, struct fract_t *b)
+
+responseIsHTML: true
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        description: q1 is correct
+        id: q1
+        name: Q1
+        type: 0
+        visible: false
+    '1':
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+        type: 1
+        visible: true
+    '2':
+        description: Your code produced a segmentation fault.
+        id: sigsegv
+        name: Segmentation Fault
+        type: 1
+        visible: true
+    '3':
+        description: Your code does not compile.
+        id: not_compile
+        name: Not compile
+        type: 1
+        visible: true
+    '4':
+        description: Your code exceeded the memory.
+        id: memory
+        name: Memory Exceeded
+        type: 1
+        visible: true
+    '5':
+        description: Your code produced a floating point exception.
+        id: sigfpe
+        name: Floating Point Exception
+        type: 1
+        visible: true
+    '6':
+        description: Your code produced a double free.
+        id: double_free
+        name: Double free
+        type: 1
+        visible: true
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        name: Banned functions
+        type: 1
+        visible: true
+    '8':
+        description: Your code does not compile with cppcheck.
+        id: cppcheck
+        name: Cppcheck fails
+        type: 1
+        visible: true
+    '9':
+        description: ''
+        id: ''
+        name: S2
+        type: 2
+        visible: true
+    '10':
+        description: Task about structures and their use
+        name: Struct
+        type: 2
+        visible: true
+        id: category_struct
+    '11':
+        visible: true
+        description: Task about pointers and their use
+        type: 2
+        name: Pointer
+        id: category_pointer
+    '12':
+        visible: true
+        name: Level 1
+        type: 2
+        description: Level 1
+        id: level1
+weight: 1.0

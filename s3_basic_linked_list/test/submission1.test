@@ -1,0 +1,100 @@
+_id: 5c7adf636779dd5668a6ac16
+archive: 5c7adf666779dd5668a6ac17
+courseid: LSINF1252
+custom: {}
+grade: 50.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': cornetteg
+    add_node: |-
+        list_t * l = malloc(sizeof(list_t));
+        node_t * n = malloc(sizeof(value));
+        if (!l || !n){
+            return 1;
+        }
+        else {
+            n->value=value;
+            n->next=l->first;
+            l->first=n;
+            l->size+=1;
+            return 1;
+        }
+    init_node: |-
+        node_t * p = malloc(sizeof(value));
+        if (!p){
+            return NULL;
+        }
+        else {
+            p->value=value;
+            p->next=NULL;
+        }
+        return p;
+problems:
+    add_node:
+    - failed
+    - |+
+        * Check the behavior of the function when the list is empty
+
+          => échoué (0/1) pts)
+
+          Info: You should call malloc once in this case — The new node is not allocated — Your function returns an error in normal case! — Wrong update of the list size.
+
+        * Check the behavior of the function when the list is not empty
+
+          => échoué (0/1) pts)
+
+          Info: You should call malloc once in this case — The new node is not allocated — The new linked list does not correspond to the expected one — Your function returns an error in normal case! — Wrong update of the list size.
+
+        * Check the behavior of the function when the malloc call fails
+
+          => échoué (0/1) pts)
+
+          Info: You should call malloc once in this case
+
+        * Check the return code of the function if wrong args
+
+          => réussi (1/1) pts)
+
+
+    init_node:
+    - failed
+    - |+
+        * Check memory allocation of the node
+
+          => échoué (0/1) pts)
+
+          Info: The allocated memory has not the correct size.
+
+        * Check the initialisation of the node
+
+          => réussi (2/2) pts)
+
+
+        * Check the return value if malloc call fails
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-02 20:54:11.490000
+taskid: basic_linked_list
+tests:
+    error_normal_case: true
+    malloc_fail_memory_size: true
+    not_allocated: true
+    not_expected_list: true
+    not_malloc_once: true
+    wrong_list_size: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- cornetteg

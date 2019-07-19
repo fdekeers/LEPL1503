@@ -1,0 +1,58 @@
+_id: 5c652c3b6779dd5666b95c1e
+archive: 5c66cc086779dd5666b98298
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': cherpiona
+    q1: |
+        #include <stdio.h>
+        #include<stdlib.h>
+
+        int main( int argc, char *argv[])
+
+        {
+          int nb=argc;
+          int i;
+          for (i=1;i<nb;i=i+2)
+            {
+              if(i<nb-2)
+            {
+              printf("%s ",argv[i]);
+            }
+              else
+            {
+              printf("%s", argv[i]);
+            }
+            }
+            printf("\n");
+
+          return 0;
+        }
+problems:
+    q1:
+    - success
+    - |+
+        * Test the task main_argc
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-14 09:52:11.951000
+taskid: main_argc
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- cherpiona

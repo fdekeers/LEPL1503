@@ -1,0 +1,51 @@
+_id: 5c8722c66779dd43dd28819d
+archive: 5c8722c96779dd43dd28819e
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': cherpiona
+    q1: |-
+        #include <math.h>
+        int i=1,f=0;
+        uint32_t a=x;
+        while (f==0 && i<33){
+            if((a>>(32-i))!=0){
+                f=i;
+
+            }
+            i++;
+
+
+
+        }
+        uint32_t b=pow(2,32-f);
+
+        return b^x;
+problems:
+    q1:
+    - success
+    - |+
+        * Test reset_highestorder_bits
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-12 04:08:54.219000
+taskid: bits_strong
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- cherpiona

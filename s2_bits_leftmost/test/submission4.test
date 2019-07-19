@@ -1,0 +1,36 @@
+_id: 5c7197936779dd5666ba2fba
+archive: 5c7197976779dd5666ba2fbb
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': grasseels
+    q1: return (uint8_t) x>>5 ;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test of function test_get_3_leftmost_bits
+
+          => échoué (0/1) pts)
+
+          Info: get_3_leftmost_bits returns the wrong value
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-23 19:57:23.611000
+taskid: bits_leftmost
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- grasseels

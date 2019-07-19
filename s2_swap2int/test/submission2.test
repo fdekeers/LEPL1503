@@ -1,0 +1,39 @@
+_id: 5c66801f6779dd5666b96f75
+archive: 5c66cc6b6779dd5666b984ba
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': apisvin
+    q1: |
+        int *ibis = i;
+        *j = *ibis;
+        *i = *j;
+problems:
+    q1:
+    - failed
+    - |+
+        * Tests whether swap correctly exchanges the contents of the variables
+
+          => échoué (0/1) pts)
+
+          Info: Your fonction did not correctly exchange the content of the variables.
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-15 10:02:23.383000
+taskid: swap2int
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- apisvin

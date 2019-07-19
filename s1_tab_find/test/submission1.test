@@ -1,0 +1,57 @@
+_id: 5c64618d6779dd5666b95479
+archive: 5c64618e6779dd5666b9547a
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': abazi
+    tab_find: |
+        for (int i=0, i<len, i++){
+            if(tab[i]==elem){
+                return i;
+            }
+        }
+        return -1;
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-13 19:27:25.433000
+taskid: tab_find
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘tab_find’:
+        student_code.c:4:20: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+             for (int i=0, i<len, i++){
+                            ^
+        student_code.c:9:5: error: expected expression before ‘return’
+             return -1;
+             ^
+        student_code.c:10:1: error: expected expression before ‘}’ token
+         }
+         ^
+        student_code.c:10:1: error: expected expression before ‘}’ token
+        student_code.c:4:14: error: unused variable ‘i’ [-Werror=unused-variable]
+             for (int i=0, i<len, i++){
+                      ^
+        student_code.c:10:1: error: control reaches end of non-void function [-Werror=return-type]
+         }
+         ^
+        cc1: all warnings being treated as errors
+        make: *** [student_code.o] Error 1
+
+username:
+- abazi

@@ -1,0 +1,47 @@
+_id: 5c5d60376779dd71509b941a
+archive: 5c5d60396779dd71509b941b
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': geurtsa
+    facto: |-
+        int factorial (int x) {
+            int i=1;
+            if(x==0) {
+                return 1;
+            }
+            while(i<x) {
+                x=x*i;
+                i++;
+            }
+            return x;
+        }
+problems:
+    facto:
+    - failed
+    - |+
+        * test the function factorial
+
+          => échoué (0/1) pts)
+
+          Info: factorial returns the wrong value: you returned -861720576 for 4
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-08 10:55:51.435000
+taskid: factorial
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- geurtsa

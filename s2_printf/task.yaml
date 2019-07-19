@@ -1,0 +1,169 @@
+accessible: true
+author: Mathieu Xhonneux
+context: In this exercise, you will familiarize yourself with the functions `printf(3)
+    <https://sites.uclouvain.be/SystInfo/manpages/man3/printf.3.html>`_ (printing
+    on the standard output) and `sprintf(3) <`printf <https://sites.uclouvain.be/SystInfo/manpages/man3/sprintf.3.html>`_
+    (text formatting). Consult the documentation before coding to learn how to use
+    these functions properly.
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S2] Printing data'
+network_grading: false
+order: 6
+problems:
+    digit:
+        name: Digital
+        language: c
+        default: ''
+        type: code
+        header: |-
+            ``printf`` can also print the content of a variable. Write the body of the function *print_digit*.
+
+            .. code-block:: c
+
+                /* print_digit
+                 * @n: an integer
+                 *
+                 * result: print to stdout "The magic number is NUMBER.\n"
+                 */
+                void print_digit(int number) {
+    example:
+        name: Floating away
+        header: |
+            ``printf`` is a powerful formatting tool which can handle several data types, and several formatting parameters.
+
+            What would the following call print to *stdout* ?
+
+            .. code-block:: c
+
+                float PI = 3.1415926;
+                printf("pi = %.4f", PI);
+        answer: pi = 3.1416
+        type: match
+    simple:
+        type: code
+        header: |-
+            The function `printf <https://sites.uclouvain.be/SystInfo/manpages/man3/printf.3.html>`_ writes data to the standard output stream (*stdout*).
+
+            Write the body of the function *print_foo* which will print "foo\\n" (without the quotes, the symbol '\\n' represents a **line feed**, i.e. the end of a line) to *stdout*.
+
+            .. code-block:: c
+
+                void print_foo() {
+        name: Foo
+        default: ''
+        language: c
+    sprintf:
+        language: c
+        default: ''
+        name: sprintf
+        header: |
+            ``sprintf(2)`` is a variant of ``printf(2)`` which doesn't write to *stdout*, but instead writes to a *buffer*.
+
+            Write the body of the function *format_str*.
+
+            .. code-block:: c
+
+                /* format_str, example:
+                 * format_str(buf, 42, "Olivier", 'B') will write into buf
+                 * the string "Mister Olivier B. has 42 eggs" (no line feed)
+                 * The given buffer is guaranteed to be big enough
+                 */
+                void format_str(char *buffer, unsigned int d, char *name, char initial) {
+        type: code
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q2
+        description: q2 is correct
+        id: q2
+        visible: false
+    '1':
+        type: 0
+        description: q3 is correct
+        id: q3
+        name: Q3
+        visible: false
+    '2':
+        type: 0
+        id: q1
+        name: Q1
+        description: q1 is correct
+        visible: false
+    '10':
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+        id: cppcheck
+        type: 1
+        visible: true
+    '3':
+        description: Your code exceeded the maximum allowed time.
+        visible: true
+        type: 1
+        id: timeout
+        name: Timeout
+    '4':
+        type: 1
+        visible: true
+        id: sigsegv
+        description: Your code produced a segmentation fault.
+        name: Segmentation Fault
+    '5':
+        name: Not compile
+        id: not_compile
+        type: 1
+        description: Your code does not compile.
+        visible: true
+    '6':
+        name: Memory Exceeded
+        id: memory
+        description: Your code exceeded the memory.
+        visible: true
+        type: 1
+    '7':
+        description: Your code produced a floating point exception.
+        id: sigfpe
+        type: 1
+        name: Floating Point Exception
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: double_free
+        description: Your code produced a double free.
+        name: Double free
+    '9':
+        visible: true
+        id: banned_funcs
+        description: Your code used some banned functions.
+        type: 1
+        name: Banned functions
+    '11':
+        visible: true
+        name: S2
+        description: ''
+        type: 2
+        id: ''
+    '12':
+        type: 2
+        description: Task about string operations
+        visible: true
+        name: String
+        id: ''
+    '13':
+        type: 2
+        description: Level 1
+        visible: true
+        name: Level 1
+        id: ''
+weight: 1.0

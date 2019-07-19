@@ -1,0 +1,72 @@
+_id: 5c89233e6779dd43dca91e4a
+archive: 5c8923426779dd43dca91e4d
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': lemmensj
+    contains: |-
+        if(tree->root == NULL){
+            return 0;
+        }
+        struct node* runner = tree->root;
+        return contains2(runner,value);
+    other: |-
+        int contains2(struct node* runner,int value){
+            if(runner->value == value){
+                return 1;
+            }
+            else if(runner == NULL){
+                return 0;
+            }
+            int gauche = contains2(runner->left,value);
+            int droite = contains2(runner->right,value);
+            return gauche || droite;
+        }
+problems:
+    contains:
+    - failed
+    - |+
+        * Test contained value
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Your code produced a segfault.
+
+        * Test complex contained value
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Your code produced a segfault.
+
+        * Test not contained value
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Your code produced a segfault.
+
+        * Test for empty or null tree
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault.
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-13 16:35:26.785000
+taskid: BST
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- lemmensj

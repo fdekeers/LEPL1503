@@ -1,0 +1,46 @@
+_id: 5c8bb9516779dd43dd2923b8
+archive: 5c8bb9556779dd43dd2923bc
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': bdemuysere
+    q1: |-
+        #include <stdio.h>
+        int main(int argc, char *argv[]) {
+            int i;
+            for(i=1;i<argc-1;i+=2){
+                printf(" %s",argv[i]);
+            }
+            if(i==argc){printf("\n");}
+
+            return 0;
+        }
+problems:
+    q1:
+    - failed
+    - |+
+        * Test the task main_argc
+
+          => échoué (0/1) pts)
+
+          Info: Arguments : 'myProg a b ihuqfiudshfsi kujsvglqiu', expected : 'a ihuqfiudshfsi\\n', your answer : ' a ihuqfiudshfsi%%%%%%%%%%%%%%%%' — Arguments : 'myProg a b kujsvglqiu', expected : 'a kujsvglqiu\\n', your answer : ' a ihuqfiudshfsi%%%%%%%%%%%%%%%%' — Arguments : 'myProg a b', expected : 'a\\n', your answer : ' a ihuqfiudshfsi%%%%%%%%%%%%%%%%' — Arguments : 'myProg kujsvglqiu', expected : 'kujsvglqiu\\n', your answer : ' a ihuqfiudshfsi%%%%%%%%%%%%%%%%'
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-15 15:40:17.677000
+taskid: main_argc
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- bdemuysere

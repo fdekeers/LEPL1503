@@ -1,0 +1,122 @@
+accessible: true
+author: Arthur van Stratum
+context: |-
+    In this exercise, we will work with operation on bits. When we speak about the position of a bit, index 0 corresponds to lowest order bit, 1 to the second-lowest order bit, ...
+
+    In C source code, you can write a number in binary (base 2) by prefixing it via 0b., e.g. 0b11010 = 26.
+
+    This exercise will introduce some non-standard data types which guarantee that the variable has a fixed number of bits. Indeed, on some machines, a *int* could use 2, 4 or 8 bytes. Hence, if we want to perform bitwise operations, we have to know first on how many bits we are working.
+
+    For this, C introduces a new class of variable types :
+
+    - *int8_t* (signed integer of 8 bits)
+    - *uint8_t* (unsigned integer of 8 bits)
+    - *uint16_t* (unsigned integer of 16 bits)
+
+    You can mix *uint* or *int* with bit-lengths 8, 16, 32 and 64). These types are defined in <stdint.h>
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S2] Bitwise operation: high order bits '
+network_grading: false
+order: 8
+problems:
+    q1:
+        type: code
+        default: ''
+        language: c
+        name: ''
+        header: |-
+            Write the body of a function *get_3_leftmost_bits* that returns the 3 high order bits of *x*.
+
+            For instance, if *x=0b11011001...*, the function should return a *uint8_t* containing ``0b00000110``.
+
+            If *x=0b01100001...*, the function should return a *uint8_t* containing ``0b00000011``.
+
+            .. code-block:: c
+
+                #include <stdint.h>
+                uint8_t get_3_leftmost_bits(uint32_t x) {
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '3':
+        description: Your code does not compile.
+        visible: true
+        name: Not compile
+        type: 1
+        id: not_compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+    '10':
+        description: Level 1
+        name: Level 1
+        type: 2
+        visible: true
+        id: level1
+    '11':
+        visible: true
+        name: S2
+        type: 2
+        description: ''
+        id: ''
+    '9':
+        visible: true
+        description: Task about bitwise operations
+        type: 2
+        name: Bitwise operation
+        id: category_bits
+weight: 1.0

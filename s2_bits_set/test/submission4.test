@@ -1,0 +1,45 @@
+_id: 5c66bf1f6779dd56677bd04f
+archive: 5c66bf216779dd56677bd050
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': aboukhalid
+    q1: |-
+        int i;
+        int *ptr;
+        for(i=0;i != pos;i++)
+        {
+            ptr++;
+        }
+        *ptr = value;
+        return x;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test function set_bits
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — set_bit returns the wrong value when setting to 0 — Your code produced a segfault. — set_bit returns the wrong value when setting to 1
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-15 14:31:11.034000
+taskid: set_bit
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- aboukhalid
