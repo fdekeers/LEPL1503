@@ -1,0 +1,70 @@
+_id: 5c7d4e636779dd5668a6c0b3
+archive: 5c8b60c66779dd43db06a906
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': zschoofs
+    modem: |-
+        int i=0;
+        int len=0;
+        modem_read(buf,&len);
+        while(i!=len){
+            if(*(buf+i)==42){
+                return 1;
+            }
+            i++;
+        }
+        return 0;
+problems:
+    modem:
+    - success
+    - |+
+        * test1 for 42 contained
+
+          => réussi (1/1) pts)
+
+
+        * test2 for 42 contained
+
+          => réussi (1/1) pts)
+
+
+        * test2 for 42 not contained
+
+          => réussi (1/1) pts)
+
+
+        * test2 for 42 contained, left trapped
+
+          => réussi (1/1) pts)
+
+
+        * test2 for 42 not contained, left trapped
+
+          => réussi (1/1) pts)
+
+
+        * test2 for 42 contained, left trapped
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-04 17:12:19.065000
+taskid: modem_read
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- zschoofs

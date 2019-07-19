@@ -1,0 +1,48 @@
+_id: 5c94fa096779dd43dd2957bd
+archive: 5c94fa0b6779dd43dd2957be
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': aduerinck
+    calloc2: |+
+        int a;
+        a=nmemb;
+        int b=a*size;
+
+        char* ls=malloc(b);
+        if(ls==NULL){return ls;}
+
+        for(a=0;a<b;a++){
+           *(ls+a)=char 0u;
+        }
+        return (void*)ls;
+
+
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-22 16:06:49.804000
+taskid: calloc2
+tests: {}
+text: |4+
+
+    Erreur de compilation :
+
+    .. code-block:: c
+
+        code/student_code.c: In function ‘calloc2’:
+        code/student_code.c:31:15: error: expected expression before ‘char’
+               *(ls+a)=char 0u;
+                       ^
+        make: *** [all] Error 1
+
+username:
+- aduerinck

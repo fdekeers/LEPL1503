@@ -1,0 +1,93 @@
+_id: 5c83ae206779dd43dca8d91c
+archive: 5c83ae216779dd43dca8d91d
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': audeckers
+    q1: |
+        #include <stdlib.h>
+        #include <stdio.h>
+        #include <string.h>
+
+        int main(int argc, char *argv[])
+        {
+            if(argc == 4)
+            {
+                int a = atoi(argv[1]);
+                int b = atoi(argv[3]);
+
+                if(strcmp(argv[2],"-eq") == 0)
+                    return eq(a,b);
+                else if(strcmp(argv[2],"-ge") == 0)
+                    return ge(a,b);
+                else if(strcmp(argv[2],"-gt") == 0)
+                    return gt(a,b);
+                else if(strcmp(argv[2],"-le") == 0)
+                    return le(a,b);
+                else if(strcmp(argv[2],"-lt") == 0)
+                    return lt(a,b);
+                else if(strcmp(argv[2],"-ne") == 0)
+                    return ne(a,b);
+            }
+            return 1;
+        }
+
+        int eq(int a, int b)
+        {
+            if(a == b)
+                return 0;
+            else
+                return 1;
+        }
+        int ge(int a, int b)
+        {
+            if(a >= b)
+                return 0;
+            else
+                return 1;
+        }
+        int gt(int a, int b)
+        {
+            if(a > b)
+                return 0;
+            else
+                return 1;
+        }
+        int le(int a, int b)
+        {
+            if(a <= b)
+                return 0;
+            else
+                return 1;
+        }
+        int lt(int a, int b)
+        {
+            if(a < b)
+                return 0;
+            else
+                return 1;
+        }
+        int ne(int a, int b)
+        {
+            if(a != b)
+                return 0;
+            else
+                return 1;
+        }
+problems: {}
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-09 13:14:24.055000
+taskid: commandetest
+tests: {}
+text: Votre code est correct!
+username:
+- audeckers

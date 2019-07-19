@@ -1,0 +1,171 @@
+accessible: true
+author: Maxime Mawait & Nicolas Rybowski
+context: |-
+    You must implement the ``enqueue`` and ``dequeue`` functions of a `Queue` that is implemented as a simple circular list. This
+    `Wikipedia page <https://en.wikipedia.org/wiki/Linked_list#Circularly_linked_vs._linearly_linked>`_ describes such a list as follows:
+
+    "With a circular list, a pointer to the last node gives easy access also to the first node, by following one link. Thus, in applications that require access to both ends of the list (e.g., in the implementation of a queue), a circular structure allows one to handle the structure by a single pointer, instead of two."
+
+
+    .. image:: https://upload.wikimedia.org/wikipedia/commons/d/df/Circularly-linked-list.svg
+
+    Assume that the head of the queue is the leftmost node and that the tail of the queue is the rightmost node. In the previous example, the head and the tail are respectively ``12`` and ``37``. So in this case, the only pointer you can use will point to the ``37`` node.
+
+    You can use the following datastructures for this exercise:
+
+    .. code-block:: c
+
+        typedef struct node{
+          struct node* next;
+          int value;
+        } node_t;
+
+        typedef struct queue{
+          struct node* tail;
+          int size;
+        } queue_t  ;
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    time: '30'
+    output: '2'
+    memory: '100'
+name: '[S4] Advanced queue'
+network_grading: false
+order: 33
+problems:
+    enqueue:
+        type: code
+        default: ''
+        header: |-
+            .. code:: c
+
+                /*
+                * Add @val value at the head of the @q queue
+                *
+                * @val     : the value to enqueue
+                * @q     : the queue
+                *
+                * @return 0 if no error, -1 otherwise
+                *
+                * pre : The queue q will always be valid, you don't need to handle the NULL case.
+                */
+                int enqueue(queue_t* q, int val){
+        name: Enqueue
+        language: c
+    dequeue:
+        language: c
+        name: Dequeue
+        header: |-
+            *HINT* : Do not forget to free all the unused memory.
+
+            .. code:: c
+
+                /*
+                * Remove the node at the tail of the @q queue and return the value of this node
+                * @q         : the queue
+                * @return     : the value at the tail
+                *
+                * pre         : The given queue will always be valid, you do not need to handle the NULL case.
+                */
+                int dequeue(queue_t* q){
+        type: code
+        default: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        description: q1 is correct
+        id: q1
+        name: Q1
+        type: 0
+        visible: false
+    '1':
+        description: q2 is correct
+        id: q2
+        name: Q2
+        type: 0
+        visible: false
+    '2':
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+        type: 1
+        visible: true
+    '3':
+        description: Your code produced a segmentation fault.
+        id: sigsegv
+        name: Segmentation Fault
+        type: 1
+        visible: true
+    '4':
+        description: Your code does not compile.
+        id: not_compile
+        name: Not compile
+        type: 1
+        visible: true
+    '5':
+        description: Your code exceeded the memory.
+        id: memory
+        name: Memory Exceeded
+        type: 1
+        visible: true
+    '6':
+        description: Your code produced a floating point exception.
+        id: sigfpe
+        name: Floating Point Exception
+        type: 1
+        visible: true
+    '7':
+        description: Your code produced a double free.
+        id: double_free
+        name: Double free
+        type: 1
+        visible: true
+    '8':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        name: Banned functions
+        type: 1
+        visible: true
+    '9':
+        description: Your code does not compile with cppcheck.
+        id: cppcheck
+        name: Cppcheck fails
+        type: 1
+        visible: true
+    '10':
+        description: ''
+        id: ''
+        name: S4
+        type: 2
+        visible: true
+    '11':
+        visible: true
+        name: Level 3
+        type: 2
+        description: Level 3
+        id: level3
+    '12':
+        visible: true
+        description: Task about pointers and their use
+        type: 2
+        name: Pointer
+        id: category_pointer
+    '13':
+        visible: true
+        description: Task about structures and their use
+        type: 2
+        name: Struct
+        id: category_struct
+    '14':
+        type: 2
+        description: Task about linked lists and their use
+        visible: true
+        name: Linked list
+        id: category_linkedlist
+weight: 1.0

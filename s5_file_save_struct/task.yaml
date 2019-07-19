@@ -1,0 +1,149 @@
+accessible: true
+author: Olivier Martin, Cyril Pletinckx, Minh-Phuong Tran
+context: |-
+    *Estimated time: 25 minutes*
+
+    You are currently processing an array composed of ``struct point`` defined below. In this programme, you need to store the content of the entire array in a file to be able to reuse it later. Write a C function to write the array composed of ``struct point`` into a file. The file may already exist or not. After the execution of the function, the file should only contain the array. If the file has to be created, the user who created it must have the permission to read it.
+
+    .. code-block:: c
+
+        typedef struct point {
+            int x;
+            int y;
+            int z;
+        } point_t;
+
+    Use only ``open(2)``, ``close(2)``, ``mmap(2)``, ``munmap(2)``, ``msync(2)``, ``memcpy(3)`` and ``ftruncate(3)``. You can only call ``memcpy(3)`` once.
+
+    **Hint** : read carefully the man page of `open(2) <https://sites.uclouvain.be/SystInfo/manpages/man2/open.2.html>`_ to manage all the  cases mentionned above. Be sure to open the file with the appropriate rights.
+
+    **Hint** : `msync(2) <https://sites.uclouvain.be/SystInfo/manpages/man2/msync.2.html>`_ is a function that ensures that your modifications done in memory (so in the address returned by mmap) will also be saved in the file. Check the documentation to learn how to use it (pay attention to the flags). Call it before munmap() (or your modifications to the memory may be lost) !
+
+    **Hint** : The function `ftruncate(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/ftruncate.3posix.html>`_ is a function that you won't need to use frequently. However, this function is mandatory to pass this exercice ! In your code, you have to use it to extend the size of the file you opened. When you'll call open (with the appropriate flags to meet the requirements above), the size of the file will be set to zero. So, in order for the mmap function to work, you'll need to extend its size to the one you want by calling ftruncate. Read the documentation linked and use this trick BEFORE calling mmap !
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S5] Save struct into file'
+network_grading: false
+order: 38
+problems:
+    q1:
+        type: code
+        default: ''
+        language: c
+        name: ''
+        header: |-
+            .. code-block:: c
+
+                /*
+                 * @pre pt != NULL, pointer to the first point_t in the array
+                 *      size > 0, the length of the array.
+                 *      filename != NULL
+                 * @post writes the array of point_t in the file.
+                 *       return 0 is everything worked correctly
+                 *       -1 if open() failed.
+                 *       -2 if close() failed.
+                 *       -3 if mmap() failed.
+                 *       -4 if munmap() failed.
+                 *       -5 if msync() failed.
+                 *       -6 if ftruncate() failed.
+                 *
+                 */
+                int save(point_t *pt, int size, char *filename) {
+
+            **Hint** : size is the length of the array but not the total number of bytes of what you want to save into your file (because point_t structures doesn't have a size of one byte). To know the total size of your array (in terms of bytes used), you'll need the function sizeof() !
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '3':
+        description: Your code does not compile.
+        visible: true
+        name: Not compile
+        type: 1
+        id: not_compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+    '9':
+        id: failure_handling
+        description: You do not manage failures properly when a system call fails.
+        type: 1
+        name: Failure handling
+        visible: false
+    '10':
+        description: ''
+        name: S5
+        type: 2
+        visible: true
+        id: ''
+    '11':
+        visible: true
+        name: Files
+        type: 2
+        description: Task about files
+        id: ''
+    '12':
+        type: 2
+        description: Task about mmap, munmap and msync
+        visible: true
+        name: Mmap
+        id: ''
+    '13':
+        type: 2
+        description: Level 4
+        visible: true
+        name: Level 4
+        id: ''
+weight: 1.0

@@ -1,0 +1,109 @@
+_id: 5c8396166779dd43db061680
+archive: 5c83961a6779dd43db061681
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': cyjanssensde
+    getName: |-
+        char* str = malloc(strlen(prod.name)+1);
+        if(!str){
+            return NULL;
+        }
+        str = strcpy(str,prod.name);
+        return str;
+    getPrice: return prod.price;
+    getPtrName: |
+        char* str = malloc(strlen(ptrProd -> name)+1);
+        if(!str){
+            return NULL;
+        }
+        str = strcpy(str,ptrProd -> name);
+        return str;
+    getPtrPrice: return ptrProd -> price;
+    prodEquals: return !strcmp(ptrProd -> name, prod.name) && ptrProd -> price ==
+        prod.price;
+problems:
+    getName:
+    - success
+    - |+
+        * Testing in a normal case
+
+          => réussi (1/1) pts)
+
+
+        * Testing when malloc fails
+
+          => réussi (1/1) pts)
+
+
+    getPrice:
+    - success
+    - |+
+        * Testing in a normal case
+
+          => réussi (1/1) pts)
+
+
+    getPtrName:
+    - success
+    - |+
+        * Testing in a normal case
+
+          => réussi (1/1) pts)
+
+
+        * Testing when malloc fails
+
+          => réussi (1/1) pts)
+
+
+    getPtrPrice:
+    - success
+    - |+
+        * Testing in a normal case
+
+          => réussi (1/1) pts)
+
+
+    prodEquals:
+    - success
+    - |+
+        * Test when the content of the structures is the same
+
+          => réussi (1/1) pts)
+
+
+        * Test when the name is different
+
+          => réussi (1/1) pts)
+
+
+        * Test when the price is different
+
+          => réussi (1/1) pts)
+
+
+        * Test when both the name and the price are different
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-09 11:31:50.470000
+taskid: struct_cmp
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- cyjanssensde

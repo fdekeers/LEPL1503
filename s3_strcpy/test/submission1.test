@@ -1,0 +1,47 @@
+_id: 5c8a33da6779dd43dca92d22
+archive: 5c8a33de6779dd43dca92d23
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': schwaiger
+    strcpy_impl: |4-
+          int lon = strlen(src) + 1, i;
+          char * ans = (char*) malloc(sizeof(char)*lon);
+          if (!ans)
+            return NULL;
+          for(i = 0; i < lon; i++)
+            *(ans+i) = *(src+i);
+        return ans;
+problems:
+    strcpy_impl:
+    - success
+    - |+
+        * Check if the string is correctly put in memory
+
+          => réussi (1/1) pts)
+
+
+        * Check the behavior of the function when the call to malloc fails
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-14 11:58:34.884000
+taskid: strcpy
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- schwaiger

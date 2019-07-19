@@ -1,0 +1,136 @@
+accessible: true
+author: Olivier Martin, Cyril Pletinckx, Minh-Phuong Tran
+context: |-
+    *Estimated time: 25 minutes*
+
+    Given a binary file containing some (possibly none) positive integers (``int``) that were stored in a file, write a code that computes the sum of all of these integers. The function returns the sum when there are no errors. In case of errors, it returns.
+
+    - If ``open()`` fails, return ``-1``.
+    - If ``close()`` fails, return ``-2``.
+    - If ``mmap()`` fails, return ``-3``.
+    - If ``munmap()`` fails, return ``-4``.
+    - If ``fstat()`` fails, return ``-5``.
+
+    You can only use ``open(2)``, ``mmap(2)``, ``munmap(2)``, ``fstat(2)`` and ``close(2)``.
+
+    **Hint** : ``fstat(2)`` is mandatory to know the size of the file and thus with a simple formula, the number of integers that are stored in it (find it !).
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S5] Reading integers in a binary file'
+network_grading: false
+order: 36
+problems:
+    q1:
+        type: code
+        default: ''
+        language: c
+        name: Write your code here
+        header: |-
+            .. code-block:: c
+
+                /*
+                 * @pre filename != NULL, name of the file
+                 * @post returns the sum of all integers stored in the binary file.
+                 *       return -1 if the file can not be open.
+                 *       return -2 if the file can not be closed.
+                 *       return -3 if mmap() fails.
+                 *       return -4 if munmap() fails.
+                 *       return -5 if fstat() fails.
+                 */
+                int sum_file(char *filename) {
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '3':
+        description: Your code does not compile.
+        visible: true
+        name: Not compile
+        type: 1
+        id: not_compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+    '9':
+        visible: true
+        id: failure_handling
+        description: You do not manage failures properly when a system call fails.
+        type: 1
+        name: Failure handling
+    '10':
+        description: ''
+        name: S5
+        type: 2
+        visible: true
+        id: ''
+    '11':
+        visible: true
+        name: Mmap
+        type: 2
+        description: Task about mmap, munmap and msync
+        id: ''
+    '12':
+        type: 2
+        description: Task about files
+        visible: true
+        name: Files
+        id: ''
+    '13':
+        type: 2
+        description: Level 3
+        visible: true
+        name: Level 3
+        id: ''
+weight: 1.0

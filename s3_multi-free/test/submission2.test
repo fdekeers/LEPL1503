@@ -1,0 +1,101 @@
+_id: 5c7e54256779dd56677cdd37
+archive: 5c7e54296779dd56677cdd38
+courseid: LSINF1252
+custom: {}
+grade: 37.5
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': jovanroy
+    free_all: |-
+        if(u->city!=NULL){free(u->city); }
+        if(u->rector!=NULL){
+            if((*(*u).rector).name!=NULL){  free((*(*u).rector).name); }
+                          free(u->rector);
+                           }
+
+        free(u);
+    init_all: |4-
+
+         struct person *p=malloc(sizeof(rectname)+sizeof(age)+sizeof(salary));
+
+         struct university *u=malloc(sizeof(city)+sizeof(creation)+sizeof(p));
+
+        char *c=malloc(strlen(city)+1);
+        char *re=malloc(strlen(rectname)+1);
+        u->city=(char*) strcpy(c,city);
+        u->creation=creation;
+        (*p).name=(char*) strcpy(re,rectname);
+        p->age=age;
+        p->salary=salary;
+        u->rector=p;
+        return u;
+problems:
+    free_all:
+    - success
+    - |+
+        * Testing in a normal case
+
+          => réussi (1/1) pts)
+
+
+        * Testing when there is no rector
+
+          => réussi (1/1) pts)
+
+
+        * Testing when the strings are NULL
+
+          => réussi (1/1) pts)
+
+
+    init_all:
+    - failed
+    - |+
+        * Testing the behaviour of the function in a normal case
+
+          => échoué (0/1) pts)
+
+          Info: You didn't malloc the right space for the university node. You should have malloced 20 bytes since you have 2 pointers (of 8 bytes each) + an int
+
+        * Testing the behaviour of the function when first malloc fails
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — You should call malloc once !
+
+        * Testing the behaviour of the function when second malloc fails
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — You should call free once in this case — You should call malloc twice in this case
+
+        * Testing the behaviour of the function when third malloc fails
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — You should call free twice in this case — You should call malloc 3 times in this case
+
+        * Testing the behaviour of the function when fourth malloc fails
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — You should call free three times in this case — You didn't free all the memory you allocated — You should return NULL in this case
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-05 11:49:09.620000
+taskid: multi-free
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- jovanroy

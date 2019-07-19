@@ -1,0 +1,112 @@
+accessible: true
+author: Gregory Detal & Fabien Duchêne
+context: |+
+    La commande `test(1) <https://sites.uclouvain.be/SystInfo/manpages/man1/test.1.html>`_ permet d'évaluer une expression passée en paramètre. Elle retourne:
+
+    - ``0`` si l'expression passée en argument est vraie
+    - ``1`` si l'expression passée en argument est fausse
+
+    **Rem** : N'oubliez pas qu'en C, l'entier qui représente le booléen "faux" est 0 et tous les autres entiers représentent le booléen "vrai". C'est donc l'inverse par rapport à la commande test(1) qui est en fait une fonction bash (shell).
+
+    On vous demande d'écrire un sous-ensemble de la commande `test(1) <https://sites.uclouvain.be/SystInfo/manpages/man1/test.1.html>`_ en C. Les expressions à implémenter sont ``-eq``, ``-ge``, ``-gt``, ``-le``, ``-lt`` et ``-ne``.
+
+    Pour rappel, la commande `test(1) <https://sites.uclouvain.be/SystInfo/manpages/man1/test.1.html>`_ est décrite dans la `page de manuel  <https://sites.uclouvain.be/SystInfo/manpages/man1/test.1.html>`_ qui lui est consacrée.
+
+    Pour répondre à cette question, vous devez structurer votre programme avec des appels de sous-fonctions et donc de ne pas faire toute l'exécution dans la fonction ``main()``.
+
+    **Rem** : Si vous le souhaitez, il existe plusieurs façons pour tester votre code depuis le shell. Une de ces façons est de regarder dans le shell le contenu de la variable ``$?`` après chaque exécution de votre programme. Une autre façon est de profiter de l'instruction conditionnelle ``if-then-else`` du shell.
+
+
+
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    time: '30'
+    output: '5210'
+    memory: '32'
+name: '[S3] Le programme test'
+network_grading: false
+order: 24
+problems:
+    q1:
+        type: code
+        language: c
+        default: ''
+        name: ''
+        header: |+
+            Ecrivez ici le code contenu dans votre fichier ``test.c`` qui contient la réponse à l'énoncé.
+
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        description: Your code exceeded the maximum allowed time.
+        visible: true
+        type: 1
+        name: Timeout
+        id: timeout
+    '2':
+        id: sigsegv
+        visible: true
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+        type: 1
+    '3':
+        description: Your code does not compile.
+        id: not_compile
+        type: 1
+        visible: true
+        name: Not compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        name: Memory Exceeded
+        description: Your code exceeded the memory.
+    '5':
+        type: 1
+        name: Floating Point Exception
+        description: Your code produced a floating point exception.
+        visible: true
+        id: sigfpe
+    '6':
+        visible: true
+        id: double_free
+        type: 1
+        description: Your code produced a double free.
+        name: Double free
+    '7':
+        visible: true
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        description: Your code used some banned functions.
+    '8':
+        description: Your code does not compile with cppcheck.
+        visible: true
+        id: cppcheck
+        type: 1
+        name: Cppcheck fails
+    '10':
+        type: 2
+        name: S3
+        description: ''
+        visible: true
+        id: ''
+    '9':
+        visible: true
+        name: Level 2
+        type: 2
+        description: Level 2
+        id: ''
+weight: 1.0

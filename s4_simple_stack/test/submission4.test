@@ -1,0 +1,84 @@
+_id: 5c88dd946779dd43dd28b437
+archive: 5c8b5f396779dd43dca947f4
+courseid: LSINF1252
+custom: {}
+grade: 33.33
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': pcrochelet
+    pop: return 0;
+    push: |-
+        struct node *nouveau = (struct node*)malloc(sizeof(struct node));
+        if (nouveau==NULL) {
+            return 1;
+        }
+        nouveau->name = malloc(sizeof(char)*(strlen(value)+1));
+        if (nouveau->name == NULL) {
+            free(nouveau);
+            return 1;
+        }
+        strcpy(nouveau->name, value);
+        if (head == NULL) {
+            nouveau->next = NULL;
+        }
+        nouveau->next = *head;
+        return 0;
+problems:
+    pop:
+    - failed
+    - |+
+        * Check the behavior of the function in normal case
+
+          => échoué (0/1) pts)
+
+          Info: src = r157g1srq7v16zs6, result = This is the initial string contained in result — The function popped the wrong value  — The head ptr is not the expected one
+
+        * Check the behavior of the function when passing NULL @head arg
+
+          => échoué (0/1) pts)
+
+          Info: Wrong return value when passing wrong args
+
+        * Check the behavior of the function when popping last element
+
+          => réussi (1/1) pts)
+
+
+    push:
+    - failed
+    - |+
+        * Check the behavior of the function if the given @head is NULL or if the malloc call fails
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Wrong return code if wrong args
+
+        * Check if the function change @value
+
+          => réussi (1/1) pts)
+
+
+        * Check if the insertion of the new node is correct
+
+          => échoué (0/1) pts)
+
+          Info: The returned pointer is not malloced — The new structure of the stack is not the expected one
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-13 11:38:12.833000
+taskid: simple_stack
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- pcrochelet

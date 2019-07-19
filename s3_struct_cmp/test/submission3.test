@@ -1,0 +1,56 @@
+_id: 5c76a1b16779dd5668a68643
+archive: 5c76a1b36779dd5668a68644
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': cruysberghs
+    getName: |-
+        char* new = malloc(sizeof(char)*strlen(prod.name));
+        if(new == NULL) return NULL;
+        strcpy(new, prod.name);
+        return new;
+    getPrice: return prod.price;
+    getPtrName: |-
+        char* new = malloc((sizeof(char)*strlen((*ptrProd).name))+1);
+        if(new == NULL) return NULL;
+        strcpy(new, (*ptrProd).name);
+        return new;
+    getPtrPrice: return (*ptrProd).price;
+    prodEquals: |
+        if(prod.price != (*ptrProd).price) return 0;
+        if(strlen(prod.name)==strlen((*ptrProd).name)){
+            int l = strlen(prod.name);
+            if(strcmp(prod.name,(*ptrProd).name,l) != 0) return 0;
+            return 1;
+        }
+        return 0;
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-27 15:41:53.665000
+taskid: struct_cmp
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘prodEquals’:
+        student_code.c:31:5: error: too many arguments to function ‘strcmp’
+             if(strcmp(prod.name,(*ptrProd).name,l) != 0) return 0;
+             ^
+        make: *** [student_code.o] Error 1
+
+username:
+- cruysberghs

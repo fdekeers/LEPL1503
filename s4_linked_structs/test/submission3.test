@@ -1,0 +1,73 @@
+_id: 5c7a97c26779dd5668a6a794
+archive: 5c7a97c56779dd5668a6a795
+courseid: LSINF1252
+custom: {}
+grade: 50.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': ocheffert
+    filter: |-
+        if(head==NULL){return NULL;}
+        if(head->next==NULL){
+            struct node* pointer=(struct node*)malloc(sizeof(struct node));
+            memcpy(pointer,head,sizeof(struct node));
+            return pointer;
+        }
+        struct node* r=(struct node*)malloc(sizeof(struct node));
+        if(r==NULL){return NULL;}
+        struct node* ptr0=(struct node*)malloc(sizeof(struct node));
+        if(ptr0==NULL){free(r); return NULL;}
+        memcpy(r,head,sizeof(struct node));
+        ptr0=r;
+
+        while((r->next!=NULL)&((r->next)->next!=NULL)){
+            struct node* p=(struct node*)malloc(sizeof(struct node));
+            memcpy(p,(r->next)->next,sizeof(struct node));
+            r->next=p;
+            r=r->next;
+        }
+        return ptr0;
+    includes: '#include <string.h>'
+problems:
+    filter:
+    - failed
+    - |+
+        * Test if the function returns a valid linked list in normal case
+
+          => échoué (0/1) pts)
+
+          Info: You should use malloc 5 times in this case. — Number of nodes : 5
+
+        * Test the return value of the function when null pointer is given as arg
+
+          => réussi (1/1) pts)
+
+
+        * Test the return value of the function when the list is one element long
+
+          => réussi (1/1) pts)
+
+
+        * Test the return value of the function when the list is two element long
+
+          => échoué (0/1) pts)
+
+          Info: You should use malloc once in this case. — The function produced a wrong list
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-02 15:48:34.171000
+taskid: linked_structs
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- ocheffert

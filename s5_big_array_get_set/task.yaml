@@ -1,0 +1,149 @@
+accessible: true
+author: Olivier Martin, Cyril Pletinckx, Minh-Phuong Tran
+context: |-
+    *Estimated time: 30 minutes*
+
+    Given a file containing a large array of integers, you have to write a function to edit the element at a given index in the array and another function to retrieve a specific element from this array.
+
+    Use only ``open(2)``, ``mmap(2)``, ``munmap(2)``, ``msync(2)``, ``fstat(2)`` and ``close(2)``.
+
+    **Hint** : `msync(2) <https://sites.uclouvain.be/SystInfo/manpages/man2/msync.2.html>`_ is a function that ensures that your modifications done in memory (so in the address returned by mmap) will also be saved in the file. Check the documentation to learn how to use it (pay attention to the flags). Call it before munmap() (or your modifications to the memory may be lost) !
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '50'
+    output: '2'
+    time: '30'
+name: '[S5] Get and set on array stored in binary file '
+network_grading: false
+order: 37
+problems:
+    q1:
+        type: code
+        default: ''
+        language: c
+        name: Retrieve the element at a given index
+        header: |-
+            .. code-block:: c
+
+                /*
+                 * @pre filename != NULL, index >= 0
+                 * @post return the integer at the index {index}
+                 *       of the array in the file {filename}.
+                 *       return -1 in case of error.
+                 *       return -2 if index >= length of array.
+                 */
+                int get(char *filename, int index) {
+    q2:
+        type: code
+        header: |-
+            .. code-block:: c
+
+                /*
+                 * @pre filename != NULL, index >= 0
+                 * @post set the element in the file {filename}
+                 *       at index {index} at value {value}.
+                 *       do nothing in case of errors
+                 */
+                void set(char *filename, int index, int value) {
+        language: c
+        name: Change the value at a given index
+        default: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        type: 0
+        description: q2 is correct
+        id: q2
+        name: Q2
+        visible: false
+    '10':
+        description: Your code does not compile.
+        name: Not compile
+        id: not_compile
+        type: 1
+        visible: true
+    '2':
+        visible: true
+        type: 1
+        id: memory
+        name: Memory Exceeded
+        description: Your code exceeded the memory.
+    '3':
+        description: Your code produced a floating point exception.
+        visible: true
+        type: 1
+        id: sigfpe
+        name: Floating Point Exception
+    '4':
+        type: 1
+        visible: true
+        id: double_free
+        description: Your code produced a double free.
+        name: Double free
+    '5':
+        name: Banned functions
+        id: banned_funcs
+        type: 1
+        description: Your code used some banned functions.
+        visible: true
+    '6':
+        name: Cppcheck fails
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        visible: true
+        type: 1
+    '7':
+        description: You do not manage failures properly when a system call fails.
+        id: failure_handling
+        type: 1
+        name: Failure handling
+        visible: false
+    '8':
+        type: 1
+        visible: true
+        id: timeout
+        description: Your code exceeded the maximum allowed time.
+        name: Timeout
+    '9':
+        visible: true
+        id: sigsegv
+        description: Your code produced a segmentation fault.
+        type: 1
+        name: Segmentation Fault
+    '11':
+        visible: true
+        name: S5
+        description: ''
+        type: 2
+        id: ''
+    '12':
+        type: 2
+        description: Level 4
+        visible: true
+        name: Level 4
+        id: ''
+    '13':
+        type: 2
+        description: Task about files
+        visible: true
+        name: Files
+        id: ''
+    '14':
+        name: Mmap
+        type: 2
+        description: Task about mmap, munmap and msync
+        visible: true
+        id: ''
+weight: 1.0

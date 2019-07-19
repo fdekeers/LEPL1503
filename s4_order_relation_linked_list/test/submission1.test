@@ -1,0 +1,175 @@
+_id: 5c851ebd6779dd43dd2853d8
+archive: 5c851ec06779dd43dd2853d9
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': dvanmeerbeec
+    insert: |-
+        if(*head==NULL){
+            node_t *nd = (node_t*) malloc(sizeof(node_t));
+            if(nd==NULL){return -1;}
+            nd->val = val;
+            nd->next = NULL;
+            *head = nd;
+            return 0;
+        }
+
+        if((*cmp)(val,(*head)->val)<=0){
+            if((*cmp)(val,(*head)->val)==0){
+                return 0;
+            }
+            node_t *nd = (node_t*) malloc(sizeof(node_t));
+            if(nd==NULL){return -1;}
+            nd->val = val;
+            nd->next = NULL;
+            nd->next = *head;
+            *head = nd;
+            return 0;
+        }
+
+        node_t *curr = *head;
+        while(curr->next != NULL && (*cmp)(val,curr->next->val)>=0){
+            curr = curr->next;
+            if((*cmp)(val,curr->val)==0){
+                return 0;
+            }
+        }
+        node_t *nd = (node_t*) malloc(sizeof(node_t));
+        if(nd==NULL){return -1;}
+        nd->val = val;
+        nd->next = curr->next;
+        curr->next = nd;
+        return 0;
+    order_relation: |
+        return (int)a - (int)b;
+problems:
+    insert:
+    - success
+    - |+
+        * Insertion in an empty list
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in an empty list with malloc fail
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in first place, natural order
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in first place with malloc failure
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in middle place, simple case, natural order
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in middle place, complex case, natural order
+
+          => réussi (2/2) pts)
+
+
+        * Insertion in middle place, with malloc failure
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in last place, simple case, natural order
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in last place, complex case, natural order
+
+          => réussi (2/2) pts)
+
+
+        * Insertion in last place, with malloc failure
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in first place, reverse order
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in middle place, simple case, reverse order
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in middle place, complex case, reverse order
+
+          => réussi (2/2) pts)
+
+
+        * Insertion in last place, simple case, reverse order
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in last place, complex case, reverse order
+
+          => réussi (2/2) pts)
+
+
+        * Reinsertion in first place
+
+          => réussi (1/1) pts)
+
+
+        * Reinsertion in middle place
+
+          => réussi (1/1) pts)
+
+
+        * Reinsertion in last place
+
+          => réussi (1/1) pts)
+
+
+    order_relation:
+    - success
+    - |+
+        * Comparison of equals char
+
+          => réussi (1/1) pts)
+
+
+        * Comparison with a > b
+
+          => réussi (1/1) pts)
+
+
+        * Comparison with a < b
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-10 15:27:09.010000
+taskid: order_relation_linked_list
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- dvanmeerbeec

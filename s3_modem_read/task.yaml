@@ -1,0 +1,115 @@
+accessible: true
+author: Mathieu Xhonneux & Maxime Mawait & Cyril Pletinckx
+context: |-
+    For your (possibly) future network's course, you will have to detect and analyse the data that are exchanged between two computers through the network (for example using the WiFi). In this exercise, we give you a function ``modem_read``, to read the data exchanged thanks to the network, with the following prototype :
+
+    ``void modem_read(void *buffer, int *buf_len);``
+
+    This function fills the supplied buffer with the data captured (an array of ``char``), and writes the number of bytes written to this buffer in the variable pointed by ``buf_len``. It can catch up to maximum 256 bytes in a single call. This function is guaranteed to return.
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S3] Reading from the wire '
+network_grading: false
+order: 23
+problems:
+    modem:
+        language: c
+        header: |-
+            You want to analyse your network to see if a certain virus infected it or not. This virus consists of changing some bytes to an other byte whose numerical value is ``42``. Hence, you will use the function ``modem_read`` to catch some data passing through your network and process it to detect the "42 byte". Write the body of the function ``has_42``, this function has to use ``malloc`` to create the buffer before calling ``modem_read``.
+
+            **NB** : you know that in your network the byte whose numerical value is 42 is forbidden in normal circumstances so if you detect such a byte, it is inevitably because your network is infected.
+
+            .. code-block:: c
+
+                /*
+                 * @return: 1 if your network is infected
+                 *         else 0, -1 if an error has happened.
+                 */
+                int has_42() {
+        type: code
+        name: '42'
+        default: ''
+stored_submissions: 0
+submission_limit:
+    amount: 12
+    period: 1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '3':
+        description: Your code does not compile.
+        visible: true
+        name: Not compile
+        type: 1
+        id: not_compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+    '10':
+        description: Task about malloc
+        name: Malloc
+        type: 2
+        visible: true
+        id: ''
+    '11':
+        visible: true
+        name: Level 2
+        type: 2
+        description: Level 2
+        id: ''
+    '9':
+        visible: true
+        description: ''
+        type: 2
+        name: S3
+        id: ''
+weight: 1.0

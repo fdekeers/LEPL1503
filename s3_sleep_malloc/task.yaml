@@ -1,0 +1,119 @@
+accessible: true
+author: Mathieu Xhonneux & Maxime Mawait
+context: |-
+    The `malloc(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/malloc.3.html>`_ function may fail, for instance if the OS has no free memory remaining. In this case, it may be possible that some other processes free some memory after some time and then we could use it again.
+
+    In our program, instead of reporting an error immediately if no free memory is available, we will wait some time to see if the OS has freed memory for us.
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S3] Sleepy malloc'
+network_grading: false
+order: 27
+problems:
+    sleep_malloc:
+        language: c
+        default: ''
+        header: |-
+            Write the body of the function ``sleepy_malloc``. Use the function `sleep(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/sleep.3.html>`_.
+
+
+            .. code-block:: c
+
+                /* Wrapper to the malloc system call.
+                 * If malloc fails, sleep for 5 seconds, and then try again.
+                 * If malloc failed 10 times in a row, return NULL.
+                 */
+                void *sleepy_malloc(size_t s) {
+        name: Sleepy malloc
+        type: code
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeds the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: ''
+    '3':
+        description: You code does not compile.
+        visible: true
+        name: Not compile
+        type: 1
+        id: not_compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: ''
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: ''
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: You use some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck
+        name: Cppcheck fails
+    '9':
+        id: not_malloc_once
+        description: The malloc() functions was not called exactly once when malloc
+            succeeds the first time.
+        type: 1
+        name: Not malloc once
+        visible: false
+    '10':
+        description: ''
+        name: S3
+        type: 2
+        visible: true
+        id: ''
+    '11':
+        visible: true
+        name: Level 2
+        type: 2
+        description: Level 2
+        id: ''
+    '12':
+        type: 2
+        description: Task about malloc
+        visible: true
+        name: Malloc
+        id: ''
+weight: 1.0

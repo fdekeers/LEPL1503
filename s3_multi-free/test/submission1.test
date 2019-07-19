@@ -1,0 +1,117 @@
+_id: 5c8102a06779dd43dd280263
+archive: 5c8102a36779dd43dd280264
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': hermanju
+    free_all: |-
+        if(u->rector != NULL)
+        {
+            if(u->rector->name !=NULL)
+                free(u->rector->name);
+            free(u->rector);
+        }
+        if(u->city != NULL)
+            free(u->city);
+        free(u);
+    init_all: |
+        char *newcity = malloc(sizeof(char)*(strlen(city)+1));
+        if(newcity==NULL)
+            return NULL;
+        strcpy(newcity, city);
+        char *newname = malloc(sizeof(char)*(strlen(rectname)+1));
+        if(newname==NULL)
+        {
+            free(newcity);
+            return NULL;
+        }
+        strcpy(newname, rectname);
+
+        person_t *newperson = malloc(sizeof(person_t));
+        if(newperson == NULL)
+        {
+            free(newcity);
+            free(newname);
+            return NULL;
+        }
+        newperson->name = newname;
+        newperson->age = age;
+        newperson->salary = salary;
+        university_t *newuniversity = malloc(sizeof(university_t));
+        if(newuniversity== NULL)
+        {
+            free(newcity);
+            free(newname);
+            free(newperson);
+            return NULL;
+        }
+        newuniversity->rector= newperson;
+        newuniversity->creation= creation;
+        newuniversity->city= newcity;
+        return newuniversity;
+problems:
+    free_all:
+    - success
+    - |+
+        * Testing in a normal case
+
+          => réussi (1/1) pts)
+
+
+        * Testing when there is no rector
+
+          => réussi (1/1) pts)
+
+
+        * Testing when the strings are NULL
+
+          => réussi (1/1) pts)
+
+
+    init_all:
+    - success
+    - |+
+        * Testing the behaviour of the function in a normal case
+
+          => réussi (1/1) pts)
+
+
+        * Testing the behaviour of the function when first malloc fails
+
+          => réussi (1/1) pts)
+
+
+        * Testing the behaviour of the function when second malloc fails
+
+          => réussi (1/1) pts)
+
+
+        * Testing the behaviour of the function when third malloc fails
+
+          => réussi (1/1) pts)
+
+
+        * Testing the behaviour of the function when fourth malloc fails
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-07 12:38:08.472000
+taskid: multi-free
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- hermanju

@@ -1,0 +1,54 @@
+_id: 5c7abd3d6779dd56677cb820
+archive: 5c7abd416779dd56677cb821
+courseid: LSINF1252
+custom: {}
+grade: 50.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': rgraux
+    strcpy_impl: |-
+        char* s;
+          if(src==NULL){
+            s=NULL;
+          }
+          else{
+            s = malloc((strlen(src)+1) * sizeof(char));
+            for(int i=0;i<strlen(src);i++){
+                s[i] = src[i];
+            }
+            s[strlen(src)] = '\0';
+          }
+        return s;
+problems:
+    strcpy_impl:
+    - failed
+    - |+
+        * Check if the string is correctly put in memory
+
+          => réussi (1/1) pts)
+
+
+        * Check the behavior of the function when the call to malloc fails
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault.
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-02 18:28:29.547000
+taskid: strcpy
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- rgraux

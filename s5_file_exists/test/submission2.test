@@ -1,0 +1,49 @@
+_id: 5c7ead9b6779dd56677ce8c0
+archive: 5c7ead9e6779dd56677ce8c1
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': joliva
+    q1: |-
+        int fd;
+          fd = open(filename, O_RDONLY);
+          if(fd==-1){
+            return -1;
+          }
+          close(fd);
+          return 0;
+problems:
+    q1:
+    - success
+    - |+
+        * Test file does not exist
+
+          => réussi (1/1) pts)
+
+
+        * Test file exists
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-05 18:10:51.387000
+taskid: s5_file_exists
+tests:
+    test_file_exist: true
+    test_file_exist_not: true
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- joliva

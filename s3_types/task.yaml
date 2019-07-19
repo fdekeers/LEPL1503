@@ -1,0 +1,133 @@
+accessible: true
+author: Kilian Verhetsel
+context: |-
+    Le type de la plupart des variables en C est facile à déterminer. Néanmoins, le
+    C contient aussi des types qui diffèrent de façons parfois subtiles.
+
+    **Rem** : N'oubliez pas qu'une déclaration en C se termine toujours par ";".
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    time: '10'
+    output: '5210'
+    memory: '128'
+name: '[S3] Les types (1/2)'
+network_grading: false
+order: 18
+problems:
+    q1:
+        type: code_single_line
+        default: ''
+        name: Un entier
+        header: Déclarez une variable ``x`` de type ``int``.
+    q2:
+        header: Déclarez la variable ``x`` comme un tableau de 10 ``int``.
+        name: Un tableau d’entiers
+        type: code_single_line
+        default: ''
+    q3:
+        type: code_single_line
+        default: ''
+        name: Taille d’un tableau
+        header: |-
+            En supposant que ``sizeof(int)`` vaut 2 et que la taille de tout pointeur
+            vaut 8, que vaut ``sizeof(x)`` dans la question précédente ?
+    q4:
+        header: Déclarez la variable ``x`` comme un pointeur vers un ``int``.
+        name: Un pointeur vers un entier
+        default: ''
+        type: code_single_line
+    q5:
+        default: ''
+        name: Taille d’un pointeur
+        header: |-
+            En supposant que ``sizeof(int)`` vaut 2 et que la taille de tout pointeur
+            vaut 8, que vaut ``sizeof(x)`` sachant que ``x`` a été déclaré comme dans la question précédente ?
+        type: code_single_line
+    q6:
+        type: code_single_line
+        default: ''
+        name: Taile d’un tableau passé comme argument
+        header: |-
+            Voici le prototype d’une fonction standard.
+
+            .. code-block:: c
+
+              int pipe(int filedes[2]);
+
+            En supposant que ``sizeof(int)`` vaut 2 et que la taille de tout pointeur vaut 8, que vaut ``sizeof(filedes)`` à l’intérieur du corps de la fonction ``pipe`` ?
+    q7:
+        header: |-
+            Déclarez la variable ``x`` comme un tableau à deux dimensions contenant de ``int`` avec 5
+            colonnes et 8 lignes.
+        name: Un tableau d’entiers à 2 dimensions
+        type: code_single_line
+        default: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '1':
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+        type: 1
+        visible: true
+    '2':
+        description: Your code produced a segmentation fault.
+        id: sigsegv
+        name: Segmentation Fault
+        type: 1
+        visible: true
+    '3':
+        description: Your code does not compile.
+        id: not_compile
+        name: Not compile
+        type: 1
+        visible: true
+    '4':
+        description: Your code exceeded the memory.
+        id: memory
+        name: Memory Exceeded
+        type: 1
+        visible: true
+    '5':
+        description: Your code produced a floating point exception.
+        id: sigfpe
+        name: Floating Point Exception
+        type: 1
+        visible: true
+    '6':
+        description: Your code produced a double free.
+        id: double_free
+        name: Double free
+        type: 1
+        visible: true
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        name: Banned functions
+        type: 1
+        visible: true
+    '8':
+        description: Your code does not compile with cppcheck.
+        id: cppcheck
+        name: Cppcheck fails
+        type: 1
+        visible: true
+    '0':
+        type: 2
+        name: S3
+        description: ''
+        visible: true
+        id: ''
+    '9':
+        visible: true
+        name: Level 1
+        type: 2
+        description: Level 1
+        id: level1
+weight: 1.0

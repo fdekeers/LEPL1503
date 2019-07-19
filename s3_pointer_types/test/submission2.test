@@ -1,0 +1,63 @@
+_id: 5c6d54b36779dd5665228c3e
+archive: 5c6d54b66779dd5665228c3f
+courseid: LSINF1252
+custom: {}
+grade: 66.67
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': eldubuisson
+    first: |-
+        int *first = (int *) ptr;
+        int result = *(first+3);
+        return result;
+    second: |-
+        char *second = (char *) ptr;
+        int result = *(second+6);
+        return result;
+    third: |-
+        int *third = (int *) ptr;
+        int result = *(third+45);
+        return result;
+problems:
+    first:
+    - success
+    - |+
+        * test for the first input
+
+          => réussi (1/1) pts)
+
+
+    second:
+    - success
+    - |+
+        * test for the second input
+
+          => réussi (1/1) pts)
+
+
+    third:
+    - failed
+    - |+
+        * test for the third input
+
+          => échoué (0/1) pts)
+
+          Info: Remember that an int is 4-bytes long. Add +45 to an int pointer will therefore add 180 bytes !
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-20 14:22:59.987000
+taskid: pointer_types
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- eldubuisson

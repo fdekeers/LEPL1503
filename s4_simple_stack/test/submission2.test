@@ -1,0 +1,92 @@
+_id: 5c8ac84e6779dd43dca941aa
+archive: 5c8b5f816779dd43dca9484c
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': audeckers
+    pop: |4-
+          if (head==NULL){
+            return 1;
+          }
+            struct node* temp = *head;
+            *head = temp->next;
+            strcpy(result, temp->name);
+            free(*head);
+            *head = temp;
+
+        return 0;
+    push: |4-
+          struct node *node = (struct node*) malloc(sizeof(struct node));
+          if (node==NULL){
+            return 1;
+          }
+          if (head==NULL){
+            return 1;
+          }
+          int len = strlen(value)+1;
+          node->name = (char*) malloc(len);
+          if (node->name==NULL){
+            free(node);
+            return 1;
+          }
+          strncpy(node->name, value, len);
+          node->next = *head;
+          *head = node;
+          return 0;
+problems:
+    pop:
+    - success
+    - |+
+        * Check the behavior of the function in normal case
+
+          => réussi (1/1) pts)
+
+          Info: src = r157g1srq7v16zs6, result = r157g1srq7v16zs6 — The head ptr is not the expected one
+
+        * Check the behavior of the function when passing NULL @head arg
+
+          => réussi (1/1) pts)
+
+
+        * Check the behavior of the function when popping last element
+
+          => réussi (1/1) pts)
+
+
+    push:
+    - success
+    - |+
+        * Check the behavior of the function if the given @head is NULL or if the malloc call fails
+
+          => réussi (1/1) pts)
+
+
+        * Check if the function change @value
+
+          => réussi (1/1) pts)
+
+
+        * Check if the insertion of the new node is correct
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-14 22:31:58.371000
+taskid: simple_stack
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- audeckers

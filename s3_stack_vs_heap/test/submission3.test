@@ -1,0 +1,51 @@
+_id: 5c8a79796779dd43da147e27
+archive: 5c8a797d6779dd43da147e28
+courseid: LSINF1252
+custom: {}
+grade: 66.67
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': mapasture
+    return1: '5'
+    version1: result = a+b;
+    version2: |-
+        r[0] = a[0] + b[0];
+        a[0] = r[0];
+problems:
+    return1:
+    - success
+    - Votre réponse est correcte. (1/1 pts)
+    version1:
+    - success
+    - |+
+        * Check the `result` value
+
+          => réussi (1/1) pts)
+
+
+    version2:
+    - failed
+    - |+
+        * Check the value of @r
+
+          => échoué (0/1) pts)
+
+          Info: Expected value: 17. Received value: 9 — Expected value: 186. Received value: 98
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-14 16:55:37.967000
+taskid: stack_vs_heap
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- mapasture

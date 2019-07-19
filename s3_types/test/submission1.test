@@ -1,0 +1,30 @@
+_id: 5c6fdf486779dd5666ba1aa6
+archive: 5c6fdf4b6779dd5666ba1aa7
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': amadavid
+    q1: int x;
+    q2: int x[10];
+    q3: '20'
+    q4: int *x;
+    q5: '8'
+    q6: '8'
+    q7: int x[8][5];
+problems: {}
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-22 12:38:48.648000
+taskid: types
+tests: {}
+text: ''
+username:
+- amadavid

@@ -1,0 +1,72 @@
+_id: 5c851f506779dd43db0629c4
+archive: 5c851f566779dd43db0629c5
+courseid: LSINF1252
+custom: {}
+grade: 75.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': ngoux
+    filter: |-
+        if (head == NULL) {return NULL;}
+        struct node * nouv = malloc(sizeof(struct node)) ;
+        if (nouv == NULL) {return NULL;}
+        memcpy(nouv,head,sizeof(struct node)) ;
+        if (head->next == NULL || head->next->next == NULL) {
+            nouv->next = NULL ;
+            return nouv ;
+        }
+        struct node * runner = head ;
+        struct node * there = nouv ;
+        while (runner) {
+            memcpy(there->next,runner,sizeof(struct node)) ;
+            runner = runner->next->next ;
+        }
+        there->next->next = NULL ;
+        return nouv ;
+    includes: |-
+        #include <string.h>
+        #include <stdlib.h>
+        #include <stdio.h>
+problems:
+    filter:
+    - failed
+    - |+
+        * Test if the function returns a valid linked list in normal case
+
+          => échoué (0/1) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You should use malloc 5 times in this case. — The function produced a wrong list. Error at node : 1, counting from 1.
+
+        * Test the return value of the function when null pointer is given as arg
+
+          => réussi (1/1) pts)
+
+
+        * Test the return value of the function when the list is one element long
+
+          => réussi (1/1) pts)
+
+
+        * Test the return value of the function when the list is two element long
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-10 15:29:36.743000
+taskid: linked_structs
+tests:
+    timeout: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- ngoux

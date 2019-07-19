@@ -1,0 +1,36 @@
+_id: 5c7a5ae46779dd5666bab23b
+archive: 5c7a5ae66779dd5666bab23c
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': cafi
+    calloc2: |+
+        unsigned char * ptr2;
+        void * ptr=malloc(size*nmemb);
+        if(!ptr){
+            return NULL;
+        }else
+        ptr2=(unsigned char*)ptr;
+        while(size*nmemb-- >0){
+            *ptr2++=0;
+        }
+        return ptr2;
+
+
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-02 11:28:52.075000
+taskid: calloc2
+tests: {}
+text: Votre code a produit une erreur lors de l'exécution des tests.
+username:
+- cafi

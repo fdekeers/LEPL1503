@@ -1,0 +1,60 @@
+_id: 5c7bbf086779dd5668a6b03b
+archive: 5c7bbf0b6779dd5668a6b03c
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': aboukhalid
+    first: |-
+        int *ptr2 = (int *)ptr;
+        return *(ptr2 +3);
+    second: |-
+        char* ptr2 = (char *)ptr;
+        return *(ptr2+6);
+    third: |-
+        char* ptr2 = (char *)ptr;
+        int* ptr3 = (int *)(ptr2+45);
+        return *ptr3;
+problems:
+    first:
+    - success
+    - |+
+        * test for the first input
+
+          => réussi (1/1) pts)
+
+
+    second:
+    - success
+    - |+
+        * test for the second input
+
+          => réussi (1/1) pts)
+
+
+    third:
+    - success
+    - |+
+        * test for the third input
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-03 12:48:24.222000
+taskid: pointer_types
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- aboukhalid

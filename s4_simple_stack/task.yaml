@@ -1,0 +1,228 @@
+accessible: true
+author: Maxime Mawait & Nicolas Rybowski
+context: |
+    You are asked to implement the ``pop`` and ``push`` functions of the following `stack <https://en.wikipedia.org/wiki/Stack_(abstract_data_type)>`_ interface :
+
+    .. code-block:: c
+
+        struct node {
+            node *next;
+            char *name;
+        };
+
+    .. image:: https://upload.wikimedia.org/wikipedia/commons/b/b4/Lifo_stack.png
+            :align: right
+            :height: 540px
+            :width: 773px
+            :scale: 50%
+
+
+
+    *Hints* :
+
+    - ``char *name`` is also a pointer, memory must be allocated by using `malloc(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/malloc.3.html>`_ to copy the string on the stack.
+
+    - Other useful commands: `strncpy(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/strncpy.3.html>`_ and `strlen(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/strlen.3.html>`_.
+
+    - Do not forget to free **all** the allocated space when popping one element.
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S4] Simple stack '
+network_grading: false
+order: 30
+problems:
+    pop:
+        language: c
+        name: Pop
+        default: ''
+        type: code
+        header: |-
+            .. code-block:: c
+
+                /**
+                * Remove the top element of the stack and return its content.
+                *
+                * @head : pointer to the top of the stack
+                * @result : pointer to store the popped element
+                *
+                * @return 0 if no error, 1 otherwise
+                *
+                * pre : @result contains a null-terminated correct string
+                * post : @result contains the string @name from the element at the top of the stack
+                */
+
+                int pop(struct node **head, char *result){
+    push:
+        name: Push
+        type: code
+        header: |-
+            .. code-block:: c
+
+                /**
+                * Add @name at the "top" of the stack.
+                *
+                * @head : pointer to the top of the stack
+                * @name : the string to be placed in the element at the top of the stack
+                *
+                * @return 0 if no error, 1 otherwise
+                */
+
+                int push(struct node **head, const char *value){
+        language: c
+        default: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        description: q1 is correct
+        id: q1
+        name: Q1
+        type: 0
+        visible: false
+    '1':
+        description: q2 is correct
+        id: q2
+        name: Q2
+        type: 0
+        visible: false
+    '2':
+        type: 1
+        name: Timeout
+        description: Your code exceeds the maximum allowed time.
+        visible: true
+        id: timeout
+    '3':
+        description: Your code produced a segmentation fault.
+        id: sigsegv
+        name: Segmentation Fault
+        type: 1
+        visible: true
+    '4':
+        visible: true
+        type: 1
+        id: wrong_alloc_size
+        name: Wrong allocation size
+        description: You don't allocate the right amount of memory.
+    '5':
+        description: Your code does not compile with cppcheck
+        visible: true
+        type: 1
+        id: cppcheck
+        name: Cppcheck fails
+    '6':
+        type: 1
+        visible: true
+        id: not_compile
+        description: You code does not compile.
+        name: Not compile
+    '7':
+        description: Your code exceeded the memory.
+        id: memory
+        name: Memory Exceeded
+        type: 1
+        visible: true
+    '8':
+        description: Your code produced a floating point exception.
+        id: sigfpe
+        name: Floating Point Exception
+        type: 1
+        visible: true
+    '9':
+        description: Your code produced a double free.
+        id: double_free
+        type: 1
+        name: Double free
+        visible: true
+    '10':
+        type: 1
+        visible: true
+        id: banned_funcs
+        description: You use some banned functions.
+        name: Banned functions
+    '11':
+        id: wrong_alloc_size
+        name: Wrong allocation size
+        description: The allocated memory doesn't have the correct size.
+        type: 1
+        visible: false
+    '12':
+        type: 1
+        id: not_allocated
+        name: Not allocated
+        description: A new node is not allocated with malloc().
+        visible: false
+    '13':
+        name: Bad node value
+        id: bad_node_value
+        type: 1
+        description: The value of the node is not the expected one.
+        visible: false
+    '14':
+        description: Wrong return value when malloc call fails.
+        type: 1
+        name: Malloc fail handling
+        id: malloc_fail_handling
+        visible: false
+    '15':
+        description: Your function returns an error in normal case.
+        type: 1
+        id: error_normal_case
+        name: Error normal case
+        visible: false
+    '16':
+        name: Bad Args handling
+        id: wrong_args_handling
+        type: 1
+        description: Wrong return value when wrong args.
+        visible: false
+    '17':
+        name: Incorrect list
+        id: not_expected_list
+        description: The linked list does not correspond to the waited one.
+        type: 1
+        visible: false
+    '18':
+        description: Task about structures and their use
+        name: Struct
+        type: 2
+        visible: true
+        id: category_struct
+    '19':
+        visible: true
+        description: ''
+        type: 2
+        name: S4
+        id: ''
+    '20':
+        name: Malloc
+        type: 2
+        description: Task about malloc
+        visible: true
+        id: category_malloc
+    '21':
+        visible: true
+        name: Level 4
+        type: 2
+        description: Level 4
+        id: level4
+    '22':
+        description: Task about pointers and their use
+        id: category_pointer
+        name: Pointer
+        type: 2
+        visible: true
+    '23':
+        description: Task about linked lists
+        id: category_linkedlist
+        name: Linked list
+        type: 2
+        visible: true
+weight: 1.0

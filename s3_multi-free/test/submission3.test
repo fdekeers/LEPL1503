@@ -1,0 +1,78 @@
+_id: 5c89316c6779dd43da14673d
+archive: 5c89316f6779dd43da146741
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': dbodenghien
+    free_all: |-
+        free(u -> city);
+        if(u -> rector){
+            if(u -> rector -> name != NULL){
+                free(u -> rector -> name);
+                free(u -> rector);
+            }
+        }
+        free(u);
+    init_all: |-
+        university_t* unif = malloc(sizeof *unif);
+        if (unif == NULL) return NULL;
+
+        person_t* personne = malloc(sizeof(person_t *));
+        if (personne == NULL){
+            free(unif);
+            return NULL;
+        }
+
+        personne -> name = malloc(((strlen(rectname))+1)*(sizeof(char)));
+        if (personne -> name == NULL){
+            free(personne);
+            free(unif);
+            return NULL;
+        }
+        strcpy(personne -> name,rectname);
+
+        unif -> city = malloc(((strlen(city))+1)*(sizeof(char)));
+        if (unif -> city == NULL){
+            free(personne -> name);
+            free(personne);
+            free(unif);
+            return NULL;
+        }
+        strcpy(unif -> city,city);
+
+        personne -> age = age;
+        personne -> salary = salary;
+        unif -> creation = creation;
+        unif.rector = personne;
+
+        return unif;
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-13 17:35:56.192000
+taskid: multi-free
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -I/usr/include/graphviz -g -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -I/usr/include/graphviz -g -c -o student_code.o student_code.c
+        student_code.c: In function ‘init_all’:
+        student_code.c:36:5: error: request for member ‘rector’ in something not a structure or union
+         unif.rector = personne;
+             ^
+        make: *** [student_code.o] Error 1
+
+username:
+- dbodenghien

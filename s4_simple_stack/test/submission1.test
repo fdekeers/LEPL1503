@@ -1,0 +1,125 @@
+_id: 5c83e5ff6779dd43dca8dc2e
+archive: 5c8b5efd6779dd43dca947b0
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': abanse
+    pop: |-
+        // programmation défensive
+        if(head==NULL)
+        {
+            return(1);
+        }
+        if(*(head)==NULL)
+        {
+            return(1);
+        }
+
+        // pointer le top
+        struct node* top = *(head);
+
+        // changer de top
+        *(head) = (*head)->next;
+
+        // copier le string
+        char* copy = (char*)malloc(strlen(top->name)*sizeof(char)+1);
+        if(copy==NULL)
+        {
+            return(1);
+        }
+        strcpy(copy,top->name);
+        strcpy(result,copy);
+
+        // free l'ancien top
+        free(copy);
+        free(top);
+
+        return(0);
+    push: |-
+        // programmation defensive
+        if(head==NULL)
+        {
+            return(1);
+        }
+        if((*head)==NULL)
+        {
+            return(1);
+        }
+
+        // copie du string
+        char* copy = (char*)malloc(strlen(value)*sizeof(char)+1);
+        if(copy==NULL)
+        {
+            return(1);
+        }
+        strcpy(copy,value);
+
+        // creation nouveau node
+        struct node* newHead = (struct node*)malloc(sizeof(struct node));
+        if(newHead==NULL)
+        {
+            return(1);
+        }
+        newHead->name = copy;
+        newHead->next = (*head); // --> pointeur
+
+        *(head) = newHead;
+
+        return(0);
+problems:
+    pop:
+    - success
+    - |+
+        * Check the behavior of the function in normal case
+
+          => réussi (1/1) pts)
+
+          Info: src = r157g1srq7v16zs6, result = r157g1srq7v16zs6
+
+        * Check the behavior of the function when passing NULL @head arg
+
+          => réussi (1/1) pts)
+
+
+        * Check the behavior of the function when popping last element
+
+          => réussi (1/1) pts)
+
+
+    push:
+    - success
+    - |+
+        * Check the behavior of the function if the given @head is NULL or if the malloc call fails
+
+          => réussi (1/1) pts)
+
+
+        * Check if the function change @value
+
+          => réussi (1/1) pts)
+
+
+        * Check if the insertion of the new node is correct
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-09 17:12:47.891000
+taskid: simple_stack
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- abanse

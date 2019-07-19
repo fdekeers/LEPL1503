@@ -1,0 +1,30 @@
+_id: 5c781b726779dd5668a6984a
+archive: 5c781b746779dd5668a6984b
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': bacqa
+    q1: int x ;
+    q2: int x [10];
+    q3: '20'
+    q4: int *x ;
+    q5: '8'
+    q6: '8'
+    q7: int x [5][8];
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-28 18:33:38.157000
+taskid: types
+tests: {}
+text: Erreur à la question 7
+username:
+- bacqa

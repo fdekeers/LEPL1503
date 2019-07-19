@@ -1,0 +1,232 @@
+accessible: true
+author: Alexandre Gobeaux
+context: |-
+    Here you will be playing with structures and pointers to structures so that you can understand better how to use one instead of another. You'll have to return the attributes of both and you'll have to compare them.
+
+    .. code-block:: c
+
+        typedef struct product {
+            char *name;
+            double price;
+        } product_t;
+
+    *Hints :*
+
+    - ``char *name`` is a pointer, memory must be allocated by using `malloc(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/malloc.3.html>`_ to copy the string and return it.
+
+    - Other useful commands: `strcpy(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/strcpy.3.html>`_, `strlen(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/strlen.3.html>`_ and `strcmp(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/strcmp.3.html>`_.
+environment: cpp
+evaluate: last
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    time: '30'
+    output: '2'
+name: '[S3] Structures and pointers to structures'
+network_grading: false
+order: 29
+problems:
+    getPtrPrice:
+        type: code
+        name: Get Price (pointer to the structure)
+        header: |-
+            Write the body of the ``getPtrPrice`` function.
+
+            .. code-block:: c
+
+                /*
+                 * @ptrProd != NULL
+                 * @return: the price of the product ptrProd
+                 */
+                double getPtrPrice(product_t *ptrProd);
+        default: ''
+        language: c
+    getPrice:
+        name: Get Price
+        language: c
+        type: code
+        header: |-
+            Write the body of the ``getPrice`` function.
+
+            .. code-block:: c
+
+                /*
+                 * @return: the price of the product prod
+                 */
+                double getPrice(product_t prod);
+        default: ''
+    getPtrName:
+        default: ''
+        header: |-
+            Write the body of the ``getPtrName`` function.
+
+            .. code-block:: c
+
+                /*
+                 * ptrProd != NULL
+                 * @name in ptrProd != NULL
+                 * @return: a string on the heap that contains the name of the product ptrProd or NULL if an error happens
+                 */
+                char* getPtrName(product_t *ptrProd);
+        name: Get Name (pointer to the structure)
+        type: code
+        language: c
+    getName:
+        language: c
+        type: code
+        header: |-
+            Write the body of the ``getName`` function.
+
+            .. code-block:: c
+
+                /*
+                 * @name in prod != NULL
+                 * @return: a string on the heap that contains the name of the product ptrProd or NULL if an error happens
+                 */
+                char* getName(product_t prod);
+        name: Get Name
+        default: ''
+    prodEquals:
+        language: c
+        name: Product Equals
+        type: code
+        default: ''
+        header: |-
+            Write the body of the ``prodEquals`` function.
+
+            .. code-block:: c
+
+                /*
+                 * @ptrProd != NULL
+                 * @name in ptrProd != NULL
+                 * @name in prod != NULL
+                 * @return: 1 if the two products are the same, i.e., they have the same price and the same name
+                 */
+                int prodEquals(product_t *ptrProd, product_t prod);
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        description: q1 is correct
+        id: q1
+        name: Q1
+        type: 0
+        visible: false
+    '1':
+        description: q2 is correct
+        id: q2
+        name: Q2
+        type: 0
+        visible: false
+    '2':
+        description: q3 is correct
+        id: q3
+        name: Q3
+        type: 0
+        visible: false
+    '3':
+        description: q4 is correct
+        id: q4
+        name: Q4
+        type: 0
+        visible: false
+    '4':
+        description: q5 is correct
+        id: q5
+        name: Q5
+        type: 0
+        visible: false
+    '5':
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+        type: 1
+        visible: true
+    '6':
+        description: Your code produced a segmentation fault.
+        id: sigsegv
+        name: Segmentation Fault
+        type: 1
+        visible: true
+    '7':
+        description: Your code does not compile.
+        id: not_compile
+        name: Not compile
+        type: 1
+        visible: true
+    '8':
+        description: Your code exceeded the memory.
+        id: memory
+        name: Memory Exceeded
+        type: 1
+        visible: true
+    '9':
+        description: Your code produced a floating point exception.
+        id: sigfpe
+        name: Floating Point Exception
+        type: 1
+        visible: true
+    '10':
+        description: Your code produced a double free.
+        id: double_free
+        name: Double free
+        type: 1
+        visible: true
+    '11':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        name: Banned functions
+        type: 1
+        visible: true
+    '12':
+        description: Your code does not compile with cppcheck.
+        id: cppcheck
+        name: Cppcheck fails
+        type: 1
+        visible: true
+    '13':
+        id: wrong_alloc_size
+        name: Wrong allocation size
+        description: The allocated memory doesn't have the correct size.
+        type: 1
+        visible: false
+    '14':
+        description: Wrong return value when malloc call fails.
+        type: 1
+        name: Malloc fail handling
+        id: malloc_fail_handling
+        visible: false
+    '15':
+        visible: true
+        name: S3
+        type: 2
+        description: ''
+        id: ''
+    '16':
+        visible: true
+        name: Level 2
+        type: 2
+        description: Level 2
+        id: level2
+    '17':
+        name: Malloc
+        type: 2
+        description: Task about malloc
+        visible: true
+        id: category_malloc
+    '18':
+        name: Pointer
+        type: 2
+        description: Task about pointers and their use
+        visible: true
+        id: category_pointer
+    '19':
+        name: Struct
+        type: 2
+        description: Task about structures and their use
+        visible: true
+        id: category_struct
+weight: 1.0

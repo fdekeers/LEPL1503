@@ -1,0 +1,88 @@
+_id: 5c7fe6526779dd43da13f498
+archive: 5c8b5ee26779dd43dca94785
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': jovanroy
+    pop: |
+        if(head==NULL){return 1;}
+
+        result=strcpy(result,(**head).name);
+
+        struct node *a=*head;
+
+        *head=(**head).next;
+
+        free(a->name);
+        free(a);
+        return 0;
+    push: |-
+        char *v=malloc(strlen(value)+1);
+        if(v==NULL){return 1;}
+
+        struct node *new=malloc(sizeof(struct node));
+        if(new==NULL){return 1;}
+
+        if(head==NULL){return 1;}
+
+        new->name=strcpy(v,value);
+        new->next=*head;
+        *head=new;
+        return 0;
+problems:
+    pop:
+    - success
+    - |+
+        * Check the behavior of the function in normal case
+
+          => réussi (1/1) pts)
+
+          Info: src = r157g1srq7v16zs6, result = r157g1srq7v16zs6
+
+        * Check the behavior of the function when passing NULL @head arg
+
+          => réussi (1/1) pts)
+
+
+        * Check the behavior of the function when popping last element
+
+          => réussi (1/1) pts)
+
+
+    push:
+    - success
+    - |+
+        * Check the behavior of the function if the given @head is NULL or if the malloc call fails
+
+          => réussi (1/1) pts)
+
+
+        * Check if the function change @value
+
+          => réussi (1/1) pts)
+
+
+        * Check if the insertion of the new node is correct
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-06 16:25:06.554000
+taskid: simple_stack
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- jovanroy

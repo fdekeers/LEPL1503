@@ -1,0 +1,44 @@
+_id: 5c7d763e6779dd56677cd76e
+archive: 5c7d76406779dd56677cd76f
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': piotrowski
+    return1: 'sum1: 5'
+    version1: int c=a+b;
+    version2: '*r=a+b;'
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-04 20:02:22.401000
+taskid: stack_vs_heap
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘version1’:
+        student_code.c:7:7: error: unused variable ‘c’ [-Werror=unused-variable]
+           int c=a+b;
+               ^
+        student_code.c: In function ‘version2’:
+        student_code.c:11:7: error: invalid operands to binary + (have ‘int *’ and ‘int *’)
+           *r=a+b;
+               ^
+        cc1: all warnings being treated as errors
+        make: *** [student_code.o] Error 1
+
+username:
+- piotrowski

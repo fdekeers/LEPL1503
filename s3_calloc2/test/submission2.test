@@ -1,0 +1,33 @@
+_id: 5ce18fd96779dd3ec5e0ba7e
+archive: 5ce18fdb6779dd3ec5e0ba7f
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': mkeirle
+    calloc2: |-
+        if(nmemb ==0 || size == 0)
+            return NULL;// pointeur NULL
+        void *ptr = malloc(nmemb*size); // malloc me renvoie une adresse, pas mettre de sizeof car déjà en size_t (byte)
+        if(ptr == NULL) // toujours tester les malloc càd regarde si il y avait encore de la place en mémoire libre à allouer
+            return NULL;
+        for(int i = 0; i < size*nmemb; i++){
+             *(char*) (ptr+i) = 0; // typecaster en char car 0 est un caractère!
+        }
+        return ptr;
+problems: {}
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-05-19 19:18:17.434000
+taskid: calloc2
+tests: {}
+text: Votre code a passé tous les tests.
+username:
+- mkeirle

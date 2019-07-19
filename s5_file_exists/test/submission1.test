@@ -1,0 +1,48 @@
+_id: 5c8b9d366779dd43da14957b
+archive: 5c8b9d3b6779dd43da14957e
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': jdijon
+    q1: |-
+        int numb= open(filename, EMFILE);
+        if(numb>0){
+            close(numb);
+            return 0;
+        }
+        return -1;
+problems:
+    q1:
+    - success
+    - |+
+        * Test file does not exist
+
+          => réussi (1/1) pts)
+
+
+        * Test file exists
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-15 13:40:22.247000
+taskid: s5_file_exists
+tests:
+    test_file_exist: true
+    test_file_exist_not: true
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- jdijon

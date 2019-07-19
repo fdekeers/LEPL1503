@@ -1,0 +1,103 @@
+_id: 5c8522216779dd43dd28544e
+archive: 5c8522236779dd43dd28544f
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': acmathot
+    insert: |-
+        if(head == NULL || *head == NULL)
+        {
+            return -1;
+        }
+        while((*head)->next != NULL)
+        {
+            if((*cmp)((*head)->value,val) == 0)
+            {
+                return 0;
+            }
+            if((*cmp)((*head)->value,val) > 0 && (*cmp)((*head)->next->value,val) <0)
+            {
+                node_t *a = malloc(sizeof(node_t));
+                if(a == NULL)
+                {
+                    return -1;
+                }
+                a->val = val;
+                a->next = (*head)->next);
+                (*head)->next = a;
+                return 0;
+            }
+            if((*cmp)((*head)->value,val) < 0)
+            {
+                node_t *b = malloc(sizeof(node_t));
+                if(b == NULL)
+                {
+                    return -1;
+                }
+                b->val = val;
+                b->next = (*head);
+                return 0;
+            }
+            (*head) = (*head)->next;
+        }
+        node_t *c = malloc(sizeof(node_t));
+        if(c == NULL)
+        {
+            return -1;
+        }
+        c->val = val;
+        (*head)->next = c;
+        return 0;
+    order_relation: |-
+        if(a == b)
+        {
+            return 0;
+        }
+        if(b>a)
+        {
+            return (a - b);
+        }
+        return(a - b);
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-10 15:41:37.844000
+taskid: order_relation_linked_list
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘insert’:
+        student_code.c:24:22: error: ‘node_t’ has no member named ‘value’
+             if((*cmp)((*head)->value,val) == 0)
+                              ^
+        student_code.c:28:22: error: ‘node_t’ has no member named ‘value’
+             if((*cmp)((*head)->value,val) > 0 && (*cmp)((*head)->next->value,val) <0)
+                              ^
+        student_code.c:28:62: error: ‘struct node’ has no member named ‘value’
+             if((*cmp)((*head)->value,val) > 0 && (*cmp)((*head)->next->value,val) <0)
+                                                                      ^
+        student_code.c:36:32: error: expected ‘;’ before ‘)’ token
+                 a->next = (*head)->next);
+                                        ^
+        student_code.c:36:32: error: expected statement before ‘)’ token
+        student_code.c:40:22: error: ‘node_t’ has no member named ‘value’
+             if((*cmp)((*head)->value,val) < 0)
+                              ^
+        make: *** [student_code.o] Error 1
+
+username:
+- acmathot

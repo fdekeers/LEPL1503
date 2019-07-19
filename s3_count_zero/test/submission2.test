@@ -1,0 +1,44 @@
+_id: 5c7041136779dd5668a65c12
+archive: 5c7041156779dd5668a65c13
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': lsilva
+    counting_zero: |-
+        int count=0;
+        for(int i=0;i<length;i++){
+            if(*str[i]=('\0')){
+                count++;
+            }
+        }
+        return count;
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-22 19:36:03.801000
+taskid: count_zero
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘counting_zero’:
+        student_code.c:9:8: error: invalid type argument of unary ‘*’ (have ‘int’)
+             if(*str[i]=('\0')){
+                ^
+        make: *** [student_code.o] Error 1
+
+username:
+- lsilva

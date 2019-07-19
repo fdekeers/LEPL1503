@@ -1,0 +1,35 @@
+_id: 5c8a304e6779dd43da147347
+archive: 5c8a30526779dd43da147348
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': jansotte
+    q1: int x;
+    q2: int x[10];
+    q3: '20'
+    q4: int *x;
+    q5: '8'
+    q6: '8'
+    q7: int x[[5][8]]
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-14 11:43:26.525000
+taskid: types
+tests: {}
+text: |
+    Le test s’est terminé avec l’erreur suivante::
+
+        q7.c:1:7: error: expected expression
+        q7.c:1:14: error: expected ';' after top level declarator
+        Votre programme ne compile pas.
+username:
+- jansotte

@@ -1,0 +1,48 @@
+_id: 5c856eb96779dd43dd285d27
+archive: 5c856ebd6779dd43dd285d28
+courseid: LSINF1252
+custom: {}
+grade: 50.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': geurtsa
+    q1: |-
+        int values=open("filename", O_WRONLY | O_APPEND );
+        if (values==-1) {
+            return -1;
+        }
+        else
+            return 0;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test file does not exist
+
+          => réussi (1/1) pts)
+
+
+        * Test file exists
+
+          => échoué (0/1) pts)
+
+          Info: When the file exist, you do not return 0 — You did not close() the file when the file exists.
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-10 21:08:25.719000
+taskid: s5_file_exists
+tests:
+    test_file_exist_not: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- geurtsa

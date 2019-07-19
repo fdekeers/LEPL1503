@@ -1,0 +1,50 @@
+_id: 5c8b19296779dd43dd29096a
+archive: 5c8b192b6779dd43dd29096b
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': jdijon
+    q1: |-
+        int open(const char *filename, int flags);
+        if(flags>0){
+            return 0;
+        }
+        return -1;
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-15 04:16:57.783000
+taskid: s5_file_exists
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘file_exists’:
+        student_code.c:12:9: error: conflicting types for ‘open’
+             int open(const char *filename, int flags);
+                 ^
+        In file included from student_code.c:6:0:
+        /usr/include/fcntl.h:173:12: note: previous declaration of ‘open’ was here
+         extern int open (const char *__file, int __oflag, ...) __nonnull ((1));
+                    ^
+        student_code.c:13:8: error: ‘flags’ undeclared (first use in this function)
+             if(flags>0){
+                ^
+        student_code.c:13:8: note: each undeclared identifier is reported only once for each function it appears in
+        make: *** [student_code.o] Error 1
+
+username:
+- jdijon

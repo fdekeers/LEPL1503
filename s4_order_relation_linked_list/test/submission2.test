@@ -1,0 +1,196 @@
+_id: 5c7d94d26779dd5665231862
+archive: 5c7d94e66779dd5665231863
+courseid: LSINF1252
+custom: {}
+grade: 32.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': lemmensj
+    insert: |-
+        if(*head == NULL){
+            node_t* nouveau = (node_t*)malloc(sizeof(node_t));
+            if(nouveau == NULL){
+                return -1;
+            }
+            else{
+                nouveau->val = val;
+                nouveau->next = NULL;
+                *head = nouveau;
+                return 0;
+            }
+        }
+        node_t* nouveau = (node_t*)malloc(sizeof(node_t));
+        if(nouveau == NULL){
+            return -1;
+        }
+        nouveau->val = val;
+        node_t* parcour = (node_t*)malloc(sizeof(node_t));
+        parcour = *head;
+        int sortie = 0;
+        while(parcour != NULL || sortie == 1){
+            if (compare(val,parcour->val) == 0){
+               return 0;
+            }
+            else if(compare(val,parcour->val)<= 0){
+                sortie = 1;
+            }
+            else{
+                parcour = parcour->next;
+            }
+        }
+        parcour->next = nouveau;
+        return 0;
+    order_relation: |-
+        if(a==b){
+            return 0;
+        }
+        else if(a<b){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+problems:
+    insert:
+    - failed
+    - |+
+        * Insertion in an empty list
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in an empty list with malloc fail
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in first place, natural order
+
+          => échoué (0/1) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You must allocate dynamic memory on the heap rather then static variables on the stack — The inserted element is not malloced
+
+        * Insertion in first place with malloc failure
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in middle place, simple case, natural order
+
+          => échoué (0/1) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — The inserted element is not malloced
+
+        * Insertion in middle place, complex case, natural order
+
+          => échoué (0/2) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — The inserted element is not malloced
+
+        * Insertion in middle place, with malloc failure
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in last place, simple case, natural order
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — There is not the correct number of elements in the list
+
+        * Insertion in last place, complex case, natural order
+
+          => échoué (0/2) pts)
+
+          Info: Your code produced a segfault. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — There is not the correct number of elements in the list
+
+        * Insertion in last place, with malloc failure
+
+          => réussi (1/1) pts)
+
+
+        * Insertion in first place, reverse order
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — You don't allocate the good amount of memory — You must allocate dynamic memory on the heap rather then static variables on the stack — You only have to call malloc once to insert a node — The inserted element is not malloced
+
+        * Insertion in middle place, simple case, reverse order
+
+          => échoué (0/1) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — The inserted element is not malloced
+
+        * Insertion in middle place, complex case, reverse order
+
+          => échoué (0/2) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — The inserted element is not malloced
+
+        * Insertion in last place, simple case, reverse order
+
+          => échoué (0/1) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — There is not the correct number of elements in the list
+
+        * Insertion in last place, complex case, reverse order
+
+          => échoué (0/2) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You only have to call malloc once to insert a node — There is not the correct number of elements in the list
+
+        * Reinsertion in first place
+
+          => échoué (0/1) pts)
+
+          Info: You shouldn't allocate memory for a reinsertion
+
+        * Reinsertion in middle place
+
+          => échoué (0/1) pts)
+
+          Info: You shouldn't allocate memory for a reinsertion — You don't have to call malloc
+
+        * Reinsertion in last place
+
+          => échoué (0/1) pts)
+
+          Info: Your code exceeded the maximal allowed execution time. — You don't allocate the good amount of memory — You don't have to call malloc
+
+    order_relation:
+    - success
+    - |+
+        * Comparison of equals char
+
+          => réussi (1/1) pts)
+
+
+        * Comparison with a > b
+
+          => réussi (1/1) pts)
+
+
+        * Comparison with a < b
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-04 22:12:50.646000
+taskid: order_relation_linked_list
+tests:
+    sigsegv: true
+    timeout: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- lemmensj

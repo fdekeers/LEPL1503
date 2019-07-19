@@ -1,0 +1,45 @@
+_id: 5c7652f06779dd5666ba6da8
+archive: 5c7652f26779dd5666ba6da9
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': glechien
+    cmp_func: |-
+        int cmp_func(*fun1,*fun2){
+            for(int i = 0;i>=255;i++)
+                if (*fun1(i)!=*fun2(i))
+                    return 1;
+            return 0;
+        }
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-27 10:05:52.393000
+taskid: cmp_func
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c:5:14: error: expected declaration specifiers or ‘...’ before ‘*’ token
+         int cmp_func(*fun1,*fun2){
+                      ^
+        student_code.c:5:20: error: expected declaration specifiers or ‘...’ before ‘*’ token
+         int cmp_func(*fun1,*fun2){
+                            ^
+        make: *** [student_code.o] Error 1
+
+username:
+- glechien

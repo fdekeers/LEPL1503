@@ -1,0 +1,72 @@
+_id: 5c6eadd16779dd5666b9faad
+archive: 5c6eadd46779dd5666b9faae
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': rasoamanana
+    sleep_malloc: |-
+        char * mall;
+        for(int i=0;i<10;i++){
+            mall= malloc(s);
+            if(mall!= NULL)return mall;
+            sleep(5);
+        }
+        return NULL;
+problems:
+    sleep_malloc:
+    - success
+    - |+
+        * Malloc always success
+
+          => réussi (1/1) pts)
+
+
+        * Malloc fails first
+
+          => réussi (1/1) pts)
+
+
+        * Malloc fails twice
+
+          => réussi (1/1) pts)
+
+
+        * Malloc fails five first times
+
+          => réussi (1/1) pts)
+
+
+        * Malloc fails eight first times
+
+          => réussi (1/1) pts)
+
+
+        * Malloc fails ten first times
+
+          => réussi (1/1) pts)
+
+
+        * Malloc fails always
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-21 14:55:29.648000
+taskid: sleep_malloc
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- rasoamanana

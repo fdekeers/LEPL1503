@@ -1,0 +1,128 @@
+accessible: true
+author: Olivier Martin, Cyril Pletinckx, Minh-Phuong Tran
+context: |-
+    *Estimated time: 30 minutes*
+
+    Given a file containing arbitrary bytes, you must write a function that copies the file. Obviously, your function cannot modify the content of the original file. Beware that the copied file should have the same permissions as the original file.
+
+    Use only ``open(2)``, ``mmap(2)``, ``munmap(2)``, ``msync(2)``, ``ftruncate(3)``, ``fstat(2)``, ``memcpy(3)`` and ``close(2)``. You can call ``memcpy(3)`` only once.
+
+    **Hint** : `msync(2) <https://sites.uclouvain.be/SystInfo/manpages/man2/msync.2.html>`_ is a function that ensures that your modifications done in memory (so in the address returned by mmap) will also be saved in the file. Check the documentation to learn how to use it (pay attention to the flags). Call it before munmap() (or your modifications to the memory may be lost) !
+
+    **Hint** : The function `ftruncate(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/ftruncate.3posix.html>`_ is a function that you won't need to use frequently. However, this function is mandatory to pass this exercice ! In your code, you have to use it to extend the size of the file you opened for copying the original one. When you'll call open (with the appropriate flags to meet the requirements above), the size of the new file freshly created will be set to zero. So, in order for the mmap function to work, you'll need to extend its size to the one you want by calling ftruncate. Read the documentation linked and use this trick BEFORE calling mmap !
+
+    **Hint** : Permissions are sometimes hard to deal with. Be aware that, when using mmap with MAP_SHARED and PROT_WRITE, your file descriptor argument must have been opened with the O_RDWR flag. You need to read the file to copy it in memory and you ask to write in this piece of memory (with the PROT_WRITE) so you also need the write permission on the file !
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S5] File copy '
+network_grading: false
+order: 39
+problems:
+    q1:
+        type: code
+        default: ''
+        language: c
+        name: ''
+        header: |-
+            Write here the body of the function
+
+            .. code-block:: c
+
+                /*
+                 * @pre file_name != NULL, name of the original file
+                 *      new_file_name != NULL, name of the new file (the copy)
+                 *
+                 * @post copy the contents of {file_name} to {new_file_name}.
+                 *       return 0 if the function terminates with success, -1 in case of errors.
+                 */
+                int copy(char *file_name, char *new_file_name) {
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '3':
+        description: Your code does not compile.
+        visible: true
+        name: Not compile
+        type: 1
+        id: not_compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+    '10':
+        description: Level 4
+        name: Level 4
+        type: 2
+        visible: true
+        id: ''
+    '11':
+        visible: true
+        name: S5
+        type: 2
+        description: ''
+        id: ''
+    '12':
+        type: 2
+        description: Task about files
+        visible: true
+        name: Files
+        id: ''
+    '9':
+        visible: true
+        description: Task about mmap, munmap and msync
+        type: 2
+        name: Mmap
+        id: ''
+weight: 1.0

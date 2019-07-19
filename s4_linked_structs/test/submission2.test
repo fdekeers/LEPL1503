@@ -1,0 +1,90 @@
+_id: 5c8533c86779dd43da14299f
+archive: 5c8533cc6779dd43da1429a0
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': zschoofs
+    filter: |+
+        if(!head){
+            return NULL;
+        }
+
+        int size=sizeof(struct node);
+        struct node *new=(struct node *)malloc(size);
+        if(!new){
+            return NULL;
+        }
+        memcpy(new,head,size);
+        if(!head->next){
+            return new;
+        }if(!head->next->next){
+            new->next=NULL;
+        return new;
+        }
+
+        struct node *list=head->next->next;
+        struct node *albert=new;
+
+        while(list!=NULL){
+
+            albert->next=(struct node *)malloc(size);
+            if(albert->next==NULL){
+                return NULL;
+            }
+            memcpy(albert->next,list,size);
+            if(!list->next){
+                return new;
+            }
+            list=list->next->next;
+            albert=albert->next;
+        }
+        return new;
+
+    includes: |-
+        #include <string.h>
+        #include <stdio.h>
+        #include <stdlib.h>
+problems:
+    filter:
+    - success
+    - |+
+        * Test if the function returns a valid linked list in normal case
+
+          => réussi (1/1) pts)
+
+          Info: Number of nodes : 5
+
+        * Test the return value of the function when null pointer is given as arg
+
+          => réussi (1/1) pts)
+
+
+        * Test the return value of the function when the list is one element long
+
+          => réussi (1/1) pts)
+
+
+        * Test the return value of the function when the list is two element long
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-10 16:56:56.819000
+taskid: linked_structs
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- zschoofs

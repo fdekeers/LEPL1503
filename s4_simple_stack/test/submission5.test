@@ -1,0 +1,61 @@
+_id: 5d04f6a66779dd2d4de77912
+archive: 5d04f6a76779dd2d4de77913
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': pponthiere
+    pop: |
+        if(head==NULL){return(1);}
+        struct node *Tofree;
+        Tofree=*head;
+        *head=*(head)->next;
+        strcpy(result,Tofree->name);
+        free(Tofree->name);
+        free(Tofree);
+        Tofree=NULL;
+        return(0);
+    push: |+
+        if(value==NULL || head == NULL){return(1);}
+        char* name;
+        name=(char*) malloc(sizeof(char)*(strlen(value)+1));
+        if(name==NULL){return(1);}
+        strcpy(name,value);
+        struct node *new;
+        new = (struct node*) malloc(sizeof(struct node));
+        if(new==NULL){return(1);}
+        new->name=name;
+        new->next=*head;
+        *head=new;
+        return(0);
+
+
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-06-15 15:46:13.982000
+taskid: simple_stack
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -g -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -g -c -o student_code.o student_code.c
+        student_code.c: In function ‘pop’:
+        student_code.c:28:14: error: request for member ‘next’ in something not a structure or union
+         *head=*(head)->next;
+                      ^
+        make: *** [student_code.o] Error 1
+
+username:
+- pponthiere

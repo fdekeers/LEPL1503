@@ -1,0 +1,48 @@
+_id: 5c6d14526779dd5666b9d184
+archive: 5c6d14556779dd5666b9d185
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': acmathot
+    return1: '5'
+    version1: result = a + b;
+    version2: '*r = *a + *b;'
+problems:
+    return1:
+    - success
+    - Votre réponse est correcte. (1/1 pts)
+    version1:
+    - success
+    - |+
+        * Check the `result` value
+
+          => réussi (1/1) pts)
+
+
+    version2:
+    - success
+    - |+
+        * Check the value of @r
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-20 09:48:18.792000
+taskid: stack_vs_heap
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- acmathot

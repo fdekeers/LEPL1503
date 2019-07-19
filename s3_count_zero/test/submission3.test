@@ -1,0 +1,63 @@
+_id: 5c6e55c26779dd56677c1b44
+archive: 5c6e55c56779dd56677c1b45
+courseid: LSINF1252
+custom: {}
+grade: 75.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': mcamberlin
+    counting_zero: |-
+        int count = 0;
+        for(int i=0;i<length;i++)
+        {
+            if(str[i]=='\0')
+            {
+                count++;
+            }
+        }
+        return count;
+problems:
+    counting_zero:
+    - failed
+    - |+
+        * Test 1
+
+          => réussi (1/1) pts)
+
+
+        * Test 2
+
+          => réussi (1/1) pts)
+
+
+        * Test more complex
+
+          => réussi (1/1) pts)
+
+
+        * Test with NULL args
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Your function does return -1 if its first argument is NULL
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-21 08:39:46.764000
+taskid: count_zero
+tests:
+    sigsegv: true
+    sum: true
+    wrong_args_handling: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- mcamberlin

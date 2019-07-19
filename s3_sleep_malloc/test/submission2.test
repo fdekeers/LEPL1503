@@ -1,0 +1,80 @@
+_id: 5c7516646779dd5666ba5568
+archive: 5c7516686779dd5666ba5569
+courseid: LSINF1252
+custom: {}
+grade: 28.57
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': misonnet
+    sleep_malloc: |-
+        int i;
+        for(i=0;i<10;i++){
+            if(malloc(s)==NULL){
+            sleep(5);
+            }
+            else{
+                return malloc(s);
+            }
+        }
+        return NULL;
+problems:
+    sleep_malloc:
+    - failed
+    - |+
+        * Malloc always success
+
+          => échoué (0/1) pts)
+
+          Info: You allocated more memory than required. — Why did you call malloc more then once?
+
+        * Malloc fails first
+
+          => échoué (0/1) pts)
+
+          Info: You allocated more memory than required. — Why did you call malloc more then once per loop?
+
+        * Malloc fails twice
+
+          => échoué (0/1) pts)
+
+          Info: You allocated more memory than required. — Why did you call malloc more then once per loop?
+
+        * Malloc fails five first times
+
+          => échoué (0/1) pts)
+
+          Info: You allocated more memory than required. — Why did you call malloc more then once per loop?
+
+        * Malloc fails eight first times
+
+          => échoué (0/1) pts)
+
+          Info: You allocated more memory than required. — Why did you call malloc more then once per loop?
+
+        * Malloc fails ten first times
+
+          => réussi (1/1) pts)
+
+
+        * Malloc fails always
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-26 11:35:16.881000
+taskid: sleep_malloc
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- misonnet
