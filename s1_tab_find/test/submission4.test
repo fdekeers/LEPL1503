@@ -1,0 +1,49 @@
+_id: 5c7540cb6779dd5668a67818
+archive: 5c7540ce6779dd5668a67819
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': clemacort
+    tab_find: |+
+        int i;
+        for(i=0 ; i<= len ; i++){
+            if (tab[i] == elem){
+                return i;
+            }
+            if (i == len){
+                return -1;
+            }
+        }
+        return -1;
+
+
+problems:
+    tab_find:
+    - failed
+    - |+
+        * Test function tab find
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Your function does not return the correct index.
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-26 14:36:11.064000
+taskid: tab_find
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- clemacort

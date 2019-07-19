@@ -1,0 +1,39 @@
+_id: 5c6ee58d6779dd5666ba06b0
+archive: 5c6ee5906779dd5666ba06b1
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': cedtoussaint
+    q1: |-
+        int k=*j;
+        j=i;
+        i=&k;
+problems:
+    q1:
+    - failed
+    - |+
+        * Tests whether swap correctly exchanges the contents of the variables
+
+          => échoué (0/1) pts)
+
+          Info: Your fonction did not correctly exchange the content of the variables.
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-21 18:53:17.819000
+taskid: swap2int
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- cedtoussaint

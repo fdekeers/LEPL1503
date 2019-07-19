@@ -1,0 +1,68 @@
+_id: 5c87e2486779dd43dd289e49
+archive: 5c87e24b6779dd43dd289e4a
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': amorenville
+    contains: |-
+        if(tree == NULL){
+            return 0;
+        }
+        return contains2(tree->root,value);
+    other: |-
+        int contains2(node_t * root, int value){
+            if(root == NULL){
+                return 0;
+            } else {
+                if(root->value == value){
+                    return 1;
+                }
+                if(root->value > value){
+                    return contains2(root->left,value);
+                }
+                return contains2(root->right,value);
+            }
+        }
+problems:
+    contains:
+    - success
+    - |+
+        * Test contained value
+
+          => réussi (1/1) pts)
+
+
+        * Test complex contained value
+
+          => réussi (1/1) pts)
+
+
+        * Test not contained value
+
+          => réussi (1/1) pts)
+
+
+        * Test for empty or null tree
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-12 17:46:00.310000
+taskid: BST
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- amorenville

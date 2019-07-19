@@ -1,0 +1,49 @@
+_id: 5ce161736779dd3ec5e0b88d
+archive: 5ce161766779dd3ec5e0b88e
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': mkeirle
+    q1: |-
+        int exposant (int a){
+            int resultat = 1;
+            for (int i=0; i<a; i++){
+                resultat = resultat*2;
+            }
+            return resultat;
+        }
+        for(int i =31; i >= 0; i--){
+            if(x > (uint32_t) exposant(i)){
+                return x & (uint32_t) exposant(i);
+            }
+        }
+        return x;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test reset_highestorder_bits
+
+          => échoué (0/1) pts)
+
+          Info: reset_highestorder_bits does not return the correct value when its input is 0b0...01011011101 — reset_highestorder_bits does not return the correct value when its input is 0b0...0000001
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-05-19 16:00:19.005000
+taskid: bits_strong
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- mkeirle

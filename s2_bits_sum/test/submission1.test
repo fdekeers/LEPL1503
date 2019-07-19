@@ -1,0 +1,41 @@
+_id: 5c7aee856779dd5668a6ac9d
+archive: 5c7aee896779dd5668a6ac9e
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': hermanju
+    q1: |4-
+         int c=0;
+          while (n) {
+            if ((n&1)) ++c;
+            n = (n >> 1);
+          }
+          return c;
+problems:
+    q1:
+    - success
+    - |+
+        * Test the function nbits
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-02 21:58:45.715000
+taskid: bits_sum
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- hermanju

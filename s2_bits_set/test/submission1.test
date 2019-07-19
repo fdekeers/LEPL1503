@@ -1,0 +1,46 @@
+_id: 5c6893416779dd5666b996d0
+archive: 5c6893446779dd5666b996d4
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': acmathot
+    q1: |
+        uint64_t a = 1;
+        if (value)
+        {
+            return x | (a << pos);
+        }
+        else
+        {
+            a = a << pos;
+            a = ~a;
+            return x & a;
+        }
+problems:
+    q1:
+    - success
+    - |+
+        * Test function set_bits
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-16 23:48:33.394000
+taskid: set_bit
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- acmathot

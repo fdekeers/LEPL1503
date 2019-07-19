@@ -1,0 +1,55 @@
+_id: 5c6850356779dd5668a61015
+archive: 5c6850386779dd5668a61016
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': aboukhalid
+    q1: |
+        #include<math.h>
+        if (value == 1)
+        {
+            uint64_t a = 1;
+            a = a << pos;
+            return (a | x);
+        }
+        else
+        {
+            uint64_t a = x >> pos;
+            if(a%2 == 0)
+            {
+                return x;
+            }
+            else
+            {
+                return x + pow(2,pos);
+            }
+        }
+problems:
+    q1:
+    - failed
+    - |+
+        * Test function set_bits
+
+          => échoué (0/1) pts)
+
+          Info: set_bit returns the wrong value when setting to 0
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-16 19:02:29.804000
+taskid: set_bit
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- aboukhalid

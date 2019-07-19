@@ -1,0 +1,103 @@
+_id: 5c8b69f76779dd43dca94bba
+archive: 5c8b69fa6779dd43dca94bbb
+courseid: LSINF1252
+custom: {}
+grade: 25.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': lemmensj
+    add_node: |-
+        struct node *nouv = (struct node*)malloc(sizeof(struct node));
+        if(nouv == NULL){
+            return 1;
+        }
+        nouv = init_node(value);
+        if(list->first == NULL){
+            list->first = nouv;
+            list->size++;
+        }
+        nouv->next = list->first;
+        list->first = nouv;
+        list->size++;
+        return 0;
+    init_node: |-
+        struct node *nouv;
+        nouv = (struct node *)(malloc(sizeof(struct node)));
+        if(nouv == NULL){
+            return NULL;
+        }
+        nouv->value = value;
+        (*nouv).next = (struct node *)(malloc(sizeof(struct node)));
+        if((*nouv).next == NULL){
+            return NULL;
+        }
+        return nouv;
+problems:
+    add_node:
+    - failed
+    - |+
+        * Check the behavior of the function when the list is empty
+
+          => échoué (0/1) pts)
+
+          Info: You should call malloc once in this case — Wrong update of the list size.
+
+        * Check the behavior of the function when the list is not empty
+
+          => échoué (0/1) pts)
+
+          Info: You should call malloc once in this case
+
+        * Check the behavior of the function when the malloc call fails
+
+          => réussi (1/1) pts)
+
+
+        * Check the return code of the function if wrong args
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Wrong return value when wrong args
+
+    init_node:
+    - failed
+    - |+
+        * Check memory allocation of the node
+
+          => échoué (0/1) pts)
+
+          Info: You should call malloc once in this case
+
+        * Check the initialisation of the node
+
+          => échoué (0/2) pts)
+
+          Info: The 'next' pointer is not correctly initialised — The 'next' pointer is not correctly initialised
+
+        * Check the return value if malloc call fails
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-15 10:01:43.036000
+taskid: basic_linked_list
+tests:
+    bad_next_pointer: true
+    not_malloc_once: true
+    sigsegv: true
+    wrong_args_handling: true
+    wrong_list_size: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- lemmensj

@@ -1,0 +1,40 @@
+_id: 5c7a9b3c6779dd566522fd31
+archive: 5c7a9b406779dd566522fd32
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': marquesm
+    q1: |-
+        x = x<<28;
+        x=x>>4;
+        x = (uint8_t)x;
+        return x;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test the function get_4_rightmost_bits
+
+          => échoué (0/1) pts)
+
+          Info: get_4_rightmost_bits returns the wrong value — get_4_rightmost_bits returns the wrong value — get_4_rightmost_bits returns the wrong value
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-02 16:03:24.497000
+taskid: bits_rightmost
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- marquesm

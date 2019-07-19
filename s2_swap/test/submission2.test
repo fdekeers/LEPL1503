@@ -1,0 +1,28 @@
+_id: 5c71aa616779dd5668a66311
+archive: 5c71aa636779dd5668a66312
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': grasseels
+    q1: |-
+        struct fract_t c ;
+        c = *b;
+        *b=*a;
+        *a=b;
+problems: {}
+response_type: HTML
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-23 21:17:37.612000
+taskid: swap
+tests: {}
+text: Votre code ne compile pas...
+username:
+- grasseels

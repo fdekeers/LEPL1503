@@ -1,0 +1,133 @@
+accessible: true
+author: Arthur van Stratum
+context: |-
+    In this exercise, we will work with operation on bits. When we speak about the position of a bit, index 0 corresponds to lowest order bit, 1 to the second-lowest order bit, ...
+
+    In C source code, you can write a number in binary (base 2) by prefixing it via 0b., e.g. 0b11010 = 26.
+
+    This exercise will introduce some non-standard data types which guarantee that the variable has a fixed number of bits. Indeed, on some machines, a *int* could use 2, 4 or 8 bytes. Hence, if we want to perform bitwise operations, we have to know first on how many bits we are working.
+
+    For this, C introduces a new class of variable types :
+
+    - *int8_t* (signed integer of 8 bits)
+    - *uint8_t* (unsigned integer of 8 bits)
+    - *uint16_t* (unsigned integer of 16 bits)
+
+    You can mix *uint* or *int* with bit-lengths 8, 16, 32 and 64). These types are defined in <stdint.h>
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    time: '30'
+    output: '2'
+    memory: '100'
+name: '[S2] Bitwise operation: setting a bit'
+network_grading: false
+order: 10
+problems:
+    q1:
+        type: code
+        language: c
+        default: ''
+        name: ''
+        header: |-
+            Write the body of a function that returns the value of variable *x*, but modified with the bit at position *pos* set to *value*.
+
+            Remember that in C (this is defined in stdbool.h), ``true`` corresponds to integer ``1`` while ``false`` corresponds to integer ``0``.
+
+            Remember than in C, you can create a mask as a binary value and use it with the bitwise ``and`` (``&``) and ``or`` (``|``) operations. For example:
+
+            .. code-block:: c
+
+               uint8_t a=0b00000000;
+               uint8_t b=0b00001000;
+               uint8_t c=0b11111101;
+               uint8_t d=0b11011011;
+               // ~(a) returns 0b11111111
+               // (c&a) returns 0b00000000
+               // (c&b) returns 0b00001000
+               // (a|b) returns 0b00001000
+               // (d&c) returns 0b11011001
+
+
+            .. code-block:: c
+
+                #include <stdint.h>
+                #include <stdbool.h>
+                /*
+                 * @pre 0<= pos < 64
+                 */
+                uint64_t set_bit(uint64_t x, int pos, bool value) {
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        description: Your code exceeds the maximum allowed time.
+        visible: true
+        type: 1
+        name: Timeout
+        id: timeout
+    '2':
+        id: sigsegv
+        visible: true
+        name: Segmentation Fault
+        description: ''
+        type: 1
+    '3':
+        description: You code does not compile.
+        id: not_compile
+        type: 1
+        visible: true
+        name: Not compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        name: Memory Exceeded
+        description: ''
+    '5':
+        type: 1
+        name: Floating Point Exception
+        description: ''
+        visible: true
+        id: sigfpe
+    '6':
+        visible: true
+        id: double_free
+        type: 1
+        description: Your code produced a double free.
+        name: Double free
+    '7':
+        visible: true
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        description: You use some banned functions.
+    '10':
+        type: 2
+        name: Level 2
+        description: Level 2
+        visible: true
+        id: ''
+    '8':
+        description: Task about bitwise operations
+        visible: true
+        type: 2
+        name: Bitwise operation
+        id: ''
+    '9':
+        visible: true
+        name: S2
+        type: 2
+        description: ''
+        id: ''
+weight: 1.0

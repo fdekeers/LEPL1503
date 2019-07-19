@@ -1,0 +1,56 @@
+_id: 5c76853d6779dd5666ba7231
+archive: 5c8b643c6779dd43dca9496b
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': kraim
+    q1: |4-
+         if(str == NULL){
+                return -1;
+            }
+            int end = strlen(str)-1;
+            int skipped = 0;
+            for(int i = 0; i<= end ; i++){
+                skipped = 0;
+                if(str[i] == ' '){
+                    i++;
+                    skipped = 1;
+                }
+                if(str[end] == ' '){
+                    end--;
+                    skipped = 1;
+                }
+                if((str[i] != str[end]) && !skipped ){
+                    return 0;
+                }
+                end--;
+            }
+            return 1;
+problems:
+    q1:
+    - success
+    - |+
+        * Test the function palindrome
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-27 13:40:29.813000
+taskid: palindrome
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- kraim

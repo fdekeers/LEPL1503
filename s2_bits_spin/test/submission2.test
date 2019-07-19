@@ -1,0 +1,52 @@
+_id: 5c6933ed6779dd5666b9987a
+archive: 5c6933ef6779dd5666b9987b
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': bernardlimac
+    q1: |-
+        //va de n bit vers la gauche
+        uint32_t r = 0b01111111111111111111111111111111;
+        uint32_t z = 0b11111111111111111111111111111110;
+        uint32_t w = ~(z);
+        uint32_t a = ~(r);
+        uint32_t b = x&a;
+        if(n>0){
+            if(b==0b00000000000000000000000000000000){ //ca veut dire que le bit fort a gauche etait egal a 0
+                x=x<<1;
+                return cycle_bits(x,n-1);
+            }else{ // bit fort etait egal a 1 donc on doit mettre un 1 à droite
+                x=x<<1; //on decale de 1, on doit mettre un 1 à droite
+                x=x|w;
+                return cycle_bits(x,n-1);
+            }
+        }
+        return x;
+problems:
+    q1:
+    - success
+    - |+
+        * Test the function cycle_bits
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-17 11:14:05.079000
+taskid: bits_spin
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- bernardlimac

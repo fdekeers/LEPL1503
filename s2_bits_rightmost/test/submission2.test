@@ -1,0 +1,38 @@
+_id: 5c7ba3cd6779dd5666bac3f1
+archive: 5c7ba3d06779dd5666bac3f2
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': abanse
+    q1: |-
+        uint8_t result = x & 0b1111;
+
+        return(result);
+problems:
+    q1:
+    - success
+    - |+
+        * Test the function get_4_rightmost_bits
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-03 10:52:13.803000
+taskid: bits_rightmost
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- abanse

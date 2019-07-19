@@ -1,0 +1,97 @@
+accessible: true
+author: Mathieu Xhonneux
+context: The factorial of an integer *n!* is defined as ``n! = 1*2*3*...*(n-1)*n``,
+    with *0! = 1*.
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    time: '30'
+    output: '2'
+    memory: '100'
+name: '[S1] Factorial'
+network_grading: false
+order: 2
+problems:
+    facto:
+        default: ''
+        language: c
+        name: Factorial
+        type: code
+        header: |-
+            Write your own function ``factorial`` which takes as parameter an integer and returns an integer value. Your function must be named ``factorial``.
+
+            Provide below the prototype and the body of this function.
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        name: Q1
+        type: 0
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        type: 1
+        name: Timeout
+        description: Your code exceeded the maximum allowed time.
+        visible: true
+        id: timeout
+    '2':
+        description: Your code produced a segmentation fault.
+        visible: true
+        type: 1
+        name: Segmentation Fault
+        id: sigsegv
+    '3':
+        id: not_compile
+        visible: true
+        name: Not compile
+        description: Your code does not compile.
+        type: 1
+    '4':
+        description: Your code exceeded the memory.
+        id: memory
+        type: 1
+        visible: true
+        name: Memory Exceeded
+    '5':
+        type: 1
+        visible: true
+        id: sigfpe
+        name: Floating Point Exception
+        description: Your code produced a floating point exception.
+    '6':
+        type: 1
+        name: Double free
+        description: Your code produced a double free.
+        id: double_free
+        visible: true
+    '7':
+        visible: true
+        id: banned_funcs
+        type: 1
+        description: Your code used some banned functions.
+        name: Banned functions
+    '8':
+        visible: true
+        id: cppcheck
+        type: 1
+        name: Cppcheck fails
+        description: Your code does not compile with cppcheck.
+    '9':
+        description: ''
+        visible: true
+        type: 2
+        name: S1
+        id: ''
+    '10':
+        visible: true
+        name: Level 1
+        type: 2
+        description: Level 1
+        id: level1
+weight: 1.0

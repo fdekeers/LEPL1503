@@ -1,0 +1,52 @@
+_id: 5c6ea9946779dd5666b9f9cc
+archive: 5c6ea9976779dd5666b9f9cd
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': ldaisomont
+    q1: |4-
+
+
+        uint8_t count= 0;
+        for (int i = 31; i>=0; i--){
+
+            uint64_t pow = 1;
+            for(int j= 1;j<=i; j++ ){
+                pow = pow*2;
+            }
+
+            if((n-(pow))>=0){
+                count = (count+1);
+                n=(n-pow);
+            }
+        }
+        return count;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test the function nbits
+
+          => échoué (0/1) pts)
+
+          Info: nbits does not return the correct answer when its input is 0b1110110100 — nbits does not return the correct answer when its input is 0b0000010000 — nbits does not return the correct answer when its input is 0b1000000000000000 — nbits does not return the correct answer when its input is 0b0000000000000000
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-21 14:37:24.959000
+taskid: bits_sum
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- ldaisomont

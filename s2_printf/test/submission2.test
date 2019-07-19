@@ -1,0 +1,58 @@
+_id: 5c75752a6779dd5668a67cba
+archive: 5c75752d6779dd5668a67cbb
+courseid: LSINF1252
+custom: {}
+grade: 25.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': gennartn
+    digit: fprintf(stdout, "The magic number is NUMBER.\n");
+    example: '3.1415926'
+    simple: fprintf(stdout, "foo\n");
+    sprintf: printf("Mister %c %c. has %d eggs", d, *name, initial);
+problems:
+    digit:
+    - failed
+    - |+
+        * Test digit formatting
+
+          => échoué (0/1) pts)
+
+          Info: You should replace NUMBER by the variable number
+
+    example:
+    - failed
+    - Votre réponse est incorrecte. (0/1 pts)
+    simple:
+    - success
+    - |+
+        * Test simple printf
+
+          => réussi (1/1) pts)
+
+
+    sprintf:
+    - failed
+    - |+
+        * Test sprintf
+
+          => échoué (0/1) pts)
+
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-26 18:19:38.248000
+taskid: printf
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- gennartn

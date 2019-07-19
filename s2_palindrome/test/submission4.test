@@ -1,0 +1,47 @@
+_id: 5ce131af6779dd3ec6695f07
+archive: 5ce131b26779dd3ec6695f08
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': sidujardin
+    q1: |
+        int len=strlen(str)+1;
+        char str2[len];
+        int i;
+        for(i=0; i<len; i++){
+            str2[i]=str[len-i-1];
+        }
+        if(strcmp(str,str2) == 0)
+            return 1;
+        else
+            return 0;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test the function palindrome
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault. — Your function does not work correctly for strings that are not palindromes and contain spaces (remember to first remove spaces from your string)  — Your function doesn't work for strings that are palindromes — Your function doesn't work for NULL strings — Your function doesn't work for strings that are palindromes and contains spaces
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-05-19 12:36:31.640000
+taskid: palindrome
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- sidujardin

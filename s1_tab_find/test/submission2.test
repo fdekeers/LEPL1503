@@ -1,0 +1,41 @@
+_id: 5c6463d06779dd56652252eb
+archive: 5c66cbe26779dd5666b981d2
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': abazi
+    tab_find: |
+        int i;
+        for (i=0; i<len; i++){
+            if(tab[i]==elem)
+                return i;
+        }
+        return -1;
+problems:
+    tab_find:
+    - success
+    - |+
+        * Test function tab find
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-13 19:37:04.402000
+taskid: tab_find
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- abazi

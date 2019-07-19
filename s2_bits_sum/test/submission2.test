@@ -1,0 +1,46 @@
+_id: 5c7aebea6779dd56677cbab1
+archive: 5c7aebed6779dd56677cbab2
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': fr
+    '@random': []
+    '@state': ''
+    '@username': hermanju
+    q1: |4
+         int count;
+
+           for ( count=0; n != 0; n=n>>1);
+           {
+              if (( n & 01)==1){
+                 count++;
+              }
+           }
+
+           return count;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test the function nbits
+
+          => échoué (0/1) pts)
+
+          Info: nbits does not return the correct answer when its input is 0b1110110100 — nbits does not return the correct answer when its input is 0b0000010000 — nbits does not return the correct answer when its input is 0b1000000000000000
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-02 21:47:38.443000
+taskid: bits_sum
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- hermanju

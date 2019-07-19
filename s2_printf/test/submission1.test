@@ -1,0 +1,57 @@
+_id: 5c65e70f6779dd5668a6038b
+archive: 5c66cc656779dd5666b98496
+courseid: LSINF1252
+custom: {}
+grade: 100.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': amorenville
+    digit: printf("The magic number is %d.\n", number);
+    example: pi = 3.1416
+    simple: printf("foo\n");
+    sprintf: sprintf(buffer, "Mister %s %c. has %d eggs", name, initial, d);
+problems:
+    digit:
+    - success
+    - |+
+        * Test digit formatting
+
+          => réussi (1/1) pts)
+
+
+    example:
+    - success
+    - Votre réponse est correcte. (1/1 pts)
+    simple:
+    - success
+    - |+
+        * Test simple printf
+
+          => réussi (1/1) pts)
+
+
+    sprintf:
+    - success
+    - |+
+        * Test sprintf
+
+          => réussi (1/1) pts)
+
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-14 23:09:19.569000
+taskid: printf
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Votre code a passé tous les tests.
+username:
+- amorenville

@@ -1,0 +1,60 @@
+_id: 5c87b68f6779dd43dd289202
+archive: 5c87b6916779dd43dd289206
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': pcrochelet
+    q1: |-
+        if(str == NULL) {
+            return -1;
+        }
+        int len = strlen(str);
+        int i = 0;
+        int j = len-1;
+        while (str[i]!= '\0') {
+            while (str[i] == ' ') {
+                i = i+1;
+            }
+            while (str[j] == ' ') {
+                j = j-1;
+            }
+            if (strcmp(*str[i],*str[j])!=0) {
+                return 1;
+            }
+            i = i+1;
+            j = j+1;
+        }
+        return 0;
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-12 14:39:27.826000
+taskid: palindrome
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘pal’:
+        student_code.c:18:20: error: invalid type argument of unary ‘*’ (have ‘int’)
+                 if (strcmp(*str[i],*str[j])!=0) {
+                            ^
+        student_code.c:18:28: error: invalid type argument of unary ‘*’ (have ‘int’)
+                 if (strcmp(*str[i],*str[j])!=0) {
+                                    ^
+        make: *** [student_code.o] Error 1
+
+username:
+- pcrochelet

@@ -1,0 +1,58 @@
+_id: 5c8a3c5f6779dd43db0689c9
+archive: 5c8a3c616779dd43db0689ca
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': petitro
+    contains: |-
+        if(tree==NULL){
+            return 0;
+        }
+        if (value==NULL){
+            return 0;
+        }
+        node_t* noeud= (*tree).root;
+        while(noeud!=NULL){
+            if(((*noeud).value)==value){
+                return 1;
+            }
+            if(((*noeud).value)<value){
+                noeud=((*noeud).right);
+        }
+            if(((*noeud).value)>value){
+                noeud=((*noeud).left);
+            }
+        }
+        return 0;
+    other: ''
+problems: {}
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-14 12:34:55.326000
+taskid: BST
+tests:
+    not_compile: true
+text: |+
+    La compilation de votre code a échoué. Voici le message de sortie de la commande ``make`` :
+
+    .. code-block::
+
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o tests.o tests.c
+        gcc -Wall -Werror -DC99 -std=gnu99 -ICTester -c -o student_code.o student_code.c
+        student_code.c: In function ‘contains’:
+        student_code.c:11:10: error: comparison between pointer and integer [-Werror]
+         if (value==NULL){
+                  ^
+        cc1: all warnings being treated as errors
+        make: *** [student_code.o] Error 1
+
+username:
+- petitro

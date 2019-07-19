@@ -1,0 +1,59 @@
+_id: 5c7126dc6779dd5666ba2643
+archive: 5c7126df6779dd5666ba2644
+courseid: LSINF1252
+custom: {}
+grade: 75.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': dvanmeerbeec
+    digit: printf("The magic number is %d.\n",number);
+    example: pi = 3.1416
+    simple: printf("foo\n");
+    sprintf: '*buffer = sprintf("Mister %s %s. has %d eggs", name, initial, d);'
+problems:
+    digit:
+    - success
+    - |+
+        * Test digit formatting
+
+          => réussi (1/1) pts)
+
+
+    example:
+    - success
+    - Votre réponse est correcte. (1/1 pts)
+    simple:
+    - success
+    - |+
+        * Test simple printf
+
+          => réussi (1/1) pts)
+
+
+    sprintf:
+    - failed
+    - |+
+        * Test sprintf
+
+          => échoué (0/1) pts)
+
+          Info: Your code produced a segfault.
+
+response_type: rst
+result: success
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-02-23 11:56:28.438000
+taskid: printf
+tests:
+    sigsegv: true
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- dvanmeerbeec

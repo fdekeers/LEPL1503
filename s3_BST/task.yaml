@@ -1,0 +1,149 @@
+accessible: true
+author: Maxime Mawait & Nicolas Rybowski
+context: |
+    For this task, you will implement a simple binary search on an existing binary tree. A binary tree has the following structure:
+
+    .. image:: s3_BST/bst.png
+        :height: 340px
+        :width: 540px
+        :scale: 100%
+
+
+    This binary tree is composed of nodes implemented using the following structure.
+
+    .. code-block:: c
+
+        /*
+        * Node has a value, @value, and two children, @left and @right.
+        * All the children of @left and itself have a smaller value than the node and all the children of @right and itself have a larger value than node
+        */
+        typedef struct node{
+            int value;
+            struct node* left; // to smaller values
+            struct node* right; // to larger values
+        } node_t;
+
+    The binary tree itself is defined as follows.
+
+    .. code-block:: c
+
+        typedef struct bt{
+            struct node* root;
+        } bt_t;
+environment: cpp
+evaluate: best
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    output: '2'
+    time: '30'
+name: '[S3] Simple Binary Search Tree'
+network_grading: false
+order: 22
+problems:
+    contains:
+        type: code
+        language: c
+        name: Function contains
+        default: ''
+        header: |-
+            Write the body of the ``contains`` function. If you use subfunctions, write them in the box below with their signature and body.
+
+            .. code-block:: c
+
+                /*
+                * Return 1 if there is a node containing @value in @tree and 0 otherwise.
+                */
+                int contains(bt_t* tree, int value){
+    other:
+        name: Helpful submethods
+        type: code
+        language: c
+        default: ''
+        optional: 'on'
+        header: Write here the submethods used by the contains method.
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags:
+    '0':
+        type: 0
+        name: Q1
+        description: q1 is correct
+        id: q1
+        visible: false
+    '1':
+        visible: true
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        name: Timeout
+    '2':
+        visible: true
+        type: 1
+        id: sigsegv
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '3':
+        description: Your code does not compile.
+        visible: true
+        type: 1
+        id: not_compile
+        name: Not compile
+    '4':
+        type: 1
+        visible: true
+        id: memory
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+    '5':
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+    '6':
+        name: Double free
+        id: double_free
+        description: Your code produced a double free.
+        visible: true
+        type: 1
+    '7':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        visible: true
+    '8':
+        type: 1
+        visible: true
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+    '10':
+        description: Level 3
+        name: Level 3
+        type: 2
+        visible: true
+        id: ''
+    '11':
+        visible: true
+        name: S3
+        description: ''
+        type: 2
+        id: ''
+    '12':
+        type: 2
+        description: Task about linked lists and their use
+        visible: true
+        name: Linked list
+        id: ''
+    '9':
+        visible: true
+        description: Task about structures and their use
+        type: 2
+        name: Struct
+        id: ''
+weight: 1.0

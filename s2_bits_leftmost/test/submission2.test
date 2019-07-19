@@ -1,0 +1,40 @@
+_id: 5c7fb09a6779dd43dd27e80c
+archive: 5c7fb09d6779dd43dd27e80d
+courseid: LSINF1252
+custom: {}
+grade: 0.0
+input:
+    '@lang': en
+    '@random': []
+    '@state': ''
+    '@username': bhansart
+    q1: |-
+        uint8_t inter = x ;
+        uint8_t res = inter >> 5;
+        res = res & 0x07;
+        return res;
+problems:
+    q1:
+    - failed
+    - |+
+        * Test of function test_get_3_leftmost_bits
+
+          => échoué (0/1) pts)
+
+          Info: get_3_leftmost_bits returns the wrong value
+
+response_type: rst
+result: failed
+state: ''
+status: done
+stderr: ''
+stdout: ''
+submitted_on: 2019-03-06 12:35:54.270000
+taskid: bits_leftmost
+tests: {}
+text: |-
+    - Votre code compile.
+
+    - Il y a des erreurs dans votre solution.
+username:
+- bhansart
