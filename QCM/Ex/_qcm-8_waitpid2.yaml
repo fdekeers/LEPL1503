@@ -1,0 +1,110 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine couvre les processus.
+     - `Les processus <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    waitpid2:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int status;
+                   int p=waitpid(pid,&status,0);
+                   if(p==-1) {
+                     perror("wait");
+                     exit(EXITFAILURE);
+                   }
+                   if(WIFEXITED(status)) {
+                     printf("Le processus a retourne %d\n",WEXITSTATUS(status));
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int status;
+                   int p=waitpid(pid,status,0);
+                   if(p==-1) {
+                     perror("wait");
+                     exit(EXITFAILURE);
+                   }
+                   printf("Le processus a retourne %d\n",WEXITSTATUS(status));
+
+            valid: False
+            feedback: |
+
+                L'appel système `waitpid(2)` prend comme second argument un pointeur vers un ``int`` et non un `ìnt``.
+
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int status;
+                   int p=waitpid(pid,&status,0);
+                   if(p==-1) {
+                     perror("wait");
+                     exit(EXITFAILURE);
+                   }
+                   printf("Le processus a retourne %d\n",p);
+
+            valid: False
+            feedback: |
+
+                La valeur de retour de `waitpid(2)` indique si l'appel système s'est exécuté correctement ou non. Pour récupérer le statut du processus fils ``pid``, il faut utiliser la macro ``WEXITSTATUS``.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int *status;
+                   int p=waitpid(pid,status,0);
+                   if(p==-1) {
+                     perror("wait");
+                     exit(EXITFAILURE);
+                   }
+                   printf("Le processus a retourne %d\n",p);
+
+            valid: False
+            feedback: |
+
+                La valeur de retour de `waitpid(2)` indique si l'appel système s'est exécuté correctement ou non. Pour récupérer le statut du processus fils ``pid``, il faut utiliser la macro ``WEXITSTATUS``. Le pointeur ``int * status`` doit pointer vers une zone mémoire allouée par malloc. Ici, il pointe vers ``NULL``.
+
+
+        header: |
+            Un étudiant souhaite récupérer le résultat du processus ``pid`` qu'il a créé en faisant `fork(2)` et l'afficher sur ``stdout``. Parmi les fragments de programmes ci-dessous, un seul est correct. Lequel ?
+
+        limit: 4
+        name: Récupération du résultat d'un processus avec `waitpid(2)`_
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

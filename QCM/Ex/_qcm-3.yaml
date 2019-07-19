@@ -1,0 +1,85 @@
+
+
+Q| Considérons le fragment de programme ci-dessous.
+
+
+.. code-block:: c
+
+
+   #include <stdio.h>
+   int i,j,k = 1252;        // ligne A
+   int tab[1000];           // ligne B
+   void f(int i) {          // ligne C
+     int j;                 // ligne D
+     // code non fourni
+   }
+   void g(char c) {
+     int i;                 // ligne E
+     // code non fourni
+   }
+   int main(int argc, char * argv[])
+   {
+     int k=1;               // ligne F
+
+     f(argc);
+     g('a');
+   }
+
+Lors de l'exécution de ce programmes, les valeurs des différentes variables sont stockées en mémoire. Un seul des groupes d'affirmations ci-dessous est correct. Lequel ?
+
+
+C| 
+
+- la variable ``i`` déclarée en ``ligne A`` est stockée dans la zone des variables non-initialisées
+- l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+- la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
+- la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
+
+|V
+
+C| 
+- la variable ``i`` déclarée en ``ligne A`` est stockée dans la zone des variables non-initialisées
+- le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+- l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+- la variable ``i`` déclarée en ``ligne E`` est stockée sur la pile
+
+
+
+|V
+
+C| 
+
+- le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables initialisées
+- l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+- la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
+- la variable ``i`` déclarée en ``ligne E`` est stockée sur la pile
+- la variable ``k`` déclarée en ``ligne F`` est stockée dans la zone des variables non-initialisées
+
+|F
+
+C| 
+- le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+- l'argument ``i`` déclaré en ``ligne C`` est stocké sur le tas
+- la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
+
+|F
+
+C| 
+- le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+- l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+- la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
+- la variable ``i`` déclarée en ``ligne E`` est stockée sur le tas
+- la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
+
+|F
+
+C| 
+- la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variables initialisées
+- le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+- l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+- la variable ``k`` déclarée en ``ligne F`` est stockée sur le tas
+
+
+
+|F
+

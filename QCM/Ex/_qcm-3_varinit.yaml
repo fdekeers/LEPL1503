@@ -1,0 +1,115 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)` et `free(3)`
+     - http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    varinit:
+        choices:
+        -   text: |
+
+
+                - la variable ``i`` est initialisée à  la valeur ``0``
+                - le pointeur ``string`` est initialisé à la valeur ``NULL``
+                - ``c[2]`` contient le caractère ``'\0'``
+                -  Après exécution de ``malloc``, le contenu de l'adresse ``ptr+1`` est indéterminé
+
+            valid: True
+            feedback: |
+
+        -   text: |
+
+
+                - la variable ``j`` est initialisée à  la valeur ``0``
+                - le pointeur ``v`` est initialisé à la valeur ``NULL``
+                - ``c[4]`` contient le caractère ``'\0'``
+                - Après exécution de ``malloc``, le contenu de l'adresse ``ptr+4`` est indéterminé
+
+            valid: True
+            feedback: |
+
+        -   text: |
+
+
+                - la variable ``f`` est initialisée à  la valeur ``0.0``
+                - le pointeur ``string`` n'a aucune valeur et n'est pas utilisable
+                - ``c[2]`` contient le caractère espace
+                - Après exécution de ``malloc``, l'adresse ``ptr+1`` contient le caractère ``'\0'``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                - la variable ``f`` est initialisée à  la valeur ``0.0``
+                - le pointeur ``v`` n'a aucune valeur et n'est pas utilisable
+                - ``c[2]`` contient le caractère espace
+                - Après exécution de ``malloc``, l'adresse ``ptr`` contient le caractère ``'\0'``
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                - la variable ``f`` est initialisée à  la valeur ``0.0``
+                - le pointeur ``string`` est initialisé à ``NULL``
+                - ``c[10]`` contient le caractère espace
+                - Après exécution de ``malloc``, l'adresse ``ptr+3`` contient le caractère ``'\0'``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                - la variable ``f`` est initialisée à  la valeur ``0.0``
+                - le pointeur ``v`` est initialisé à ``NULL``
+                - ``c[6]`` contient le caractère ``'\0'``
+                - Après exécution de ``malloc``, l'adresse ``ptr+5`` contient le caractère ``'\0'``
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            En C, une règle de bonne pratique est d'initialiser toutes les variables avant leur utilisation. Utiliser une variable qui n'a pas été correctement initialisée pour être une source de problèmes. Un étudiant a écrit les déclarations ci-dessous :
+
+
+            .. code-block:: c
+
+
+               int k=0;
+               int i;
+               short j;
+               float f;
+               double d;
+               char c[10];
+               char* string;
+               void* v;
+               int* ptr;
+               ptr=(int*) malloc(5*sizeof(int));
+
+            Après exécution de ces lignes, un seul des groupes d'affirmations ci-dessous est correct. Lequel ?
+
+        limit: 6
+        name: Initialisation des variables
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

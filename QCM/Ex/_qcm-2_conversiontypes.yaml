@@ -1,0 +1,120 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    conversiontypes:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   i=(int ) s;
+                   s=(short) uc;
+                   l=(long )i;
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   ui=(unsigned int) us;
+                   s=(short) c;
+                   ul=(unsigned long )ui;
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   ui=(unsigned int ) s;
+                   us=(unsigned short) uc;
+                   l=(long )i;
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   i=(int ) us;
+                   us=(unsigned short) i;
+                   l=(long )c;
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   ui=(int) s;
+                   s=(short) c;
+                   ul=(unsigned long )ui;
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            En C tout comme dans des langages comme Java, il est possible de convertir des nombres d'un type primitif vers un autre. Cependant, alors que le compilateur Java vérifie si la conversion est sans risque, le compilateur C ne fait aucune vérification et suppose que si le programmeur a effectué une conversion explicite entre types, il a pris ses précautions. Sur une architecture où les types de données sont stockés comme suit :
+
+
+            .. code-block:: c
+
+
+               // char			1 octet(s)
+               // unsigned char		1 octet(s)
+               // short			2 octet(s)
+               // unsigned short		2 octet(s)
+               // int			4 octet(s)
+               // unsigned int		4 octet(s)
+
+            int i;
+            short s;
+            long l;
+            char c;
+            unsigned int ui;
+            unsigned char uc;
+            unsigned long ul;
+            unsigned short us;
+
+
+
+            Un seul des fragments de code ci-dessous contient des conversions de type qui sont sans risque. Lequel ?
+
+        limit: 5
+        name: Conversion de types
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

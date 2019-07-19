@@ -1,0 +1,136 @@
+
+
+Q| En C tout comme dans des langages comme Java, il est possible de convertir des nombres d'un type primitif vers un autre. Cependant, alors que le compilateur Java vérifie si la conversion est sans risque, le compilateur C ne fait aucune vérification et suppose que si le programmeur a effectué une conversion explicite entre types, il a pris ses précautions. Sur une architecture où les types de données sont stockés comme suit :
+
+
+.. code-block:: c
+
+
+   // char			1 octet(s)
+   // unsigned char		1 octet(s)
+   // short			2 octet(s)
+   // unsigned short		2 octet(s)
+   // int			4 octet(s)
+   // unsigned int		4 octet(s)
+
+int i;
+short s;
+long l;
+char c;
+unsigned int ui;
+unsigned char uc;
+unsigned long ul;
+unsigned short us;
+
+
+
+Un seul des fragments de code ci-dessous contient des conversions de type qui sont sans risque. Lequel ?
+
+C| 
+
+
+   i=(int ) s;
+   s=(short) uc;
+   l=(long )i;
+
+|V
+
+C| 
+
+
+   ui=(unsigned int) us;
+   s=(short) c;
+   ul=(unsigned long )ui;
+
+|V
+
+C| 
+
+
+   ui=(unsigned int ) s;
+   us=(unsigned short) uc;
+   l=(long )i;
+
+|F
+
+C| 
+
+
+   i=(int ) us;
+   us=(unsigned short) i;
+   l=(long )c;
+
+|F
+
+C| 
+
+
+   ui=(int) s;
+   s=(short) c;
+   ul=(unsigned long )ui;
+
+|F
+
+Q| Parmi les affirmations suivantes relatives aux nombres en représentation hexadécimale, une seule est vraie. Laquelle ?
+
+C| 
+La représentation hexadécimale du nombre entier positif ``27`` est ``1B``
+
+|V
+
+C| 
+La représentation hexadécimale du nombre entier positif ``67`` est ``43``
+
+|V
+
+C| 
+La représentation hexadécimale du nombre entier positif ``67`` est ``34``
+
+|F
+
+C| 
+La représentation hexadécimale du nombre entier positif ``27`` est ``B1``
+
+|F
+
+C| 
+|F
+
+C| 
+La représentation hexadécimale du nombre entier positif ``128`` est ``FF``
+
+|F
+
+Q| Parmi les affirmations suivantes relatives aux nombres en représentation binaire, une seule est vraie. Laquelle ?
+
+
+C| 
+La représentation binaire du nombre entier positif ``99``  est ``1100011``
+
+|V
+
+C| 
+La représentation binaire du nombre entier positif ``176``  est ``10110000``
+
+|V
+
+C| 
+La représentation binaire du nombre entier positif ``90``  est ``1100011``
+
+|F
+
+C| 
+La représentation binaire du nombre entier positif ``176``  est ``10110001``
+
+|F
+
+C| 
+La représentation binaire du nombre entier positif ``166``  est ``10110001``
+
+|F
+
+C| 
+La représentation binaire d'un nombre entier positif impair a toujours ``0`` comme bit de poids faible.
+
+|F
+

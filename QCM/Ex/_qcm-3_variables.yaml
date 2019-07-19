@@ -1,0 +1,116 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)` et `free(3)`
+     - http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    variables:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: console
+
+
+                   A:1
+                   B:2 1252
+                   C:0 1252
+                   D:2
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                Le programme ne se compile pas, il est interdit de redéfinir la variable globale ``i``.
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   A:1
+                   B:1 1252
+                   C:1 1252
+                   D:1
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   A:1
+                   B:2 1252
+                   C:2 1252
+                   D:2
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   A:1
+                   B:2 1252
+                   C:0 1252
+                   D:0
+
+            valid: False
+            feedback: |
+        header: |
+            Lorsque l'on écrit un programme C, il est préférable d'éviter d'avoir deux variables qui ont le même nom et peuvent être utilisées dans une fonction. Un étudiant a écrit le programme ci-dessous :
+
+
+            .. code-block:: c
+
+
+               #include <stdio.h>
+               int i = 1;
+               int main(int argc, char * argv[])
+               {
+                 int k;
+                 printf("A:%d\n", i);
+                 for(k=0; k<1; k++)
+                 {
+                 int i = 2, j = 1252;
+                 printf("B:%d %d\n", i, j);
+                 {
+                 int i = 0;
+                 printf("C:%d %d\n", i, j);
+               }
+               printf("D:%d\n", i);
+               }
+               return 0;
+               }
+
+            Lors de son exécution, ce programme affiche :
+
+        limit: 5
+        name: Portée des variables
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

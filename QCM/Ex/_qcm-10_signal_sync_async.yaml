@@ -1,0 +1,81 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    signal_sync_async:
+        choices:
+        -   text: |
+
+                - Le signal SIGFPE est synchrone.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - Le signal SIGSEGV est synchrone.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - Le signal SIGALRM est asynchrone.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - Le signal SIGCHLD est synchrone.
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                - Le signal SIGINT est synchrone.
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                - Le signal SIGTERM est synchrone.
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                - Le signal SIGBUS est synchrone.
+
+            valid: False
+            feedback: |
+
+
+
+
+        header: |
+            Un signal est dit synchrone lorsqu'il est causé par l'exécution d'une instruction du processus. Un signal est dit asynchrone s'il n'a pas été causé directement par l'exécution d'un instruction du processus. 
+
+
+            Parmi les affirmations suivantes, lesquelles sont correctes ?
+
+        limit: 7
+        name: Signaux synchrones et asynchrones
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

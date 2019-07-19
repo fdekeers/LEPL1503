@@ -1,0 +1,243 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    max:
+        choices:
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+
+                   max:
+                   subl    $12, %esp
+                   movl    20(%esp), %eax
+                   movl    16(%esp), %ecx
+                   movl    %ecx, 4(%esp)
+                   movl    %eax, (%esp)
+                   movl    4(%esp), %eax
+                   cmpl    (%esp), %eax
+                   jle     next
+                   movl    4(%esp), %eax
+                   movl    %eax, 8(%esp)
+                   jmp     label
+                   next:
+                   movl    (%esp), %eax
+                   movl    %eax, 8(%esp)
+                   label:
+                   movl    8(%esp), %eax
+                   addl    $12, %esp
+                   ret
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   max2:
+                   subl    $12, %esp
+                   movl    20(%esp), %eax
+                   movl    16(%esp), %ecx
+                   movl    %ecx, 4(%esp)
+                   movl    %eax, (%esp)
+                   movl    4(%esp), %eax
+                   cmpl    (%esp), %eax
+                   jge     label1
+                   movl    (%esp), %eax
+                   movl    %eax, 8(%esp)
+                   jmp     label2
+                   label1:
+                   movl    4(%esp), %eax
+                   movl    %eax, 8(%esp)
+                   label2:
+                   movl    8(%esp), %eax
+                   addl    $12, %esp
+                   ret
+
+            valid: True
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int max(int i, int j) {
+                     if (i<j)
+                     return j;
+                     else
+                     return i;
+                   }
+
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   max:
+                   subl    $8, %esp
+                   movl    12(%esp), %eax
+                   movl    %eax, (%esp)
+                   movl    (%esp), %eax
+                   cmpl    (%esp), %eax
+                   jge     label1
+                   movl    (%esp), %eax
+                   movl    %eax, 4(%esp)
+                   jmp     label2
+                   label1:
+                   movl    (%esp), %eax
+                   movl    %eax, 4(%esp)
+                   label2:
+                   movl    4(%esp), %eax
+                   addl    $8, %esp
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+
+                   int max(int i) {
+                     if (i<i)
+                     return i;
+                     else
+                     return i;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   max:
+                   subl    $12, %esp
+                   movl    20(%esp), %eax
+                   movl    16(%esp), %ecx
+                   movl    %ecx, 4(%esp)
+                   movl    %eax, (%esp)
+                   movl    4(%esp), %eax
+                   cmpl    (%esp), %eax
+                   jge     label1
+                   movl    (%esp), %eax
+                   movl    %eax, 8(%esp)
+                   jmp     label2
+                   label1:
+                   movl    (%esp), %eax
+                   movl    %eax, 8(%esp)
+                   label2:
+                   movl    8(%esp), %eax
+                   addl    $12, %esp
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int max4(int i, int j) { //incorrect
+                     if (i<j)
+                     return j;
+                     else
+                     return j;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   max:
+                   subl    $12, %esp
+                   movl    20(%esp), %eax
+                   movl    16(%esp), %ecx
+                   movl    %ecx, 4(%esp)
+                   movl    %eax, (%esp)
+                   movl    4(%esp), %eax
+                   cmpl    (%esp), %eax
+                   jge     label1
+                   movl    4(%esp), %eax
+                   movl    %eax, 8(%esp)
+                   jmp     label2
+                   label1:
+                   movl    (%esp), %eax
+                   movl    %eax, 8(%esp)
+                   label2:
+                   movl    8(%esp), %eax
+                   addl    $12, %esp
+                   ret
+
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int max5(int i, int j) {
+                     if (i<j)
+                     return i;
+                     else
+                     return j;
+                   }
+
+        header: |
+            Considérons la fonction C qui calcule le maximum entre deux entiers :
+
+
+            .. code-block:: c
+
+
+               int max(int i, int j) {
+                 if (i>j)
+                 return i;
+                 else
+                 return j;
+               }
+
+            Parmi les groupes d'instructions ci-dessous, un seul est la traduction de cette fonction. Lequel ?
+
+        limit: 5
+        name: Fonction ``max``
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

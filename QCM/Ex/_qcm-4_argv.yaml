@@ -1,0 +1,156 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    argv:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   char **ptr;
+                   int i=0;
+                   ptr=argv;
+                   while(i<argc) {
+                     printf("%d %p %s\n",i,&(*ptr),*ptr);
+                     i++;
+                     ptr++;
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char **ptr;
+                   int i=0;
+                   ptr=argv;
+                   while(i<argc) {
+                     printf("%d %p %s\n",i,&(ptr),*ptr);
+                     i++;
+                     ptr++;
+                   }
+
+            valid: False
+            feedback: |
+
+                ``&(ptr)`` est l'adresse à laquelle le pointeur ``ptr`` est stocké. Notez que ce n'est pas l'adresse à laquelle la chaîne de caractère argument ``i`` est stockée. Ce programme affiche :
+
+
+                .. code-block:: console
+
+
+                   0 0x7fff5fbff738 ./a.out
+                   1 0x7fff5fbff738 a
+                   2 0x7fff5fbff738 b
+                   3 0x7fff5fbff738 cd
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *ptr;
+                   int i=0;
+                   ptr=*argv;
+                   while(i<argc) {
+                     printf("%d %p %s\n",i,&(ptr),*ptr);
+                     i++;
+                     ptr++;
+                   }
+
+            valid: False
+            feedback: |
+
+                Notez dans ce code que ``ptr`` est déclaré comme ``char *``, alors que ``argv`` est un ``char **``. Si vous tenez d'exécutez ce code, il provoquera un segmentation fault.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int i=0;
+                   while(i<argc) {
+                     printf("%d %p %s\n",i,&(argv+i),*(argv+i));
+                     i++;
+                   }
+
+            valid: False
+            feedback: |
+
+                La compilation de ce fragment de programme provoque un warning. L'expression ``&(argv+i)`` est invalide car ``argv`` est un pointeur (de type ``char **``) et donc ``argv+i`` est également une adresse en mémoire et l'opérateur ``&`` ne peut pas s'y appliquer.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int i=0;
+                   while(i<argc) {
+                     printf("%d %p %s\n",i,&(*(argv+i)),(argv+i));
+                     i++;
+                   }
+
+            valid: False
+            feedback: |
+
+                Dans ce fragment de code, ``argv+i`` est de type ``char **`` alors qu'il faut un ``char *`` pour passer un string  à `printf(3)`.
+
+
+
+
+        header: |
+            Un programme C doit souvent pouvoir manipuler les arguments qui lui sont passés. Les variables ``argc`` et ``argv`` qui sont passées à la fonction ``main`` permettent d'accéder à ces arguments. Le fragment de programme ci-dessous affiche sur la sortie standard ses différents arguments.
+
+
+            .. code-block:: c
+
+
+               while(i<argc) {
+                 printf("%d %p %s\n",i,&(argv[i]),argv[i]);
+                 i++;
+               }
+
+               Un exemple d'exécution de ce fragment de programme est présenté ci-dessous :
+
+
+               .. code-block:: console
+
+
+               #./a.out a b cd
+               0 0x7fff5fbff788 ./a.out
+               1 0x7fff5fbff790 a
+               2 0x7fff5fbff798 b
+               3 0x7fff5fbff7a0 cd
+
+            A côté de la notation ``argv[i]``, il est aussi possible d'accéder à ``argv`` en utilisant des pointeurs. Parmi les fragments de programme ci-dessous, un seul est correct et affiche le même résultat que ci-dessus.
+
+        limit: 5
+        name: Traitement de ``argv``
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

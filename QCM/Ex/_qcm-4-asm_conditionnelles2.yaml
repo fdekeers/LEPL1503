@@ -1,0 +1,199 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    conditionnelles2:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   if:
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   jg      next
+                   movl    c, %eax
+                   addl    $1, %eax
+                   movl    %eax, c
+                   next:
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   if:
+                   movl    b, %eax
+                   cmpl    a, %eax
+                   jl      next
+                   movl    c, %eax
+                   addl    $1, %eax
+                   movl    %eax, c
+                   next:
+
+            valid: True
+            feedback: |
+
+                Ceci est en fait l'implémentation de :
+
+
+                .. code-block:: c
+
+
+                   if(b>=a)
+                   c++;
+
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   if:
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   jne     next
+                   movl    c, %eax
+                   addl    $1, %eax
+                   movl    %eax, c
+                   next:
+
+            valid: False
+            feedback: |
+
+                Ceci est l'implémentation de :
+
+
+                .. code-block:: c
+
+
+                   if(a==b)
+                   c++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   if:
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   jle     next
+                   movl    c, %eax
+                   addl    $1, %eax
+                   movl    %eax, c
+                   next:
+
+            valid: False
+            feedback: |
+
+                Ceci est l'implémentation de :
+
+
+                .. code-block:: c
+
+
+                   if(a>b)
+                   c++;
+
+        -   text: |
+
+
+                .. code-block:: none
+
+
+                   if:
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   jge     next
+                   movl    c, %eax
+                   addl    $1, %eax
+                   movl    %eax, c
+                   next:
+
+
+            valid: False
+            feedback: |
+
+                Ceci est l'implémentation de :
+
+
+                .. code-block:: c
+
+
+                   if(a<b)
+                   c++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   if:
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   je      next
+                   movl    c, %eax
+                   addl    $1, %eax
+                   movl    %eax, c
+                   next:
+
+            valid: False
+            feedback: |
+
+                Ceci est l'implémentation de :
+
+
+                .. code-block:: c
+
+
+                   if(a!=b)
+                   c++;
+
+
+
+        header: |
+            Les instructions conditionnelles sont fréquemment utilisées en langage C et en assembleur. Considérons le fragment de programme C ci-dessous :
+
+
+            .. code-block:: c
+
+
+               if(a<=b)
+               c++;
+
+            Une seule des séquences d'instructions en assembleur ci-dessous correspond à ce fragment de code C. Laquelle ?
+
+
+        limit: 6
+        name: Instructions conditionnelles
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

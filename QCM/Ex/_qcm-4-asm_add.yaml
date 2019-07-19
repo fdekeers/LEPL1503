@@ -1,0 +1,172 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    add:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   movl    a, %eax
+                   addl    b, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   addl    b, %eax
+                   movl    %eax, b
+                   movl    b, %eax
+                   subl    a, %eax
+                   movl    %eax, c
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    b, %eax
+                   addl    a, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   addl    b, %eax
+                   movl    %eax, b
+                   movl    b, %eax
+                   subl    a, %eax
+                   movl    %eax, c
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    b, %eax
+                   addl    a, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   movl    %eax, %ecx
+                   addl    $1, %ecx
+                   movl    %ecx, b
+                   movl    %eax, b
+                   movl    a, %eax
+                   subl    b, %eax
+                   movl    %eax, c
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   a=b+a;
+                   b=b++;
+                   c=a-b;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    b, %eax
+                   addl    a, %eax
+                   movl    %eax, c
+                   movl    b, %eax
+                   movl    %eax, %ecx
+                   addl    $1, %ecx
+                   movl    %ecx, b
+                   movl    %eax, b
+                   movl    a, %eax
+                   subl    b, %eax
+                   movl    %eax, a
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   c=b+a;
+                   b=b++;
+                   a=a-b;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    b, %eax
+                   addl    a, %eax
+                   movl    %eax, b
+                   movl    b, %eax
+                   movl    %eax, %ecx
+                   addl    $1, %ecx
+                   movl    %ecx, b
+                   movl    %eax, a
+                   movl    b, %eax
+                   subl    a, %eax
+                   movl    %eax, c
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   b=b+a;
+                   a=b++;
+                   c=b-a;
+
+        header: |
+            Considérons le fragment de programme C ci-dessous :
+
+
+            .. code-block:: c
+
+
+               a=a+b;
+               b=b+b;
+               c=b-a;
+
+            Une seule des séquences d'instructions assembleur ci-dessous est une traduction correcte de cette séquence d'instructions. Laquelle ?
+
+        limit: 5
+        name: Opérations arithmétiques
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

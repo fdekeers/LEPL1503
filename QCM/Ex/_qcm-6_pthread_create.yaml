@@ -1,0 +1,125 @@
+accessible: True
+author: 
+context: |
+    Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
+     - :ref:`theorie:threads` (sauf la section `Utilisation d'instruction atomique`)
+     - :ref:`theorie:comthreads` (jusqu'à la section `Le problème des philosophes`) 
+    ..  - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`
+    .. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    pthread_create:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c 
+
+
+                   void * f( void * param) {
+                     // incomplet 
+                     return NULL;
+                   }
+
+                   int main (int argc, char *argv[])  {
+
+                     pthreadt t;
+                     int err;
+                     char *s;
+                     err=pthreadcreate(&t,NULL,&(f),(void *) s);
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c 
+
+
+                   void * f (void * param) {
+                     // incomplet 
+                     return NULL;
+                   }
+
+                   int main (int argc, char *argv[])  {
+
+                     pthreadt t;
+                     int err;
+                     char *s;
+                     err=pthreadcreate(&t,NULL,&(f),(void *) &s);
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c 
+
+
+                   void f(void * param) {
+                     // incomplet 
+                     return NULL;
+                   }
+
+                   int main (int argc, char *argv[])  {
+
+                     pthreadt *t;
+                     int err;
+                     char *s;
+                     err=pthreadcreate(t,NULL,*f,(void *) *s);
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   void *f(void ** param) {
+                     // incomplet
+                     return NULL;
+                   }
+
+                   int main (int argc, char *argv[])  {
+
+                     pthreadt t;
+                     int err;
+                     char s;
+                     err=pthreadcreate(&t,NULL,&(f),(void *) s);
+                   }
+
+            valid: False
+            feedback: |
+
+
+
+
+        header: |
+            La fonction `pthreadcreate(3)` permet de créer un thread. Parmi les fragments de code ci-dessous, un seul crée correctement un thread qui appelle la fonction ``f`` en lui passant la chaîne de caractères ``s`` comme argument. Lequel ?
+
+        limit: 4
+        name: Utilisation de `pthread_create(3)`_
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

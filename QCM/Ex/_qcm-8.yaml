@@ -1,0 +1,246 @@
+
+
+Q| L'appel système `fork(2)` permet de créer une copie du processus courant. Un étudiant a écrit le fragment de code ci-dessous se trouvant dans la fonction ``main``:
+
+
+.. code-block:: c
+
+
+   int n=...
+   for(int i=0; i<n ; i++) {
+     printf("i=%d\n",i);
+     pidt pid;
+     pid=fork();
+     if (pid==-1) {
+     perror("fork");
+     exit(EXITFAILURE);
+   }
+   else {
+     if(pid!=0) {
+     printf("Running in %d\n",pid);
+   }
+   }
+   }
+   return(EXITSUCCESS);
+
+Lors de l'exécution de ce programme, combien de processus sont créés en fonction de la valeur de ``n`` ?
+
+C| 
+Lorsque ``n`` est initialisé à ``2``, quatre processus sont créés.
+
+|V
+
+C| 
+Lorsque ``n`` est initialisé à ``3``, huit processus sont créés.
+
+|V
+
+C| 
+Lorsque ``n`` est initialisé à ``2``, deux processus sont créés.
+
+|F
+
+C| 
+Lorsque ``n`` est initialisé à ``2``, trois processus sont créés.
+
+|F
+
+C| 
+Lorsque ``n`` est initialisé à ``3``, trois processus sont créés.
+
+|F
+
+C| 
+Lorsque ``n`` est initialisé à ``3``, quatre processus sont créés.
+
+|F
+
+Q| Parmi les extraits de programme ci-dessous, lequel est un appel correct à `execve(2)` pour lancer le programme ``/bin/echo`` avec comme arguments ``-n`` et ``SINF1252`` ?
+
+C| 
+
+
+
+   char *arguments[]={"echo", "-n", "SINF1252", NULL};
+   char *environnement[]={"LANG=fr",NULL};
+     int err=execve("/bin/echo", arguments, environnement);
+     if(err!=0) {
+     perror("execve");
+     exit(EXITFAILURE);
+   }
+
+|V
+
+C| 
+
+
+
+   char prog[]="echo";
+   char param1[]="-n";
+   char param2[]="SINF1252";
+   char *arguments[4];
+   arguments[0]=prog;
+   arguments[1]=param1;
+   arguments[2]=param2;
+   arguments[3]=NULL;
+   char *environnement[]={"LANG=fr", NULL};
+     int err=execve("/bin/echo", arguments, environnement);
+     if(err!=0) {
+     perror("execve");
+     exit(EXITFAILURE);
+   }
+
+|V
+
+C| 
+
+
+
+   char arguments[]={"echo", "-n", "SINF1252", NULL};
+   char environnement[]={"LANG=fr",NULL};
+     int err=execve("/bin/echo", arguments, environnement);
+     if(err!=0) {
+     perror("execve");
+     exit(EXITFAILURE);
+   }
+
+|F
+
+C| 
+
+
+
+   char prog[]="echo";
+   char param1[]="-n";
+   char param2[]="SINF1252";
+   char *arguments[4];
+   arguments[0]=prog;
+   arguments[1]=param1;
+   arguments[2]=param2;
+   arguments[3]=NULL;
+   char *environnement[]={"LANG=fr"};
+     int err=execve("/bin/echo", arguments, environnement);
+     if(err!=0) {
+     perror("execve");
+     exit(EXITFAILURE);
+   }
+
+|F
+
+C| 
+
+
+
+   char prog[]="echo";
+   char param1[]="-n";
+   char param2[]="SINF1252";
+   char *arguments[3];
+   arguments[0]=prog;
+   arguments[1]=param1;
+   arguments[2]=param2;
+   char *environnement[]={"LANG=fr"};
+     int err=execve("/bin/echo", arguments, environnement);
+     if(err!=0) {
+     perror("execve");
+     exit(EXITFAILURE);
+   }
+
+|F
+
+C| 
+
+
+   char *arguments[]={"echo", "-n", "SINF1252"};
+   char *environnement[]={"LANG=fr"};
+     int err=execve("/bin/echo", arguments, environnement);
+     if(err!=0) {
+     perror("execve");
+     exit(EXITFAILURE);
+   }
+
+|F
+
+Q| L'appel système `execve(2)` permet d'exécuter un programme en remplaçant le programme en cours d'exécution par celui se trouvant sur disque dont le nom est spécifié. Un étudiant a écrit le programme ci-dessous pour tester `execve(2)` :
+
+
+.. code-block:: c
+
+
+   #include <stdio.h>
+   #include <stdlib.h>
+   #include <unistd.h>
+
+   extern char **environ;
+
+   int main (int argc, char *argv[])  {
+
+     int n=...
+     int i=0;
+     for(i=0;i<n;i++) {
+     sleep(1);
+     printf("%d\n",i);
+     int err=execve(argv[0], argv, environ);
+     if(err!=0) {
+     perror("execve");
+     exit(EXITFAILURE);
+   }
+   }
+   return(EXITSUCCESS);
+   }
+
+C| 
+Lorsque ``n`` est initialisé à ``3``, le programme ne s'arrête jamais et affiche :
+
+
+
+   0
+   0
+   0
+   ...
+
+|V
+
+C| 
+Lorsque ``n`` est initialisé à ``2``, le programme ne s'arrête jamais et affiche :
+
+
+
+   0
+   0
+   0
+   ...
+
+|V
+
+C| 
+Lorsque ``n`` est initialisé à ``3``, le programme affiche :
+
+
+
+   0
+   1
+   2
+
+|F
+
+C| 
+Lorsque ``n`` est initialisé à ``2``, le programme affiche :
+
+
+
+   0
+   1
+
+|F
+
+C| 
+Lorsque ``n`` est initialisé à ``2``, l'appel à `execve(2)` est erroné et le programme s'arrête.
+
+|F
+
+C| 
+
+Lorsque ``n`` est initialisé à ``3``, l'appel à `execve(2)` est erroné et le programme s'arrête.
+
+|F
+

@@ -1,0 +1,107 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    signal_handlers:
+        choices:
+        -   text: |
+
+                - Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer sigatomict pour résoudre ce problème.
+
+            valid: True
+            feedback: |
+
+
+        -   text: |
+
+                - La fonction `printf(3)` n'est pas réentrante et ne doit pas être utilisée dans une routine de traitement de signal.
+
+            valid: True
+            feedback: |
+
+
+        -   text: |
+
+                - Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de protéger cette variable par un mutex.
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+                - Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer volatile pour résoudre ce problème.
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+                - Il est interdit de modifier une variable globale (telle que counter) dans une routine de traitement de signal.
+
+            valid: False
+            feedback: |
+
+
+
+
+        header: |
+            Un étudiant a décidé d'implémenter un programme simulant une bombe à retardement qui détonne 1h après son intialisation. Pour accélérer le décompte, l'étudiant a enregistré un handler pour le signal SIGUSR1 qui divise par 2 le temps restant à décompter.
+
+
+            .. code-block:: c
+
+
+               #include <stdio.h>
+               #include <stdlib.h>
+               #include <signal.h>
+               #include <unistd.h>
+
+               int counter = 3600;
+
+               void counterboost(int signum) {
+                 counter=counter/2;
+                 printf("Boost!\n");
+               }
+
+               int main () {
+                 if (signal(SIGUSR1,counterboost)==SIGERR) {
+                 perror("signal");
+                 exit(EXITFAILURE);
+               }
+
+               while(counter>0) {
+                 counter--;
+                 printf("%d seconds left\n", counter);
+                 sleep(1);
+               }
+
+               printf("BOOM!");
+               return(EXITSUCCESS);
+               }
+
+
+
+            Ce programme, bien qu'en apparence fonctionnel, contient plusieurs erreurs de programmation. Parmi les affirmations suivantes, laquelle est correcte ?
+
+        limit: 5
+        name: Routines de traitement de signal
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

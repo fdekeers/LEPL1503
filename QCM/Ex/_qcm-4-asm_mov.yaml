@@ -1,0 +1,156 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    mov:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   movl    $1234, g
+                   movl    $5678, g2
+                   movl    g, %ecx
+                   movl    %ecx, s
+                   movl    g2, %ecx
+                   movl    %ecx, g
+                   movl    s, %ecx
+                   movl    %ecx, g2
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    $1234, g
+                   movl    $5678, g2
+                   movl    g, %eax
+                   movl    %eax, s
+                   movl    g2, %eax
+                   movl    %eax, g
+                   movl    s, %eax
+                   movl    %eax, g2
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   movl    g, $1234
+                   movl    g2, $5678
+                   movl    %eax, g
+                   movl    s, %eax
+                   movl    %eax, g2
+                   movl    g, %eax
+                   movl    s, %eax
+                   movl    g2, %eax
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    $1234, g
+                   movl    $5678, g2
+                   movl    g2, %eax
+                   movl    %edx, s
+                   movl    g, %eax
+                   movl    %edx, g2
+                   movl    s, %eax
+                   movl    %eax, g2
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movw    $1234, g
+                   movw    $5678, g2
+                   movb    g2, %eax
+                   movb    %eax, s
+                   movb    g, %eax
+                   movb    %eax, g2
+                   movb    s, %eax
+                   movb    %eax, g2
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movw    $1234, g
+                   movw    $5678, g2
+                   movb    g2, %edx
+                   movb    %edx, s
+                   movb    g, %edx
+                   movb    %edx, g2
+                   movb    s, %edx
+                   movb    %edx, g2
+
+            valid: False
+            feedback: |
+
+                L'instruction ``movb`` déplace un ``byte`` et non le contenu complet d'un registre de 32 bits.
+
+
+        header: |
+            Les instructions de la famille ``mov`` permettent de déplacer des données entre registres ou d'initialiser des registres. Considérons le fragment de code C suivant (dans lequel ``g``, ``g2`` et ``s`` sont des variables globales de type ``int``) :
+
+
+            .. code-block:: c
+
+
+               g=1234;
+               g2=5678;
+               s=g;
+               g=g2;
+               g2=s;
+
+            Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle ?
+
+
+        limit: 6
+        name: Instruction ``mov``
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

@@ -1,0 +1,93 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine porte sur le système de fichiers et sa manipulation par les processus.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    liens:
+        choices:
+        -   text: |
+
+
+                - les fichiers ``a`` et ``c`` ont le même `inode`
+                - les fichiers ``b`` et ``d`` ont la même taille
+                - l'`inode` correspondant au fichier ``d`` indique qu'il y a deux liens vers lui
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                - les fichiers ``d`` et ``e`` ont des `inode` différents
+                - les fichiers ``a`` et ``c`` ont la même taille
+                - l'`inode` correspondant au fichier ``b`` indique qu'il y a deux liens vers lui
+
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                - les fichiers ``a`` et ``c`` ont des `inode` différents
+                - les fichiers ``e`` et ``d`` ont la même taille
+                - l'`inode` correspondant au fichier ``d`` indique qu'il y a trois liens vers lui
+
+            valid: False
+            feedback: |
+        -   text: |
+
+                - les fichiers ``a`` et ``d`` ont des `inode` différents
+                - les fichiers ``b`` et ``d`` ont la même taille
+                - l'`inode` correspondant au fichier ``b`` indique qu'il y a trois liens vers lui
+
+            valid: False
+            feedback: |
+
+                Il y a deux liens (hard) vers le fichier ``b``. Le fichier ``e`` est un lien symbolique vers ce fichier et non un lien `hard`.
+
+        -   text: |
+
+                - les fichiers ``b``, ``d`` et ``e`` ont le même `inode`
+                - les fichiers ``a`` et ``c`` ont la même taille
+                - l'`inode` correspondant au fichier ``a`` indique qu'il y a deux liens vers lui
+
+
+            valid: False
+            feedback: |
+        header: |
+            Considérons un répertoire dans lequel les commandes suivantes sont exécutées :
+
+
+            .. code-block:: console
+
+
+               touch a
+               cp a b
+               ln a c
+               ln b d
+               echo "test" > c
+               ln -s  d e
+               echo essai > e
+
+
+            Après exécution de ces commandes, un seul des groupes d'affirmations suivant est correct. Lequel ?
+
+        limit: 5
+        name: Liens symboliques
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

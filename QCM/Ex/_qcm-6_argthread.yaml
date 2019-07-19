@@ -1,0 +1,176 @@
+accessible: True
+author: 
+context: |
+    Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
+     - :ref:`theorie:threads` (sauf la section `Utilisation d'instruction atomique`)
+     - :ref:`theorie:comthreads` (jusqu'à la section `Le problème des philosophes`) 
+    ..  - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`
+    .. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    argthread:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   void *mythread(void * param) {
+                     Fractiont *f=(Fractiont *) param;
+                     float *r=(float *)malloc(sizeof(float));
+                     *r=(float) f->num/ (float) f->denum;
+                     return((void *) r);
+                   }
+
+                   int main (int argc, char *argv[])  {
+
+                     pthreadt t;
+                     Fractiont f;
+                     f.num=1;
+                     f.denum=3;
+                     float *r;
+                     int err;
+
+                     err=pthreadcreate(&t,NULL,&mythread,&(f));
+
+                     err=pthreadjoin(t,(void **) &r);
+
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   void *mythread(void * param) {
+                     Fractiont f= *param;
+                     float r;
+                     r=(float) f.num/ (float) f.denum;
+                     return((void *) &r);
+                   }
+
+                   int main (int argc, char *argv[])  {
+
+                     pthreadt t;
+                     Fractiont f;
+                     f.num=1;
+                     f.denum=3;
+                     float r;
+                     int err;
+
+                     err=pthreadcreate(&t,NULL,&mythread,&(f));
+
+                     err=pthreadjoin(t,(void **) &r);
+
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   void *mythread(void * param) {
+                     Fractiont *t=(Fractiont *) param;
+                     float *r=(float *)malloc(sizeof(float));
+                     *r=(float) t->num/ (float) t->denum;
+                     return((void *) r);
+                   }
+
+                   int main (int argc, char *argv[])  {
+
+                     pthreadt t;
+                     Fractiont f;
+                     f.num=1;
+                     f.denum=3;
+                     float r;
+                     int err;
+
+                     err=pthreadcreate(&t,NULL,&mythread,&f);
+                     r=pthreadjoin(t,NULL);
+
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   float mythread(Fractiont param) {
+                     float *r=(float *)malloc(sizeof(float));
+                     *r=(float) param->num/ (float) param->denum;
+                     return(r);
+                   }
+
+                   int main (int argc, char *argv[])  {
+                     pthreadt t;
+                     Fractiont f;
+                     f.num=1;
+                     f.denum=3;
+                     printf("%f \n",tofloat(f));
+                     float *r;
+                     int err;
+
+                     err=pthreadcreate(&t,NULL,&mythread,&(f));
+
+                     err=pthreadjoin(t,(void *) &r);
+                   }
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            Considérons un thread qui a pour objectif de convertir une fraction en un nombre en virgule flottante. Ce n'est pas une bonne utilisation de threads puisque le calcul à effectuer est très simple, mais cela nous permettra de voir comment un thread peut recevoir des arguments directement. En dehors des threads, cette fonction de conversion pourrait s'écrire :
+
+
+            .. code-block:: c
+
+
+               struct fraction {
+                 int num;
+                 int denum;
+               };
+
+               typedef struct fraction Fractiont;
+
+               float tofloat(Fractiont t) {
+                 return (float) t.num/ (float) t.denum;
+               }
+
+            Parmi les programmes ci-dessous, un seul calcule correctement la valeur attendue (le test des valeurs de retour des fonctions n'est pas présenté pour garder le code concis). Lequel ?
+
+
+        limit: 4
+        name: Passage d'arguments à un thread
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

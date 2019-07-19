@@ -1,0 +1,109 @@
+accessible: True
+author: 
+context: |
+    Ces questions ont pour objectif de vous permettre de tester vous-même votre compréhension de la matière couverte par cette mission de mise en route. Elles supposent que vous avez lu le premier chapitre du syllabus contenant l'introduction à Unix et au langage C.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    2ndprog:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdio.h>
+                   int main(int argc, const char *argv[]) {
+                     int a = 1252;
+                     printf("SINF%d\n", a);
+                   }
+
+            valid: True
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdio.h>
+                   int main(int argc, const char *argv[]) {
+                     int a = 1252;
+                     printf("SINF");
+                     printf("%d\n", a);
+                   }
+
+            valid: True
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: none
+
+
+                   #include <stdio.h>
+                   int main(int argc, const char *argv[]) {
+                     int a = 1252;
+                     printf("SINF%a\n", a);
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: none
+
+
+                   #include <stdio.h>
+                   int main(int argc, const char *argv[]) {
+                     int a = 1252;
+                     printf(SINF);
+                     printf(%d\n, a);
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdio.h>
+                   int main(int argc, const char *argv[]) {
+                     int a = 1252;
+                     printf("SINF$a\n", a);
+                   }
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            Votre deuxième programme en langage C doit afficher à l'écran la chaîne de caractères `SINF1252`. Lequel parmi les programmes ci-dessous affiche-t-il correctement cette chaîne de caractères ?
+
+        limit: 5
+        name: Deuxième programme en langage C
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

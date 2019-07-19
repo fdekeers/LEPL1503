@@ -1,0 +1,140 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)` et `free(3)`
+     - http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    stack:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int size(struct nodet* stack)
+                   {
+                     struct nodet *curr = stack;
+                     int count = 0;
+                     while (curr!=NULL) {
+                     count ++;
+                     curr = stack->next;
+                   }
+                   return count;
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int size(struct nodet* stack)
+                   {
+                     int count = 0;
+                     while (stack!=NULL) {
+                     count ++;
+                     stack = stack->next;
+                   }
+                   return count;
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int size(struct nodet* stack)
+                   {
+                     int count = 0;
+                     while (stack!=NULL) {
+                     count ++;
+                     stack++;
+                   }
+                   return count;
+                   }
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int size(struct nodet* stack)
+                   {
+                     return sizeof(stack);
+                   }
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int size(struct nodet* stack)
+                   {
+                     struct nodet *curr = stack;
+                     int count = 0;
+                     while (curr) {
+                     count ++;
+                     curr++;
+                   }
+                   return count;
+                   }
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int size(struct nodet stack)
+                   {
+                     struct nodet curr = stack;
+                     int count = 0;
+                     while (curr) {
+                     count ++;
+                     curr = stack->next;
+                   }
+                   return count;
+                   }
+
+
+            valid: False
+            feedback: |
+        header: |
+            Considérons le programme `stack.c` présenté dans le syllabus. Cette implémentation d'une pile permet d'ajouter et de retirer un élément de la pile. Laquelle des implémentations ci-dessous est-elle une implémentation correcte d'une fonction ``size`` permettant de calculer le nombre d'éléments stockés dans la pile ?
+
+        limit: 6
+        name: Stack
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

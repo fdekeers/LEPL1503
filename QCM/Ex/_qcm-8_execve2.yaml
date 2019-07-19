@@ -1,0 +1,150 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine couvre les processus.
+     - `Les processus <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    execve2:
+        choices:
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``3``, le programme ne s'arrête jamais et affiche :
+
+
+                .. code-block:: console
+
+
+                   0
+                   0
+                   0
+                   ...
+
+            valid: True
+            feedback: |
+
+                Lors de l'exécution de `execve(2)`, le programme est remplacé par lui-même puisque ``argv[0]`` contient toujours le nom de l'exécutable qui est en train d'être exécuté. Ce programme redémarre son exécution au début de la fonction ``main``...
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``2``, le programme ne s'arrête jamais et affiche :
+
+
+                .. code-block:: console
+
+
+                   0
+                   0
+                   0
+                   ...
+
+            valid: True
+            feedback: |
+
+                Lors de l'exécution de `execve(2)`, le programme est remplacé par lui-même puisque ``argv[0]`` contient toujours le nom de l'exécutable qui est en train d'être exécuté. Ce programme redémarre son exécution au début de la fonction ``main``...
+
+
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``3``, le programme affiche :
+
+
+                .. code-block:: console
+
+
+                   0
+                   1
+                   2
+
+            valid: False
+            feedback: |
+
+                Lors de l'exécution de `execve(2)`, le programme est remplacé par lui-même puisque ``argv[0]`` contient toujours le nom de l'exécutable qui est en train d'être exécuté. Ce programme redémarre son exécution au début de la fonction ``main``...
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``2``, le programme affiche :
+
+
+                .. code-block:: console
+
+
+                   0
+                   1
+
+            valid: False
+            feedback: |
+
+                Lors de l'exécution de `execve(2)`, le programme est remplacé par lui-même puisque ``argv[0]`` contient toujours le nom de l'exécutable qui est en train d'être exécuté. Ce programme redémarre son exécution au début de la fonction ``main``...
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``2``, l'appel à `execve(2)` est erroné et le programme s'arrête.
+
+            valid: False
+            feedback: |
+
+                L'appel à `execve(2)` est tout à fait correct, même si il n'est pas recommandé d'utiliser `execve(2)` de cette façon...
+
+        -   text: |
+
+
+                Lorsque ``n`` est initialisé à ``3``, l'appel à `execve(2)` est erroné et le programme s'arrête.
+
+            valid: False
+            feedback: |
+
+                L'appel à `execve(2)` est tout à fait correct, même si il n'est pas recommandé d'utiliser `execve(2)` de cette façon...
+
+
+
+
+        header: |
+            L'appel système `execve(2)` permet d'exécuter un programme en remplaçant le programme en cours d'exécution par celui se trouvant sur disque dont le nom est spécifié. Un étudiant a écrit le programme ci-dessous pour tester `execve(2)` :
+
+
+            .. code-block:: c
+
+
+               #include <stdio.h>
+               #include <stdlib.h>
+               #include <unistd.h>
+
+               extern char **environ;
+
+               int main (int argc, char *argv[])  {
+
+                 int n=...
+                 int i=0;
+                 for(i=0;i<n;i++) {
+                 sleep(1);
+                 printf("%d\n",i);
+                 int err=execve(argv[0], argv, environ);
+                 if(err!=0) {
+                 perror("execve");
+                 exit(EXITFAILURE);
+               }
+               }
+               return(EXITSUCCESS);
+               }
+
+        limit: 6
+        name: `execve(2)`_
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

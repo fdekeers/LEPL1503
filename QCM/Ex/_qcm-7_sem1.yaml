@@ -1,0 +1,147 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    sem1:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   semt semaphore;
+
+                   seminit(&semaphore, 0,1);
+
+                   // ...
+
+                   semdestroy(&semaphore);
+
+                .. positive
+
+
+                .. code-block:: c
+
+
+                   semt *semaphore;
+                   semaphore=(semt *)malloc(sizeof(struct semt));
+                   if (semaphore==NULL)
+                   error("malloc");
+
+                   seminit(semaphore, 0,1);
+
+                   // ...
+
+                   semdestroy(semaphore);
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   semt semaphore;
+
+                   seminit(semaphore, 1,0);
+
+                   // ...
+
+                   semdestroy(semaphore);
+
+            valid: False
+            feedback: |
+
+                `seminit(3)` et `semdestroy(3)` prennent comme premier argument un pointeur vers une structure ``semt``. `seminit(3)` prend comme troisième argument la valeur initiale du sémaphore.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   semt semaphore;
+
+                   seminit(&semaphore, 1,0);
+
+                   // ...
+
+                   semdestroy(&semaphore);
+
+            valid: False
+            feedback: |
+
+                `seminit(3)` prend comme troisième argument la valeur initiale du sémaphore.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   semt *semaphore;
+                   semaphore=(semt *)malloc(sizeof(struct semt));
+                   if (semaphore==NULL)
+                   error("malloc");
+
+                   seminit(semaphore, 1, 0);
+
+                   // ...
+
+                   semdestroy(semaphore);
+
+            valid: False
+            feedback: |
+
+                `seminit(3)` prend comme troisième argument la valeur initiale du sémaphore.
+
+
+        -   text: |
+
+
+                .. code-block:: none
+
+
+                   semt *semaphore;
+                   semaphore=(semt *)malloc(sizeof(struct semt));
+                   if (semaphore==NULL)
+                   error("malloc");
+
+                   seminit(semaphore, 1, 0);
+
+                   // ...
+
+                   semdestroy(&semaphore);
+
+            valid: False
+            feedback: |
+
+                `seminit(3)` prend comme troisième argument la valeur initiale du sémaphore. `semdestroy(3)` prennent comme premier argument un pointeur vers une structure ``semt``.
+
+
+
+        header: |
+            Avant d'être utilisé, un sémaphore doit être déclaré et initialisé. Après son utilisation, il doit être détruit. Parmi les séquences d'instructions ci-dessous, une seule initialise correctement un sémaphore à la valeur 1. Laquelle ?
+
+        limit: 5
+        name: Utilisation des sémaphores
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

@@ -1,0 +1,125 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine porte sur le système de fichiers et sa manipulation par les processus.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    touch:
+        choices:
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   ls -l d
+                   touch c/x
+                   cd b
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   ls -l b
+                   cat c/f
+                   cd d
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: console
+
+
+                   ls -l c
+                   touch d/x
+                   cd a
+
+            valid: False
+            feedback: |
+
+                Il n'est pas possible d'aller dans le répertoire ``a``. En outre, le contenu du répertoire ``c`` ne peut pas être lu avec `ls(1)`
+
+        -   text: |
+
+
+
+                .. code-block:: console
+
+
+                   ls -l c
+                   touch a/x
+                   cd c
+
+            valid: False
+            feedback: |
+
+                Il n'est pas possible de créer un fichier dans le répertoire ``a``.
+
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   ls -l b
+                   touch b/x
+                   cd b
+
+            valid: False
+            feedback: |
+
+                Il n'est pas possible de créer un fichier dans le répertoire ``b``.
+
+
+
+
+        header: |
+            Les permissions associées aux répertoires ont un rôle un peu différent de celles qui sont associées aux fichiers. Considérons le répertoire ci-dessous qui contient 4 sous-répertoires.
+
+
+            .. code-block:: console
+
+
+               drw-------  2 obo  obo   68 23 mar 22:25 a
+               dr-x------  2 obo  obo   68 23 mar 22:25 b
+               d-wx------  3 obo  obo  102 23 mar 22:27 c
+               drwx------  3 obo  obo  102 23 mar 22:26 d
+
+               Chacun de ces répertoires contient un fichier qui a comme nom ``f``. La commande `touch(1)` peut être utilisée pour créer un fichier vide. Ainsi, dans ce répertoire, la commande ``touch f`` va créer le fichier  ``f``
+
+
+               .. code-block:: console
+
+
+               ls -l f
+               -rw-r--r--  1 obo  obo  0 23 mar 22:30 f
+
+
+            Dans le répertoire ci-dessus, une seule séquence de commandes fonctionne sans erreur. Laquelle ?
+
+        limit: 5
+        name: Fichiers et répertoires
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

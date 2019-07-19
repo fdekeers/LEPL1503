@@ -1,0 +1,235 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    conditionnelles3:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   jl      label
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   jmp     end
+                   label:
+                   movl    b, %eax
+                   addl    $1, %eax
+                   movl    %eax, b
+                   end:
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    b, %eax
+                   cmpl    a, %eax
+                   jg      label
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   jmp     end
+                   label:
+                   movl    b, %eax
+                   addl    $1, %eax
+                   movl    %eax, b
+                   end:
+
+            valid: True
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   if(b<=a)
+                   a++;
+                   else
+                   b++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   jl      label
+                   movl    b, %eax
+                   addl    $1, %eax
+                   movl    %eax, b
+                   jmp     end
+                   label:
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   if(a>=b)
+                   b++;
+                   else
+                   a++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+
+                   movl    b, %eax
+                   cmpl    a, %eax
+                   jge     label
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   jmp     end
+                   label:
+                   movl    b, %eax
+                   addl    $1, %eax
+                   movl    %eax, b
+                   end:
+
+
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   if(b<a)
+                   a++;
+                   else
+                   b++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    b, %eax
+                   cmpl    a, %eax
+                   jle     label
+                   movl    b, %eax
+                   addl    $1, %eax
+                   movl    %eax, b
+                   jmp     .LBB43
+                   label:
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   if(b>a)
+                   b++;
+                   else
+                   a++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    a, %eax
+                   cmpl    b, %eax
+                   jl      label
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   label:
+                   movl    b, %eax
+                   addl    $1, %eax
+                   movl    %eax, b
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   if(a>=b) {
+                     a++;
+                   }
+                   b++;
+
+
+
+        header: |
+            L'instruction conditionnelle ``if() ... else`` se retrouve dans de nombreux programmes en langage C. Considérons l'instruction ``if() ... else`` simple ci-dessous dans laquelle ``a`` et ``b`` sont des variables globales de type ``int`` :
+
+
+            .. code-block:: c
+
+
+               if(a>=b)
+               a++;
+               else
+               b++;
+
+            Parmi les séquences d'assembleur ci-dessous, une seule est une traduction correcte de cette instruction conditionnelle. Laquelle ?
+
+        limit: 6
+        name: Instructions conditionnelles
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

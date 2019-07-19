@@ -1,0 +1,111 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine porte sur le système de fichiers et sa manipulation par les processus.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    chmod2:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: console
+
+
+                   chmod 644 a
+                   chmod 751 b
+                   chmod 600 c
+                   chmod 601 d
+                   chmod 246 e
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: console
+
+
+                   chmod 446 a
+                   chmod 157 b
+                   chmod 006 c
+                   chmod 106 d
+                   chmod 642 e
+
+            valid: False
+            feedback: |
+
+                Relisez la page de manuel de `chmod(1)`
+
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   chmod 444 a
+                   chmod 751 b
+                   chmod 600 c
+                   chmod 604 d
+                   chmod 123 e
+
+            valid: False
+            feedback: |
+
+                Relisez la page de manuel de `chmod(1)`
+
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   chmod 322 a
+                   chmod 364 b
+                   chmod 300 c
+                   chmod 301 d
+                   chmod 123 e
+
+            valid: False
+            feedback: |
+
+                Relisez la page de manuel de `chmod(1)`
+
+
+
+        header: |
+            Les bits de permissions associés à un fichiers sont généralement représentés sous forme textuelle lorsque la commande `ls(1)` affiche le contenu d'un répertoire. Considérons le répertoire ci-dessous :
+
+
+            .. code-block:: console
+
+
+               -rw-r--r--  1 obo  obo  0 23 mar 21:57 a
+               -rwxr-x--x  1 obo  obo  0 23 mar 21:57 b
+               -rw-------  1 obo  obo  0 23 mar 21:57 c
+               -rw------x  1 obo  obo  0 23 mar 21:57 d
+               --w-r--rw-  1 obo  obo  0 23 mar 21:57 e
+
+            Parmi les commandes suivantes, un seul groupe permet d'obtenir les mêmes permissions que ci-dessous. Lequel ?
+
+        limit: 4
+        name: Permissions sur les fichiers
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

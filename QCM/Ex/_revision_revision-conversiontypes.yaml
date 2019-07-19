@@ -1,0 +1,140 @@
+accessible: True
+author: 
+context: |
+    .. Toute question a un titre
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    revision-conversiontypes:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   i=(int ) s;
+                   s=(short) uc;
+                   l=(long )i;
+
+                   .. la directive positive permet de spécifier une réponse positive. Celle-ci peut contenir un paragraphe ou une autre directive restructured text (dans cet exemple du code). Pensez à aligner le contenu de la directive positive sur la huitième colonne pour éviter tout problème d'indentation. 
+
+                   .. une deuxième réponse positive qui est aussi correcte.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   ui=(unsigned int) us;
+                   s=(short) c;
+                   ul=(unsigned long )ui;
+
+                   .. une première réponse négative. Notez que le commentaire permet à l'étudiant d'apprendre de ses erreurs. Celui-ci est tout aussi important que la réponse négative qui est proposée. Veillez à respecter l'alignement de la directive comment sur la huitième colonne (caractère n de negative)
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   ui=(unsigned int ) s;
+                   us=(unsigned short) uc;
+                   l=(long )i;
+
+            valid: False
+            feedback: |
+
+                .. Dans l'exemple ci-dessous, le commentaire contient un paragraphe complet. Son indentation est alignée sur la onzième colonne.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   i=(int ) us;
+                   us=(unsigned short) i;
+                   l=(long )c;
+
+            valid: False
+            feedback: |
+
+                La conversion d'un ``int`` en un ``unsigned short`` risque de poser problème.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   ui=(int) s;
+                   s=(short) c;
+                   ul=(unsigned long )ui;
+
+            valid: False
+            feedback: |
+
+
+                .. Ces include vous permettent de charger les liens vers les pages de manuel et les fichiers include standard de Linux auxquels vos commentaires et vos questions peuvent bien entendu faire appel
+
+                .. include:: ../links.rst
+                .. include:: ../manlinks.rst
+                .. include:: ../incllinks.rst
+
+        header: |
+            .. Si votre question comprend plusieurs paragraphe d'introduction, placez ces paragraphes avant de définir la question. Commencez votre paragraphe en première colonne pour éviter toute surprise avec les indentations.
+
+            En C tout comme dans des langages comme Java, il est possible de convertir des nombres d'un type primitif vers un autre. Cependant, alors que le compilateur Java vérifie si la conversion est sans risque, le compilateur C ne fait aucune vérification et suppose que si le programmeur a effectué une conversion explicite entre types, il a pris ses précautions. Sur une architecture où les types de données sont stockés comme suit :
+
+            .. Ceci est un exemple de code-source en C. Notez que le code est aligné sur la quatrième colonne comme le caractère c
+
+
+            .. code-block:: c
+
+
+               // char			1 octet(s)
+               // unsigned char		1 octet(s)
+               // short			2 octet(s)
+               // unsigned short		2 octet(s)
+               // int			4 octet(s)
+               // unsigned int		4 octet(s)
+
+               int i;
+               short s;
+               long l;
+               char c;
+               unsigned int ui;
+               unsigned char uc;
+               unsigned long ul;
+               unsigned short us;
+
+               .. Cette directive définit la question à choix multiples. Elle a un identifiant que vous devez choisir et qui doit être unique. Deux paramètres sont définis : nbprop est le nombre de propositions qui sont présentées par le javascript (3 est un minimum, mais vous pouvez en proposer plus). nbpos est le nombre de propositions positives qui sont présentées par le javascript. Si nbpos > 1, alors la formulation de votre question doit demander à l'étudiant de sélectionner toutes les réponses correctes.
+
+               .. Une question doit nécessairement contenir un paragraphe de texte. Sinon, la compilation échouera. Pensez à aligner le paragraphe contenant la question en quatrième colonne 
+
+            Un seul des fragments de code ci-dessous contient des conversions de type qui sont sans risque. Lequel ?
+
+        limit: 5
+        name: Conversion de types
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

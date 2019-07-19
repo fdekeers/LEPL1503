@@ -1,0 +1,164 @@
+
+
+Q| Les bits de permissions permet de contrôler l'accès aux fichiers. Considérons le répertoire ci-dessous :
+
+
+.. code-block:: console
+
+
+   -rw-r--r--  1 obo  obo   0 23 mar 21:57 a
+   -r-xr-x--x  1 obo  obo   0 23 mar 21:57 b
+   -rw-------  1 obo  obo   0 23 mar 21:57 c
+   -rw------x  1 obo  obo   0 23 mar 21:57 d
+   --w-----w-  1 obo  obo   0 23 mar 21:57 e
+
+
+Un seul des groupes d'affirmations ci-dessous est vrai. Lequel ?
+
+C| 
+
+l'utilisateur ``obo`` peut lire le fichier ``c``, exécuter le fichier ``b`` et modifier le contenu du fichier ``d``
+
+
+|V
+
+C| 
+l'utilisateur ``obo`` peut lire le fichier ``a``, exécuter le fichier ``b`` et modifier le contenu du fichier ``c``
+
+
+|V
+
+C| 
+l'utilisateur ``obo`` peut lire le fichier ``e``, exécuter le fichier ``b`` et modifier le contenu du fichier ``e``
+
+|F
+
+C| 
+l'utilisateur ``obo`` peut lire le fichier ``c``, exécuter le fichier ``d`` et modifier le contenu du fichier ``b``
+
+|F
+
+C| 
+l'utilisateur ``obo`` peut lire le fichier ``c``, exécuter le fichier ``a`` et modifier le contenu du fichier ``d``
+
+|F
+
+Q| Les permissions associées aux répertoires ont un rôle un peu différent de celles qui sont associées aux fichiers. Considérons le répertoire ci-dessous qui contient 4 sous-répertoires.
+
+
+.. code-block:: console
+
+
+   drw-------  2 obo  obo   68 23 mar 22:25 a
+   dr-x------  2 obo  obo   68 23 mar 22:25 b
+   d-wx------  3 obo  obo  102 23 mar 22:27 c
+   drwx------  3 obo  obo  102 23 mar 22:26 d
+
+   Chacun de ces répertoires contient un fichier qui a comme nom ``f``. La commande `touch(1)` peut être utilisée pour créer un fichier vide. Ainsi, dans ce répertoire, la commande ``touch f`` va créer le fichier  ``f``
+
+
+   .. code-block:: console
+
+
+   ls -l f
+   -rw-r--r--  1 obo  obo  0 23 mar 22:30 f
+
+
+Dans le répertoire ci-dessus, une seule séquence de commandes fonctionne sans erreur. Laquelle ?
+
+C| 
+
+
+   ls -l d
+   touch c/x
+   cd b
+
+|V
+
+C| 
+
+
+   ls -l b
+   cat c/f
+   cd d
+
+|V
+
+C| 
+
+
+
+   ls -l c
+   touch d/x
+   cd a
+
+|F
+
+C| 
+
+
+
+   ls -l c
+   touch a/x
+   cd c
+
+|F
+
+C| 
+
+
+   ls -l b
+   touch b/x
+   cd b
+
+|F
+
+Q| La page de manuel de `chmod(1posix)` décrit en détails les permissions relatives aux fichiers et répertoires. Ces permissions peuvent être représentées sous une forme numérique ou textuelle. Parmi les affirmations suivantes, relatives à des permissions pour des `fichiers`, un seul groupe est vrai. Lequel ?
+
+
+C| 
+
+- Le fichier ayant ``00467`` comme permissions est exécutable par n'importe quel utilisateur
+- Le fichier ayant ``00777`` comme permissions est lisible par son propriétaire
+- Le fichier ayant ``00600`` ne peut être lu que par son propriétaire
+
+|V
+
+C| 
+- Le fichier ayant ``00647`` comme permissions est exécutable par n'importe quel utilisateur
+- Le fichier ayant ``00700`` comme permissions est lisible par son propriétaire
+- Le fichier ayant ``00421`` comme permissions ne peut être lu que par son propriétaire
+
+|V
+
+C| 
+
+- Le fichier ayant ``00476`` comme permissions est exécutable par n'importe quel utilisateur
+- Le fichier ayant ``00747`` comme permissions est lisible par son propriétaire
+- Le fichier ayant ``00601`` comme permissions ne peut être lu que par son propriétaire
+
+|F
+
+C| 
+- Le fichier ayant ``00677`` comme permissions est exécutable par n'importe quel utilisateur
+- Le fichier ayant ``00017`` comme permissions est lisible par son propriétaire
+- Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire
+
+|F
+
+C| 
+
+- Le fichier ayant ``00755`` comme permissions est exécutable par n'importe quel utilisateur
+- Le fichier ayant ``00417`` comme permissions est lisible par son propriétaire
+- Le fichier ayant ``00222`` comme permissions ne peut être lu que par son propriétaire
+
+|F
+
+C| 
+
+- Le fichier ayant ``00666`` comme permissions est exécutable par n'importe quel utilisateur
+- Le fichier ayant ``00400`` comme permissions est modificale par son propriétaire
+- Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire
+
+|F
+

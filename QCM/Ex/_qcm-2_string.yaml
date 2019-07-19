@@ -1,0 +1,154 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    string:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int count1(char *s, char c) {
+                     int i=0;
+                     int count=0;
+                     while(*(s+i)!='\0') {
+                     if(*(s+i)==c) {
+                     count++;
+                   }
+                   i++;
+                   }
+                   return(count);
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int count(char *s, char c) {
+                     int count=0;
+                     while(*(s)!='\0') {
+                     if(*(s)==c) {
+                     count++;
+                   }
+                   s++;
+                   }
+                   return(count);
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int count1(char *s, char c) {
+                     int i=0;
+                     int count=0;
+                     while(i<s.length) {
+                     if(*(s+i)==c) {
+                     count++;
+                   }
+                   i++;
+                   }
+                   return(count);
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: none
+
+
+                   int count1(char *s, char c) {
+                     int i=0;
+                     int count=0;
+                     while(*s!=`\0`) {
+                     if(*(s+i)==c) {
+                     count++;
+                   }
+                   i++;
+                   }
+                   return(count);
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int count(char *s, char c) {
+                     int count=0;
+                     while(*(s)!='\0') {
+                     s++;
+                     if(*(s)==c) {
+                     count++;
+                   }
+                   }
+                   return(count);
+                   }
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int count(char *s, char c) {
+                     int count=0;
+                     while(s!='\0') {
+                     if(s==c) {
+                     count++;
+                   }
+                   s++;
+                   }
+                   return(count);
+                   }
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            Une seule des fonctions ci-dessous retourne correctement le nombre d'occurrences du caractère ``c`` dans la chaîne de caractères ``c``. Laquelle ?
+
+        limit: 6
+        name: Chaînes de caractères
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

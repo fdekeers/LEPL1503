@@ -1,0 +1,292 @@
+
+
+Q| Les instructions de la famille ``mov`` permettent de déplacer des données entre registres ou d'initialiser des registres. Considérons le fragment de code C suivant (dans lequel ``g``, ``g2`` et ``s`` sont des variables globales de type ``int``) :
+
+
+.. code-block:: c
+
+
+   g=1234;
+   g2=5678;
+   s=g;
+   g=g2;
+   g2=s;
+
+Parmi les traductions en assembleur ci-dessus, une seule est correcte. Laquelle ?
+
+
+C| 
+
+
+
+   movl    $1234, g
+   movl    $5678, g2
+   movl    g, %ecx
+   movl    %ecx, s
+   movl    g2, %ecx
+   movl    %ecx, g
+   movl    s, %ecx
+   movl    %ecx, g2
+
+|V
+
+C| 
+
+
+   movl    $1234, g
+   movl    $5678, g2
+   movl    g, %eax
+   movl    %eax, s
+   movl    g2, %eax
+   movl    %eax, g
+   movl    s, %eax
+   movl    %eax, g2
+
+|V
+
+C| 
+
+
+
+   movl    g, $1234
+   movl    g2, $5678
+   movl    %eax, g
+   movl    s, %eax
+   movl    %eax, g2
+   movl    g, %eax
+   movl    s, %eax
+   movl    g2, %eax
+
+|F
+
+C| 
+
+
+   movl    $1234, g
+   movl    $5678, g2
+   movl    g2, %eax
+   movl    %edx, s
+   movl    g, %eax
+   movl    %edx, g2
+   movl    s, %eax
+   movl    %eax, g2
+
+|F
+
+C| 
+
+
+   movw    $1234, g
+   movw    $5678, g2
+   movb    g2, %eax
+   movb    %eax, s
+   movb    g, %eax
+   movb    %eax, g2
+   movb    s, %eax
+   movb    %eax, g2
+
+|F
+
+C| 
+
+
+   movw    $1234, g
+   movw    $5678, g2
+   movb    g2, %edx
+   movb    %edx, s
+   movb    g, %edx
+   movb    %edx, g2
+   movb    s, %edx
+   movb    %edx, g2
+
+|F
+
+Q| Considérons le fragment de programme C ci-dessous :
+
+
+.. code-block:: c
+
+
+   a=a+b;
+   b=b+b;
+   c=b-a;
+
+Une seule des séquences d'instructions assembleur ci-dessous est une traduction correcte de cette séquence d'instructions. Laquelle ?
+
+C| 
+
+
+
+   movl    a, %eax
+   addl    b, %eax
+   movl    %eax, a
+   movl    b, %eax
+   addl    b, %eax
+   movl    %eax, b
+   movl    b, %eax
+   subl    a, %eax
+   movl    %eax, c
+
+|V
+
+C| 
+
+
+   movl    b, %eax
+   addl    a, %eax
+   movl    %eax, a
+   movl    b, %eax
+   addl    b, %eax
+   movl    %eax, b
+   movl    b, %eax
+   subl    a, %eax
+   movl    %eax, c
+
+|V
+
+C| 
+
+
+   movl    b, %eax
+   addl    a, %eax
+   movl    %eax, a
+   movl    b, %eax
+   movl    %eax, %ecx
+   addl    $1, %ecx
+   movl    %ecx, b
+   movl    %eax, b
+   movl    a, %eax
+   subl    b, %eax
+   movl    %eax, c
+
+|F
+
+C| 
+
+
+   movl    b, %eax
+   addl    a, %eax
+   movl    %eax, c
+   movl    b, %eax
+   movl    %eax, %ecx
+   addl    $1, %ecx
+   movl    %ecx, b
+   movl    %eax, b
+   movl    a, %eax
+   subl    b, %eax
+   movl    %eax, a
+
+|F
+
+C| 
+
+
+   movl    b, %eax
+   addl    a, %eax
+   movl    %eax, b
+   movl    b, %eax
+   movl    %eax, %ecx
+   addl    $1, %ecx
+   movl    %ecx, b
+   movl    %eax, a
+   movl    b, %eax
+   subl    a, %eax
+   movl    %eax, c
+
+|F
+
+Q| Les instructions conditionnelles sont fréquemment utilisées en langage C et en assembleur. Considérons le fragment de programme C ci-dessous (``a`` et ``b`` sont des variables globales de type ``int``):
+
+
+.. code-block:: c
+
+
+   if(b<4)
+   a++;
+
+Une seule des séquences d'instructions assembleur ci-dessous est une traduction correcte de cette séquence d'instructions. Laquelle ?
+
+C| 
+
+
+
+   begin:
+   cmpl    $4, b
+   jge     end
+   movl    a, %eax
+   addl    $1, %eax
+   movl    %eax, a
+   end:
+
+|V
+
+C| 
+
+
+   begin:
+   cmpl    $4, b
+   jl      next
+   jmp     end
+   next:
+   movl    a, %eax
+   addl    $1, %eax
+   movl    %eax, a
+   end:
+
+|V
+
+C| 
+
+
+
+
+   begin:
+   cmpl    $4, b
+   jg      end
+   movl    a, %eax
+   addl    $1, %eax
+   movl    %eax, a
+   end:
+
+|F
+
+C| 
+
+
+   begin:
+   cmpl    $4, b
+   je      end
+   movl    a, %eax
+   addl    $1, %eax
+   movl    %eax, a
+   end:
+
+
+|F
+
+C| 
+
+
+   begin:
+   cmpl    $4, b
+   jl      end
+   movl    a, %eax
+   addl    $1, %eax
+   movl    %eax, a
+   end:
+
+|F
+
+C| 
+
+
+   begin:
+   cmpl    $4, b
+   jl      end
+   movl    a, %eax
+   addl    $1, %eax
+   movl    %eax, a
+   end:
+
+|F
+

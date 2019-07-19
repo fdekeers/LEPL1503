@@ -1,0 +1,289 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    semmutex:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+
+                   static semt semaphore;
+                   long global=0;
+
+                   int increment(int i) {
+                     // ...
+                   }
+
+                   void *inc(void * param) {
+                     for(int j=0;j<1000000;j++) {
+                     semwait(&semaphore);
+                     global=increment(global);
+                     sempost(&semaphore);
+                   }
+                   }
+
+                   int main (int argc, char *argv[])  {
+                     pthreadt thread[NTHREADS];
+                     int err;
+
+                     seminit(&semaphore, 0,1);
+
+                     for(int i=0;i<NTHREADS;i++) {
+                     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+                     if(err!=0)
+                     error(err,"pthreadcreate");
+                   }
+
+                   // reste non fourni
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   semt * semaphore;
+                   long global=0;
+
+                   int increment(int i) {
+                     // ...
+                   }
+
+                   void *inc(void * param) {
+                     for(int j=0;j<1000000;j++) {
+                     semwait(semaphore);
+                     global=increment(global);
+                     sempost(semaphore);
+                   }
+                   }
+
+                   int main (int argc, char *argv[])  {
+                     pthreadt thread[NTHREADS];
+                     int err;
+                     semaphore=(semt *)malloc(sizeof(semt))
+                     if(semaphore==NULL)
+                     error("malloc");
+
+                     seminit(semaphore, 0,1);
+
+                     for(int i=0;i<NTHREADS;i++) {
+                     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+                     if(err!=0)
+                     error(err,"pthreadcreate");
+                   }
+
+                   // reste non fourni
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+
+                   static semt semaphore;
+                   long global=0;
+
+                   int increment(int i) {
+                     // ...
+                   }
+
+                   void *inc(void * param) {
+                     for(int j=0;j<1000000;j++) {
+                     semwait(&semaphore);
+                     global=increment(global);
+                     sempost(&semaphore);
+                   }
+                   }
+
+                   int main (int argc, char *argv[])  {
+                     pthreadt thread[NTHREADS];
+                     int err;
+
+                     seminit(&semaphore, 0,0);
+
+                     for(int i=0;i<NTHREADS;i++) {
+                     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+                     if(err!=0)
+                     error(err,"pthreadcreate");
+                   }
+
+                   // reste non fourni
+                   }
+
+            valid: False
+            feedback: |
+
+                Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `seminit(3)` et non à ``0`` comme dans cet exemple.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   static semt semaphore;
+                   long global=0;
+
+                   int increment(int i) {
+                     // ...
+                   }
+
+                   void *inc(void * param) {
+                     for(int j=0;j<1000000;j++) {
+                     sempost(&semaphore);
+                     global=increment(global);
+                     semwait(&semaphore);
+                   }
+                   }
+
+                   int main (int argc, char *argv[])  {
+                     pthreadt thread[NTHREADS];
+                     int err;
+
+                     seminit(&semaphore, 0,0);
+
+                     for(int i=0;i<NTHREADS;i++) {
+                     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+                     if(err!=0)
+                     error(err,"pthreadcreate");
+                   }
+
+                   // reste non fourni
+                   }
+
+            valid: False
+            feedback: |
+
+                Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `seminit(3)` et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `semwait(3)`  et suivie par un appel à `sempost(3)` et non l'inverse comme dans cet exemple.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   semt * semaphore;
+                   long global=0;
+
+                   int increment(int i) {
+                     // ...
+                   }
+
+                   void *inc(void * param) {
+                     for(int j=0;j<1000000;j++) {
+                     semwait(semaphore);
+                     global=increment(global);
+                     sempost(semaphore);
+                   }
+                   }
+
+                   int main (int argc, char *argv[])  {
+                     pthreadt thread[NTHREADS];
+                     int err;
+                     semaphore=(semt *)malloc(sizeof(semt))
+                     if(semaphore==NULL)
+                     error("malloc");
+
+                     seminit(semaphore, 0,0);
+
+                     for(int i=0;i<NTHREADS;i++) {
+                     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+                     if(err!=0)
+                     error(err,"pthreadcreate");
+                   }
+
+                   // reste non fourni
+                   }
+
+            valid: False
+            feedback: |
+
+                Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `seminit(3)` et non à ``0`` comme dans cet exemple.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   semt * semaphore;
+                   long global=0;
+
+                   int increment(int i) {
+                     // ...
+                   }
+
+                   void *inc(void * param) {
+                     for(int j=0;j<1000000;j++) {
+                     sempost(semaphore);
+                     global=increment(global);
+                     semwait(semaphore);
+                   }
+                   }
+
+                   int main (int argc, char *argv[])  {
+                     pthreadt thread[NTHREADS];
+                     int err;
+                     semaphore=(semt *)malloc(sizeof(semt))
+                     if(semaphore==NULL)
+                     error("malloc");
+
+                     seminit(semaphore, 0,0);
+
+                     for(int i=0;i<NTHREADS;i++) {
+                     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+                     if(err!=0)
+                     error(err,"pthreadcreate");
+                   }
+
+                   // reste non fourni
+                   }
+
+            valid: False
+            feedback: |
+
+                Pour résoudre un problème d'exclusion mutuelle, il faut initialiser le sémaphore à ``1`` avec `seminit(3)` et non à ``0`` comme dans cet exemple. En outre, l'accès à la section critique doit être précédée par un appel à `semwait(3)`  et suivie par un appel à `sempost(3)` et non l'inverse comme dans cet exemple.
+
+
+
+
+        header: |
+            Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des problèmes d'exclusion mutuelle. Parmi les extraits de programmes ci-dessous, une seule est une solution correcte au problème de l'exclusion mutuelle en utilisant des sémaphores. Laquelle ?
+
+        limit: 6
+        name: Exclusion mutuelle
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

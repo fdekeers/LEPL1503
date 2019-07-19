@@ -1,0 +1,137 @@
+
+
+Q| Un signal est dit synchrone lorsqu'il est causé par l'exécution d'une instruction du processus. Un signal est dit asynchrone s'il n'a pas été causé directement par l'exécution d'un instruction du processus. 
+
+
+Parmi les affirmations suivantes, lesquelles sont correctes ?
+
+C| 
+- Le signal SIGFPE est synchrone.
+
+|V
+
+C| 
+- Le signal SIGSEGV est synchrone.
+
+|V
+
+C| 
+- Le signal SIGALRM est asynchrone.
+
+|V
+
+C| 
+- Le signal SIGCHLD est synchrone.
+
+|F
+
+C| 
+- Le signal SIGINT est synchrone.
+
+|F
+
+C| 
+- Le signal SIGTERM est synchrone.
+
+|F
+
+C| 
+- Le signal SIGBUS est synchrone.
+
+|F
+
+Q| Trois signaux permettent d'arrêter un processus: SIGTERM, SIGINT et SIGKILL. Parmi les affirmations suivantes, lesquelles sont correctes ?
+
+C| 
+- Envoyer un signal SIGKILL à un processus le termine toujours immédiatement.
+
+|V
+
+C| 
+- Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, un signal SIGINT est envoyé au processus en cours d'exécution.
+
+|V
+
+C| 
+- Envoyer un signal SIGTERM ou SIGINT est préférable à SIGKILL car le processus peut prévoir une routine de traitement de signal pour se terminer proprement.
+
+|V
+
+C| 
+- Envoyer un signal SIGTERM à un processus le termine toujours immédiatement.
+
+|F
+
+C| 
+- Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, un signal SIGTERM est envoyé au processus en cours d'exécution.
+
+|F
+
+C| 
+- Envoyer un signal SIGTERM ou SIGKILL est préférable à SIGTERM car le processus peut prévoir une routine de traitement de signal pour se terminer proprement.
+
+|F
+
+Q| Un étudiant a décidé d'implémenter un programme simulant une bombe à retardement qui détonne 1h après son intialisation. Pour accélérer le décompte, l'étudiant a enregistré un handler pour le signal SIGUSR1 qui divise par 2 le temps restant à décompter.
+
+
+.. code-block:: c
+
+
+   #include <stdio.h>
+   #include <stdlib.h>
+   #include <signal.h>
+   #include <unistd.h>
+
+   int counter = 3600;
+
+   void counterboost(int signum) {
+     counter=counter/2;
+     printf("Boost!\n");
+   }
+
+   int main () {
+     if (signal(SIGUSR1,counterboost)==SIGERR) {
+     perror("signal");
+     exit(EXITFAILURE);
+   }
+
+   while(counter>0) {
+     counter--;
+     printf("%d seconds left\n", counter);
+     sleep(1);
+   }
+
+   printf("BOOM!");
+   return(EXITSUCCESS);
+   }
+
+
+
+Ce programme, bien qu'en apparence fonctionnel, contient plusieurs erreurs de programmation. Parmi les affirmations suivantes, laquelle est correcte ?
+
+C| 
+- Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer sigatomict pour résoudre ce problème.
+
+|V
+
+C| 
+- La fonction `printf(3)` n'est pas réentrante et ne doit pas être utilisée dans une routine de traitement de signal.
+
+|V
+
+C| 
+- Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de protéger cette variable par un mutex.
+
+|F
+
+C| 
+- Il y a un risque que la variable counter soit accédée en même temps par le processus et la routine de traitement de signal. Il est nécessaire de la déclarer volatile pour résoudre ce problème.
+
+|F
+
+C| 
+- Il est interdit de modifier une variable globale (telle que counter) dans une routine de traitement de signal.
+
+|F
+

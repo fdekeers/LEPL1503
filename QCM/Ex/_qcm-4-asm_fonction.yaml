@@ -1,0 +1,213 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    fonction:
+        choices:
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   pushl   %eax
+                   movl    8(%esp), %eax
+                   movl    %eax, (%esp)
+                   movl    (%esp), %eax
+                   addl    a, %eax
+                   popl    %edx
+                   ret
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   subl    $8, %esp
+                   movl    12(%esp), %eax
+                   movl    %eax, 4(%esp)
+                   movl    a, %eax
+                   movl    %eax, (%esp)
+                   movl    (%esp), %eax
+                   addl    4(%esp), %eax
+                   addl    $8, %esp
+                   ret
+
+            valid: True
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int f(int i)
+                   {
+                     int j=a;
+                     return j+i;
+                   }
+
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   subl    $8, %esp
+                   movl    12(%esp), %eax
+                   movl    %eax, 4(%esp)
+                   movl    4(%esp), %eax
+                   addl    a, %eax
+                   movl    %eax, (%esp)
+                   addl    $8, %esp
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   void f3(int i) // incorrect
+                   {
+                     int j=i+a;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   pushl   %eax
+                   movl    (%esp), %eax
+                   addl    a, %eax
+                   popl    %edx
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+
+                   int f()
+                   {
+                     int i;
+                     return i+a;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   pushl   %eax
+                   movb    8(%esp), %al
+                   movb    %al, 3(%esp)
+                   movsbl  3(%esp), %ecx
+                   addl    a, %ecx
+                   movl    %ecx, %eax
+                   popl    %edx
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int f(char c)
+                   {
+                     return c+a;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   pushl   %eax
+                   movb    8(%esp), %al
+                   movb    %al, 3(%esp)
+                   movsbl  3(%esp), %ecx
+                   addl    a, %ecx
+                   movb    %cl, %al
+                   movsbl  %al, %eax
+                   popl    %edx
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   char f(char c)
+                   {
+                     return c+a;
+                   }
+
+
+
+
+
+        header: |
+            Un programme C contient en général de nombreuses fonctions. Considérons une fonction simple qui effectue un calcul en utilisant un argument et une variable globale (``a``) :
+
+
+            .. code-block:: c
+
+
+
+               int f(int i)
+               {
+                 return i+a;
+               }
+
+
+            Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit correctement la fonction ci-dessus. Laquelle ?
+
+        limit: 6
+        name: Fonctions
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

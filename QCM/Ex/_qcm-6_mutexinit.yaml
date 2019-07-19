@@ -1,0 +1,140 @@
+accessible: True
+author: 
+context: |
+    Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
+     - :ref:`theorie:threads` (sauf la section `Utilisation d'instruction atomique`)
+     - :ref:`theorie:comthreads` (jusqu'à la section `Le problème des philosophes`) 
+    ..  - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`
+    .. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    mutexinit:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   pthreadmutext mutex;
+                   pthreadmutexattrt attr;
+
+                   err= pthreadmutexattrinit(&attr);
+                   if(err!=0)
+                   error(err,"pthreadmutexattrinit");
+
+                   err=pthreadmutexinit( &mutex, &attr);
+                   if(err!=0)
+                   error(err,"pthreadmutexinit");
+
+            valid: True
+            feedback: |
+
+                Notez que dans ce cas, le mutex est initialisé avec les attributs par défaut.
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   pthreadmutext mutex;
+
+                   err=pthreadmutexinit( &mutex, NULL);
+                   if(err!=0)
+                   error(err,"pthreadmutexinit");
+
+            valid: True
+            feedback: |
+
+                Notez que dans ce cas, le mutex est initialisé avec les attributs par défaut.
+
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   pthreadmutext mutex;
+                   pthreadmutexattrt attr;
+
+                   err= pthreadmutexattrinit(attr);
+                   if(err!=0)
+                   error(err,"pthreadmutexattrinit");
+
+                   err=pthreadmutexinit(mutex, attr);
+                   if(err!=0)
+                   error(err,"pthreadmutexinit");
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   pthreadmutext mutex;
+                   pthreadmutexattrt attr;
+
+                   err= pthreadmutexattrinit(&attr);
+                   if(err!=0)
+                   error(err,"pthreadmutexattrinit");
+
+                   err=pthreadmutexinit(&mutex, attr);
+                   if(err!=0)
+                   error(err,"pthreadmutexinit");
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   pthreadmutext *mutex;
+                   pthreadmutexattrt *attr;
+
+                   err= pthreadmutexattrinit(attr);
+                   if(err!=0)
+                   error(err,"pthreadattrinit");
+
+                   err=pthreadmutexinit(mutex, attr);
+                   if(err!=0)
+                   error(err,"pthreadmutexinit");
+
+            valid: False
+            feedback: |
+
+
+
+
+        header: |
+            Avant de pouvoir utiliser un mutex POSIX, il est nécessaire de déclarer la structure correspondante et initialiser le mutex. Parmi les fragments de code ci-dessous, lequel est celui qui déclare et initialise correctement un mutex ?
+
+        limit: 5
+        name: Initialisation de mutex
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

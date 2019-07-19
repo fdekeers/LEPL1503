@@ -1,0 +1,73 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    ptr:
+        choices:
+        -   text: |
+
+                - l'expression ``*(ptr + 1)`` est une valeur entière
+                - l'expression ``ptr[1]`` est une valeur entière
+                - l'expression ``ptr`` est une adresse en mémoire
+
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - l'expression ``*(ptr) + 1`` est une valeur entière
+                - l'expression ``ptr[2]`` est une valeur entière
+                - l'expression ``ptr++`` est une adresse en mémoire
+
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - l'expression ``&(ptr) + 1`` est un nombre entier
+                - l'expression ``ptr[2]`` est une valeur entière
+                - l'expression ``&ptr`` est une adresse en mémoire
+
+            valid: False
+            feedback: |
+        -   text: |
+
+                - l'expression ``*(ptr+1)==ptr[1]`` est syntaxiquement invalide
+                - l'expression ``ptr[2]`` est une valeur entière
+                - l'expression ``&ptr`` est une adresse en mémoire
+
+            valid: False
+            feedback: |
+        -   text: |
+
+                - l'expression ``*(ptr+1)==ptr[1]`` est toujours vraie
+                - l'expression ``ptr--`` est syntaxiquement invalide
+
+
+
+            valid: False
+            feedback: |
+        header: |
+            Si ``ptr`` a été déclaré sous la forme ``int *ptr``, un seul des groupes d'affirmations suivantes est vrai, lequel ?
+
+        limit: 5
+        name: Pointeurs
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

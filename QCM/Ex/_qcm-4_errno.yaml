@@ -1,0 +1,85 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    errno:
+        choices:
+        -   text: |
+
+                `getpid(2)`
+
+            valid: True
+            feedback: |
+
+                Voir page de manuel.
+
+        -   text: |
+
+                `malloc(3)`
+
+            valid: False
+            feedback: |
+
+                Notez que `malloc(3)` retourne ``NULL`` en cas d'erreur d'allocation mais met ENONMEM comme erreur dans ``errno``
+
+        -   text: |
+
+                `exit(2)`
+
+            valid: True
+            feedback: |
+
+                Comme cette fonction ne se termine jamais, elle ne peux pas modifier ``errno``.
+
+        -   text: |
+
+                `setenv(3)`
+
+            valid: False
+            feedback: |
+
+                Voir page de manuel.
+
+        -   text: |
+
+                `unsetenv(3)`
+
+            valid: False
+            feedback: |
+
+                Voir page de manuel.
+
+        -   text: |
+
+                `pthreadjoin(3)`
+
+            valid: False
+            feedback: |
+
+                Voir page de manuel et aussi http://pubs.opengroup.org/onlinepubs/9699919799/functions/pthreadjoin.html. La plupart des fonctions pthread* ne modifient pas la valeur de ``errno``, mais le standard n'est pas 100% clair sur ce qu'une implémentation doit faire. Linux ne semble pas fixer la valeur de ``errno``.
+
+
+
+        header: |
+            En C, la variable ``errno`` est utilisée par le système pour fournir une indication sur une erreur qui s'est produite lors de l'exécution d'un appel système ou d'une fonction de la librairie. Parmi les fonctions ci-dessous, une seule ne modifie pas ``errno`` en cas d'erreur. Laquelle ?
+
+        limit: 6
+        name: Variable ``errno``
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

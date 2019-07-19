@@ -1,0 +1,109 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine couvre les processus.
+     - `Les processus <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    fork:
+        choices:
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``2``, quatre processus sont créés.
+
+            valid: True
+            feedback: |
+
+                Le premier processus démarre son exécution. Il exécute `fork(2)`. Un nouveau processus est donc créé. Ces deux processus exécutent à leur tour `fork(2)` et deux processus supplémentaires sont donc créés.
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``3``, huit processus sont créés.
+
+            valid: True
+            feedback: |
+
+                Le premier processus démarre son exécution. Il exécute `fork(2)`. Un nouveau processus est donc créé. Ces deux processus exécutent à leur tour `fork(2)` et deux processus supplémentaires sont donc créés. Chacun de ces quatre processus exécute à son tour `fork(2)` et il y a donc huit processus au total.
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``2``, deux processus sont créés.
+
+            valid: False
+            feedback: |
+
+                Le premier processus démarre son exécution. Il exécute `fork(2)`. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``2``, trois processus sont créés.
+
+            valid: False
+            feedback: |
+
+                Le premier processus démarre son exécution. Il exécute `fork(2)`. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``3``, trois processus sont créés.
+
+            valid: False
+            feedback: |
+
+                Le premier processus démarre son exécution. Il exécute `fork(2)`. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+
+        -   text: |
+
+                Lorsque ``n`` est initialisé à ``3``, quatre processus sont créés.
+
+            valid: False
+            feedback: |
+
+                Le premier processus démarre son exécution. Il exécute `fork(2)`. Un nouveau processus est donc créé. Chacun de ces deux processus poursuit son exécution et la valeur de ``i`` est incrémentée.
+
+
+        header: |
+            L'appel système `fork(2)` permet de créer une copie du processus courant. Un étudiant a écrit le fragment de code ci-dessous se trouvant dans la fonction ``main``:
+
+
+            .. code-block:: c
+
+
+               int n=...
+               for(int i=0; i<n ; i++) {
+                 printf("i=%d\n",i);
+                 pidt pid;
+                 pid=fork();
+                 if (pid==-1) {
+                 perror("fork");
+                 exit(EXITFAILURE);
+               }
+               else {
+                 if(pid!=0) {
+                 printf("Running in %d\n",pid);
+               }
+               }
+               }
+               return(EXITSUCCESS);
+
+            Lors de l'exécution de ce programme, combien de processus sont créés en fonction de la valeur de ``n`` ?
+
+        limit: 6
+        name: `fork(2)`_
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

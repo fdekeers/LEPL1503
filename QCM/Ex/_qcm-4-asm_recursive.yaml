@@ -1,0 +1,220 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    recursive:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+
+                   f:
+                   pushl   %ebp
+                   movl    %esp, %ebp
+                   subl    $12, %esp
+                   movl    8(%ebp), %eax
+                   movl    %eax, -4(%ebp)
+                   movl    a, %eax
+                   movl    -4(%ebp), %ecx
+                   subl    $1, %ecx
+                   movl    %ecx, (%esp)
+                   movl    %eax, -8(%ebp)
+                   calll   f
+                   movl    -8(%ebp), %ecx
+                   addl    %eax, %ecx
+                   movl    %ecx, %eax
+                   addl    $12, %esp
+                   popl    %ebp
+                   ret
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   f:
+                   pushl   %ebp
+                   movl    %esp, %ebp
+                   subl    $12, %esp
+                   movl    8(%ebp), %eax
+                   movl    %eax, -4(%ebp)
+                   movl    -4(%ebp), %eax
+                   subl    $1, %eax
+                   movl    %eax, (%esp)
+                   calll   f
+                   movl    %eax, -8(%ebp)
+                   movl    -8(%ebp), %eax
+                   addl    a, %eax
+                   addl    $12, %esp
+                   popl    %ebp
+                   ret
+
+            valid: True
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int f(int i)
+                   {
+                     int j=f(i-1);
+                     return j+a;
+                   }
+
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   f:
+                   pushl   %ebp
+                   movl    %esp, %ebp
+                   subl    $12, %esp
+                   movl    8(%ebp), %eax
+                   movl    %eax, -4(%ebp)
+                   movl    a, %eax
+                   movl    -4(%ebp), %ecx
+                   movl    %ecx, (%esp)
+                   movl    %eax, -8(%ebp)
+                   calll   f
+                   movl    -8(%ebp), %ecx
+                   addl    %eax, %ecx
+                   movl    %ecx, %eax
+                   addl    $12, %esp
+                   popl    %ebp
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int f(int i)
+                   {
+                     return a+f(i);
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   f:
+                   pushl   %ebp
+                   movl    %esp, %ebp
+                   subl    $8, %esp
+                   movl    8(%ebp), %eax
+                   movl    %eax, -4(%ebp)
+                   movl    -4(%ebp), %eax
+                   addl    a, %eax
+                   movl    %eax, (%esp)
+                   calll   f
+                   addl    $8, %esp
+                   popl    %ebp
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int f(int i) // incorrect
+                   {
+                     return f(i+a);
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   pushl   %ebp
+                   movl    %esp, %ebp
+                   subl    $12, %esp
+                   movl    8(%ebp), %eax
+                   movl    %eax, -4(%ebp)
+                   movl    -4(%ebp), %eax
+                   subl    $1, %eax
+                   movl    %eax, (%esp)
+                   calll   f
+                   movl    %eax, -8(%ebp)
+                   movl    a, %eax
+                   addl    $12, %esp
+                   popl    %ebp
+                   ret
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int f(int i)
+                   {
+                     int j=f(i-1);
+                     return a;
+                   }
+
+
+        header: |
+            Les fonctions récursives sont parfois utilisées en langage C. Lors de leur exécution, la pile permet de stocker temporairement les valeurs des variables et les adresses de retour. Considérons la fonction récursive suivante (où ``a`` est une variable globale) :
+
+
+            .. code-block:: c
+
+
+               int f(int i)
+               {
+                 return a+f(i-1);
+               }
+
+            Parmi les séquences d'instructions assembleur ci-dessous, une seule est une traduction correctement de cette fonction. Laquelle ?
+
+        limit: 5
+        name:  Fonctions récursives
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

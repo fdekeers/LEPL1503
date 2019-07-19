@@ -1,0 +1,117 @@
+accessible: True
+author: 
+context: |
+    Ces questions ont pour objectif de vous permettre de tester vous-même votre compréhension de la matière couverte par cette mission de mise en route. Elles supposent que vous avez lu le premier chapitre du syllabus contenant l'introduction à Unix et au langage C.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    hello:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdio.h>
+                   int main(int argc, const char *argv[]) {
+                     printf("Hello, world\n");
+                   }
+
+            valid: True
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdio.h>
+                   int main(int argc, const char *argv[]) {
+                     printf("Hello,");
+                     printf(" world\n");
+                   }
+
+            valid: True
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdio.h>
+                   void main(int argc, const char *argv[]) {
+                     printf("Hello, world\n");
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int main(int argc, const char *argv[]) {
+                     printf("Hello, world\n");
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdlib.h>
+                   int main() {
+                     printf("Hello, world\n");
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   #include <stdlib.h>
+                   void main()
+                   printf("Hello, world\n");
+                   }
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            Depuis la publication du livre de référence [KernighanRitchie1998], le premier programme écrit en langage C affiche à l'écran la chaîne de caractères "Hello, world". Parmi les codes source ci-dessous, un seul est entièrement correct. Lequel ?
+
+
+        limit: 6
+        name: Premier programme en langage C
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

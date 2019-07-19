@@ -1,0 +1,196 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    conditionnelles:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   cmpl    $4, b
+                   jge     end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   cmpl    $4, b
+                   jl      next
+                   jmp     end
+                   next:
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: True
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   if((b>=4))
+                   {}
+                     else
+                     a++;
+
+        -   text: |
+
+
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   cmpl    $4, b
+                   jg      end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   if(b<=4)
+                   a++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   cmpl    $4, b
+                   je      end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   if(b!=4)
+                   a++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   cmpl    $4, b
+                   jl      end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   if(!(b<4))
+                   a++;
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   cmpl    $4, b
+                   jl      end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de  :
+
+
+                .. code-block:: c
+
+
+                   if(b>=4)
+                   a++;
+
+
+        header: |
+            Les instructions conditionnelles sont fréquemment utilisées en langage C et en assembleur. Considérons le fragment de programme C ci-dessous (``a`` et ``b`` sont des variables globales de type ``int``):
+
+
+            .. code-block:: c
+
+
+               if(b<4)
+               a++;
+
+            Une seule des séquences d'instructions assembleur ci-dessous est une traduction correcte de cette séquence d'instructions. Laquelle ?
+
+        limit: 6
+        name: Instructions conditionnelles
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

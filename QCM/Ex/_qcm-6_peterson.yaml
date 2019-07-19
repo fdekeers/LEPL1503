@@ -1,0 +1,201 @@
+accessible: True
+author: 
+context: |
+    Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
+     - :ref:`theorie:threads` (sauf la section `Utilisation d'instruction atomique`)
+     - :ref:`theorie:comthreads` (jusqu'à la section `Le problème des philosophes`) 
+    ..  - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`
+    .. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    peterson:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   /* initialisation */
+                   bool in1 = false;
+                   bool in2 = false;
+                   int last = 1;
+                   // thread 1
+                   while (true) {
+                     in1 = true;
+                     last = 1;
+                   while ( in2 &&  (last==1)) {};
+                     sectioncritique();
+                     in1=false;
+                     // ...
+                   }
+                   // thread2
+                   while (true) {
+                     in2 = true;
+                     last = 2;
+                   while ( in1 &&  (last==2)) {};
+                     sectioncritique();
+                     in2=false;
+                     // ...
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   /* initialisation */
+                   bool in1 = false;
+                   bool in2 = false;
+                   int last = 2;
+                   // thread 1
+                   while (true) {
+                     in1 = true;
+                     last = 1;
+                   while ( in2 &&  (last==1)) {};
+                     sectioncritique();
+                     in1=false;
+                     // ...
+                   }
+                   // thread2
+                   while (true) {
+                     in2 = true;
+                     last = 2;
+                   while ( in1 &&  (last==2)) {};
+                     sectioncritique();
+                     in2=false;
+                     // ...
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   // initialisation
+                   bool in1 = false;
+                   bool in2 = false;
+                   int last = 1;
+                   // thread 1
+                   while (true) {
+                     in1 = true;
+                     last = 1;
+                   while ( in1 &&  (last==1)) {};
+                     sectioncritique();
+                     in1=false;
+                     // ...
+                   }
+                   // thread2
+                   while (true) {
+                     in2 = true;
+                     last = 2;
+                   while ( in2 &&  (last==2)) {};
+                     sectioncritique();
+                     in2=false;
+                     // ...
+                   }
+
+            valid: False
+            feedback: |
+
+                Cette solution ne fonctionne pas. Si un des deux threads est seul, il n'entrera jamais en section critique.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   // initialisation
+                   bool in1 = false;
+                   bool in2 = false;
+                   int last = 2;
+                   // thread 1
+                   while (true) {
+                     in1 = true;
+                     last = 1;
+                   while ( in2 &&  (last==2)) {};
+                     sectioncritique();
+                     in1=false;
+                     // ...
+                   }
+                   // thread2
+                   while (true) {
+                     in2 = true;
+                     last = 2;
+                   while ( in1 &&  (last==1)) {};
+                     sectioncritique();
+                     in2=false;
+                     // ...
+                   }
+
+            valid: False
+            feedback: |
+
+                Cette solution ne fonctionne pas. Il est possible que le thread 1 rentre en section critique puis le thread 2 met ``last`` à 2 et peut également y entrer sans que thread 1 n'en soit sorti.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   // initialisation
+                   bool in1 = false;
+                   bool in2 = false;
+                   int last = 1;
+                   // thread 1
+                   while (true) {
+                     last = 1;
+                     in1 = true;
+                   while ( in2 &&  (last==1)) {};
+                     sectioncritique();
+                     in1=false;
+                     // ...
+                   }
+                   // thread2
+                   while (true) {
+                     last = 2;
+                     in2 = true;
+                   while ( in1 &&  (last==2)) {};
+                     sectioncritique();
+                     in2=false;
+                     // ...
+                   }
+
+            valid: False
+            feedback: |
+
+                Cette solution ne fonctionne pas. Il y a un risque de violation de section critique. Si le thread 1 fait ``last=1;`` puis est interrompu avant de faire ``in1=true;``. Le thread 2 exécute alors ``last=2;`` suivi de ``in2=true;``. A cet instant, ``in2==false`` et le thread 2 rentre en section critique puisque ``in1==false``. Le thread 1 se réveille et exécute ``in1=true;``. Il peut ensuite immédiatement entre en section critique puisque ``last`` vaut ``2`` à cet instant.
+
+
+        header: |
+            L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien comprendre son fonctionnement, il est utile de réfléchir à d'autres formulations que celle utilisées dans le syllabus. Parmi les fragments de code ci-dessous, un seul implémente correctement l'algorithme de Peterson. Lequel ?
+
+
+        limit: 5
+        name: Algorithme de Peterson
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

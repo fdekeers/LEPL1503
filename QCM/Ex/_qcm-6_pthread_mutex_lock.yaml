@@ -1,0 +1,131 @@
+accessible: True
+author: 
+context: |
+    Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
+     - :ref:`theorie:threads` (sauf la section `Utilisation d'instruction atomique`)
+     - :ref:`theorie:comthreads` (jusqu'à la section `Le problème des philosophes`) 
+    ..  - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`
+    .. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    pthread_mutex_lock:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   void update(int * val, pthreadmutext * mutex) {
+
+                     err=pthreadmutexlock(mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexlock");
+
+                     // mise à jour de la variable globale
+
+                     err=pthreadmutexunlock(mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexunlock");
+
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   void update(int * val, pthreadmutext * mutex) {
+
+                     err=pthreadmutexunlock(mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexunlock");
+
+                     // mise à jour de la variable globale
+
+                     err=pthreadmutexlock(mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexlock");
+
+                   }
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   void update(int val, pthreadmutext mutex) {
+
+                     err=pthreadmutexlock(mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexlock");
+
+                     // mise à jour de la variable globale
+
+                     err=pthreadmutexunlock(mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexunlock");
+
+                   }
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   void update(int * val, pthreadmutext mutex) {
+
+                     err=pthreadmutexlock(&mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexlock");
+
+                     // mise à jour de la variable globale
+
+                     err=pthreadmutexunlock(&mutex);
+                     if(err!=0)
+                     error(err,"pthreadmutexunlock");
+
+                   }
+
+            valid: False
+            feedback: |
+
+
+
+
+        header: |
+            Un programme utilisant plusieurs threads doit mettre à jour une variable globale partagée entre tous les threads. Pour cela, le développeur écrit une fonction ``update`` qui prend comme arguments la variable à mettre à jour et le mutex qui y est associé. Parmi les extraits ci-dessous, lequel permet de mettre à jour la variable sans risque de contention entre les threads qui y accèdent ?
+
+        limit: 4
+        name: Utilisation de `pthread_mutex_lock(3posix)`_ et `pthread_mutex_unlock(3posix)`_
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

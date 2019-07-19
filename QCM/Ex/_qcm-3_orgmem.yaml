@@ -1,0 +1,118 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)` et `free(3)`
+     - http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    orgmem:
+        choices:
+        -   text: |
+
+
+                - la variable ``i`` déclarée en ``ligne A`` est stockée dans la zone des variables non-initialisées
+                - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+                - la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
+                - la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - la variable ``i`` déclarée en ``ligne A`` est stockée dans la zone des variables non-initialisées
+                - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+                - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+                - la variable ``i`` déclarée en ``ligne E`` est stockée sur la pile
+
+
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables initialisées
+                - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+                - la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
+                - la variable ``i`` déclarée en ``ligne E`` est stockée sur la pile
+                - la variable ``k`` déclarée en ``ligne F`` est stockée dans la zone des variables non-initialisées
+
+            valid: False
+            feedback: |
+        -   text: |
+
+                - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+                - l'argument ``i`` déclaré en ``ligne C`` est stocké sur le tas
+                - la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
+
+            valid: False
+            feedback: |
+        -   text: |
+
+                - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+                - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+                - la variable ``j`` déclarée en ``ligne D`` est stockée sur la pile
+                - la variable ``i`` déclarée en ``ligne E`` est stockée sur le tas
+                - la variable ``k`` déclarée en ``ligne F`` est stockée sur la pile
+
+            valid: False
+            feedback: |
+        -   text: |
+
+                - la variable ``i`` déclarée et initialisée en ``ligne A`` est stockée dans la zone des variables initialisées
+                - le tableau ``tab`` déclaré en ``ligne B`` est stocké dans la zone des variables non-initialisées
+                - l'argument ``i`` déclaré en ``ligne C`` est stocké sur la pile
+                - la variable ``k`` déclarée en ``ligne F`` est stockée sur le tas
+
+
+
+            valid: False
+            feedback: |
+        header: |
+            Considérons le fragment de programme ci-dessous.
+
+
+            .. code-block:: c
+
+
+               #include <stdio.h>
+               int i,j,k = 1252;        // ligne A
+               int tab[1000];           // ligne B
+               void f(int i) {          // ligne C
+                 int j;                 // ligne D
+                 // code non fourni
+               }
+               void g(char c) {
+                 int i;                 // ligne E
+                 // code non fourni
+               }
+               int main(int argc, char * argv[])
+               {
+                 int k=1;               // ligne F
+
+                 f(argc);
+                 g('a');
+               }
+
+            Lors de l'exécution de ce programmes, les valeurs des différentes variables sont stockées en mémoire. Un seul des groupes d'affirmations ci-dessous est correct. Lequel ?
+
+
+        limit: 6
+        name: Organisation de la mémoire
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

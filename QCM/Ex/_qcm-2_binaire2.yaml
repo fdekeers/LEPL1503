@@ -1,0 +1,79 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    binaire2:
+        choices:
+        -   text: |
+
+                Si la variable ``x`` est un ``short`` (signé) sur 16 bits, alors la représentation binaire de ``-17`` est ``11111111 11101111``
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                Si la variable ``x`` est un ``short`` (signé) sur 16 bits, alors la représentation binaire de ``-23`` est ``11111111 11101001``
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                Si la variable ``x`` est un ``short`` (signé) sur 16 bits, alors la représentation binaire de ``-17`` est ``00000000 00010001``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                Si la variable ``x`` est un ``short`` (signé) sur 16 bits, alors la représentation binaire de ``-17`` est ``10000000 00010001``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                Si la variable ``x`` est un ``short`` (signé) sur 16 bits, alors la représentation binaire de ``-23`` est ``00000000 00010111``
+
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                Si la variable ``x`` est un ``short`` (signé) sur 16 bits, alors la représentation binaire de ``-23`` est ``11111111 11100110``
+
+
+            valid: False
+            feedback: |
+
+
+                .. http://www.binaryconvert.com/ pour des conversions sur le web
+
+
+
+
+        header: |
+            Parmi les affirmations suivantes relatives aux nombres signés en représentation binaire, une seule est vraie. Laquelle ?
+
+
+        limit: 6
+        name: Notation binaire
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

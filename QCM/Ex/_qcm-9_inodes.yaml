@@ -1,0 +1,76 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine porte sur le système de fichiers et sa manipulation par les processus.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    inodes:
+        choices:
+        -   text: |
+
+
+                - deux fichiers se trouvant dans des répertoires différents sur le même disque peuvent avoir le même `inode`
+                - le champ ``nlinks`` est toujours positif
+                - un accès au fichier modifie le ``atime`` associé à ce fichier
+
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                - deux fichiers ont toujours des `inode` différents
+                - l'`inode` contient le nom du fichier
+                - une écriture dans un fichier modifie le ``mtime`` associé à ce fichier
+
+            valid: False
+            feedback: |
+
+                Les deux premières affirmations sont fausses.
+
+
+        -   text: |
+
+                - un fichier et un répertoire se trouvant sur le même disque peuvent avoir le même `inode`
+                - une lecture dans un fichier modifie le ``mtime`` associé à ce fichier
+                - l'`inode` contient le nom du fichier
+
+            valid: False
+            feedback: |
+
+                Toutes les affirmations sont fausses.
+
+        -   text: |
+
+                - une copie d'un fichier incrémente la valeur du champ ``nlinks`` de son `inode`
+                - une lecture dans un fichier modifie le ``atime`` associé à ce fichier
+                - il n'y a jamais deux fichiers qui ont le même `inode`
+
+            valid: False
+            feedback: |
+
+                La première et la troisième affirmation sont fausses.
+
+
+        header: |
+            Le système de fichiers Unix utilise des `inode` pour stocker les meta-données relatives à un fichier/répertoire. Parmi les groupes d'affirmations suivants, un seul est correct. Lequel ?
+
+        limit: 4
+        name: Système de fichiers
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

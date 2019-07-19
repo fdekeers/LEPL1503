@@ -1,0 +1,167 @@
+accessible: True
+author: 
+context: |
+    Cette semaine porte sur la communication et la synchronisation entre threads. Plus précisément, la matière est décrite dans les deux sections suivantes :
+     - :ref:`theorie:threads` (sauf la section `Utilisation d'instruction atomique`)
+     - :ref:`theorie:comthreads` (jusqu'à la section `Le problème des philosophes`) 
+    ..  - `Communication entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html>`
+    .. - `Coordination entre threads <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/threads2.html#coordination-entre-threads>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    plusieursmutex:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   // thread A
+
+                   update(&a,&b,&x,&y);
+                   update(&a,&c,&x,&z);
+
+                   // thread B
+
+                   update(&b,&c,&y,&z);
+                   update(&a,&c,&x,&z);
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   // thread A
+
+                   update(&a,&b,&x,&y);
+                   update(&b,&c,&y,&z);
+
+                   // thread B
+
+                   update(&b,&c,&y,&z);
+                   update(&a,&c,&x,&z);
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   // thread A
+
+                   update(&a,&b,&x,&y);
+                   update(&c,&a,&z,&x);
+
+                   // thread B
+
+                   update(&b,&c,&y,&z);
+                   update(&a,&c,&x,&z);
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: none
+
+
+                   // thread A
+
+                   update(&a,&b,&x,&y);
+                   update(&a,&c,&x,&z);
+
+                   // thread B
+
+                   update(&b,&c,&y,&z);
+                   update(&c,&a,&z,&x);
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   // thread A
+
+                   update(&a,&b,&x,&y);
+                   update(&a,&b,&x,&y);
+
+                   // thread B
+
+                   update(&b,&a,&y,&x);
+                   update(&a,&c,&x,&z);
+
+            valid: False
+            feedback: |
+
+
+        header: |
+            Dans certains programmes, il est nécessaire de définir plusieurs mutex qui sont utilisés par différents threads pour gérer l'accès à des variables partagées. Considérons un programme qui utilise trois variables globales et est découpé en plusieurs threads.
+
+
+            .. code-block:: c
+
+
+               long a=5;   // variable globale partagée
+               long b=7;   // variable globale partagée
+               long c=9;   // variable globale partagée
+
+               pthreadmutext x; // variable globale associée à a
+               pthreadmutext y; // variable globale associée à b
+               pthreadmutext z; // variable globale associée à c
+
+            void update(int * val1, int * val2, pthreadmutext * mutex1, pthreadmutext * mutex2) {
+
+            err=pthreadmutexlock(mutex1);
+            if(err!=0)
+            error(err,"pthreadmutexlock");
+            err=pthreadmutexlock(mutex2);
+            if(err!=0)
+            error(err,"pthreadmutexlock");
+
+            // mise à jour val1
+            // mise à jour val2
+
+            err=pthreadmutexunlock(mutex1);
+            if(err!=0)
+            error(err,"pthreadmutexunlock");
+
+            err=pthreadmutexunlock(mutex2);
+            if(err!=0)
+            error(err,"pthreadmutexunlock");
+
+            }
+
+
+            Ce programme utilise plusieurs threads qui modifient les variables ``a``, ``b`` et ``c``. Parmi les fragments de code ci-dessous qui utilisent plusieurs threads, un seul est correct. Lequel ?
+
+        limit: 5
+        name: Utilisation de plusieurs mutex
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

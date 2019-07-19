@@ -1,0 +1,98 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    ptrstruct:
+        choices:
+        -   text: |
+
+
+
+
+                .. code-block:: c
+
+
+                   void scale(struct *fractt f, int s);
+                   // appel à la fonction :
+                   // scale(&f,3);
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   void scale(struct fractt f, int s);
+                   // appel à la fonction :
+                   // scale(f,3);
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   void scale(int num, int den, int s);
+                   // appel à la fonction :
+                   // scale(f.num, f.denum,3);
+
+
+
+            valid: False
+            feedback: |
+        header: |
+            Dans un programme de manipulation de fractions, on définit la structure suivante pour représenter une fraction entière :
+
+
+            .. code-block:: c
+
+
+               struct fractt {
+                 int num;
+                 int denum;
+               };
+
+               On veut pouvoir facilement écrire une fonction de type ``void`` qui remplace la valeur stockée dans la fraction par le résultat de l'addition de la fraction et un nombre entier passé en fragment. La spécification de cette fonction pourrait être :
+
+
+               .. code-block:: c
+
+
+               /*
+               * augmente la fraction passé en argument de l'entier n et place
+               * la somme calculée dans la fraction
+               * Exemples
+               *  Si f vaut 1/3, alors l'application de la fonction avec f et 2 comme
+               *  arguments a comme résultat de stocker la valeur 7/3 dans f
+               *  Si f vaut 2/1, alors l'application de la fonction avec f et 1 comme
+               *  arguments a comme résultat de stocker la valeur 3/1 dans f
+               */
+
+            Laquelle des signatures ci-dessous peut-elle être utilisée pour effectuer cette opération et modifier la fraction passé en argument ?
+
+
+        limit: 3
+        name:  Pointeurs et structures
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

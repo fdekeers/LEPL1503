@@ -1,0 +1,109 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    extraction:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   !(((unsigned int) f) & 0x80000000)
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   !(((unsigned int) f) >> 31)
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   !(((unsigned int) f) & 0x10000000)
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   !(((unsigned int) f) << 31)
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   !(((unsigned int) f) > 31)
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   !(((unsigned int) f) & 31)
+
+            valid: False
+            feedback: |
+
+
+
+
+        header: |
+            Il est parfois nécessaire en C de manipuler directement la représentation binaire d'un nombre. Si ``f`` est un nombre de type ``float`` stocké sur 32 bits, laquelle des expressions ci-dessous peut-elle être intégrée dans ce code pour afficher positif ou négatif en fonction du signe de ce nombre ?
+
+
+            .. code-block:: none
+
+
+               if(<à compléter>)
+               printf("positif\n");
+               else
+               printf("negatif\n");
+
+        limit: 6
+        name: Extraction de bits
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

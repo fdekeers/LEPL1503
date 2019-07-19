@@ -1,0 +1,95 @@
+
+
+Q| La commande `ls(1)` permet de lister le contenu d'un répertoire. Elle supporte de nombreux paramètres. Parmi les groupes d'affirmation suivants, un seul est valide, lequel ?
+
+C| 
+- Dans un répertoire, la commande ``ls -a`` sans argument permet d'afficher la liste de tous les fichiers et répertoires présents
+- La commande ``ls -r`` permet de lister les répertoires présents dans le répertoire courant en inversant l'ordre
+- La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire non cachés
+
+|V
+
+C| 
+- Dans un répertoire, la commande ``ls -a`` sans argument permet d'afficher la liste de tous les fichiers et répertoires présents
+- La commande ``ls -R`` permet de lister de façon récursive le contenu du répertoire courant et de ses sous-répertoires
+- La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire non cachés
+
+|V
+
+C| 
+- Dans un répertoire, la commande ``ls *`` permet d'afficher la liste de tous les fichiers et répertoires présents
+- La commande ``ls -f`` permet de lister le contenu du répertoire courant sans trier les fichiers par nom
+- La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire
+
+|F
+
+C| 
+- Dans un répertoire, l'appel à `ls(1)` sans argument permet d'afficher la liste de tous les fichiers et répertoires présents
+- La commande ``ls -r`` permet de lister de façon récursive le contenu du répertoire courant et de ses sous-répertoires
+- La commande ``ls -l`` permet d'obtenir la liste détaillée du contenu du répertoire courant avec toutes les informations relatives à chaque fichier et répertoire
+
+|F
+
+Q| Depuis la publication du livre de référence [KernighanRitchie1998], le premier programme écrit en langage C affiche à l'écran la chaîne de caractères "Hello, world". Parmi les codes source ci-dessous, un seul est entièrement correct. Lequel ?
+
+
+C| 
+
+
+   #include <stdio.h>
+   int main(int argc, const char *argv[]) {
+     printf("Hello, world\n");
+   }
+
+|V
+
+C| 
+
+
+   #include <stdio.h>
+   int main(int argc, const char *argv[]) {
+     printf("Hello,");
+     printf(" world\n");
+   }
+
+|V
+
+C| 
+
+
+   #include <stdio.h>
+   void main(int argc, const char *argv[]) {
+     printf("Hello, world\n");
+   }
+
+|F
+
+C| 
+
+
+   int main(int argc, const char *argv[]) {
+     printf("Hello, world\n");
+   }
+
+|F
+
+C| 
+
+
+   #include <stdlib.h>
+   int main() {
+     printf("Hello, world\n");
+   }
+
+|F
+
+C| 
+
+
+   #include <stdlib.h>
+   void main()
+   printf("Hello, world\n");
+   }
+
+|F
+

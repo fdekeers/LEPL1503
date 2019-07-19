@@ -1,0 +1,68 @@
+accessible: True
+author: 
+context: |
+    Ces questions ont pour objectif de vous permettre de tester vous-même votre compréhension de la matière couverte par cette mission de mise en route. Elles supposent que vous avez lu le premier chapitre du syllabus contenant l'introduction à Unix et au langage C.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    man:
+        choices:
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   man -k intro
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   man intro
+
+            valid: False
+            feedback: |
+
+                Cette commande permet d'obtenir la page dénommée ``intro`` mais uniquement dans la première section du manuel. Elle ne liste pas toutes les pages dont le résumé contient le mot clé ``intro``.
+
+        -   text: |
+
+
+                .. code-block:: console
+
+
+                   man -k *intro*
+
+            valid: False
+            feedback: |
+
+                Par défaut, lorsque vous passez un argument tel que ``*intro*`` en ligne de commande, le shell va tenter de remplacer ``*intro*`` par tous les noms de fichiers du répertoire courant qui contiennent l'expression régulière qui commence par n'importe quelle suite de caractères, contient ``intro`` et se termine par n'importe quelle suite de caractères. Si le répertoire dans lequel vous exécutez cette commande contient les fichiers ``intro.txt`` et ``intro.dat``, ``man`` recevra ces deux noms de fichiers comme arguments.
+
+
+
+        header: |
+            La commande `man(1)` permet de lire les pages de manuel d'un système Unix. Elle est particulièrement utile pour vérifier les arguments à donner à un programme en ligne de commande ou pour savoir comment utiliser certaines fonctions de la librairie standard ou appels systèmes. Comment faut-il appeler la commande `man(1)` pour lister toutes les pages de manuel dont le résumé contient le mot ''intro'' ?
+
+        limit: 3
+        name: Commande `man(1)`_
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

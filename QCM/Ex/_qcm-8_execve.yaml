@@ -1,0 +1,166 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine couvre les processus.
+     - `Les processus <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    execve:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   char *arguments[]={"echo", "-n", "SINF1252", NULL};
+                   char *environnement[]={"LANG=fr",NULL};
+                     int err=execve("/bin/echo", arguments, environnement);
+                     if(err!=0) {
+                     perror("execve");
+                     exit(EXITFAILURE);
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   char prog[]="echo";
+                   char param1[]="-n";
+                   char param2[]="SINF1252";
+                   char *arguments[4];
+                   arguments[0]=prog;
+                   arguments[1]=param1;
+                   arguments[2]=param2;
+                   arguments[3]=NULL;
+                   char *environnement[]={"LANG=fr", NULL};
+                     int err=execve("/bin/echo", arguments, environnement);
+                     if(err!=0) {
+                     perror("execve");
+                     exit(EXITFAILURE);
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   char arguments[]={"echo", "-n", "SINF1252", NULL};
+                   char environnement[]={"LANG=fr",NULL};
+                     int err=execve("/bin/echo", arguments, environnement);
+                     if(err!=0) {
+                     perror("execve");
+                     exit(EXITFAILURE);
+                   }
+
+            valid: False
+            feedback: |
+
+                Les deuxième et troisième arguments à `execve(2)` doivent être de type ``char *arg[]``.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   char prog[]="echo";
+                   char param1[]="-n";
+                   char param2[]="SINF1252";
+                   char *arguments[4];
+                   arguments[0]=prog;
+                   arguments[1]=param1;
+                   arguments[2]=param2;
+                   arguments[3]=NULL;
+                   char *environnement[]={"LANG=fr"};
+                     int err=execve("/bin/echo", arguments, environnement);
+                     if(err!=0) {
+                     perror("execve");
+                     exit(EXITFAILURE);
+                   }
+
+            valid: False
+            feedback: |
+
+                Les deuxième et troisième arguments à `execve(2)` doivent être de type ``char *arg[]``.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   char prog[]="echo";
+                   char param1[]="-n";
+                   char param2[]="SINF1252";
+                   char *arguments[3];
+                   arguments[0]=prog;
+                   arguments[1]=param1;
+                   arguments[2]=param2;
+                   char *environnement[]={"LANG=fr"};
+                     int err=execve("/bin/echo", arguments, environnement);
+                     if(err!=0) {
+                     perror("execve");
+                     exit(EXITFAILURE);
+                   }
+
+            valid: False
+            feedback: |
+
+                Le dernier élément des tableaux de pointeurs ``argv` et ``environnement`` doivent obligatoirement contenir ``NULL``. Sans cela, il n'est pas possible de déterminer le nombre d'éléments dans ces tableaux.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *arguments[]={"echo", "-n", "SINF1252"};
+                   char *environnement[]={"LANG=fr"};
+                     int err=execve("/bin/echo", arguments, environnement);
+                     if(err!=0) {
+                     perror("execve");
+                     exit(EXITFAILURE);
+                   }
+
+            valid: False
+            feedback: |
+
+                Le dernier élément des tableaux de pointeurs ``argv` et ``environnement`` doivent obligatoirement contenir ``NULL``. Sans cela, il n'est pas possible de déterminer le nombre d'éléments dans ces tableaux.
+
+
+
+        header: |
+            Parmi les extraits de programme ci-dessous, lequel est un appel correct à `execve(2)` pour lancer le programme ``/bin/echo`` avec comme arguments ``-n`` et ``SINF1252`` ?
+
+        limit: 6
+        name: `execve(2)`_
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

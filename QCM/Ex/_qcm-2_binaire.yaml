@@ -1,0 +1,73 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    binaire:
+        choices:
+        -   text: |
+
+                La représentation binaire du nombre entier positif ``99``  est ``1100011``
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                La représentation binaire du nombre entier positif ``176``  est ``10110000``
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                La représentation binaire du nombre entier positif ``90``  est ``1100011``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                La représentation binaire du nombre entier positif ``176``  est ``10110001``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                La représentation binaire du nombre entier positif ``166``  est ``10110001``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                La représentation binaire d'un nombre entier positif impair a toujours ``0`` comme bit de poids faible.
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            Parmi les affirmations suivantes relatives aux nombres en représentation binaire, une seule est vraie. Laquelle ?
+
+
+        limit: 6
+        name: Notation binaire
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

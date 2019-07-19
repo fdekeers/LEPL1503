@@ -1,0 +1,141 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et l'utilisation des fonctions `malloc(3)` et `free(3)`
+     - http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/malloc.html#organisation-de-la-memoire
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    strdup:
+        choices:
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *strdup(const char *s)
+                   {
+                     char *new = (char *) malloc ((strlen(s)+1) * sizeof(char));
+                     if (new == NULL)
+                     return NULL;
+                     return memcpy(new, s, (strlen(s)+1) * sizeof(char));
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *strdup(const char *s)
+                   {
+                     char *new = (char *) malloc ((strlen(s)+1) * sizeof(char));
+                     if (!new)
+                     return NULL;
+                     return memcpy(new, s, (strlen(s)+1) * sizeof(char));
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   char *strdup(const char s)
+                   {
+                     void *new = malloc (strlen(s));
+                     if (new == NULL)
+                     return NULL;
+                     return memcpy(new, s, strlen(s));
+                   }
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *strdup(const char *s)
+                   {
+                     char new [strlen(s)+1];
+                     return memcpy(new, s, (strlen(s)+1) * sizeof(char));
+                   }
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *strdup(const char * s)
+                   {
+                     void *new = malloc (strlen(s+1));
+                     return memcpy(new, s, strlen(s+1));
+                   }
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *strdup(const char *s)
+                   {
+                     char *new = (char *) calloc (strlen(s) * sizeof(char));
+                     if (new == NULL)
+                     return NULL;
+                     return memcpy(new, s, (strlen(s) * sizeof(char)));
+                   }
+
+            valid: False
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   char *strdup(const char *s)
+                   {
+                     char *new = (char *) malloc (strlen(s) * sizeof(char));
+                     return memcpy(new, s, (strlen(s) * sizeof(char));
+                   }
+
+
+
+
+            valid: False
+            feedback: |
+        header: |
+            La librairie standard contient la fonction `strdup(3)`. Laquelle des fonctions ci-dessous est-elle une implémentation de correcte `strdup(3)` ?
+
+        limit: 7
+        name: `strdup(3)`_
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

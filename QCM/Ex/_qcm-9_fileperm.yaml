@@ -1,0 +1,169 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine porte sur le système de fichiers et sa manipulation par les processus.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    fileperm:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int nfiles(char * name) {
+
+                     DIR *dirp;
+                     struct dirent *dp;
+                     dp=malloc(sizeof(struct dirent));
+                     if(dp==NULL) {
+                     return -1;
+                   }
+                   dirp = opendir(name);
+                   if(dirp==NULL) {
+                     return -1;
+                   }
+                   int count=0;
+                   while ((dp = readdir(dirp)) != NULL) {
+                     if (dp->dtype==DTREG) {
+                     count++;
+                   }
+                   }
+                   int err = closedir(dirp);
+                   if(err<0) {
+                     return -1;
+                   }
+                   return(count);
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int nfiles(char * name) {
+
+                     DIR *dirp;
+                     struct dirent *dp;
+                     dirp = opendir(name);
+                     if(dirp==NULL) {
+                     return -1;
+                   }
+                   int count=0;
+                   while (readdir(dirp) != NULL) {
+                     count++;
+                   }
+                   int err = closedir(dirp);
+                   if(err<0) {
+                     return -1;
+                   }
+                   return(count);
+                   }
+
+            valid: False
+            feedback: |
+
+                Ce code compte toutes les entrées dans le répertoire et pas seulement le fichiers.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int nfiles2(char * name) {
+
+                     DIR dirp;
+                     struct dirent dp;
+                     dirp = opendir(name);
+                     if(dirp==-1) {
+                     return -1;
+                   }
+                   int count=0;
+                   while ((dp = readdir(dirp)) != -1) {
+                     count++;
+                   }
+
+                   int err = closedir(dirp);
+                   if(err<0) {
+                     return -1;
+                   }
+                   return(count);
+                   }
+
+            valid: False
+            feedback: |
+
+                Ce code est erroné. `opendir(3)` retourne un pointeur et `readdir(3)` également.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int nfiles(char * name) {
+
+                     DIR dirp;
+                     struct dirent dp;
+                     dirp = opendir(name);
+                     int count=0;
+                     while ((dp = readdir(dirp)) != NULL) {
+                     if (dp->dtype==DTREG) {
+                     count++;
+                   }
+                   }
+                   int err = closedir(dirp);
+                   if(err<0) {
+                     return -1;
+                   }
+                   return(count);
+                   }
+
+            valid: False
+            feedback: |
+
+                Ce code est erroné. `opendir(3)` retourne un pointeur et `readdir(3)` également.
+
+
+
+        header: |
+            Les répertoires sont des fichiers spéciaux. Pour les utiliser, il faut faire appel aux fonctions `opendir(3)`, `readdir(3)`  et `closedir(3)`. 
+
+
+            .. code-block:: c
+
+
+               /*
+               * name!=NULL
+               * retourne le nombre de fichiers dans le répertoire name
+               * et -1 en cas d'erreur
+               */
+
+            Parmi les séquences d'instructions ci-dessous, laquelle permet de compter le nombre de fichiers se trouvant dans le répertoire courant ?
+
+        limit: 4
+        name: Manipulation des répertoires
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

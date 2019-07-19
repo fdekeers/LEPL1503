@@ -1,0 +1,129 @@
+accessible: True
+author: 
+context: |
+    Cette semaine porte sur deux modules de théorie. Le premier est la fin du chapitre consacré aux bases du langage C :
+     - :ref:`complementsC`
+    Le second est le début du chapitre consacré aux systèmes multiprocesseurs et l'utilisation de threads en particulier :
+     - :ref:`threads`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    ptrasm:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   leal    a, %eax
+                   movl    %eax, ptr
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   movl    a, %eax
+                   movl    ptr, %ecx
+                   movl    %eax, (%ecx)
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   movl    a, %eax
+                   movl    %eax, ptr
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   pushl   %eax
+                   leal    (%esp), %eax
+                   movl    a, %ecx
+                   movl    %ecx, (%esp)
+                   movl    %eax, ptr
+                   popl    %eax
+
+            valid: False
+            feedback: |
+
+                Cette séquence d'instructions est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   int b=a;
+                   ptr=&(b);
+
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   leal    a, %eax
+                   addl    $4, %eax
+                   movl    %eax, ptr
+
+            valid: False
+            feedback: |
+
+                Cette séquence d'instructions est la traduction de ``ptr=&a+1;``.
+
+
+
+
+        header: |
+            Pour comprendre le fonctionnement des pointeurs en C, il est parfois utile de se ramener à la traduction en assembleur de fragments de code C. Considérons les lignes suivantes :
+
+
+            .. code-block:: c
+
+
+               int a=1252;
+               int * ptr;
+
+               int main(int argc, const char *argv[]) {
+                 ptr=&a;
+               }
+
+            Parmi les séquences d'instructions en assembleur ci-dessous, une seule est la traduction de l'assignation de l'adresse de ``a`` au pointeur ``ptr``. Laquelle
+
+        limit: 5
+        name: Pointeurs en assembleur
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

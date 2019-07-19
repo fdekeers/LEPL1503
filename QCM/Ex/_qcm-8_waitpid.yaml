@@ -1,0 +1,114 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine couvre les processus.
+     - `Les processus <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Threads/processus.html>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    waitpid:
+        choices:
+        -   text: |
+
+
+
+
+                .. code-block:: c
+
+
+
+                   int fils;
+                   int done=false;
+                   while(!done) {
+                     int status;
+                     fils=waitpid(0,&status,0);
+                     if( (fils==-1) && (errno==ECHILD) )
+                     done=true;
+                   }
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+
+                   int fils;
+                   int done=false;
+                   while(!done) {
+                     int status;
+                     if( (waitpid(0,&status,0)==-1) && (errno==ECHILD) )
+                     done=true;
+                   }
+
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+
+                   int fils;
+                   int done=false;
+                   int status;
+                   while(waitpid(0,status,0)!=0) {
+                     if( (fils==-1) && (errno==ECHILD) )
+                     done=true;
+                   }
+
+            valid: False
+            feedback: |
+
+                Le second argument de `waitpid(2)` est un pointeur vers un entier et non un entier.
+
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+
+                   int fils;
+                   int done=false;
+                   while(!done) {
+                     int status;
+                     fils=waitpid(getpid(),&status,0);
+                     if( (fils==-1) && (errno==ECHILD) )
+                     done=true;
+                   }
+
+            valid: False
+            feedback: |
+
+                Lorsque le premier argument de `waitpid(2)` est un entier positif, il s'agit de l'identifiant du processus pour lequel `waitpid(2)` attend. Dans ce cas, `getpid(2)` retourne l'identifiant du processus qui existe `waitpid(2)` et un processus ne peut pas être un fils de lui-même.
+
+
+        header: |
+            L'appel système `waitpid(2)` permet à un processus d'attendre les valeurs de retour de ses processus fils. Un étudiant a écrit un programme qui lance de nombreux processus et veut faire une boucle qui permet de récupérer tous les processus fils qu'il a créé. Parmi les fragments de code ci-dessous, un seul est correct. Lequel ?
+
+
+        limit: 4
+        name: Utilisation de `waitpid(2)`_
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

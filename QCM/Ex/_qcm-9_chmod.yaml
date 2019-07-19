@@ -1,0 +1,97 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine porte sur le système de fichiers et sa manipulation par les processus.
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    chmod:
+        choices:
+        -   text: |
+
+
+                - Le fichier ayant ``00467`` comme permissions est exécutable par n'importe quel utilisateur
+                - Le fichier ayant ``00777`` comme permissions est lisible par son propriétaire
+                - Le fichier ayant ``00600`` ne peut être lu que par son propriétaire
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - Le fichier ayant ``00647`` comme permissions est exécutable par n'importe quel utilisateur
+                - Le fichier ayant ``00700`` comme permissions est lisible par son propriétaire
+                - Le fichier ayant ``00421`` comme permissions ne peut être lu que par son propriétaire
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                - Le fichier ayant ``00476`` comme permissions est exécutable par n'importe quel utilisateur
+                - Le fichier ayant ``00747`` comme permissions est lisible par son propriétaire
+                - Le fichier ayant ``00601`` comme permissions ne peut être lu que par son propriétaire
+
+            valid: False
+            feedback: |
+
+                Le fichier ayant ``00476`` comme permissions ne peut être exécuté que par un membre du groupe correspondant à ce fichier.
+
+        -   text: |
+
+                - Le fichier ayant ``00677`` comme permissions est exécutable par n'importe quel utilisateur
+                - Le fichier ayant ``00017`` comme permissions est lisible par son propriétaire
+                - Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire
+
+            valid: False
+            feedback: |
+
+                Le fichier ayant ``00017`` comme permissions n'est pas lisible par son propriétaire
+
+        -   text: |
+
+
+                - Le fichier ayant ``00755`` comme permissions est exécutable par n'importe quel utilisateur
+                - Le fichier ayant ``00417`` comme permissions est lisible par son propriétaire
+                - Le fichier ayant ``00222`` comme permissions ne peut être lu que par son propriétaire
+
+            valid: False
+            feedback: |
+
+                Le fichier ayant ``00222`` comme permissions n'est pas lisible par son propriétaire
+
+        -   text: |
+
+
+                - Le fichier ayant ``00666`` comme permissions est exécutable par n'importe quel utilisateur
+                - Le fichier ayant ``00400`` comme permissions est modificale par son propriétaire
+                - Le fichier ayant ``00400`` comme permissions ne peut être lu que par son propriétaire
+
+            valid: False
+            feedback: |
+
+                Le fichier ayant ``00666`` comme permissions n'est pas exécutable
+
+
+
+        header: |
+            La page de manuel de `chmod(1posix)` décrit en détails les permissions relatives aux fichiers et répertoires. Ces permissions peuvent être représentées sous une forme numérique ou textuelle. Parmi les affirmations suivantes, relatives à des permissions pour des `fichiers`, un seul groupe est vrai. Lequel ?
+
+
+        limit: 6
+        name: Permissions sur les fichiers
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

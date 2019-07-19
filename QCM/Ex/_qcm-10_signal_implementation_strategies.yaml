@@ -1,0 +1,78 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    signal_implementation_strategies:
+        choices:
+        -   text: |
+
+                - La solution sous forme de queue sans limite de taille permet de s'assurer que tout signal envoyé au processus est reçu par le processus.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - La solution sous forme de drapeaux binaires ne nécessite qu'un seul bit de mémoire par signal mais n'est pas forcément meilleure que la solution utilisant une queue.
+
+            valid: True
+            feedback: |
+
+        -   text: |
+
+                - La solution utilisant une queue permet de s'assurer que tout signal envoyé au processus est reçu par le processus. Elle est donc meilleure que la solution sous forme de drapeaux binaires.
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+                - Une solution intermédiaire utilisant 10 drapeaux par type de signal permettrait d'être à la fois fiable et économe en mémoire.
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+                - La solution utilisant des drapeaux binaires permet de s'assurer que tout signal envoyé au processus est reçu par le processus.
+
+            valid: False
+            feedback: |
+
+
+        -   text: |
+
+                - Avec la solution utilisant des drapeaux binaires, seul les signaux envoyés plusieurs fois avant l'exécution routine de traitement de signal seront perdus.
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            Deux stratégies existent pour implémenter les signaux sous Unix: maintenir une queue de tous les signaux destinés à un processus donné ou représenter l'ensemble des signaux qu'un processus peut recevoir sous la forme de drapeaux binaires (un par signal). Linux utilise la seconde stratégie. 
+
+
+            Parmi les affirmations suivantes, lesquelles sont correctes ?
+
+        limit: 6
+        name: Implémentation des signaux sous Unix
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

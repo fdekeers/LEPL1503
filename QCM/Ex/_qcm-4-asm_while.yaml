@@ -1,0 +1,191 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    while:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    a, %eax
+                   cmpl    c, %eax
+                   je      end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   addl    c, %eax
+                   movl    %eax, b
+                   jmp     begin
+                   end:
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    c, %eax
+                   cmpl    a, %eax
+                   je      end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   addl    c, %eax
+                   movl    %eax, b
+                   jmp     begin
+                   end:
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    c, %eax
+                   cmpl    a, %eax
+                   jle     end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   addl    c, %eax
+                   movl    %eax, b
+                   jmp     begin
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   while(c>a)
+                   {
+                     a++;
+                     b=b+c;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   addl    c, %eax
+                   movl    %eax, b
+                   movl    c, %eax
+                   cmpl    a, %eax
+                   jne     begin
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   do
+                   {
+                     a++;
+                     b=b+c;
+                   }
+                   while(c!=a);
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    c, %eax
+                   cmpl    a, %eax
+                   jne     end
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   movl    b, %eax
+                   addl    c, %eax
+                   movl    %eax, b
+                   jmp     begin
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   while(c==a)
+                   {
+                     a++;
+                     b=b+c;
+                   }
+
+
+        header: |
+            Les boucles ``while`` sont fréquemment utilisées dans des programmes C. Considérons la boucle suivante qui utilise des variables globales (toutes de type ``int``):
+
+
+            .. code-block:: c
+
+
+               while(a!=c)
+               {
+                 a++;
+                 b=b+c;
+               }
+
+            Parmi les séquences d'assembleur ci-dessous, une seule est une traduction correcte de cette boucle ``while``. Laquelle ?
+
+        limit: 5
+        name: Boucles ``while``
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

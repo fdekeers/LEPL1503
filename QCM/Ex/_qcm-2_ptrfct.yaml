@@ -1,0 +1,124 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    ptrfct:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   void swap(int *i, int *j) {
+                     int k;
+                     k=*i;
+                     *i=*j;
+                     *j=k;
+                   }
+                   //échange
+                   swap(&a,&b);
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   void swap(int *i, int *j) {
+                     int k;
+                     k=*j;
+                     *j=*i;
+                     *i=k;
+                   }
+                   //échange
+                   swap(&a,&b);
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   void swap(int i, int j) {
+                     int k;
+                     k=i;
+                     i=j;
+                     j=k;
+                   }
+                   //échange
+                   swap(a,b);
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   void swap(int i, int j) {
+                     int k;
+                     k=i;
+                     i=j;
+                   }
+                   //échange
+                   swap(&a,&b);
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   void swap(int i, int j) {
+                     int k;
+                     int *iptr=&i;
+                     int *jptr=&j;
+                     k=i;
+                     *(iptr)=j;
+                     *(jptr)=k;
+                   }
+                   //échange
+                   swap(a,b);
+
+            valid: False
+            feedback: |
+
+
+        header: |
+            En C, il est parfois nécessaire d'échanger le contenu de deux variables. Si ``a`` et ``b`` sont des variables de type ``int``,  laquelle des fonctions ci-dessous permet de réaliser cette échange entre les contenu des variables ?
+
+
+        limit: 5
+        name:  Pointeurs et fonctions
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

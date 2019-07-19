@@ -1,0 +1,103 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    threadsafe:
+        choices:
+        -   text: |
+
+                `gettimeofday(2)`
+
+            valid: True
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+        -   text: |
+
+                `strsep(3)`
+
+            valid: True
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+        -   text: |
+
+                `getenv(3)`
+
+            valid: False
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+        -   text: |
+
+                `getopt(3)`
+
+            valid: False
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+        -   text: |
+
+                `asctime(3)`
+
+            valid: False
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+        -   text: |
+
+                `strtok(3)`
+
+            valid: False
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+        -   text: |
+
+                `strerror(3)`
+
+            valid: False
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+        -   text: |
+
+                `getopt(3)`
+
+            valid: False
+            feedback: |
+
+                Les fonctions qui ne sont pas thread-safe sont listées dans `pthreads(7)`.
+
+
+
+        header: |
+            La plupart des fonctions de la librairie standard sont des fonctions thread-safe, c'est-à-dire des fonctions que l'on peut utiliser dans plusieurs threads distincts sans risquer de problèmes d'accès concurrent. Cependant, certaines fonctions, souvent parmi les plus anciennes, ne sont pas thread-safe. Parmi les fonctions ci-dessous, une seule est thread-safe. Laquelle ?
+
+        limit: 8
+        name: Fonctions 'thread-safe'
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

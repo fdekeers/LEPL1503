@@ -1,0 +1,70 @@
+accessible: True
+author: 
+context: |
+    La matière couverte cette semaine la section relative aux `types de données <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/C/datatypes.html>` (jusque et y compris la section relative aux `expressions de manipulation de bits <http://sinf1252.info.ucl.ac.be/Theorie/C/datatypes/#les-expressions-de-manipulation-de-bits>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    hexa:
+        choices:
+        -   text: |
+
+                La représentation hexadécimale du nombre entier positif ``27`` est ``1B``
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                La représentation hexadécimale du nombre entier positif ``67`` est ``43``
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                La représentation hexadécimale du nombre entier positif ``67`` est ``34``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                La représentation hexadécimale du nombre entier positif ``27`` est ``B1``
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                La représentation hexadécimale du nombre entier positif ``128`` est ``FF``
+
+            valid: False
+            feedback: |
+
+
+
+        header: |
+            Parmi les affirmations suivantes relatives aux nombres en représentation hexadécimale, une seule est vraie. Laquelle ?
+
+        limit: 6
+        name: Notation hexadécimale
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

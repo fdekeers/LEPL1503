@@ -1,0 +1,146 @@
+
+
+Q| L'algorithme de Peterson peut s'écrire de différentes façons. Pour bien comprendre son fonctionnement, il est utile de réfléchir à d'autres formulations que celle utilisées dans le syllabus. Parmi les fragments de code ci-dessous, un seul implémente correctement l'algorithme de Peterson. Lequel ?
+
+
+C| 
+
+
+   /* initialisation */
+   bool in1 = false;
+   bool in2 = false;
+   int last = 1;
+   // thread 1
+   while (true) {
+     in1 = true;
+     last = 1;
+   while ( in2 &&  (last==1)) {};
+     sectioncritique();
+     in1=false;
+     // ...
+   }
+   // thread2
+   while (true) {
+     in2 = true;
+     last = 2;
+   while ( in1 &&  (last==2)) {};
+     sectioncritique();
+     in2=false;
+     // ...
+   }
+
+|V
+
+C| 
+
+
+   /* initialisation */
+   bool in1 = false;
+   bool in2 = false;
+   int last = 2;
+   // thread 1
+   while (true) {
+     in1 = true;
+     last = 1;
+   while ( in2 &&  (last==1)) {};
+     sectioncritique();
+     in1=false;
+     // ...
+   }
+   // thread2
+   while (true) {
+     in2 = true;
+     last = 2;
+   while ( in1 &&  (last==2)) {};
+     sectioncritique();
+     in2=false;
+     // ...
+   }
+
+|V
+
+C| 
+
+
+
+   // initialisation
+   bool in1 = false;
+   bool in2 = false;
+   int last = 1;
+   // thread 1
+   while (true) {
+     in1 = true;
+     last = 1;
+   while ( in1 &&  (last==1)) {};
+     sectioncritique();
+     in1=false;
+     // ...
+   }
+   // thread2
+   while (true) {
+     in2 = true;
+     last = 2;
+   while ( in2 &&  (last==2)) {};
+     sectioncritique();
+     in2=false;
+     // ...
+   }
+
+|F
+
+C| 
+
+
+   // initialisation
+   bool in1 = false;
+   bool in2 = false;
+   int last = 2;
+   // thread 1
+   while (true) {
+     in1 = true;
+     last = 1;
+   while ( in2 &&  (last==2)) {};
+     sectioncritique();
+     in1=false;
+     // ...
+   }
+   // thread2
+   while (true) {
+     in2 = true;
+     last = 2;
+   while ( in1 &&  (last==1)) {};
+     sectioncritique();
+     in2=false;
+     // ...
+   }
+
+|F
+
+C| 
+
+
+   // initialisation
+   bool in1 = false;
+   bool in2 = false;
+   int last = 1;
+   // thread 1
+   while (true) {
+     last = 1;
+     in1 = true;
+   while ( in2 &&  (last==1)) {};
+     sectioncritique();
+     in1=false;
+     // ...
+   }
+   // thread2
+   while (true) {
+     last = 2;
+     in2 = true;
+   while ( in1 &&  (last==2)) {};
+     sectioncritique();
+     in2=false;
+     // ...
+   }
+
+|F
+

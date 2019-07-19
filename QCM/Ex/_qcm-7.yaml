@@ -1,0 +1,273 @@
+
+
+Q| Les sémaphores peuvent être utilisés tout comme les mutex pour résoudre des problèmes d'exclusion mutuelle. Parmi les extraits de programmes ci-dessous, une seule est une solution correcte au problème de l'exclusion mutuelle en utilisant des sémaphores. Laquelle ?
+
+C| 
+
+
+
+
+   static semt semaphore;
+   long global=0;
+
+   int increment(int i) {
+     // ...
+   }
+
+   void *inc(void * param) {
+     for(int j=0;j<1000000;j++) {
+     semwait(&semaphore);
+     global=increment(global);
+     sempost(&semaphore);
+   }
+   }
+
+   int main (int argc, char *argv[])  {
+     pthreadt thread[NTHREADS];
+     int err;
+
+     seminit(&semaphore, 0,1);
+
+     for(int i=0;i<NTHREADS;i++) {
+     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+     if(err!=0)
+     error(err,"pthreadcreate");
+   }
+
+   // reste non fourni
+   }
+
+|V
+
+C| 
+
+
+
+   semt * semaphore;
+   long global=0;
+
+   int increment(int i) {
+     // ...
+   }
+
+   void *inc(void * param) {
+     for(int j=0;j<1000000;j++) {
+     semwait(semaphore);
+     global=increment(global);
+     sempost(semaphore);
+   }
+   }
+
+   int main (int argc, char *argv[])  {
+     pthreadt thread[NTHREADS];
+     int err;
+     semaphore=(semt *)malloc(sizeof(semt))
+     if(semaphore==NULL)
+     error("malloc");
+
+     seminit(semaphore, 0,1);
+
+     for(int i=0;i<NTHREADS;i++) {
+     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+     if(err!=0)
+     error(err,"pthreadcreate");
+   }
+
+   // reste non fourni
+   }
+
+|V
+
+C| 
+
+
+
+
+   static semt semaphore;
+   long global=0;
+
+   int increment(int i) {
+     // ...
+   }
+
+   void *inc(void * param) {
+     for(int j=0;j<1000000;j++) {
+     semwait(&semaphore);
+     global=increment(global);
+     sempost(&semaphore);
+   }
+   }
+
+   int main (int argc, char *argv[])  {
+     pthreadt thread[NTHREADS];
+     int err;
+
+     seminit(&semaphore, 0,0);
+
+     for(int i=0;i<NTHREADS;i++) {
+     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+     if(err!=0)
+     error(err,"pthreadcreate");
+   }
+
+   // reste non fourni
+   }
+
+|F
+
+C| 
+
+
+
+   static semt semaphore;
+   long global=0;
+
+   int increment(int i) {
+     // ...
+   }
+
+   void *inc(void * param) {
+     for(int j=0;j<1000000;j++) {
+     sempost(&semaphore);
+     global=increment(global);
+     semwait(&semaphore);
+   }
+   }
+
+   int main (int argc, char *argv[])  {
+     pthreadt thread[NTHREADS];
+     int err;
+
+     seminit(&semaphore, 0,0);
+
+     for(int i=0;i<NTHREADS;i++) {
+     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+     if(err!=0)
+     error(err,"pthreadcreate");
+   }
+
+   // reste non fourni
+   }
+
+|F
+
+C| 
+
+
+
+   semt * semaphore;
+   long global=0;
+
+   int increment(int i) {
+     // ...
+   }
+
+   void *inc(void * param) {
+     for(int j=0;j<1000000;j++) {
+     semwait(semaphore);
+     global=increment(global);
+     sempost(semaphore);
+   }
+   }
+
+   int main (int argc, char *argv[])  {
+     pthreadt thread[NTHREADS];
+     int err;
+     semaphore=(semt *)malloc(sizeof(semt))
+     if(semaphore==NULL)
+     error("malloc");
+
+     seminit(semaphore, 0,0);
+
+     for(int i=0;i<NTHREADS;i++) {
+     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+     if(err!=0)
+     error(err,"pthreadcreate");
+   }
+
+   // reste non fourni
+   }
+
+|F
+
+C| 
+
+
+
+   semt * semaphore;
+   long global=0;
+
+   int increment(int i) {
+     // ...
+   }
+
+   void *inc(void * param) {
+     for(int j=0;j<1000000;j++) {
+     sempost(semaphore);
+     global=increment(global);
+     semwait(semaphore);
+   }
+   }
+
+   int main (int argc, char *argv[])  {
+     pthreadt thread[NTHREADS];
+     int err;
+     semaphore=(semt *)malloc(sizeof(semt))
+     if(semaphore==NULL)
+     error("malloc");
+
+     seminit(semaphore, 0,0);
+
+     for(int i=0;i<NTHREADS;i++) {
+     err=pthreadcreate(&(thread[i]),NULL,&inc,NULL);
+     if(err!=0)
+     error(err,"pthreadcreate");
+   }
+
+   // reste non fourni
+   }
+
+|F
+
+Q| La plupart des fonctions de la librairie standard sont des fonctions thread-safe, c'est-à-dire des fonctions que l'on peut utiliser dans plusieurs threads distincts sans risquer de problèmes d'accès concurrent. Cependant, certaines fonctions, souvent parmi les plus anciennes, ne sont pas thread-safe. Parmi les fonctions ci-dessous, une seule est thread-safe. Laquelle ?
+
+C| 
+`gettimeofday(2)`
+
+|V
+
+C| 
+`strsep(3)`
+
+|V
+
+C| 
+`getenv(3)`
+
+|F
+
+C| 
+`getopt(3)`
+
+|F
+
+C| 
+`asctime(3)`
+
+|F
+
+C| 
+`strtok(3)`
+
+|F
+
+C| 
+`strerror(3)`
+
+|F
+
+C| 
+`getopt(3)`
+
+|F
+

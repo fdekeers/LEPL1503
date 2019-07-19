@@ -1,0 +1,110 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    ptr-tableaux:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   printf("%d %d %d %d\n",*ptr,*(ptr+1),*(ptr+2),*(ptr+*(ptr+3)));
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   printf("%d %d %d %d\n",*ptr,*ptr+1,*ptr+2,*(ptr+*(ptr+3)));
+
+            valid: False
+            feedback: |
+
+                Cette ligne affiche ``2 3 4 8``. Sur base des règles de précédence entre les opérations, l'expression ``*ptr+1`` équivaut en fait à ``(*ptr)+1``. En cas de doute, utilisez les parenthèses.
+
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   printf("%d %d %d %d\n",*ptr,*(ptr++),(*ptr++),*(ptr+*(ptr++)));
+
+            valid: False
+            feedback: |
+
+                Cette ligne affiche ``2 2 4 ???``. La dernière expression ``*(ptr+*(ptr++))`` accède une zone de mémoire en dehors du tableau et dont la valeur est inconnue (notez que la valeur de ``ptr++`` est la valeur de ptr AVANT l'incrémentation, contrairement à ``++ptr``).
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   printf("%d %d %d %d\n",*ptr,*(ptr+0),*(ptr+1),*ptr+*(ptr+2));
+
+            valid: False
+            feedback: |
+
+                Cette ligne affiche ``2 2 4 5``. ``*(ptr+0)`` est ``a[0]`` et non ``a[1]``.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   printf("%d %d %d %d\n",*ptr,*ptr+1,(*ptr+1),*(ptr+(ptr+3)));
+
+            valid: False
+            feedback: |
+
+                Cette ligne est syntaxiquement invalide. L'expression ``ptr+(ptr+3)`` est invalide. On ne peut pas additionner deux pointeurs.
+
+
+
+
+        header: |
+            Les pointeurs peuvent être utilisés pour accéder à des tableaux. Considérons un fragment de code C utilisant un tableau d'entiers à une dimension :
+
+
+            .. code-block:: c
+
+
+               int a[]={2,4,3,4,8};
+                 int * ptr;
+
+                 printf("%d %d %d %d\n",a[0],a[1],a[2],a[a[3]]);
+
+            Lors de son exécution, ce programme affiche ``2 4 3 8`` sur sa sortie standard.
+
+
+            Après exécution de ``ptr=&(a[0]);``, une seule des instructions ci-dessous affiche la même séquence de chiffres. Laquelle ?
+
+        limit: 5
+        name: Pointeurs et tableaux
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

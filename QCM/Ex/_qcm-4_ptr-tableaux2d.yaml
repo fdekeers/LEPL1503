@@ -1,0 +1,92 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    ptr-tableaux2d:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: c
+
+
+                   int *ptr;
+
+                   ptr=&(m[0][0]);
+                   printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2));
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int **ptr=m;
+                   printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2));
+
+            valid: False
+            feedback: |
+
+                La déclaration ``int **ptr=m`` est invalide.
+
+        -   text: |
+
+
+                .. code-block:: c
+
+
+                   int *ptr=m;
+                   printf("%p %d %d %d\n",ptr, *(ptr+4*1+2), *(ptr+4*0+5), *(ptr+2*4+2));
+
+            valid: False
+            feedback: |
+
+                La déclaration ``int *ptr=m;`` est invalide, ``m`` n'est pas de type ``int *``.
+
+
+        header: |
+            En C, il est possible d'accéder aux données stockées dans un tableau à deux dimensions via la notation ``a[i][j]`` mais aussi en utilisant des pointeurs. Considérons le fragment de code ci-dessous :
+
+
+            .. code-block:: c
+
+
+               int m[3][4]= { { 1, 2, 3, 4} ,
+               		  { 5, 6, 7, 8} ,
+               		  { 9, 10, 11, 12} };
+
+                 printf("%p %d %d %d\n",m, m[1][2], m[0][5], m[2][2]);
+
+            Un compilateur Java n'accepterait pas de compiler ce programme qui tente d'accéder à l'élément ``m[0][5]`` de la matrice, élément qui n'existe pas sur base de l'initialisation du tableau ``m``. De nombreux compilateurs C acceptent ce fragment de code sans contrainte. Lorsque le programme s'exécute il affiche :
+
+
+            .. code-block:: console
+
+
+                 0x7fff5fbff750 7 6 11
+
+            Parmi les fragments de programme ci-dessous, un seul utilisant la notation avec les pointeurs est correct et affiche la même sortie. Lequel ?
+
+        limit: 3
+        name: Pointeurs et tableaux à deux dimensions
+        multiple: False
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

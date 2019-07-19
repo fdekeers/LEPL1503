@@ -1,0 +1,228 @@
+accessible: True
+author: 
+context: |
+    Cette semaine, la matière porte sur l'organisation de la mémoire et sur le langage assembleur IA32. La matière couverte se trouve dans les sections suivantes du syllabus :
+     - `Organisation des ordinateurs <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html>`
+     - `Etude de cas : IA32 <http://sites.uclouvain.be/SystInfo/notes/Theorie/html/Assembleur/memory.html#etude-de-cas-architecture-ia32>`
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples 
+network_grading: False
+problems:
+    for:
+        choices:
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    $0, a
+                   loop:
+                   movl    a, %eax
+                   cmpl    c, %eax
+                   jge     end
+                   movl    b, %eax
+                   subl    c, %eax
+                   movl    %eax, b
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   jmp     loop
+                   end:
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    $0, a
+                   loop:
+                   movl    c, %eax
+                   cmpl    a, %eax
+                   jle     end
+                   movl    b, %eax
+                   subl    c, %eax
+                   movl    %eax, b
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   jmp     loop
+                   end:
+
+            valid: True
+            feedback: |
+        -   text: |
+
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   loop:
+                   movl    c, %eax
+                   cmpl    a, %eax
+                   jle     end
+                   movl    b, %eax
+                   subl    c, %eax
+                   movl    %eax, b
+                   movl    $0, a
+                   jmp     loop
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   for(a=a+1;c>a;a=0) {
+                     b=b-c;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    $0, a
+                   loop:
+                   movl    a, %eax
+                   cmpl    c, %eax
+                   jg      end
+                   movl    b, %eax
+                   subl    c, %eax
+                   movl    %eax, b
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   jmp     loop
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   for(a=0;a<=c;a++) {
+                     b=b-c;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   movl    $0, a
+                   movl    a, %eax
+                   cmpl    c, %eax
+                   jge     end
+                   movl    b, %eax
+                   subl    c, %eax
+                   movl    %eax, b
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   end:
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   a=0;
+                   if(a<c) {
+                     b=b-c;
+                     a++;
+                   }
+
+        -   text: |
+
+
+                .. code-block:: nasm
+
+
+                   begin:
+                   loop:
+                   movl    a, %eax
+                   cmpl    c, %eax
+                   jge     end
+                   movl    $0, a
+                   movl    b, %eax
+                   subl    c, %eax
+                   movl    %eax, b
+                   movl    a, %eax
+                   addl    $1, %eax
+                   movl    %eax, a
+                   jmp     loop
+
+            valid: False
+            feedback: |
+
+                Ceci est la traduction de :
+
+
+                .. code-block:: c
+
+
+                   for(;a<c;a++) {
+                     a=0;
+                     b=b-c;
+                   }
+
+
+        header: |
+            Rares sont les programmes C qui ne contiennent pas de boucles ``for``. Considérons la boucle ci-dessous qui utilise uniquement des variables globales (de type ``int``) :
+
+
+            .. code-block:: c
+
+
+               for(a=0;a<c;a++) {
+                 b=b-c;
+               }
+
+            Parmi les séquences d'instructions en assembleur ci-dessous, une seule traduit correctement la boucle ``for`` ci-dessus. Laquelle ?
+
+
+        limit: 6
+        name: Boucles ``for``
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0

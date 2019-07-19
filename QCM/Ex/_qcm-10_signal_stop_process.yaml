@@ -1,0 +1,69 @@
+accessible: True
+author: 
+context: |
+environment: mcq
+evaluate: best
+groups: False
+input_random: 0
+limits:
+    output: 2
+    memory: 100
+    time: 30
+name: Questions à choix multiples
+network_grading: False
+problems:
+    signal_stop_process:
+        choices:
+        -   text: |
+
+                - Envoyer un signal SIGKILL à un processus le termine toujours immédiatement.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, un signal SIGINT est envoyé au processus en cours d'exécution.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - Envoyer un signal SIGTERM ou SIGINT est préférable à SIGKILL car le processus peut prévoir une routine de traitement de signal pour se terminer proprement.
+
+            valid: True
+            feedback: |
+        -   text: |
+
+                - Envoyer un signal SIGTERM à un processus le termine toujours immédiatement.
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                - Lorsque l'on tappe Ctrl-C dans le shell pendant l'exécution d'un programme, un signal SIGTERM est envoyé au processus en cours d'exécution.
+
+            valid: False
+            feedback: |
+
+        -   text: |
+
+                - Envoyer un signal SIGTERM ou SIGKILL est préférable à SIGTERM car le processus peut prévoir une routine de traitement de signal pour se terminer proprement.
+
+            valid: False
+            feedback: |
+
+
+        header: |
+            Trois signaux permettent d'arrêter un processus: SIGTERM, SIGINT et SIGKILL. Parmi les affirmations suivantes, lesquelles sont correctes ?
+
+        limit: 6
+        name: Signaux pour arrêter un processus
+        multiple: True
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+tags: {}
+weight: 1.0
