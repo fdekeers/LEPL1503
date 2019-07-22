@@ -10,99 +10,99 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S2] strcat'
 network_grading: false
 order: 3
 problems:
     q1:
-        type: code
-        default: ''
-        language: c
-        name: ''
         header: |-
             Write the body of the function *strcat* which concatenates the strings *dest* and *src* in the *dest* pointer ! As the documentation says, you have to overwrite the '\\0' character that terminates the *dest* string and then add a new '\\0' at the end of the concatenated string. In this way, the *src* string will follow the *dest* string but the result will be considered as a unique entire string. You have to return the pointer to the resulting string *dest*.
 
             .. code-block:: c
 
                 char* strcat(char* dest, const char* src) {
+        name: ''
+        language: c
+        default: ''
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code exceeded the maximum allowed time.
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
         name: Timeout
     '2':
-        visible: true
         type: 1
-        id: sigsegv
-        name: Segmentation Fault
         description: Your code produced a segmentation fault.
+        visible: true
+        name: Segmentation Fault
+        id: sigsegv
     '3':
-        description: Your code does not compile.
         visible: true
-        name: Not compile
-        type: 1
         id: not_compile
-    '4':
         type: 1
-        visible: true
+        name: Not compile
+        description: Your code does not compile.
+    '4':
         id: memory
-        description: Your code exceeded the memory.
+        type: 1
         name: Memory Exceeded
+        description: Your code exceeded the memory.
+        visible: true
     '5':
-        name: Floating Point Exception
-        id: sigfpe
         type: 1
         description: Your code produced a floating point exception.
+        name: Floating Point Exception
         visible: true
+        id: sigfpe
     '6':
-        name: Double free
         id: double_free
+        name: Double free
         description: Your code produced a double free.
-        visible: true
         type: 1
+        visible: true
     '7':
         description: Your code used some banned functions.
+        visible: true
         id: banned_funcs
         type: 1
         name: Banned functions
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: cppcheck
-        description: Your code does not compile with cppcheck.
         name: Cppcheck fails
+        id: cppcheck
+        type: 1
+        description: Your code does not compile with cppcheck.
     '10':
-        description: Task about string operations
-        name: String
-        type: 2
-        visible: true
-        id: ''
-    '11':
-        visible: true
         name: Level 2
         type: 2
         description: Level 2
-        id: ''
-    '9':
         visible: true
+        id: ''
+    '11':
         description: ''
         type: 2
         name: S2
+        visible: true
+        id: ''
+    '9':
+        description: Task about string operations
+        type: 2
+        visible: true
+        name: String
         id: ''
 weight: 1.0

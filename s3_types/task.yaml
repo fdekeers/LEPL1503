@@ -11,45 +11,43 @@ groups: false
 input_random: '0'
 limits:
     time: '10'
-    output: '5210'
     memory: '128'
+    output: '5210'
 name: '[S3] Les types (1/2)'
 network_grading: false
 order: 18
 problems:
     q1:
-        type: code_single_line
-        default: ''
-        name: Un entier
         header: Déclarez une variable ``x`` de type ``int``.
+        name: Un entier
+        default: ''
+        type: code_single_line
     q2:
-        header: Déclarez la variable ``x`` comme un tableau de 10 ``int``.
         name: Un tableau d’entiers
         type: code_single_line
+        header: Déclarez la variable ``x`` comme un tableau de 10 ``int``.
         default: ''
     q3:
-        type: code_single_line
-        default: ''
-        name: Taille d’un tableau
         header: |-
             En supposant que ``sizeof(int)`` vaut 2 et que la taille de tout pointeur
             vaut 8, que vaut ``sizeof(x)`` dans la question précédente ?
+        type: code_single_line
+        name: Taille d’un tableau
+        default: ''
     q4:
-        header: Déclarez la variable ``x`` comme un pointeur vers un ``int``.
         name: Un pointeur vers un entier
         default: ''
+        header: Déclarez la variable ``x`` comme un pointeur vers un ``int``.
         type: code_single_line
     q5:
-        default: ''
         name: Taille d’un pointeur
         header: |-
             En supposant que ``sizeof(int)`` vaut 2 et que la taille de tout pointeur
             vaut 8, que vaut ``sizeof(x)`` sachant que ``x`` a été déclaré comme dans la question précédente ?
+        default: ''
         type: code_single_line
     q6:
         type: code_single_line
-        default: ''
-        name: Taile d’un tableau passé comme argument
         header: |-
             Voici le prototype d’une fonction standard.
 
@@ -58,76 +56,78 @@ problems:
               int pipe(int filedes[2]);
 
             En supposant que ``sizeof(int)`` vaut 2 et que la taille de tout pointeur vaut 8, que vaut ``sizeof(filedes)`` à l’intérieur du corps de la fonction ``pipe`` ?
+        name: Taile d’un tableau passé comme argument
+        default: ''
     q7:
+        default: ''
+        name: Un tableau d’entiers à 2 dimensions
+        type: code_single_line
         header: |-
             Déclarez la variable ``x`` comme un tableau à deux dimensions contenant de ``int`` avec 5
             colonnes et 8 lignes.
-        name: Un tableau d’entiers à 2 dimensions
-        type: code_single_line
-        default: ''
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
-    '1':
-        description: Your code exceeded the maximum allowed time.
-        id: timeout
+    '0':
+        visible: true
         name: Timeout
         type: 1
+        id: timeout
+        description: Your code exceeded the maximum allowed time.
+    '1':
+        type: 1
         visible: true
-    '2':
-        description: Your code produced a segmentation fault.
         id: sigsegv
+        description: Your code produced a segmentation fault.
         name: Segmentation Fault
+    '2':
         type: 1
-        visible: true
-    '3':
         description: Your code does not compile.
-        id: not_compile
-        name: Not compile
-        type: 1
         visible: true
-    '4':
-        description: Your code exceeded the memory.
+        name: Not compile
+        id: not_compile
+    '3':
+        visible: true
         id: memory
-        name: Memory Exceeded
         type: 1
+        name: Memory Exceeded
+        description: Your code exceeded the memory.
+    '4':
+        id: sigfpe
+        type: 1
+        name: Floating Point Exception
+        description: Your code produced a floating point exception.
         visible: true
     '5':
-        description: Your code produced a floating point exception.
-        id: sigfpe
-        name: Floating Point Exception
         type: 1
-        visible: true
-    '6':
         description: Your code produced a double free.
-        id: double_free
         name: Double free
+        visible: true
+        id: double_free
+    '6':
+        id: banned_funcs
+        name: Banned functions
+        description: Your code used some banned functions.
         type: 1
         visible: true
     '7':
-        description: Your code used some banned functions.
-        id: banned_funcs
-        name: Banned functions
-        type: 1
-        visible: true
-    '8':
         description: Your code does not compile with cppcheck.
+        visible: true
         id: cppcheck
-        name: Cppcheck fails
         type: 1
+        name: Cppcheck fails
+    '8':
         visible: true
-    '0':
-        type: 2
         name: S3
+        type: 2
         description: ''
-        visible: true
         id: ''
     '9':
+        description: Level 1
+        type: 2
         visible: true
         name: Level 1
-        type: 2
-        description: Level 1
-        id: level1
+        id: ''
 weight: 1.0

@@ -20,17 +20,13 @@ groups: false
 input_random: '0'
 limits:
     time: '30'
-    output: '2'
     memory: '100'
+    output: '2'
 name: '[S2] Bitwise operation: cycling bits '
 network_grading: false
 order: 11
 problems:
     q1:
-        type: code
-        language: c
-        default: ''
-        name: ''
         header: |-
             Write the body of a function *cycle_bits*, which cycles all bits from *n* places to the left, according to the formula *x[(i+n)%32] = x[i]*, where *x[i]* is the i-iest bit of *x*.
 
@@ -39,81 +35,85 @@ problems:
             .. code-block:: c
 
                 uint32_t cycle_bits(uint32_t x, uint8_t n) {
+        name: ''
+        language: c
+        default: ''
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        description: Your code exceeded the maximum allowed time.
-        visible: true
         type: 1
-        name: Timeout
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
+        name: Timeout
     '2':
-        id: sigsegv
+        type: 1
+        description: Your code produced a segmentation fault.
         visible: true
         name: Segmentation Fault
-        description: Your code produced a segmentation fault.
-        type: 1
+        id: sigsegv
     '3':
-        description: Your code does not compile.
+        visible: true
         id: not_compile
         type: 1
-        visible: true
         name: Not compile
+        description: Your code does not compile.
     '4':
-        type: 1
-        visible: true
         id: memory
+        type: 1
         name: Memory Exceeded
         description: Your code exceeded the memory.
+        visible: true
     '5':
         type: 1
-        name: Floating Point Exception
         description: Your code produced a floating point exception.
+        name: Floating Point Exception
         visible: true
         id: sigfpe
     '6':
-        visible: true
         id: double_free
-        type: 1
-        description: Your code produced a double free.
         name: Double free
+        description: Your code produced a double free.
+        type: 1
+        visible: true
     '7':
+        description: Your code used some banned functions.
         visible: true
         id: banned_funcs
         type: 1
         name: Banned functions
-        description: Your code used some banned functions.
     '8':
-        description: Your code does not compile with cppcheck.
         visible: true
+        name: Cppcheck fails
         id: cppcheck
         type: 1
-        name: Cppcheck fails
+        description: Your code does not compile with cppcheck.
     '10':
-        visible: true
-        description: Task about bitwise operations
-        type: 2
-        name: Bitwise operation
-        id: category_bits
-    '9':
-        visible: true
         name: S2
         type: 2
         description: ''
+        visible: true
         id: ''
     '11':
-        visible: true
-        name: Level 2
-        type: 2
         description: Level 2
-        id: level2
+        type: 2
+        name: Level 2
+        visible: true
+        id: ''
+    '9':
+        description: Task about bitwise operations
+        type: 2
+        visible: true
+        name: Bitwise operation
+        id: ''
 weight: 1.0

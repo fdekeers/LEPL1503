@@ -84,16 +84,16 @@ tags:
         id: cppcheck
         type: 1
         name: Cppcheck fails
+    '10':
+        name: Level 1
+        type: 2
+        description: Level 1
+        visible: true
+        id: ''
     '9':
         visible: true
         name: S1
         type: 2
         description: ''
         id: ''
-    '10':
-        visible: true
-        name: Level 1
-        type: 2
-        description: Level 1
-        id: level1
 weight: 1.0

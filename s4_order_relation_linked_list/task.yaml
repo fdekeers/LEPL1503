@@ -8,15 +8,16 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S4] Ordered  linked list'
 network_grading: false
 order: 34
 problems:
     order_relation:
         name: Order relation
+        default: ''
         language: c
         header: |-
             For this subproblem, you need to implement the comparison function which defines the order relationship of the list.
@@ -30,12 +31,10 @@ problems:
                 * and positive number otherwise
                 */
                 int compare(char a, char b) {
-        default: ''
         type: code
     insert:
-        name: Insert
         type: code
-        default: ''
+        language: c
         header: |
             Assuming following linked list structure :
 
@@ -57,95 +56,48 @@ problems:
                 * @return: 0 if success, -1 otherwise
                 */
                 int insert(node_t **head, char val, int (*cmp)(char,char)) {
-        language: c
+        default: ''
+        name: Insert
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        description: q1 is correct
-        id: q1
         name: Q1
         type: 0
+        id: q1
+        description: q1 is correct
         visible: false
     '1':
-        description: q2 is correct
-        id: q2
-        name: Q2
         type: 0
+        id: q2
+        description: q2 is correct
+        name: Q2
         visible: false
-    '2':
-        description: Your code exceeded the maximum allowed time.
-        id: timeout
-        name: Timeout
-        type: 1
-        visible: true
-    '3':
-        description: Your code produced a segmentation fault.
-        id: sigsegv
-        name: Segmentation Fault
-        type: 1
-        visible: true
-    '4':
-        description: Your code does not compile.
-        id: not_compile
-        name: Not compile
-        type: 1
-        visible: true
-    '5':
-        description: Your code exceeded the memory.
-        id: memory
-        name: Memory Exceeded
-        type: 1
-        visible: true
-    '6':
-        description: Your code produced a floating point exception.
-        id: sigfpe
-        name: Floating Point Exception
-        type: 1
-        visible: true
-    '7':
-        description: Your code produced a double free.
-        id: double_free
-        name: Double free
-        type: 1
-        visible: true
-    '8':
-        description: Your code used some banned functions.
-        id: banned_funcs
-        name: Banned functions
-        type: 1
-        visible: true
-    '9':
-        description: Your code does not compile with cppcheck.
-        id: cppcheck
-        name: Cppcheck fails
-        type: 1
-        visible: true
     '10':
+        name: Not malloc once
         type: 1
         id: not_malloc_once
         description: The malloc() functions was not called exactly once.
-        name: Not malloc once
         visible: false
     '11':
         id: wrong_alloc_size
-        name: Wrong allocation size
         description: The allocated memory doesn't have the correct size.
         type: 1
+        name: Wrong allocation size
         visible: false
     '12':
-        type: 1
         id: not_allocated
         name: Not allocated
         description: A new node is not allocated with malloc().
+        type: 1
         visible: false
     '13':
-        name: Bad node value
-        id: bad_node_value
         type: 1
+        id: bad_node_value
         description: The value of the node is not the expected one.
+        name: Bad node value
         visible: false
     '14':
         name: Bad next pointer
@@ -154,75 +106,123 @@ tags:
         type: 1
         visible: false
     '15':
-        description: Wrong return value when malloc call fails.
         type: 1
-        name: Malloc fail handling
         id: malloc_fail_handling
+        name: Malloc fail handling
+        description: Wrong return value when malloc call fails.
         visible: false
     '16':
         description: Your function returns an error in normal case.
+        name: Error normal case
         type: 1
         id: error_normal_case
-        name: Error normal case
         visible: false
     '17':
-        type: 1
-        id: wrong_list_size
         description: The list has not the expected size.
+        id: wrong_list_size
+        type: 1
         name: Wrong list size
         visible: false
     '18':
         name: Bad Args handling
-        id: wrong_args_handling
         type: 1
+        id: wrong_args_handling
         description: Wrong return value when wrong args.
         visible: false
     '19':
         name: Incorrect list
-        id: not_expected_list
         description: The linked list does not correspond to the waited one.
+        id: not_expected_list
         type: 1
         visible: false
+    '2':
+        type: 1
+        description: Your code exceeded the maximum allowed time.
+        visible: true
+        name: Timeout
+        id: timeout
     '20':
-        description: Memory was allocated while the malloc() fails.
         id: modif_memory_malloc_fail
-        type: 1
         name: Modif memory malloc fail
+        type: 1
+        description: Memory was allocated while the malloc() fails.
         visible: false
+    '3':
+        visible: true
+        id: sigsegv
+        type: 1
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '4':
+        id: not_compile
+        type: 1
+        name: Not compile
+        description: Your code does not compile.
+        visible: true
+    '5':
+        type: 1
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
+        visible: true
+        id: memory
+    '6':
+        id: sigfpe
+        name: Floating Point Exception
+        description: Your code produced a floating point exception.
+        type: 1
+        visible: true
+    '7':
+        description: Your code produced a double free.
+        visible: true
+        id: double_free
+        type: 1
+        name: Double free
+    '8':
+        visible: true
+        name: Banned functions
+        id: banned_funcs
+        type: 1
+        description: Your code used some banned functions.
+    '9':
+        description: Your code does not compile with cppcheck.
+        id: cppcheck
+        type: 1
+        visible: true
+        name: Cppcheck fails
     '21':
+        type: 2
         description: ''
-        id: ''
+        visible: true
         name: S4
-        type: 2
-        visible: true
+        id: ''
     '22':
-        visible: true
         name: Level 4
-        type: 2
         description: Level 4
-        id: level4
-    '23':
+        type: 2
         visible: true
+        id: ''
+    '23':
+        name: Pointer
         description: Task about pointers and their use
         type: 2
-        name: Pointer
-        id: category_pointer
-    '24':
-        type: 2
-        description: Task about linked lists and their use
         visible: true
+        id: ''
+    '24':
+        description: Task about linked lists and their use
+        type: 2
         name: Linked list
-        id: category_linkedlist
+        visible: true
+        id: ''
     '25':
         name: Malloc
         type: 2
         description: Task about malloc
         visible: true
-        id: category_malloc
+        id: ''
     '26':
-        name: Struct
-        type: 2
-        description: Task about structures and their use
         visible: true
-        id: category_struct
+        name: Struct
+        description: Task about structures and their use
+        type: 2
+        id: ''
 weight: 1.0

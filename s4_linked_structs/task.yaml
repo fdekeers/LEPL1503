@@ -22,9 +22,9 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S4] Filtering a linked list '
 network_grading: false
 order: 32
@@ -33,14 +33,13 @@ problems:
         language: ''
         type: code
         default: ''
+        name: Includes
         header: 'Please insert here the ``#include`` that are required to use the
             functions that you use to answer this question. These includes are specified
             in the man pages of the functions that you use. '
-        name: Includes
     filter:
-        default: ''
+        type: code
         language: c
-        name: Filtering
         header: |-
             We want to filter this list and extract the elements with an even index (the index starts at 0, hence the first, the third, the fifth, ... elements of the linked list have to be taken), without modifying the initial list. In other words, you should create an other list (in parallel of the initial one) that contains the nodes you want to keep and return the head of this new list you created.
 
@@ -58,130 +57,131 @@ problems:
                  * @return: pointer to the filtered linked list, return NULL if error or if head == NULL
                  */
                 struct node *pair_filter(struct node *head) {
-        type: code
+        default: ''
+        name: Filtering
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code exceeded the maximum allowed time.
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
         name: Timeout
     '10':
-        description: Your code produced a floating point exception.
-        name: Floating Point Exception
-        id: sigfpe
-        type: 1
-        visible: true
-    '11':
-        visible: true
-        id: double_free
-        name: Double free
-        description: Your code produced a double free.
-        type: 1
-    '12':
-        type: 1
-        description: Your code used some banned functions.
-        id: banned_funcs
-        visible: true
-        name: Banned functions
-    '13':
-        type: 1
-        description: Your code does not compile with cppcheck.
-        visible: true
-        id: cppcheck
-        name: Cppcheck fails
-    '14':
-        name: Not malloc once
-        type: 1
-        id: not_malloc_once
-        description: The malloc() functions was not called exactly once.
-        visible: false
-    '2':
-        type: 1
-        id: wrong_alloc_size
-        name: Wrong allocation size
-        description: The allocated memory doesn't have the correct size.
-        visible: false
-    '3':
-        description: Your function returns an error in normal case.
-        type: 1
-        id: error_normal_case
-        name: Error normal case
-        visible: false
-    '4':
-        type: 1
-        id: wrong_list_size
-        description: The list has not the expected size.
-        name: Wrong list size
-        visible: false
-    '5':
         name: Bad Args handling
-        id: wrong_args_handling
         type: 1
+        id: wrong_args_handling
         description: Wrong return value when wrong args.
         visible: false
-    '6':
-        name: Incorrect list
+    '11':
         id: not_expected_list
         description: The linked list does not correspond to the waited one.
         type: 1
+        name: Incorrect list
         visible: false
-    '7':
-        description: Your code produced a segmentation fault.
+    '12':
         id: sigsegv
-        type: 1
         name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+        type: 1
         visible: true
-    '8':
+    '13':
         type: 1
         visible: true
         id: not_compile
         description: Your code does not compile.
         name: Not compile
-    '9':
-        visible: true
-        id: memory
-        description: Your code exceeded the memory.
-        type: 1
+    '14':
         name: Memory Exceeded
+        description: Your code exceeded the memory.
+        id: memory
+        type: 1
+        visible: true
+    '2':
+        type: 1
+        description: Your code produced a floating point exception.
+        visible: true
+        name: Floating Point Exception
+        id: sigfpe
+    '3':
+        visible: true
+        id: double_free
+        type: 1
+        name: Double free
+        description: Your code produced a double free.
+    '4':
+        id: banned_funcs
+        type: 1
+        name: Banned functions
+        description: Your code used some banned functions.
+        visible: true
+    '5':
+        type: 1
+        description: Your code does not compile with cppcheck.
+        name: Cppcheck fails
+        visible: true
+        id: cppcheck
+    '6':
+        id: not_malloc_once
+        name: Not malloc once
+        description: The malloc() functions was not called exactly once.
+        type: 1
+        visible: false
+    '7':
+        description: The allocated memory doesn't have the correct size.
+        id: wrong_alloc_size
+        type: 1
+        name: Wrong allocation size
+        visible: false
+    '8':
+        name: Error normal case
+        id: error_normal_case
+        type: 1
+        description: Your function returns an error in normal case.
+        visible: false
+    '9':
+        description: The list has not the expected size.
+        id: wrong_list_size
+        type: 1
+        name: Wrong list size
+        visible: false
     '15':
+        visible: true
+        type: 2
         name: S4
         description: ''
-        type: 2
-        visible: true
         id: ''
     '16':
         description: Task about pointers and their use
-        type: 2
-        name: Pointer
         visible: true
+        name: Pointer
+        type: 2
         id: ''
     '17':
-        type: 2
         description: Task about malloc
         visible: true
+        type: 2
         name: Malloc
         id: ''
     '18':
-        visible: true
-        type: 2
         name: Struct
+        type: 2
+        visible: true
         description: Task about structures and their use
         id: ''
     '19':
         name: Level 4
+        visible: true
         description: Level 4
         type: 2
-        visible: true
         id: ''
 weight: 1.0

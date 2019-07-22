@@ -30,15 +30,13 @@ groups: false
 input_random: '0'
 limits:
     time: '30'
-    output: '2'
     memory: '100'
+    output: '2'
 name: '[S4] Advanced queue'
 network_grading: false
 order: 33
 problems:
     enqueue:
-        type: code
-        default: ''
         header: |-
             .. code:: c
 
@@ -53,11 +51,12 @@ problems:
                 * pre : The queue q will always be valid, you don't need to handle the NULL case.
                 */
                 int enqueue(queue_t* q, int val){
+        language: c
+        type: code
         name: Enqueue
-        language: c
+        default: ''
     dequeue:
-        language: c
-        name: Dequeue
+        default: ''
         header: |-
             *HINT* : Do not forget to free all the unused memory.
 
@@ -71,101 +70,102 @@ problems:
                 * pre         : The given queue will always be valid, you do not need to handle the NULL case.
                 */
                 int dequeue(queue_t* q){
+        name: Dequeue
         type: code
-        default: ''
+        language: c
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        description: q1 is correct
-        id: q1
         name: Q1
         type: 0
+        id: q1
+        description: q1 is correct
         visible: false
     '1':
-        description: q2 is correct
-        id: q2
-        name: Q2
         type: 0
+        id: q2
+        description: q2 is correct
+        name: Q2
         visible: false
     '2':
+        type: 1
         description: Your code exceeded the maximum allowed time.
-        id: timeout
+        visible: true
         name: Timeout
-        type: 1
-        visible: true
+        id: timeout
     '3':
-        description: Your code produced a segmentation fault.
-        id: sigsegv
-        name: Segmentation Fault
-        type: 1
         visible: true
-    '4':
-        description: Your code does not compile.
-        id: not_compile
-        name: Not compile
+        id: sigsegv
         type: 1
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '4':
+        id: not_compile
+        type: 1
+        name: Not compile
+        description: Your code does not compile.
         visible: true
     '5':
-        description: Your code exceeded the memory.
-        id: memory
-        name: Memory Exceeded
         type: 1
+        description: Your code exceeded the memory.
+        name: Memory Exceeded
         visible: true
+        id: memory
     '6':
-        description: Your code produced a floating point exception.
         id: sigfpe
         name: Floating Point Exception
+        description: Your code produced a floating point exception.
         type: 1
         visible: true
     '7':
         description: Your code produced a double free.
+        visible: true
         id: double_free
+        type: 1
         name: Double free
-        type: 1
-        visible: true
     '8':
-        description: Your code used some banned functions.
-        id: banned_funcs
-        name: Banned functions
-        type: 1
         visible: true
+        name: Banned functions
+        id: banned_funcs
+        type: 1
+        description: Your code used some banned functions.
     '9':
         description: Your code does not compile with cppcheck.
         id: cppcheck
-        name: Cppcheck fails
         type: 1
         visible: true
+        name: Cppcheck fails
     '10':
-        description: ''
-        id: ''
         name: S4
         type: 2
+        description: ''
         visible: true
+        id: ''
     '11':
-        visible: true
-        name: Level 3
-        type: 2
         description: Level 3
-        id: level3
-    '12':
+        type: 2
+        name: Level 3
         visible: true
+        id: ''
+    '12':
+        name: Pointer
         description: Task about pointers and their use
         type: 2
-        name: Pointer
-        id: category_pointer
+        visible: true
+        id: ''
     '13':
+        type: 2
         visible: true
         description: Task about structures and their use
-        type: 2
         name: Struct
-        id: category_struct
+        id: ''
     '14':
-        type: 2
-        description: Task about linked lists and their use
-        visible: true
         name: Linked list
-        id: category_linkedlist
+        description: Task about linked lists and their use
+        type: 2
+        visible: true
+        id: ''
 weight: 1.0

@@ -9,15 +9,14 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Coder calloc en utilisant malloc'
 network_grading: false
 order: 26
 problems:
     calloc2:
-        type: code
         header: |-
             Entrez ici le corps de votre fonction ``calloc2``. Pensez à bien lire la documentation pour respecter tout ce que fait la fonction `calloc(3) <https://sites.uclouvain.be/SystInfo/manpages/man3/malloc.3.html>`_.
 
@@ -26,102 +25,103 @@ problems:
                #include <stdlib.h>
 
                void *calloc2(size_t nmemb, size_t size) {
-        name: calloc2
         default: ''
         language: c
+        name: calloc2
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code exceeded the maximum allowed time.
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
         name: Timeout
     '10':
-        id: wrong_alloc_size
-        name: Wrong allocation size
-        description: The allocated memory doesn't have the correct size.
+        name: Cppcheck fails
         type: 1
-        visible: false
-    '11':
-        id: malloc_fail_handling
-        name: Malloc fail handling
-        type: 1
-        description: Wrong return value when malloc call fails.
-        visible: false
-    '2':
-        visible: true
-        type: 1
-        id: sigsegv
-        name: Segmentation Fault
-        description: Your code produced a segmentation fault.
-    '3':
-        description: Your code does not compile.
-        visible: true
-        name: Not compile
-        type: 1
-        id: not_compile
-    '4':
-        type: 1
-        visible: true
-        id: memory
-        description: Your code exceeded the memory.
-        name: Memory Exceeded
-    '5':
-        name: Floating Point Exception
-        id: sigfpe
-        type: 1
-        description: Your code produced a floating point exception.
-        visible: true
-    '6':
-        name: Double free
-        id: double_free
-        description: Your code produced a double free.
-        visible: true
-        type: 1
-    '7':
-        description: Your code used some banned functions.
-        id: banned_funcs
-        type: 1
-        name: Banned functions
-        visible: true
-    '8':
-        type: 1
-        visible: true
         id: cppcheck
         description: Your code does not compile with cppcheck.
-        name: Cppcheck fails
-    '9':
+        visible: true
+    '11':
         id: not_malloc_once
         description: The malloc() functions was not called exactly once.
         type: 1
         name: Not malloc once
         visible: false
-    '12':
-        type: 2
-        description: Task about malloc
+    '2':
+        type: 1
+        description: The allocated memory doesn't have the correct size.
+        name: Wrong allocation size
+        id: wrong_alloc_size
+        visible: false
+    '3':
+        id: malloc_fail_handling
+        type: 1
+        name: Malloc fail handling
+        description: Wrong return value when malloc call fails.
+        visible: false
+    '4':
+        id: sigsegv
+        type: 1
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
         visible: true
+    '5':
+        type: 1
+        description: Your code does not compile.
+        name: Not compile
+        visible: true
+        id: not_compile
+    '6':
+        id: memory
+        name: Memory Exceeded
+        description: Your code exceeded the memory.
+        type: 1
+        visible: true
+    '7':
+        description: Your code produced a floating point exception.
+        visible: true
+        id: sigfpe
+        type: 1
+        name: Floating Point Exception
+    '8':
+        visible: true
+        name: Double free
+        id: double_free
+        type: 1
+        description: Your code produced a double free.
+    '9':
+        description: Your code used some banned functions.
+        id: banned_funcs
+        type: 1
+        visible: true
+        name: Banned functions
+    '12':
         name: Malloc
+        description: Task about malloc
+        type: 2
+        visible: true
         id: ''
     '13':
         type: 2
-        description: Level 4
         visible: true
+        description: Level 4
         name: Level 4
         id: ''
     '14':
         name: S3
-        type: 2
         description: ''
+        type: 2
         visible: true
         id: ''
 weight: 1.0

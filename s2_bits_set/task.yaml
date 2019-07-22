@@ -19,18 +19,14 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
-    time: '30'
-    output: '2'
     memory: '100'
+    output: '2'
+    time: '30'
 name: '[S2] Bitwise operation: setting a bit'
 network_grading: false
 order: 10
 problems:
     q1:
-        type: code
-        language: c
-        default: ''
-        name: ''
         header: |-
             Write the body of a function that returns the value of variable *x*, but modified with the bit at position *pos* set to *value*.
 
@@ -59,75 +55,79 @@ problems:
                  * @pre 0<= pos < 64
                  */
                 uint64_t set_bit(uint64_t x, int pos, bool value) {
+        name: ''
+        language: c
+        default: ''
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
+        id: q1
         type: 0
         name: Q1
         description: q1 is correct
-        id: q1
         visible: false
     '1':
-        description: Your code exceeds the maximum allowed time.
-        visible: true
         type: 1
+        visible: true
         name: Timeout
+        description: Your code exceeds the maximum allowed time.
         id: timeout
     '2':
-        id: sigsegv
-        visible: true
         name: Segmentation Fault
-        description: ''
         type: 1
+        description: ''
+        visible: true
+        id: sigsegv
     '3':
-        description: You code does not compile.
+        name: Not compile
         id: not_compile
         type: 1
         visible: true
-        name: Not compile
+        description: You code does not compile.
     '4':
-        type: 1
-        visible: true
-        id: memory
         name: Memory Exceeded
+        id: memory
         description: ''
+        visible: true
+        type: 1
     '5':
+        visible: true
         type: 1
         name: Floating Point Exception
         description: ''
-        visible: true
         id: sigfpe
     '6':
-        visible: true
         id: double_free
-        type: 1
         description: Your code produced a double free.
         name: Double free
+        type: 1
+        visible: true
     '7':
         visible: true
         id: banned_funcs
         type: 1
-        name: Banned functions
         description: You use some banned functions.
+        name: Banned functions
     '10':
-        type: 2
-        name: Level 2
-        description: Level 2
+        name: S2
+        description: ''
         visible: true
+        type: 2
         id: ''
     '8':
-        description: Task about bitwise operations
-        visible: true
         type: 2
-        name: Bitwise operation
+        name: Level 2
+        visible: true
+        description: Level 2
         id: ''
     '9':
-        visible: true
-        name: S2
+        description: Task about bitwise operations
         type: 2
-        description: ''
+        visible: true
+        name: Bitwise operation
         id: ''
 weight: 1.0

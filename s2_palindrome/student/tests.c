@@ -5,9 +5,30 @@
 #include "solutions/student_code_sol.h"
 #include "../../course/common/student/CTester/CTester.h"
 
+int flag = 1;
+
+char* create_long_palindrome(){
+    char* alphabet = "abcdefghijklmnopqrstuvwxyz  zyxwvutsrqponmlkjihgfedcba";
+    char* str = (char*) malloc(strlen(alphabet)*1000000 + 1000001);
+    if(str==NULL){
+    	return NULL;        
+    }
+    char* curr = str;
+
+    for(int i = 0; i < 1000000; i++){
+        memcpy(curr,alphabet,strlen(alphabet));
+        curr += strlen(alphabet);
+        memcpy(curr," ",1);
+        curr += 1;
+    }
+    memcpy(curr,"",1);
+    
+    return str;
+}
+
 void test_myfunc_ret()
 {
-	set_test_metadata("q1", _("Test the function palindrome"), 1);
+	set_test_metadata("q1", _("Test the function palindrome"), 9);
 
 	int ret1 = -2;
 	int ret2 = -2;
@@ -35,14 +56,7 @@ void test_myfunc_ret()
 	char *str6 = trap_buffer(strlen(s6)+1, TRAP_RIGHT, PROT_WRITE, s6);
 	char *str7 = trap_buffer(strlen(s7)+1, TRAP_RIGHT, PROT_WRITE, s7);
 
-	struct timespec *before = (struct timespec *) malloc(sizeof(struct timespec));
-	struct timespec *after =  (struct timespec *) malloc(sizeof(struct timespec));
-	time_t sec1 = 0;
-	long nano1 = 0;
-	int flag = 1;
-
 	SANDBOX_BEGIN;
-	int clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
 	ret1 = pal(str1);
 	ret2 = pal(str2);
 	ret3 = pal(str3);
@@ -51,30 +65,7 @@ void test_myfunc_ret()
 	ret6 = pal(NULL);
 	ret7 = pal(str6);
 	ret8 = pal(str7);
-	int clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-	if (clockerr ==0 && clockerr2 == 0){
-		sec1 = after->tv_sec - before->tv_sec;
-		nano1 = after->tv_nsec - before->tv_nsec;
-	}
 	SANDBOX_END;
-
-	time_t secsol = 0;
-	long nanosol = 0;
-	int clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
-	int temp;/* = pal_sol(str1);
-	temp = pal_sol(str2);
-	temp = pal_sol(str3);
-	temp = pal_sol(str4);
-	temp = pal_sol(str5);
-	temp = pal_sol(NULL);
-	temp = pal_sol(str6);
-	temp = pal_sol(str7);*/
-	(void)temp;
-	int clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-	if (clockerr ==0 && clockerr2 == 0){
-		secsol = after->tv_sec - before->tv_sec;
-		nanosol = after->tv_nsec - before->tv_nsec;
-	}
 
 	free_trap(str1,44);
 	free_trap(str2,40);
@@ -91,11 +82,16 @@ void test_myfunc_ret()
 	CU_ASSERT_EQUAL(ret6,-1);
 	CU_ASSERT_EQUAL(ret7,1);
 	CU_ASSERT_EQUAL(ret8,0);
+    CU_ASSERT_STRING_EQUAL(str1,s1);
 	if (ret2!=1) {
 		flag = 0;
 		push_info_msg(_("Your function does not work correctly for strings that are palindromes and contain spaces (remember to first remove spaces from your string) "));
     }
-    if (ret1!=0 || ret4!=0 || ret8!=0){
+    if(ret8!=0){
+       flag = 0;
+	   push_info_msg(_("Your function does not work correctly for strings that are not palindromes and contain spaces (remember to first remove spaces from your string) "));
+    }
+    if (ret1!=0 || ret4!=0){
     	flag = 0;
 		push_info_msg(_("Your function does not work correctly for strings that are not palindromes"));
 	}
@@ -109,22 +105,116 @@ void test_myfunc_ret()
 		flag = 0;
 		push_info_msg(_("Your function doesn't work for NULL strings"));
 	}
+    if(strcmp(str1,s1)){
+        flag = 0;
+        push_info_msg(_("You can't modify the initial string"));
+    }
+}
 
-	if(flag){
-		set_tag("q1");
-		char *timetpl = _("the test with your implementation took %d sec and %d nsec while our solution took %d sec and %d nsec");
-		char timemsg[strlen(timetpl+30)];
-		sprintf(timemsg, timetpl, sec1, nano1, secsol, nanosol);
-		push_info_msg(timemsg);
+void test_CPU(){
+    set_test_metadata("q1", _("Test the function palindrome with CPU time"), 1);
+    
+    struct timespec before;
+	struct timespec after;    
+    
+   char* str = create_long_palindrome();
+   if(str==NULL){
+        CU_FAIL("Can't initialise memory for the long palindrome");
+        push_info_msg(_("The test can't be initialised, please contact your tutor or an administrator."));
+        return;
+    } 
+    
+	time_t sec = 0;
+	long nano = 0;
+    int clockerr;
+    int clockerr2;
+    int ret;
+    
+    SANDBOX_BEGIN;
+    clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &before);
+    ret = pal(str);
+	clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &after);
+    SANDBOX_END;
+    
+	if (clockerr == 0 && clockerr2 == 0){
+		sec = after.tv_sec - before.tv_sec;
+		nano = after.tv_nsec - before.tv_nsec;
 	}
-
-	free(before);
-	free(after);
+    else{
+        CU_FAIL("Can't get time used for the CPU_test");
+        push_info_msg(_("The test encountered an error, please contact your tutor or an administrator."));
+        free(str);
+        return;
+    }    
+    float studtime = ((float) nano)/1000000000 + (float) sec;
+    
+	clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &before);
+	int sol = pal_sol(str);
+	clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &after);
+    
+    free(str);
+    
+	if (clockerr == 0 && clockerr2 == 0){
+		sec = after.tv_sec - before.tv_sec;
+		nano = after.tv_nsec - before.tv_nsec;
+	}
+    else{
+        CU_FAIL("Can't get time used for the CPU_test");
+        push_info_msg(_("The test encountered an error, please contact your tutor or an administrator."));
+        return;
+    }
+    
+    float soltime = ((float) nano)/1000000000 + (float) sec;
+    
+    if(sol!=ret){
+        CU_FAIL();
+        push_info_msg(_("Your function doesn't work for a really long palindrome"));
+        flag = 0;
+    }
+    else{
+        FILE* file = fopen("cpu.txt", "w+");
+        if(file==NULL){
+            CU_FAIL("Can't open cpu.txt");
+        	push_info_msg(_("The test encountered an error, please contact your tutor or an administrator."));
+        	flag = 0;
+            return;
+        }
+        int check = fprintf(file,"%2.6f\n",studtime);
+        if(check <= 0){
+            CU_FAIL("Can't write to cpu.txt");
+        	push_info_msg(_("The test encountered an error, please contact your tutor or an administrator."));
+        	flag = 0;
+            fclose(file);
+            return;
+        }
+        check = fclose(file);
+        if(check==EOF){
+            CU_FAIL("Can't close cpu.txt");
+        	push_info_msg(_("The test encountered an error, please contact your tutor or an administrator."));
+        	flag = 0;
+            return;
+        }
+        
+        if(studtime > 2*soltime){
+            CU_FAIL();
+            flag = 0;
+            char* str = _("Your solution seems to take a lot of time compared to our solution. Maybe you should think about a better way to solve the problem because it is really important to save as much CPU time as you can when you write programs. Your solution took %2.6f sec while our solution took %2.6f sec.");
+            char strmsg[strlen(str)+30];
+            sprintf(strmsg,str,studtime,soltime);
+            push_info_msg(strmsg);
+        }
+        
+        CU_PASS();
+    }
+    
+    if(flag){
+		set_tag("q1");
+	}
 }
 
 int main(int argc,char** argv)
 {
 	BAN_FUNCS();
-	RUN(test_myfunc_ret);
+	RUN(test_myfunc_ret, test_CPU);
 }
 

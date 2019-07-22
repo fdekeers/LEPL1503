@@ -35,18 +35,14 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Simple Binary Search Tree'
 network_grading: false
 order: 22
 problems:
     contains:
-        type: code
-        language: c
-        name: Function contains
-        default: ''
         header: |-
             Write the body of the ``contains`` function. If you use subfunctions, write them in the box below with their signature and body.
 
@@ -56,94 +52,98 @@ problems:
                 * Return 1 if there is a node containing @value in @tree and 0 otherwise.
                 */
                 int contains(bt_t* tree, int value){
+        type: code
+        default: ''
+        name: Function contains
+        language: c
     other:
         name: Helpful submethods
-        type: code
-        language: c
         default: ''
-        optional: 'on'
         header: Write here the submethods used by the contains method.
+        language: c
+        optional: 'on'
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code exceeded the maximum allowed time.
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
         name: Timeout
     '2':
-        visible: true
         type: 1
-        id: sigsegv
-        name: Segmentation Fault
         description: Your code produced a segmentation fault.
+        visible: true
+        name: Segmentation Fault
+        id: sigsegv
     '3':
-        description: Your code does not compile.
         visible: true
-        type: 1
         id: not_compile
-        name: Not compile
-    '4':
         type: 1
-        visible: true
+        name: Not compile
+        description: Your code does not compile.
+    '4':
         id: memory
-        description: Your code exceeded the memory.
+        type: 1
         name: Memory Exceeded
+        description: Your code exceeded the memory.
+        visible: true
     '5':
-        name: Floating Point Exception
-        id: sigfpe
         type: 1
         description: Your code produced a floating point exception.
+        name: Floating Point Exception
         visible: true
+        id: sigfpe
     '6':
-        name: Double free
         id: double_free
+        name: Double free
         description: Your code produced a double free.
-        visible: true
         type: 1
+        visible: true
     '7':
         description: Your code used some banned functions.
+        visible: true
         id: banned_funcs
         type: 1
         name: Banned functions
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: cppcheck
-        description: Your code does not compile with cppcheck.
         name: Cppcheck fails
+        id: cppcheck
+        type: 1
+        description: Your code does not compile with cppcheck.
     '10':
-        description: Level 3
-        name: Level 3
+        name: S3
         type: 2
+        description: ''
         visible: true
         id: ''
     '11':
-        visible: true
-        name: S3
-        description: ''
+        description: Task about linked lists and their use
         type: 2
+        name: Linked list
+        visible: true
         id: ''
     '12':
-        type: 2
-        description: Task about linked lists and their use
-        visible: true
-        name: Linked list
-        id: ''
-    '9':
-        visible: true
+        name: Struct
         description: Task about structures and their use
         type: 2
-        name: Struct
+        visible: true
+        id: ''
+    '9':
+        description: Level 3
+        type: 2
+        visible: true
+        name: Level 3
         id: ''
 weight: 1.0

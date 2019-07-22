@@ -29,46 +29,18 @@ void test_get_4_rightmost_bits(void)
 	uint8_t rightMostBitsReturnedB;
 	uint8_t rightMostBitsReturnedC;
 
-	struct timespec *before = (struct timespec *) malloc(sizeof(struct timespec));
-	struct timespec *after =  (struct timespec *) malloc(sizeof(struct timespec));
-	time_t sec1 = 0;
-	long nano1 = 0;
-
 
 	SANDBOX_BEGIN;
-	int clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
 	rightMostBitsReturnedA = get_4_rightmost_bits(binaryNumberA);
 	rightMostBitsReturnedB = get_4_rightmost_bits(binaryNumberB);
 	rightMostBitsReturnedC = get_4_rightmost_bits(binaryNumberC);
-	int clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-	if (clockerr ==0 && clockerr2 == 0){
-		sec1 = after->tv_sec - before->tv_sec;
-		nano1 = after->tv_nsec - before->tv_nsec;
-	}
 	SANDBOX_END;
-
-	time_t secsol = 0;
-	long nanosol = 0;
-	int clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
-	int temp = get_4_rightmost_bits_sol(binaryNumberC);
-	temp = get_4_rightmost_bits(binaryNumberC);
-	temp = get_4_rightmost_bits(binaryNumberC);
-	(void)temp;
-	int clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-	if (clockerr ==0 && clockerr2 == 0){
-		secsol = after->tv_sec - before->tv_sec;
-		nanosol = after->tv_nsec - before->tv_nsec;
-	}
     
 	CU_ASSERT_EQUAL(rightMostBitsReturnedA,0b1011);
 	CU_ASSERT_EQUAL(rightMostBitsReturnedB,0b1110);
 	CU_ASSERT_EQUAL(rightMostBitsReturnedC,0b1001);
 	if (rightMostBitsReturnedC==0b1001 && rightMostBitsReturnedB==0b1110 && rightMostBitsReturnedA==0b1011){
 		set_tag("q1");
-		char *timetpl = _("the test with your implementation took %d sec and %d nsec while our solution took %d sec and %d nsec");
-		char timemsg[strlen(timetpl+30)];
-		sprintf(timemsg, timetpl, sec1, nano1, secsol, nanosol);
-		push_info_msg(timemsg);
 	}
 	else{
 		char str[] = "azertyui";
@@ -82,9 +54,6 @@ void test_get_4_rightmost_bits(void)
 		sprintf(errmsg, errtpl, str, str2, str3);
 		push_info_msg(errmsg);
 	}
-
-	free(before);
-	free(after);
 }
 
 int main(int argc,char** argv)

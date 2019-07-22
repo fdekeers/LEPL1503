@@ -9,17 +9,14 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Pointer arithmetic '
 network_grading: false
 order: 20
 problems:
     first:
-        type: code
-        name: First argument
-        default: ''
         header: |-
             You found a hint from the hacker, telling the first parameter is  located at the 12th byte after *ptr*. An int is guaranteed to be 4 bytes long.
 
@@ -28,8 +25,14 @@ problems:
             .. code-block:: c
 
                 int first(void *ptr) {
+        type: code
         language: c
+        default: ''
+        name: First argument
     second:
+        default: ''
+        language: c
+        type: code
         header: |-
             The second parameter is a char located 6 bytes after *ptr*.
 
@@ -39,10 +42,8 @@ problems:
 
                 char second(void *ptr) {
         name: Second argument
-        default: ''
-        type: code
-        language: c
     third:
+        name: Third argument
         header: |-
             The third parameter is an int located 45 bytes after *ptr*.
 
@@ -51,97 +52,96 @@ problems:
             .. code-block:: c
 
                 int third(void *ptr) {
-        name: Third argument
+        type: code
         default: ''
         language: c
-        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        description: q1 is correct
-        id: q1
         name: Q1
         type: 0
+        id: q1
+        description: q1 is correct
         visible: false
     '1':
-        description: q2 is correct
-        id: q2
-        name: Q2
         type: 0
+        id: q2
+        description: q2 is correct
+        name: Q2
         visible: false
     '2':
-        description: q3 is correct
-        id: q3
-        name: Q3
         type: 0
+        description: q3 is correct
+        name: Q3
+        id: q3
         visible: false
-    '3':
-        description: Your code exceeded the maximum allowed time.
-        id: timeout
-        name: Timeout
+    '10':
+        name: Cppcheck fails
         type: 1
+        id: cppcheck
+        description: Your code does not compile with cppcheck.
         visible: true
-    '4':
-        description: Your code produced a segmentation fault.
-        id: sigsegv
-        name: Segmentation Fault
+    '3':
+        visible: true
+        id: timeout
         type: 1
+        name: Timeout
+        description: Your code exceeded the maximum allowed time.
+    '4':
+        id: sigsegv
+        type: 1
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
         visible: true
     '5':
-        description: Your code does not compile.
-        id: not_compile
-        name: Not compile
         type: 1
+        description: Your code does not compile.
+        name: Not compile
         visible: true
+        id: not_compile
     '6':
-        description: Your code exceeded the memory.
         id: memory
         name: Memory Exceeded
+        description: Your code exceeded the memory.
         type: 1
         visible: true
     '7':
         description: Your code produced a floating point exception.
+        visible: true
         id: sigfpe
+        type: 1
         name: Floating Point Exception
-        type: 1
-        visible: true
     '8':
-        description: Your code produced a double free.
-        id: double_free
-        name: Double free
-        type: 1
         visible: true
+        name: Double free
+        id: double_free
+        type: 1
+        description: Your code produced a double free.
     '9':
         description: Your code used some banned functions.
         id: banned_funcs
+        type: 1
+        visible: true
         name: Banned functions
-        type: 1
-        visible: true
-    '10':
-        description: Your code does not compile with cppcheck.
-        id: cppcheck
-        name: Cppcheck fails
-        type: 1
-        visible: true
     '11':
         description: ''
-        id: ''
-        name: S3
         type: 2
+        name: S3
         visible: true
+        id: ''
     '12':
-        visible: true
+        name: Pointer
         description: Task about pointers and their use
         type: 2
-        name: Pointer
-        id: category_pointer
-    '13':
         visible: true
-        name: Level 2
+        id: ''
+    '13':
         type: 2
+        visible: true
         description: Level 2
-        id: level2
+        name: Level 2
+        id: ''
 weight: 1.0

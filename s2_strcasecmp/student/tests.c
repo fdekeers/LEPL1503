@@ -24,13 +24,8 @@ void test_myfunc_ret() {
 	int ret6 = 0;
 	int ret7 = 0;
 
-	struct timespec *before = (struct timespec *) malloc(sizeof(struct timespec));
-	struct timespec *after =  (struct timespec *) malloc(sizeof(struct timespec));
-	time_t sec1 = 0;
-	long nano1 = 0;
 
 	SANDBOX_BEGIN;
-	int clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
 	ret1 = strcasecmp2(str1,str2);
 	ret2 = strcasecmp2(str3,str3);
 	ret3 = strcasecmp2(str1,str4);
@@ -38,29 +33,7 @@ void test_myfunc_ret() {
 	ret5 = strcasecmp2(str3,str4);
 	ret6 = strcasecmp2(str3,str5);
 	ret7 = strcasecmp2(str6,str1);
-	int clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-	if (clockerr ==0 && clockerr2 == 0){
-		sec1 = after->tv_sec - before->tv_sec;
-		nano1 = after->tv_nsec - before->tv_nsec;
-	}
 	SANDBOX_END;
-
-	time_t secsol = 0;
-	long nanosol = 0;
-	int clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
-	int temp = strcasecmp_sol(str1,str2);
-	temp = strcasecmp_sol(str3,str3);
-	temp = strcasecmp_sol(str1,str4);
-	temp = strcasecmp_sol(str2,str3);
-	temp = strcasecmp_sol(str3,str4);
-	temp = strcasecmp_sol(str3,str5);
-	temp = strcasecmp_sol(str6,str1);
-	(void)temp;
-	int clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-	if (clockerr ==0 && clockerr2 == 0){
-		secsol = after->tv_sec - before->tv_sec;
-		nanosol = after->tv_nsec - before->tv_nsec;
-	}
 
 	CU_ASSERT(ret1 < 0);
 	CU_ASSERT(ret2==0);
@@ -122,15 +95,9 @@ void test_myfunc_ret() {
 		push_info_msg(errmsg);
 	}
 	if(flag){
-		char *timetpl = _("the test with your implementation took %d sec and %d nsec while our solution took %d sec and %d nsec");
-		char timemsg[strlen(timetpl+30)];
-		sprintf(timemsg, timetpl, sec1, nano1, secsol, nanosol);
-		push_info_msg(timemsg);
-        set_tag("q1");
+        	set_tag("q1");
 	}
 
-	free(before);
-	free(after);
 }
 
 void test_segfault() {

@@ -13,18 +13,14 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '50'
     output: '2'
-    time: '30'
 name: '[S5] Get and set on array stored in binary file '
 network_grading: false
 order: 37
 problems:
     q1:
-        type: code
-        default: ''
-        language: c
-        name: Retrieve the element at a given index
         header: |-
             .. code-block:: c
 
@@ -36,8 +32,14 @@ problems:
                  *       return -2 if index >= length of array.
                  */
                 int get(char *filename, int index) {
-    q2:
+        name: Retrieve the element at a given index
+        language: c
+        default: ''
         type: code
+    q2:
+        name: Change the value at a given index
+        type: code
+        language: c
         header: |-
             .. code-block:: c
 
@@ -48,8 +50,6 @@ problems:
                  *       do nothing in case of errors
                  */
                 void set(char *filename, int index, int value) {
-        language: c
-        name: Change the value at a given index
         default: ''
 stored_submissions: 0
 submission_limit:
@@ -57,93 +57,93 @@ submission_limit:
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
         type: 0
-        description: q2 is correct
         id: q2
+        description: q2 is correct
         name: Q2
         visible: false
     '10':
-        description: Your code does not compile.
-        name: Not compile
-        id: not_compile
+        name: Segmentation Fault
         type: 1
-        visible: true
-    '2':
-        visible: true
-        type: 1
-        id: memory
-        name: Memory Exceeded
-        description: Your code exceeded the memory.
-    '3':
-        description: Your code produced a floating point exception.
-        visible: true
-        type: 1
-        id: sigfpe
-        name: Floating Point Exception
-    '4':
-        type: 1
-        visible: true
-        id: double_free
-        description: Your code produced a double free.
-        name: Double free
-    '5':
-        name: Banned functions
-        id: banned_funcs
-        type: 1
-        description: Your code used some banned functions.
-        visible: true
-    '6':
-        name: Cppcheck fails
-        id: cppcheck
-        description: Your code does not compile with cppcheck.
-        visible: true
-        type: 1
-    '7':
-        description: You do not manage failures properly when a system call fails.
-        id: failure_handling
-        type: 1
-        name: Failure handling
-        visible: false
-    '8':
-        type: 1
-        visible: true
-        id: timeout
-        description: Your code exceeded the maximum allowed time.
-        name: Timeout
-    '9':
-        visible: true
         id: sigsegv
         description: Your code produced a segmentation fault.
-        type: 1
-        name: Segmentation Fault
-    '11':
         visible: true
-        name: S5
+    '2':
+        type: 1
+        description: Your code does not compile.
+        visible: true
+        name: Not compile
+        id: not_compile
+    '3':
+        visible: true
+        id: memory
+        type: 1
+        name: Memory Exceeded
+        description: Your code exceeded the memory.
+    '4':
+        id: sigfpe
+        type: 1
+        name: Floating Point Exception
+        description: Your code produced a floating point exception.
+        visible: true
+    '5':
+        type: 1
+        description: Your code produced a double free.
+        name: Double free
+        visible: true
+        id: double_free
+    '6':
+        id: banned_funcs
+        name: Banned functions
+        description: Your code used some banned functions.
+        type: 1
+        visible: true
+    '7':
+        description: Your code does not compile with cppcheck.
+        visible: true
+        id: cppcheck
+        type: 1
+        name: Cppcheck fails
+    '8':
+        name: Failure handling
+        id: failure_handling
+        type: 1
+        description: You do not manage failures properly when a system call fails.
+        visible: false
+    '9':
+        description: Your code exceeded the maximum allowed time.
+        id: timeout
+        type: 1
+        visible: true
+        name: Timeout
+    '11':
         description: ''
         type: 2
+        name: S5
+        visible: true
         id: ''
     '12':
-        type: 2
-        description: Level 4
-        visible: true
         name: Level 4
+        description: Level 4
+        type: 2
+        visible: true
         id: ''
     '13':
         type: 2
-        description: Task about files
         visible: true
+        description: Task about files
         name: Files
         id: ''
     '14':
         name: Mmap
-        type: 2
         description: Task about mmap, munmap and msync
+        type: 2
         visible: true
         id: ''
 weight: 1.0

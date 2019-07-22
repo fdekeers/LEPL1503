@@ -30,18 +30,14 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S4] Simple stack '
 network_grading: false
 order: 30
 problems:
     pop:
-        language: c
-        name: Pop
-        default: ''
-        type: code
         header: |-
             .. code-block:: c
 
@@ -58,9 +54,12 @@ problems:
                 */
 
                 int pop(struct node **head, char *result){
+        type: code
+        language: c
+        name: Pop
+        default: ''
     push:
         name: Push
-        type: code
         header: |-
             .. code-block:: c
 
@@ -76,153 +75,148 @@ problems:
                 int push(struct node **head, const char *value){
         language: c
         default: ''
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        description: q1 is correct
-        id: q1
         name: Q1
         type: 0
+        id: q1
+        description: q1 is correct
         visible: false
     '1':
-        description: q2 is correct
-        id: q2
-        name: Q2
         type: 0
+        id: q2
+        description: q2 is correct
+        name: Q2
+        visible: false
+    '10':
+        name: Banned functions
+        type: 1
+        id: banned_funcs
+        description: You use some banned functions.
+        visible: true
+    '11':
+        id: not_allocated
+        description: A new node is not allocated with malloc().
+        type: 1
+        name: Not allocated
+        visible: false
+    '12':
+        id: bad_node_value
+        name: Bad node value
+        description: The value of the node is not the expected one.
+        type: 1
+        visible: false
+    '13':
+        type: 1
+        id: malloc_fail_handling
+        description: Wrong return value when malloc call fails.
+        name: Malloc fail handling
+        visible: false
+    '14':
+        name: Error normal case
+        description: Your function returns an error in normal case.
+        id: error_normal_case
+        type: 1
+        visible: false
+    '15':
+        type: 1
+        id: wrong_args_handling
+        name: Bad Args handling
+        description: Wrong return value when wrong args.
+        visible: false
+    '16':
+        description: The linked list does not correspond to the waited one.
+        name: Incorrect list
+        type: 1
+        id: not_expected_list
         visible: false
     '2':
         type: 1
-        name: Timeout
         description: Your code exceeds the maximum allowed time.
         visible: true
+        name: Timeout
         id: timeout
     '3':
-        description: Your code produced a segmentation fault.
+        visible: true
         id: sigsegv
+        type: 1
         name: Segmentation Fault
-        type: 1
-        visible: true
+        description: Your code produced a segmentation fault.
     '4':
-        visible: true
-        type: 1
         id: wrong_alloc_size
+        type: 1
         name: Wrong allocation size
         description: You don't allocate the right amount of memory.
+        visible: true
     '5':
+        type: 1
         description: Your code does not compile with cppcheck
-        visible: true
-        type: 1
-        id: cppcheck
         name: Cppcheck fails
+        visible: true
+        id: cppcheck
     '6':
+        id: not_compile
+        name: Not compile
+        description: You code does not compile.
         type: 1
         visible: true
-        id: not_compile
-        description: You code does not compile.
-        name: Not compile
     '7':
         description: Your code exceeded the memory.
+        visible: true
         id: memory
+        type: 1
         name: Memory Exceeded
-        type: 1
-        visible: true
     '8':
-        description: Your code produced a floating point exception.
-        id: sigfpe
-        name: Floating Point Exception
-        type: 1
         visible: true
+        name: Floating Point Exception
+        id: sigfpe
+        type: 1
+        description: Your code produced a floating point exception.
     '9':
         description: Your code produced a double free.
         id: double_free
         type: 1
+        visible: true
         name: Double free
-        visible: true
-    '10':
-        type: 1
-        visible: true
-        id: banned_funcs
-        description: You use some banned functions.
-        name: Banned functions
-    '11':
-        id: wrong_alloc_size
-        name: Wrong allocation size
-        description: The allocated memory doesn't have the correct size.
-        type: 1
-        visible: false
-    '12':
-        type: 1
-        id: not_allocated
-        name: Not allocated
-        description: A new node is not allocated with malloc().
-        visible: false
-    '13':
-        name: Bad node value
-        id: bad_node_value
-        type: 1
-        description: The value of the node is not the expected one.
-        visible: false
-    '14':
-        description: Wrong return value when malloc call fails.
-        type: 1
-        name: Malloc fail handling
-        id: malloc_fail_handling
-        visible: false
-    '15':
-        description: Your function returns an error in normal case.
-        type: 1
-        id: error_normal_case
-        name: Error normal case
-        visible: false
-    '16':
-        name: Bad Args handling
-        id: wrong_args_handling
-        type: 1
-        description: Wrong return value when wrong args.
-        visible: false
     '17':
-        name: Incorrect list
-        id: not_expected_list
-        description: The linked list does not correspond to the waited one.
-        type: 1
-        visible: false
-    '18':
         description: Task about structures and their use
-        name: Struct
-        type: 2
         visible: true
-        id: category_struct
-    '19':
+        type: 2
+        name: Struct
+        id: ''
+    '18':
+        name: S4
+        type: 2
         visible: true
         description: ''
+        id: ''
+    '19':
+        name: Malloc
+        visible: true
+        description: Task about malloc
         type: 2
-        name: S4
         id: ''
     '20':
-        name: Malloc
-        type: 2
-        description: Task about malloc
-        visible: true
-        id: category_malloc
-    '21':
-        visible: true
         name: Level 4
         type: 2
+        visible: true
         description: Level 4
-        id: level4
-    '22':
+        id: ''
+    '21':
+        type: 2
         description: Task about pointers and their use
-        id: category_pointer
+        visible: true
         name: Pointer
-        type: 2
-        visible: true
-    '23':
-        description: Task about linked lists
-        id: category_linkedlist
+        id: ''
+    '22':
         name: Linked list
+        description: Task about linked lists
         type: 2
         visible: true
+        id: ''
 weight: 1.0

@@ -11,18 +11,17 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Count the ''\0'''
 network_grading: false
 order: 17
 problems:
     counting_zero:
-        language: c
         default: ''
-        name: Compter le nombre de \0
         type: code
+        name: Compter le nombre de \0
         header: |-
             .. code-block:: c
 
@@ -33,87 +32,88 @@ problems:
                  *         -1 in case of error
                  */
                  int counting_zero(char* str, int length){
+        language: c
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code produced a floating point exception.
+        visible: true
         id: sigfpe
+        description: Your code produced a floating point exception.
         name: Floating Point Exception
     '2':
-        visible: true
         type: 1
-        id: double_free
-        name: Double free
         description: Your code produced a double free.
+        visible: true
+        name: Double free
+        id: double_free
     '3':
-        description: Your code used some banned functions.
         visible: true
-        name: Banned functions
-        type: 1
         id: banned_funcs
-    '4':
         type: 1
-        visible: true
+        name: Banned functions
+        description: Your code used some banned functions.
+    '4':
         id: cppcheck
-        description: Your code does not compile with cppcheck.
+        type: 1
         name: Cppcheck fails
+        description: Your code does not compile with cppcheck.
+        visible: true
     '5':
-        name: Bad Args handling
-        id: wrong_args_handling
         type: 1
         description: Wrong return value when wrong args.
+        name: Bad Args handling
+        id: wrong_args_handling
         visible: false
     '6':
-        name: Timeout
         id: timeout
+        name: Timeout
         description: Your code exceeded the maximum allowed time.
-        visible: true
         type: 1
+        visible: true
     '7':
         description: Your code produced a segmentation fault.
+        visible: true
         id: sigsegv
         type: 1
         name: Segmentation Fault
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: not_compile
-        description: Your code does not compile.
         name: Not compile
-    '9':
-        visible: true
-        id: memory
-        description: Your code exceeded the memory.
+        id: not_compile
         type: 1
+        description: Your code does not compile.
+    '9':
+        description: Your code exceeded the memory.
+        id: memory
+        type: 1
+        visible: true
         name: Memory Exceeded
     '10':
-        description: ''
         name: S3
         type: 2
+        description: ''
         visible: true
         id: ''
     '11':
-        visible: true
-        name: Level 2
-        type: 2
         description: Level 2
-        id: level2
-    '12':
         type: 2
-        description: Task about string operations
+        name: Level 2
         visible: true
+        id: ''
+    '12':
         name: String
+        description: Task about string operations
+        type: 2
+        visible: true
         id: ''
 weight: 1.0

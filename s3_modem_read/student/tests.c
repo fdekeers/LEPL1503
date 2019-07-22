@@ -200,8 +200,7 @@ void test_42_left2() {
 }
 
 void test_no42_right() {
-    set_test_metadata("modem", _("test2 for 42 not contained"), 7);
-    // Plus de poids pr ce test pour forcer l etudiant a utiliser la fonction modem_read()
+    set_test_metadata("modem", _("test2 for 42 not contained"), 1);
     if(!tab1) CU_FAIL(_("malloc failed"));
 
     int ret = 1;

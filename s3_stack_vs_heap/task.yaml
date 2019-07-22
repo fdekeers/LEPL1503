@@ -31,38 +31,35 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Global and local variables'
 network_grading: false
 order: 25
 problems:
     return1:
-        answer: '5'
+        type: match
         header: |-
             The variables which are declared inside functions are stored on the program's stack. These variables are only accessible by the function in which they were declared.
 
             Moreover, passing arguments to functions, and returning values from a function, also use the stack, and use the mechanism of passing by value. Once a variable is passed by value, a copy of its value is placed on the stack.
 
             Consider the ``main`` function here above. What number would the first call to ``printf`` print ?
-        type: match
         name: On the stack
+        answer: '5'
     version1:
-        default: ''
+        type: code
         name: Global variables
+        language: c
+        default: ''
         header: |
             Write the body of the function ``sum2`` which stores in the global variable ``result`` the sum of its parameters. Why does it work with a global variable ?
 
             .. code-block:: c
 
                 void sum2(int a, int b) {
-        language: c
-        type: code
     version2:
-        language: c
-        default: ''
-        type: code
         header: |
             You are now asked to return the result of the sum, neither by using the ``return`` keyword, nor by using a global variables.
 
@@ -72,88 +69,91 @@ problems:
                  * @post stores the sum of the values pointed by a and b in the memory pointed by r
                  */
                 void sum3 (int *a, int *b, int *r) {
+        language: c
         name: Passing by reference
+        default: ''
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q2
-        description: q2 is correct
+        type: 0
         id: q2
+        description: q2 is correct
         visible: false
     '1':
         type: 0
-        description: q3 is correct
         id: q3
+        description: q3 is correct
         name: Q3
         visible: false
     '2':
-        visible: true
         type: 1
-        id: timeout
-        name: Timeout
         description: Your code exceeded the maximum allowed time.
+        visible: true
+        name: Timeout
+        id: timeout
     '3':
-        description: Your code produced a segmentation fault.
         visible: true
-        type: 1
         id: sigsegv
-        name: Segmentation Fault
-    '4':
         type: 1
-        visible: true
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '4':
         id: not_compile
-        description: Your code does not compile.
+        type: 1
         name: Not compile
+        description: Your code does not compile.
+        visible: true
     '5':
-        name: Memory Exceeded
-        id: memory
         type: 1
         description: Your code exceeded the memory.
+        name: Memory Exceeded
         visible: true
+        id: memory
     '6':
-        name: Floating Point Exception
         id: sigfpe
+        name: Floating Point Exception
         description: Your code produced a floating point exception.
-        visible: true
         type: 1
+        visible: true
     '7':
         description: Your code produced a double free.
+        visible: true
         id: double_free
         type: 1
         name: Double free
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: banned_funcs
-        description: Your code used some banned functions.
         name: Banned functions
-    '9':
-        visible: true
-        id: cppcheck
-        description: Your code does not compile with cppcheck.
+        id: banned_funcs
         type: 1
+        description: Your code used some banned functions.
+    '9':
+        description: Your code does not compile with cppcheck.
+        id: cppcheck
+        type: 1
+        visible: true
         name: Cppcheck fails
     '10':
-        description: ''
         name: S3
         type: 2
+        description: ''
         visible: true
         id: ''
     '11':
-        visible: true
-        name: Pointer
         description: Task about pointers and their use
         type: 2
+        name: Pointer
+        visible: true
         id: ''
     '12':
-        type: 2
-        description: Level 1
-        visible: true
         name: Level 1
+        description: Level 1
+        type: 2
+        visible: true
         id: ''
 weight: 1.0

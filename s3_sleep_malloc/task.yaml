@@ -9,14 +9,15 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Sleepy malloc'
 network_grading: false
 order: 27
 problems:
     sleep_malloc:
+        name: Sleepy malloc
         language: c
         default: ''
         header: |-
@@ -30,7 +31,6 @@ problems:
                  * If malloc failed 10 times in a row, return NULL.
                  */
                 void *sleepy_malloc(size_t s) {
-        name: Sleepy malloc
         type: code
 stored_submissions: 0
 submission_limit:
@@ -38,82 +38,82 @@ submission_limit:
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code exceeds the maximum allowed time.
+        visible: true
         id: timeout
+        description: Your code exceeds the maximum allowed time.
         name: Timeout
     '2':
-        visible: true
         type: 1
-        id: sigsegv
+        description: ''
+        visible: true
         name: Segmentation Fault
-        description: ''
+        id: sigsegv
     '3':
-        description: You code does not compile.
         visible: true
-        name: Not compile
-        type: 1
         id: not_compile
+        type: 1
+        name: Not compile
+        description: You code does not compile.
     '4':
-        type: 1
-        visible: true
         id: memory
-        description: ''
+        type: 1
         name: Memory Exceeded
-    '5':
-        name: Floating Point Exception
-        id: sigfpe
-        type: 1
         description: ''
         visible: true
-    '6':
-        name: Double free
-        id: double_free
-        description: Your code produced a double free.
-        visible: true
+    '5':
         type: 1
+        description: ''
+        name: Floating Point Exception
+        visible: true
+        id: sigfpe
+    '6':
+        id: double_free
+        name: Double free
+        description: Your code produced a double free.
+        type: 1
+        visible: true
     '7':
         description: You use some banned functions.
+        visible: true
         id: banned_funcs
         type: 1
         name: Banned functions
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: cppcheck
-        description: Your code does not compile with cppcheck
         name: Cppcheck fails
+        id: cppcheck
+        type: 1
+        description: Your code does not compile with cppcheck
     '9':
-        id: not_malloc_once
         description: The malloc() functions was not called exactly once when malloc
             succeeds the first time.
+        id: not_malloc_once
         type: 1
         name: Not malloc once
         visible: false
     '10':
-        description: ''
         name: S3
         type: 2
+        description: ''
         visible: true
         id: ''
     '11':
-        visible: true
-        name: Level 2
-        type: 2
         description: Level 2
+        type: 2
+        name: Level 2
+        visible: true
         id: ''
     '12':
-        type: 2
-        description: Task about malloc
-        visible: true
         name: Malloc
+        description: Task about malloc
+        type: 2
+        visible: true
         id: ''
 weight: 1.0

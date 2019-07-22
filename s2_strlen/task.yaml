@@ -10,99 +10,99 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S2] strlen'
 network_grading: false
 order: 4
 problems:
     q1:
-        type: code
-        default: ''
-        language: c
-        name: strlen
         header: |-
             Write the body of the function *strlen* which outputs the length of the string given as argument.
 
             .. code-block:: c
 
                 size_t strlen(const char* s) {
+        name: strlen
+        language: c
+        default: ''
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code exceeded the maximum allowed time.
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
         name: Timeout
     '2':
-        visible: true
         type: 1
-        id: sigsegv
-        name: Segmentation Fault
         description: Your code produced a segmentation fault.
+        visible: true
+        name: Segmentation Fault
+        id: sigsegv
     '3':
-        description: Your code does not compile.
         visible: true
-        name: Not compile
-        type: 1
         id: not_compile
-    '4':
         type: 1
-        visible: true
+        name: Not compile
+        description: Your code does not compile.
+    '4':
         id: memory
-        description: Your code exceeded the memory.
+        type: 1
         name: Memory Exceeded
+        description: Your code exceeded the memory.
+        visible: true
     '5':
-        name: Floating Point Exception
-        id: sigfpe
         type: 1
         description: Your code produced a floating point exception.
+        name: Floating Point Exception
         visible: true
+        id: sigfpe
     '6':
-        name: Double free
         id: double_free
+        name: Double free
         description: Your code produced a double free.
-        visible: true
         type: 1
+        visible: true
     '7':
         description: Your code used some banned functions.
+        visible: true
         id: banned_funcs
         type: 1
         name: Banned functions
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: cppcheck
-        description: Your code does not compile with cppcheck.
         name: Cppcheck fails
+        id: cppcheck
+        type: 1
+        description: Your code does not compile with cppcheck.
     '10':
-        description: Level 1
-        name: Level 1
-        type: 2
-        visible: true
-        id: ''
-    '11':
-        visible: true
         name: S2
         type: 2
         description: ''
-        id: ''
-    '9':
         visible: true
+        id: ''
+    '11':
         description: Task about string operations
         type: 2
         name: String
+        visible: true
+        id: ''
+    '9':
+        description: Level 1
+        type: 2
+        visible: true
+        name: Level 1
         id: ''
 weight: 1.0

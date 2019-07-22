@@ -20,17 +20,13 @@ groups: false
 input_random: '0'
 limits:
     time: '30'
-    output: '2'
     memory: '100'
+    output: '2'
 name: '[S2] Bitwise operation: counting set bits '
 network_grading: false
 order: 12
 problems:
     q1:
-        type: code
-        language: c
-        default: ''
-        name: ''
         header: |-
             Write the body of a function that counts the number of bits set to ``1`` in its parameter :
 
@@ -46,81 +42,85 @@ problems:
 
                 #include <stdint.h>
                 uint8_t nbits(uint32_t n) {
+        name: ''
+        language: c
+        default: ''
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        description: q1 is correct
-        id: q1
         name: Q1
         type: 0
+        id: q1
+        description: q1 is correct
         visible: false
     '1':
-        description: Your code exceeded the maximum allowed time.
+        type: 1
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
         name: Timeout
-        type: 1
-        visible: true
     '2':
+        type: 1
         description: Your code produced a segmentation fault.
-        id: sigsegv
+        visible: true
         name: Segmentation Fault
-        type: 1
-        visible: true
+        id: sigsegv
     '3':
-        description: Your code does not compile.
-        id: not_compile
-        name: Not compile
-        type: 1
         visible: true
-    '4':
-        description: Your code exceeded the memory.
-        id: memory
-        name: Memory Exceeded
+        id: not_compile
         type: 1
+        name: Not compile
+        description: Your code does not compile.
+    '4':
+        id: memory
+        type: 1
+        name: Memory Exceeded
+        description: Your code exceeded the memory.
         visible: true
     '5':
-        description: Your code produced a floating point exception.
-        id: sigfpe
-        name: Floating Point Exception
         type: 1
+        description: Your code produced a floating point exception.
+        name: Floating Point Exception
         visible: true
+        id: sigfpe
     '6':
-        description: Your code produced a double free.
         id: double_free
         name: Double free
+        description: Your code produced a double free.
         type: 1
         visible: true
     '7':
         description: Your code used some banned functions.
+        visible: true
         id: banned_funcs
+        type: 1
         name: Banned functions
-        type: 1
-        visible: true
     '8':
-        description: Your code does not compile with cppcheck.
-        id: cppcheck
+        visible: true
         name: Cppcheck fails
+        id: cppcheck
         type: 1
-        visible: true
-    '9':
-        description: ''
-        id: ''
-        name: S2
-        type: 2
-        visible: true
+        description: Your code does not compile with cppcheck.
     '10':
-        description: Task about bitwise operations
-        id: category_bits
         name: Bitwise operation
         type: 2
+        description: Task about bitwise operations
         visible: true
+        id: ''
     '11':
-        visible: true
-        name: Level 1
-        type: 2
         description: Level 1
-        id: level1
+        type: 2
+        name: Level 1
+        visible: true
+        id: ''
+    '9':
+        description: ''
+        type: 2
+        visible: true
+        name: S2
+        id: ''
 weight: 1.0

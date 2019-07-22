@@ -27,26 +27,10 @@ void test_myfunc_ret()
     char *argv5[2] = {str1, str5};
     char buf[16];
 
-    struct timespec *before = (struct timespec *) malloc(sizeof(struct timespec));
-    struct timespec *after =  (struct timespec *) malloc(sizeof(struct timespec));
-    time_t sec1 = 0;
-    long nano1 = 0;
-    time_t secsol = 0;
-    long nanosol = 0;
-    int clockerr;
-    int clockerr2;
-    int clockerr3;
-    int clockerr4;
     int flag = 1;
 
     SANDBOX_BEGIN;
-    clockerr = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
     ret1 = main2(5, argv1);
-    clockerr2 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-    if (clockerr ==0 && clockerr2 == 0){
-        sec1 = after->tv_sec - before->tv_sec;
-        nano1 = after->tv_nsec - before->tv_nsec;
-    }
     SANDBOX_END;
 
     read(stdout_cpy, buf, 16);
@@ -69,15 +53,6 @@ void test_myfunc_ret()
     else
         CU_PASS("");
 
-    clockerr3 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, before);
-    int temp;
-    //int temp = main_sol(5, argv1);
-    clockerr4 = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, after);
-    if (clockerr3 ==0 && clockerr4 == 0){
-        secsol = after->tv_sec - before->tv_sec;
-        nanosol = after->tv_nsec - before->tv_nsec;
-    }
-    (void)temp;
 
     SANDBOX_BEGIN;
     ret2 = main2(4, argv2);
@@ -173,25 +148,7 @@ void test_myfunc_ret()
 
     if (flag){
 	set_tag("q1");
-	if(clockerr==0 && clockerr2==0 && clockerr3==0 && clockerr4==0){
-		char *timetpl = _("the test with your implementation took %d sec and %d nsec while our solution took %d sec and %d nsec");
-		char timemsg[strlen(timetpl+30)];
-		sprintf(timemsg, timetpl, sec1, nano1, secsol, nanosol);
-		push_info_msg(timemsg);
-	}
     }
-    (void)sec1;
-    (void)nano1;
-    (void)secsol;
-    (void)nanosol;
-    (void)clockerr;
-    (void)clockerr2;
-    (void)clockerr3;
-    (void)clockerr4;
-    if(before !=NULL)
-    free(before);
-    if(after !=NULL)
-    free(after);
 }
 
 int main(int argc,char** argv)

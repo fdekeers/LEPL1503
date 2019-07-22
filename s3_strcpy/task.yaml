@@ -11,14 +11,15 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Improved strcpy '
 network_grading: false
 order: 19
 problems:
     strcpy_impl:
+        language: c
         header: |
             Write the body of the function *buf_strcpy*.
 
@@ -33,9 +34,8 @@ problems:
                 * Remember that strings are terminated with '\0' and that strlen("abc") returns 3 even if 4 bytes are required to store this string.
                 */
                 char *buf_strcpy(const char *src) {
-        language: c
-        default: ''
         type: code
+        default: ''
         name: buf_strcpy
 stored_submissions: 0
 submission_limit:
@@ -43,81 +43,81 @@ submission_limit:
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
-        visible: true
         type: 1
-        description: Your code exceeded the maximum allowed time.
+        visible: true
         id: timeout
+        description: Your code exceeded the maximum allowed time.
         name: Timeout
     '2':
-        visible: true
         type: 1
-        id: sigsegv
-        name: Segmentation Fault
         description: Your code produced a segmentation fault.
+        visible: true
+        name: Segmentation Fault
+        id: sigsegv
     '3':
-        description: Your code does not compile.
         visible: true
-        name: Not compile
-        type: 1
         id: not_compile
-    '4':
         type: 1
-        visible: true
+        name: Not compile
+        description: Your code does not compile.
+    '4':
         id: memory
-        description: Your code exceeded the memory.
+        type: 1
         name: Memory Exceeded
+        description: Your code exceeded the memory.
+        visible: true
     '5':
-        name: Floating Point Exception
-        id: sigfpe
         type: 1
         description: Your code produced a floating point exception.
+        name: Floating Point Exception
         visible: true
+        id: sigfpe
     '6':
-        name: Double free
         id: double_free
+        name: Double free
         description: Your code produced a double free.
-        visible: true
         type: 1
+        visible: true
     '7':
         description: Your code used some banned functions.
+        visible: true
         id: banned_funcs
         type: 1
         name: Banned functions
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: cppcheck
-        description: Your code does not compile with cppcheck.
         name: Cppcheck fails
+        id: cppcheck
+        type: 1
+        description: Your code does not compile with cppcheck.
     '9':
-        id: malloc_fail_handling
         description: Wrong return value when malloc call fails.
+        id: malloc_fail_handling
         type: 1
         name: Malloc fail handling
         visible: false
     '10':
-        description: ''
         name: S3
         type: 2
+        description: ''
         visible: true
         id: ''
     '11':
-        visible: true
-        name: Malloc
-        type: 2
         description: Task about malloc
+        type: 2
+        name: Malloc
+        visible: true
         id: ''
     '12':
-        type: 2
-        description: Level 2
-        visible: true
         name: Level 2
+        description: Level 2
+        type: 2
+        visible: true
         id: ''
 weight: 1.0

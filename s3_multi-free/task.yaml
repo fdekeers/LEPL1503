@@ -31,14 +31,16 @@ evaluate: best
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     memory: '100'
     output: '2'
-    time: '30'
 name: '[S3] Manipulate the memory'
 network_grading: false
 order: 28
 problems:
     init_all:
+        name: Init all
+        language: c
         header: |-
             Write the body of the function ``init_all``. You must copy the strings.
 
@@ -52,11 +54,12 @@ problems:
                  * @return: a pointer to the university structure containing the elements
                  */
                  university_t* init_all(char* city, int creation, char* rectname, int age, int salary){
-        name: Init all
-        language: c
-        type: code
         default: ''
+        type: code
     free_all:
+        type: code
+        language: c
+        name: Free all
         header: |-
             Write the body of the function ``free_all``.
 
@@ -68,96 +71,93 @@ problems:
                  */
                  void free_all(university_t* u){
         default: ''
-        type: code
-        language: c
-        name: Free all
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 tags:
     '0':
-        type: 0
         name: Q1
-        description: q1 is correct
+        type: 0
         id: q1
+        description: q1 is correct
         visible: false
     '1':
         type: 0
-        description: q2 is correct
         id: q2
+        description: q2 is correct
         name: Q2
         visible: false
     '2':
-        visible: true
         type: 1
-        id: timeout
-        name: Timeout
         description: Your code exceeded the maximum allowed time.
+        visible: true
+        name: Timeout
+        id: timeout
     '3':
-        description: Your code produced a segmentation fault.
         visible: true
-        type: 1
         id: sigsegv
-        name: Segmentation Fault
-    '4':
         type: 1
-        visible: true
+        name: Segmentation Fault
+        description: Your code produced a segmentation fault.
+    '4':
         id: not_compile
-        description: Your code does not compile.
+        type: 1
         name: Not compile
+        description: Your code does not compile.
+        visible: true
     '5':
-        name: Memory Exceeded
-        id: memory
         type: 1
         description: Your code exceeded the memory.
+        name: Memory Exceeded
         visible: true
+        id: memory
     '6':
-        name: Floating Point Exception
         id: sigfpe
+        name: Floating Point Exception
         description: Your code produced a floating point exception.
-        visible: true
         type: 1
+        visible: true
     '7':
         description: Your code produced a double free.
+        visible: true
         id: double_free
         type: 1
         name: Double free
-        visible: true
     '8':
-        type: 1
         visible: true
-        id: banned_funcs
-        description: Your code used some banned functions.
         name: Banned functions
-    '9':
-        visible: true
-        id: cppcheck
-        description: Your code does not compile with cppcheck.
+        id: banned_funcs
         type: 1
+        description: Your code used some banned functions.
+    '9':
+        description: Your code does not compile with cppcheck.
+        id: cppcheck
+        type: 1
+        visible: true
         name: Cppcheck fails
     '10':
-        description: ''
         name: S3
         type: 2
+        description: ''
         visible: true
         id: ''
     '11':
-        visible: true
-        name: Pointer
         description: Task about pointers and their use
         type: 2
+        name: Pointer
+        visible: true
         id: ''
     '12':
-        type: 2
-        description: Task about free
-        visible: true
         name: Free
+        description: Task about free
+        type: 2
+        visible: true
         id: ''
     '13':
         type: 2
-        description: Level 4
         visible: true
+        description: Level 4
         name: Level 4
         id: ''
 weight: 1.0
