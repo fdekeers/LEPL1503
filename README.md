@@ -1,7 +1,7 @@
 # LEPL1503
 [![Build Status](https://travis-ci.org/obonaventure/LEPL1503.svg?branch=master)](https://travis-ci.org/obonaventure/LEPL1503)
 
-This repository contains the [INGInious](https://www.inginious.org) tasks for [UCLouvain](https://www.uclouvain.be)'s course LSINF1252, computing systems. 
+This repository contains the [INGInious](https://www.inginious.org) tasks for [UCLouvain](https://www.uclouvain.be)'s course [LEPL1503](https://uclouvain.be/cours-LEPL1503). 
 
 Each [INGInious](https://www.inginious.org) task is structured as follows:
 
@@ -15,8 +15,4 @@ The ``student`` directory contains several types of files:
  - a ``student_code.c.tpl`` file which is the template that the students have to fill in
  - one or more ``test.c`` files that contain the actual tests
  
- You can find in [Report.md](Report.md) a description on how to write a bug report for an [INGInious](https://www.inginious.org) task
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 6868740... Ctester + readme
+You can find in [Report.md](Report.md) a description on how to write a bug report for an [INGInious](https://www.inginious.org) task
