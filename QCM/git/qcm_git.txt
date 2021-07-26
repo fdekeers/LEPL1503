@@ -1,0 +1,22 @@
+Ces exercices vont vous permettre de revoir les différentes étapes
+lorsqu'on travaille avec ``git``.
+
+1. Quelle est la commande à utiliser pour enregistrer un commit ?
+git commit
+
+2. Quelle est la commande à utiliser pour récupérer un repository ``git`` existant ?
+git clone
+
+3. Quelle est la commande à utiliser pour ajouter les modifications apportées
+au commit ?
+git add
+
+4. Quelle est la commande à utiliser pour publier un commit sur le remote ?
+git push
+
+5. Quelle est la commande à utiliser pour récupérer les dernières modifications apportées à un repository ?
+git pull
+
+6. Classez les 5 commandes ci-dessus dans l'ordre pour un flux de travail classique avec git.
+Les commandes doivent être séparées par une simple virgule (","), sans espace avant ou après.
+git clone,git pull,git add,git commit,git push

@@ -1,0 +1,22 @@
+Ces exercices vont vous permettre de revoir les commandes de base pour gérer les branches avec Git.
+
+1. Donnez la commande pour créer une branche ``branch``.
+git branch branch
+
+2. Donnez la commande pour supprimer la branche ``branch``.
+git branch -d branch
+
+3. Donnez la commande pour voir toutes les branches existantes et la branche actuelle.
+git branch
+
+4. Donnez la commande pour passer sur la branche ``branch``.
+git checkout branch
+
+5. Donnez la commande pour publier un commit sur la branche ``branch``.
+git push origin branch
+
+6. Donnez la commande pour récupérer le dernier commit de la branche ``branch``.
+git pull origin branch
+
+7. Donnez la commande qui, depuis la branche destination ``master``, permet de la fusionner avec la branche source ``branch``.
+git merge branch
