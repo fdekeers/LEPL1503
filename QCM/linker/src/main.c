@@ -1,8 +1,5 @@
-// Include system libraries
 #include <stdlib.h>
 #include <stdio.h>
-
-// Include user-defined libraries
 #include "module_a.h"
 #include "module_b.h"
 

@@ -5,7 +5,7 @@ Soit le programme C définit par les 3 fichiers donnés:
 
 
 Quelle est la valeur de la variable str_a vue par le fichier main.c ?
-  - "Bonjour"
+  - "Bonjour" *
   - "Salut"
   - "Coucou"
   - "Hello"
@@ -14,30 +14,34 @@ Quelle est la valeur de la variable str_b vue par le fichier main.c ?
   - "Bonjour"
   - "Salut"
   - "Coucou"
-  - "Hello"
+  - "Hello" *
 
-Dans quel fichier est définie la fonction func_a exécutée ?
-  - main.c
+Dans quel fichier est définie la fonction func_a exécutée par la fonction main ?
+  - main.c *
   - module_a.c
   - module_b.c
 
-Dans quel fichier est définie la fonction func_b exécutée ?
+Dans quel fichier est définie la fonction func_b exécutée par la fonction main ?
   - main.c
-  - module_a.c
+  - module_a.c *
   - module_b.c
 
-Dans quel fichier est définie la fonction func_c exécutée ?
+Dans quel fichier est définie la fonction func_c exécutée par la fonction main ?
   - main.c
   - module_a.c
-  - module_b.c
+  - module_b.c *
 
 
 Dans le fichier module_b.c,
 quelle sera la valeur de la variable a affichée lors de la 5e exécution de la fonction func_b ?
 
+4
+
 
 Dans le fichier module_b.c,
 quelle sera la valeur de la variable b affichée lors de la 5e exécution de la fonction func_b ?
+
+0
 
 
 Donnez la sortie standard exacte lors de l'exécution du programme.

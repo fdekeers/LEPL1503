@@ -1,0 +1,175 @@
+name: 'Structure des grands programmes (static & extern)'
+accessible: false
+author: François De Keersmaeker
+context: |-
+  Soit le programme C définit par les 3 fichiers suivants:
+
+  ``main.c``
+  .. code-block:: c
+
+    #include <stdlib.h>
+    #include <stdio.h>
+    #include "module_a.h"
+    #include "module_b.h"
+
+    extern char* str_a;
+    extern char* str_b;
+
+    void func_a() {
+      printf("%s\n", str_a);
+      printf("%s\n", str_b);
+      func_c();
+    }
+
+    int main(int argc, char const *argv[]) {
+      func_a();
+      func_b();
+      func_c();
+      return EXIT_SUCCESS;
+    }
+
+  ``module_a.c``
+  .. code-block:: c
+
+    #include "module_a.h"
+
+    char* str_a = "Bonjour";
+    static char* str_b = "Salut";
+
+    static void func_a() {
+      printf("%s\n", str_b);
+    }
+
+    void func_b() {
+      func_a();
+    }
+
+    static void func_c() {
+      printf("Ciao");
+    }
+
+  ``module_b.c``
+  .. code-block:: c
+
+    #include "module_b.h"
+
+    static char* str_a = "Coucou";
+    char* str_b = "Hello";
+
+    static void func_b() {
+      static int a = 0;
+      int b = 0;
+      printf("%s (a = %d; b = %d)\n", str_a, a, b);
+      a++;
+      b++;
+    }
+
+    void func_c() {
+      func_b();
+    }
+
+Les questions suivantes traitent de la visibilité des variables et fonctions à travers ces 3 fichiers.
+
+environment: cpp
+evaluate: best
+groups: false
+limits:
+  time: '30'
+  memory: '100'
+  output: '2'
+network_grading: false
+order: 999
+problems:
+  mcq1:
+    name: Question 1
+    type: multiple_choice
+    header: Quelle est la valeur de la variable ``str_a`` vue par le fichier ``main.c`` ?
+    choices:
+      - text: \"Bonjour\"
+        valid: true
+      - text: \"Salut\"
+      - text: \"Coucou\"
+      - text: \"Hello\"
+    success_message: >-
+      La variable est définie comme ``extern`` dans ``main.c``.
+      Sa valeur lui est donnée dans le fichier ``module_a.c``.
+    multiple: false
+
+  mcq2:
+    name: Question 2
+    type: multiple_choice
+    header: Quelle est la valeur de la variable ``str_b`` vue par le fichier ``main.c`` ?
+    choices:
+      - text: \"Bonjour\"
+      - text: \"Salut\"
+      - text: \"Coucou\"
+      - text: \"Hello\"
+        valid: true
+    success_message: >-
+      La variable est définie comme ``extern`` dans ``main.c``.
+      Sa valeur lui est donnée dans le fichier ``module_b.c``.
+    multiple: false
+
+  mcq3:
+    name: Question 3
+    type: multiple_choice
+    header: Dans quel fichier est définie la fonction ``func_a`` exécutée par la fonction ``main`` ?
+    choices:
+      - text: ``main.c``
+        valid: true
+      - text: ``module_a.c``
+      - text: ``module_b.c``
+    success_message: La fonction est directement définie dans le fichier ``main.c``.
+    multiple: false
+
+  mcq4:
+    name: Question 4
+    type: multiple_choice
+    header: Dans quel fichier est définie la fonction ``func_b`` exécutée par la fonction ``main`` ?
+    choices:
+      - text: ``main.c``
+      - text: ``module_a.c``
+        valid: true
+      - text: ``module_b.c``
+    success_message: La fonction est importée depuis le fichier ``module_a.c``.
+    multiple: false
+
+  mcq4:
+    name: Question 4
+    type: multiple_choice
+    header: Dans quel fichier est définie la fonction ``func_c`` exécutée par la fonction ``main`` ?
+    choices:
+      - text: ``main.c``
+      - text: ``module_a.c``
+      - text: ``module_b.c``
+        valid: true
+    success_message: La fonction est importée depuis le fichier ``module_b.c``.
+    multiple: false
+
+  variable_a:
+    name: Question 5
+    type: match
+    answer: '4'
+    header: >-
+      Quelle sera la valeur de la variable ``a`` affichée lors de la 5e exécution de la fonction func_b
+      définie dans le fichier ``module_b.c`` ?
+
+  variable_b:
+    name: Question 6
+    type: match
+    answer: '0'
+    header: >-
+      Quelle sera la valeur de la variable ``b`` affichée lors de la 5e exécution de la fonction func_b
+      définie dans le fichier ``module_b.c`` ?
+
+  stdout:
+    name: Question 7
+    type: code
+    header: Donnez le contenu de la sortie standard exact lors de l'exécution du programme.
+    optional: false
+
+stored_submissions: 0
+submission_limit:
+  amount: -1
+  period: -1
+weight: 1.0

@@ -1,0 +1,52 @@
+#!/bin/python3
+
+import os
+from inginious import feedback, rst, input
+
+success = True
+
+# Switch working directory to student/
+os.chdir("student")
+
+with open("../task.yaml", 'r') as stream:
+    problems = yaml.load(stream)['problems']
+
+    for name, meta in problems.items():
+        if meta['type'] == 'match':
+            answer = input.get_input(name)
+            if answer == meta['answer']:
+                feedback.set_problem_result("success", name)
+                feedback.set_problem_feedback("Votre réponse est correcte", name, True)
+                success = False
+            else:
+                feedback.set_problem_result("failed", name)
+                feedback.set_problem_feedback("Votre réponse est incorrecte", name, True)
+
+
+# Read solution file
+lines = []
+with open("solutions/student_code_sol.txt", 'r') as f:
+    lines = f.readlines()
+
+# Put student's answer into a file for correcting
+input.parse_template("student_code.txt.tpl", "answer.txt")
+
+# Parse student's answer
+n = 0  # Line index
+with open("answer.txt", 'r') as f:
+    for line in f:
+        if line != lines[n]:
+            # Line is different, fail
+            feedback.set_problem_result("failed", "stdout")
+            feedback.set_problem_feedback(f"Erreur à la ligne {n+1}", "stdout")
+            success = False
+        n += 1
+
+# All lines are correct, success
+feedback.set_problem_result("success", "stdout")
+feedback.set_problem_feedback("La réponse est correcte.", "stdout")
+
+subprocess.run("rm -rf *.txt *.tpl")
+
+feedback.set_grade(100 if success else 0)
+feedback.set_global_result("success" if success else "failed")
