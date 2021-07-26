@@ -40,7 +40,7 @@ depuis un fichier ``main.c`` qui inclut correctement le fichier header ``module.
 Note: une variable ou fonction est "visible" si on peut y accéder depuis un autre fichier par son nom.
 
 1. La variable ``a`` est-elle visible depuis le fichier ``main.c`` ?
-Oui
+Oui (mais nécessite ``extern``)
 
 2. La variable ``b`` est-elle visible depuis le fichier ``main.c`` ?
 Non

@@ -1,0 +1,152 @@
+name: 'Structure des grands programmes (static & extern) - QCM'
+accessible: false
+author: François De Keersmaeker
+context: |-
+  Soit un module ``module``, dont l'interface est définie par le fichier header suivant, nommé ``module.h``:
+
+  .. code-block:: c
+
+    int func_c();
+    int func_d();
+
+  et dont l'implémentation est fournie par le fichier source suivant, nommé ``module.c``:
+
+  .. code-block:: c
+
+    #include "module.h"
+
+    int a = 0;
+    static int b = 1;
+
+    int func_c() {
+      int c = 2;
+      return c;
+    }
+
+    int func_d() {
+      static int d = 3;
+      return d;
+    }
+
+    static int func_e() {
+      int e = 4;
+      return e;
+    }
+
+    int func_f() {
+      int f = 5;
+      return f;
+    }
+
+
+  Les questions suivantes traitent de la visibilité des variables et fonctions de ce module, depuis un fichier ``main.c`` qui inclut correctement le fichier header ``module.h``.
+  Note: une variable ou fonction est "visible" si on peut y accéder depuis un autre fichier par son nom.
+
+
+environment: mcq
+evaluate: best
+groups: false
+limits:
+  time: '30'
+  memory: '100'
+  output: '2'
+network_grading: false
+order: 101
+problems:
+
+  var_a:
+    name: Question 1: Variable a
+    type: multiple_choice
+    header: La variable ``a`` est-elle visible depuis le fichier ``main.c`` ?
+    choices:
+      - text: Oui
+        valid: true
+      - text: Non
+    success_message: >-
+      La variable est visible, mais nécessite d'être préfixée par ``extern``,
+      puisqu'elle est définie dans un autre fichier.
+    multiple: false
+
+  var_b:
+    name: Question 2: Variable b
+    type: multiple_choice
+    header: La variable ``b`` est-elle visible depuis le fichier ``main.c`` ?
+    choices:
+      - text: Oui
+      - text: Non
+        valid: true
+    success_message: >-
+      La variable n'est pas visible, car elle est ``static``,
+      et donc visible uniquement dans son fichier source.
+    multiple: false
+
+  var_d:
+    name: Question 3: Variable d
+    type: multiple_choice
+    header: La variable ``d`` est-elle visible depuis le fichier ``main.c`` ?
+    choices:
+      - text: Oui
+      - text: Non
+        valid: true
+    success_message: >-
+      La variable n'est pas visible, car elle est locale à la fonction qui la définit.
+    multiple: false
+
+  func_c:
+    name: Question 4: Fonction func_c
+    type: multiple_choice
+    header: La fonction ``func_c`` est-elle visible depuis le fichier ``main.c`` ?
+    choices:
+      - text: Oui
+        valid: true
+      - text: Non
+    success_message: >-
+      La fonction est visible, car le module est importé et la fonction n'est pas ``static``.
+    multiple: false
+
+  func_d:
+    name: Question 5: Fonction func_d
+    type: multiple_choice
+    header: La fonction ``func_d`` est-elle visible depuis le fichier ``main.c`` ?
+    choices:
+      - text: Oui
+        valid: true
+      - text: Non
+    success_message: >-
+      La fonction est visible, car le module est importé et la fonction n'est pas ``static``.
+    multiple: false
+
+  func_e:
+    name: Question 6: Fonction func_e
+    type: multiple_choice
+    header: La fonction ``func_e`` est-elle visible depuis le fichier ``main.c`` ?
+    choices:
+      - text: Oui
+      - text: Non
+        valid: true
+    success_message: >-
+      La fonction n'est pas visible, car elle est ``static``,
+      et donc visible uniquement dans son fichier source.
+    multiple: false
+
+  func_f:
+    name: Question 7: Fonction func_f
+    type: multiple_choice
+    header: La fonction ``func_f`` est-elle visible depuis le fichier ``main.c`` ?
+    choices:
+      - text: Oui
+        valid: true
+      - text: Non
+    success_message: >-
+      La fonction est visible, car le module est importé et la fonction n'est pas ``static``.
+      Cependant, elle n'est pas déclarée dans le fichier header, ce qui est une mauvaise pratique
+      et produit un *warning* lors de la compilation.
+      Il vaut mieux toujours déclarer dans le fichier header toutes les fonctions qui sont utilisées
+      par des autres fichiers.
+    multiple: false
+
+stored_submissions: 0
+submission_limit:
+  amount: -1
+  period: -1
+weight: 1.0
