@@ -1,0 +1,63 @@
+accessible: false
+author: François De Keersmaeker
+categories: []
+contact_url: ''
+context: |+
+    Les ``Makefiles`` sont des fichiers qui permettent d'automatiser la compilation de programmes.
+    Ils sont appelés à l'aide de la commande ``make`` depuis un terminal,
+    et définissent les règles de compilation nécessaires.
+
+    Pour en savoir plus, consultez la partie "Introduction aux Makefiles" dans la partie Outils du syllabus: `<https://sites.uclouvain.be/SystInfo/notes/Outils/make.html>`_.
+
+    Les exercices suivants portent sur ce code C, présent dans un fichier nommé ``helloworld.c``:
+
+    .. code-block:: c
+
+        /**
+         * helloworld.c
+         * Prints "Hello world" on stdout.
+         */
+
+        #include <stdio.c>
+
+        int main(int argc, char *argv[]) {
+            printf("Hello world\n");
+            return 0;
+        }
+
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '30'
+        hard_time: ''
+        memory: '100'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Makefile simple
+network_grading: false
+problems:
+    make:
+        type: code
+        name: Makefile
+        header: |-
+            Fournissez le contenu d'un Makefile qui, lors d'un appel à la commande ``make``, compile ce code C en un exécutable ``prog``, et l'exécute.
+            La sortie standard doit **uniquement** afficher ce qui est écrit par le programme (pas les commandes effectuées par le Makefile).
+        language: make
+        default: ''
+    make-clean:
+        type: code
+        name: Makefile propre
+        header: |-
+            Fournissez le contenu d'un Makefile qui, lors d'un appel à la commande ``make``, compile ce code C en un exécutable ``prog``, et l'exécute. En plus, lors de l'appel à la commande ``make clean``, les fichiers produits par la compilation et l'exécutable doivent être supprimés.
+            La sortie standard doit **uniquement** afficher ce qui est écrit par le programme (pas les commandes effectuées par le Makefile).
+        language: make
+        default: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
