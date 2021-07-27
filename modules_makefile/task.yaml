@@ -1,4 +1,4 @@
-name: Décomposition d'un programme en modules - Sortie
+name: Décomposition d'un programme en modules - Makefile
 accessible: false
 author: François De Keersmaeker
 context: |-
@@ -68,8 +68,6 @@ context: |-
       func_b();
     }
 
-Les questions suivantes traitent de la visibilité des variables et fonctions à travers ces 3 fichiers.
-
 environment: cpp
 evaluate: best
 groups: false
@@ -81,10 +79,10 @@ network_grading: false
 order: 101
 problems:
 
-  stdout:
-    name: Sortie
+  makefile:
+    name: Makefile
     type: code
-    header: Donnez le contenu exact de la sortie standard lors de l'exécution du programme.
+    header: Proposez un ``Makefile`` qui permette de compiler ce programme et de l'exécuter avec la commande ``./myprog``.
     optional: false
 
 stored_submissions: 0

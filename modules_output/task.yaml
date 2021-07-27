@@ -1,0 +1,92 @@
+name: Décomposition d'un programme en modules - Sortie
+accessible: false
+author: François De Keersmaeker
+context: |-
+  Soit le programme C définit par les 3 fichiers suivants:
+
+  ``main.c``
+  .. code-block:: c
+
+    #include <stdlib.h>
+    #include <stdio.h>
+    #include "module_a.h"
+    #include "module_b.h"
+
+    extern char* str_a;
+    extern char* str_b;
+
+    void func_a() {
+      printf("%s\n", str_a);
+      printf("%s\n", str_b);
+      func_c();
+    }
+
+    int main(int argc, char const *argv[]) {
+      func_a();
+      func_b();
+      func_c();
+      return EXIT_SUCCESS;
+    }
+
+  ``module_a.c``
+  .. code-block:: c
+
+    #include "module_a.h"
+
+    char* str_a = "Bonjour";
+    static char* str_b = "Salut";
+
+    static void func_a() {
+      printf("%s\n", str_b);
+    }
+
+    void func_b() {
+      func_a();
+    }
+
+    static void func_c() {
+      printf("Ciao");
+    }
+
+  ``module_b.c``
+  .. code-block:: c
+
+    #include "module_b.h"
+
+    static char* str_a = "Coucou";
+    char* str_b = "Hello";
+
+    static void func_b() {
+      static int a = 0;
+      int b = 0;
+      printf("%s (a = %d; b = %d)\n", str_a, a, b);
+      a++;
+      b++;
+    }
+
+    void func_c() {
+      func_b();
+    }
+
+environment: cpp
+evaluate: best
+groups: false
+limits:
+  time: '30'
+  memory: '100'
+  output: '2'
+network_grading: false
+order: 101
+problems:
+
+  output:
+    name: Sortie
+    type: code
+    header: Donnez le contenu exact de la sortie standard lors de l'exécution du programme.
+    optional: false
+
+stored_submissions: 0
+submission_limit:
+  amount: -1
+  period: -1
+weight: 1.0
