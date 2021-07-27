@@ -1,65 +1,59 @@
-name: 'Utilisation linéaire de Git'
-accessible: false
+accessible: true
 author: François De Keersmaeker
-context: Ces exercices vont vous permettre de revoir les différentes étapes lorsque l'on travaille de manière linéaire avec Git.
-environment: mcq
+categories:
+- git
+contact_url: ''
+context: Ces exercices vont vous permettre de revoir les différentes étapes lorsque
+    l'on travaille de manière linéaire avec Git.
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
 evaluate: best
+file: ''
 groups: false
-limits:
-  time: '30'
-  memory: '100'
-  output: '2'
+input_random: '0'
+name: 'Git: utilisation linéaire'
 network_grading: false
 order: 100
 problems:
-
-  commit:
-    name: Question 1
-    type: match
-    header: Quelle est la commande à utiliser pour enregistrer un commit ?
-    answer: git commit
-
-  clone:
-    name: Question 2
-    type: match
-    header: Quelle est la commande à utiliser pour récupérer un repository ``git`` existant ?
-    answer: git clone
-
-  add:
-    name: Question 3
-    type: match
-    header: Quelle est la commande à utiliser pour ajouter les modifications apportées au commit ?
-    answer: git add
-
-  push:
-    name: Question 4
-    type: match
-    header: Quelle est la commande à utiliser pour publier un commit sur le remote ?
-    answer: git push
-
-  pull:
-    name: Question 5
-    type: match
-    header: Quelle est la commande à utiliser pour récupérer les dernières modifications apportées à un repository ?
-    answer: git pull
-
-  workflow:
-    name: Question 6
-    type: match
-    header: |-
-      Classez les 5 commandes ci-dessus dans l'ordre pour un flux de travail classique avec git.
-      Les commandes doivent être séparées par une simple virgule (\",\"), sans espace avant ou après.
-    answer: git clone,git pull,git add,git commit,git push
-
+    add:
+        type: match
+        name: ''
+        header: Quelle est la commande à utiliser pour ajouter les modifications apportées
+            au commit ?
+        answer: git add
+    clone:
+        type: match
+        name: ''
+        header: Quelle est la commande à utiliser pour récupérer un repository ``git``
+            existant ?
+        answer: git clone
+    commit:
+        type: match
+        name: ''
+        header: Quelle est la commande à utiliser pour enregistrer un commit ?
+        answer: git commit
+    pull:
+        type: match
+        name: ''
+        header: Quelle est la commande à utiliser pour récupérer les dernières modifications
+            apportées à un repository ?
+        answer: git pull
+    push:
+        type: match
+        name: ''
+        header: Quelle est la commande à utiliser pour publier un commit sur le remote
+            ?
+        answer: git push
+    workflow:
+        type: match
+        name: ''
+        header: |-
+            Classez les 5 commandes ci-dessus dans l'ordre pour un flux de travail classique avec git.
+            Les commandes doivent être séparées par une simple virgule (\",\"), sans espace avant ou après.
+        answer: git clone,git pull,git add,git commit,git push
 stored_submissions: 0
 submission_limit:
-  amount: -1
-  period: -1
-tags:
-  '0':
-    visible: true
-    name: Git
-    description: ''
-    type: 2
-    id: ''
+    amount: -1
+    period: -1
 weight: 1.0

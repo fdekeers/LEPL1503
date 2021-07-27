@@ -1,69 +1,60 @@
-name: 'Utilisation de Git avec branches'
-accessible: false
+accessible: true
 author: François De Keersmaeker
-context: Ces exercices vont vous permettre de revoir les commandes de base pour gérer les branches avec Git.
-environment: mcq
+categories: []
+contact_url: ''
+context: Ces exercices vont vous permettre de revoir les commandes de base pour gérer
+    les branches avec Git.
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
 evaluate: best
+file: ''
 groups: false
-limits:
-  time: '30'
-  memory: '100'
-  output: '2'
+input_random: '0'
+name: 'Git: utilisation de branches'
 network_grading: false
 order: 100
 problems:
-
-  create_branch:
-    name: Question 1: Créer une branche
-    type: match
-    header: Donnez la commande pour créer une branche ``branch``.
-    answer: git branch branch
-
-  delete_branch:
-    name: Question 2: Supprimer une branche
-    type: match
-    header: Donnez la commande pour supprimer la branche ``branch``.
-    answer: git branch -d branch
-
-  list_branch:
-    name: Question 3: Lister les branches
-    type: match
-    header: Donnez la commande pour lister toutes les branches existantes et la branche actuelle.
-    answer: git branch
-
-  switch_branch:
-    name: Question 4: Changer de branche
-    type: match
-    header: Donnez la commande pour passer sur la branche ``branch``.
-    answer: git checkout branch
-
-  push_branch:
-    name: Question 5: Publier un commit sur une branche
-    type: match
-    header: Donnez la commande pour publier un commit sur la branche ``branch``.
-    answer: git push origin branch
-
-  pull_branch:
-    name: Question 6: Récupérer un commit sur une branche
-    type: match
-    header: Donnez la commande pour récupérer le dernier commit de la branche ``branch``.
-    answer: git pull origin branch
-
-  merge:
-    name: Question 7: Fusionner deux branches
-    type: match
-    header: Donnez la commande qui, depuis la branche destination ``master``, permet de la fusionner avec la branche source ``branch``.
-    answer: git merge branch
-
+    create_branch:
+        type: match
+        name: Créer une branche
+        header: Donnez la commande pour créer une branche ``branch``.
+        answer: git branch branch
+    delete_branch:
+        type: match
+        name: Supprimer une branche
+        header: Donnez la commande pour supprimer la branche ``branch``.
+        answer: git branch -d branch
+    list_branch:
+        type: match
+        name: Lister les branches
+        header: Donnez la commande pour lister toutes les branches existantes et la
+            branche actuelle.
+        answer: git branch
+    switch_branch:
+        type: match
+        name: Changer de branche
+        header: Donnez la commande pour passer sur la branche ``branch``.
+        answer: git checkout branch
+    push_branch:
+        type: match
+        name: Publier un commit sur une branche
+        header: Donnez la commande pour publier un commit sur la branche ``branch``.
+        answer: git push origin branch
+    pull_branch:
+        type: match
+        name: Récupérer un commit sur une branche
+        header: Donnez la commande pour récupérer le dernier commit de la branche
+            ``branch``.
+        answer: git pull origin branch
+    merge:
+        type: match
+        name: Fusionner deux branches
+        header: Donnez la commande qui, depuis la branche destination ``master``,
+            permet de la fusionner avec la branche source ``branch``.
+        answer: git merge branch
 stored_submissions: 0
 submission_limit:
-  amount: -1
-  period: -1
-tags:
-  '0':
-    visible: true
-    name: Git
-    description: ''
-    type: 2
-    id: ''
+    amount: -1
+    period: -1
 weight: 1.0
