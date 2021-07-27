@@ -3,45 +3,68 @@ author: François De Keersmaeker
 categories: []
 contact_url: ''
 context: |-
-    Soit un module ``module``, dont l'interface est définie par le fichier header suivant, nommé ``module.h``:
+    Soit le programme C définit par les 3 fichiers suivants:
+
+    ``main.c``
 
     .. code-block:: c
 
-      int func_c();
-      int func_d();
+      #include <stdlib.h>
+      #include <stdio.h>
+      #include "module_a.h"
+      #include "module_b.h"
+      extern char* str_a;
+      extern char* str_b;
+      void func_a() {
+        printf("%s\n", str_a);
+        printf("%s\n", str_b);
+        func_c();
+      }
+      int main(int argc, char const *argv[]) {
+        func_a();
+        func_b();
+        func_c();
+        return EXIT_SUCCESS;
+      }
 
-    et dont l'implémentation est fournie par le fichier source suivant, nommé ``module.c``:
+
+    ``module_a.c``
 
     .. code-block:: c
 
-      #include "module.h"
-
-      int a = 0;
-      static int b = 1;
-
-      int func_c() {
-        int c = 2;
-        return c;
+      #include "module_a.h"
+      char* str_a = "Bonjour";
+      static char* str_b = "Salut";
+      static void func_a() {
+        printf("%s\n", str_b);
       }
-
-      int func_d() {
-        static int d = 3;
-        return d;
+      void func_b() {
+        func_a();
       }
-
-      static int func_e() {
-        int e = 4;
-        return e;
-      }
-
-      int func_f() {
-        int f = 5;
-        return f;
+      static void func_c() {
+        printf("Ciao");
       }
 
 
-    Les questions suivantes traitent de la visibilité des variables et fonctions de ce module, depuis un fichier ``main.c`` qui inclut correctement le fichier header ``module.h``.
-    Note: une variable ou fonction est "visible" si on peut y accéder depuis un autre fichier par son nom.
+    ``module_b.c``
+
+    .. code-block:: c
+
+      #include "module_b.h"
+      static char* str_a = "Coucou";
+      char* str_b = "Hello";
+      static void func_b() {
+        static int a = 0;
+        int b = 0;
+        printf("%s (a = %d; b = %d)\n", str_a, a, b);
+        a++;
+        b++;
+      }
+      void func_c() {
+        func_b();
+      }
+
+    Les questions suivantes traitent de la visibilité des variables et fonctions à travers ces 3 fichiers.
 environment_id: mcq
 environment_parameters: {}
 environment_type: mcq
@@ -49,94 +72,88 @@ evaluate: best
 file: ''
 groups: false
 input_random: '0'
-name: Décomposition d'un programme en modules - QCM 1
+name: Décomposition d'un programme en modules - QCM 2
 network_grading: false
 order: 101
 problems:
-    1_var_a:
+    1_mcq_str_a:
         type: multiple_choice
-        name: Variable a
-        header: La variable ``a`` est-elle visible depuis le fichier ``main.c`` ?
+        name: Variable str_b
+        header: Quelle est la valeur de la variable ``str_a`` vue par le fichier ``main.c``
+            ?
         limit: 0
-        success_message: La variable est visible, mais nécessite d'être préfixée par
-            ``extern``, puisqu'elle est définie dans un autre fichier.
+        success_message: La variable est définie comme ``extern`` dans ``main.c``.
+            Sa valeur lui est donnée dans le fichier ``module_a.c``.
         choices:
-        -   text: Oui
+        -   text: \"Bonjour\"
             valid: true
-        -   text: Non
-    2_var_b:
+        -   text: \"Salut\"
+        -   text: \"Coucou\"
+        -   text: \"Hello\"
+    2_mcq_str_b:
         type: multiple_choice
-        name: Variable b
-        header: La variable ``b`` est-elle visible depuis le fichier ``main.c`` ?
+        name: Variable str_b
+        header: Quelle est la valeur de la variable ``str_b`` vue par le fichier ``main.c``
+            ?
         limit: 0
-        success_message: La variable n'est pas visible, car elle est ``static``, et
-            donc visible uniquement dans son fichier source.
+        success_message: La variable est définie comme ``extern`` dans ``main.c``.
+            Sa valeur lui est donnée dans le fichier ``module_b.c``.
         choices:
-        -   text: Oui
-        -   text: Non
+        -   text: \"Bonjour\"
+        -   text: \"Salut\"
+        -   text: \"Coucou\"
+        -   text: \"Hello\"
             valid: true
-    3_var_d:
+    3_mcq_func_a:
         type: multiple_choice
-        name: Variable d
-        header: La variable ``d`` est-elle visible depuis le fichier ``main.c`` ?
+        name: Fonction func_a
+        header: Dans quel fichier est définie la fonction ``func_a`` exécutée par
+            la fonction ``main`` ?
         limit: 0
-        success_message: La variable n'est pas visible, car elle est locale à la fonction
-            qui la définit.
+        success_message: La fonction est directement définie dans le fichier ``main.c``.
         choices:
-        -   text: Oui
-        -   text: Non
+        -   text: main.c
             valid: true
-    4_func_c:
+        -   text: module_a.c
+        -   text: module_b.c
+    4_mcq_func_b:
+        type: multiple_choice
+        name: Fonction func_b
+        header: Dans quel fichier est définie la fonction ``func_b`` exécutée par
+            la fonction ``main`` ?
+        limit: 0
+        success_message: La fonction est importée depuis le fichier ``module_a.c``.
+        choices:
+        -   text: main.c
+        -   text: module_a.c
+            valid: true
+        -   text: module_b.c
+    5_mcq_func_c:
         type: multiple_choice
         name: Fonction func_c
-        header: La fonction ``func_c`` est-elle visible depuis le fichier ``main.c``
-            ?
+        header: Dans quel fichier est définie la fonction ``func_c`` exécutée par
+            la fonction ``main`` ?
         limit: 0
-        success_message: La fonction est visible, car le module est importé et la
-            fonction n'est pas ``static``.
+        success_message: La fonction est importée depuis le fichier ``module_b.c``.
         choices:
-        -   text: Oui
+        -   text: main.c
+        -   text: module_a.c
+        -   text: module_b.c
             valid: true
-        -   text: Non
-    5_func_d:
-        type: multiple_choice
-        name: Fonction func_d
-        header: La fonction ``func_d`` est-elle visible depuis le fichier ``main.c``
+    6_mcq_var_a:
+        type: match
+        name: Variable a
+        header: Quelle sera la valeur de la variable ``a`` affichée lors de la 5e
+            exécution de la fonction func_b définie dans le fichier ``module_b.c``
             ?
-        limit: 0
-        success_message: La fonction est visible, car le module est importé et la
-            fonction n'est pas ``static``.
-        choices:
-        -   text: Oui
-            valid: true
-        -   text: Non
-    6_func_e:
-        type: multiple_choice
-        name: Fonction func_e
-        header: La fonction ``func_e`` est-elle visible depuis le fichier ``main.c``
+        answer: '4'
+    7_mcq_var_b:
+        type: match
+        name: Variable b
+        header: Quelle sera la valeur de la variable ``b`` affichée lors de la 5e
+            exécution de la fonction func_b définie dans le fichier ``module_b.c``
             ?
-        limit: 0
-        success_message: La fonction n'est pas visible, car elle est ``static``, et
-            donc visible uniquement dans son fichier source.
-        choices:
-        -   text: Oui
-        -   text: Non
-            valid: true
-    7_func_f:
-        type: multiple_choice
-        name: Fonction func_f
-        header: La fonction ``func_f`` est-elle visible depuis le fichier ``main.c``
-            ?
-        limit: 0
-        success_message: La fonction est visible, car le module est importé et la
-            fonction n'est pas ``static``. Cependant, elle n'est pas déclarée dans
-            le fichier header, ce qui est une mauvaise pratique et produit un *warning*
-            lors de la compilation. Il vaut mieux toujours déclarer dans le fichier
-            header toutes les fonctions qui sont utilisées par des autres fichiers.
-        choices:
-        -   text: Oui
-            valid: true
-        -   text: Non
+        answer: '0'
 stored_submissions: 0
 submission_limit:
     amount: -1
