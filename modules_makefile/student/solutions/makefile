@@ -6,8 +6,3 @@ main.o: main.c module_a.h module_b.h
 
 *.o: *.c *.h
 	@gcc -o $@ -c $<
-
-.PHONY: clean
-
-clean:
-	@rm -f *.o test

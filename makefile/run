@@ -120,6 +120,11 @@ else:
 feedback.set_problem_result("success" if score_2 >= 100 else "failed", "make-clean")
 feedback.set_problem_feedback(feedback_2, "make-clean")
 
+
+###########################################
+# Clean and set global score and feedback #
+###########################################
+
 # Remove source files
 subprocess.run("rm -rf Makefile *.c *.tpl *.h *.o", shell=True)
 

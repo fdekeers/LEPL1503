@@ -92,6 +92,19 @@ problems:
       **Attention**: vérifiez que chaque ligne d'une règle commence bien par une indentation, et pas une série d'espaces.
     optional: false
 
+  make-clean:
+    language: Makefile
+    name: Make clean
+    type: code
+    header: |-
+      Ajoutez une règle ``clean``, permettant de supprimer tous les fichiers créés par la compiltion,
+      dont l'exécutable, au ``Makefile`` de l'exercice précédent.
+
+      Soumettez le ``Makefile`` complet, pas uniquement la règle ``clean``.
+
+      **Attention**: vérifiez que chaque ligne d'une règle commence bien par une indentation, et pas une série d'espaces.
+    optional: false
+
 stored_submissions: 0
 submission_limit:
   amount: -1
