@@ -43,17 +43,24 @@ problems:
     make:
         type: code
         name: Makefile
-        header: |-
+        header: |+
             Fournissez le contenu d'un Makefile qui, lors d'un appel à la commande ``make``, compile ce code C en un exécutable ``prog``, et l'exécute.
+
             La sortie standard doit **uniquement** afficher ce qui est écrit par le programme (pas les commandes effectuées par le Makefile).
+
+            **Attention**: vérifiez que chaque ligne d'une règle commence bien par une indentation, et pas une série d'espaces.
         language: Makefile
         default: ''
     make-clean:
         type: code
         name: Makefile propre
-        header: |-
+        header: |+
             Fournissez le contenu d'un Makefile qui, lors d'un appel à la commande ``make``, compile ce code C en un exécutable ``prog``, et l'exécute. En plus, lors de l'appel à la commande ``make clean``, les fichiers produits par la compilation et l'exécutable doivent être supprimés.
+            
             La sortie standard doit **uniquement** afficher ce qui est écrit par le programme (pas les commandes effectuées par le Makefile).
+
+            **Attention**: vérifiez que chaque ligne d'une règle commence bien par une indentation, et pas une série d'espaces.
+
         language: Makefile
         default: ''
 stored_submissions: 0
