@@ -1,0 +1,75 @@
+#!/bin/python3
+
+# Script d'interface entre INGInious et les exercices Makefile simples
+# Auteur: François De Keersmaeker
+# Licence: GPLv3
+
+import subprocess, shlex, os
+from inginious import feedback, rst, input
+
+###################################################
+# First Makefile, quiet compilation and execution #
+###################################################
+
+# Score for first problem
+score_1 = 0
+
+# Switch working directory to student/
+os.chdir("student")
+
+# Fetch and save the student code into a file for compilation
+input.parse_template("make.tpl", "Makefile")
+
+# Compilation
+p = subprocess.Popen(shlex.split("make"), stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
+make_output = p.communicate()[0].decode('utf-8')
+
+# Check compilation
+if p.returncode:
+    # If compilation failed, exit with "failed" result
+    feedback.set_problem_result("failed", "make")
+    feedback.set_problem_feedback("La compilation a échoué. La sortie de la commande ``make`` est la suivante:" + rst.get_codeblock('', make_output), "make")
+elif os.path.exists("prog"):
+    # make builds the correct exec
+    score_1 += 50
+    correct_output = "Hello world\n"
+    feedback.set_problem_feedback("La commande ``make`` produit le bon exécutable.", "make")
+    if make_output == correct_output:
+        # make outputs only "Hello world"
+        score_1 += 50
+        feedback.set_problem_feedback("La commande ``make`` produit le bon exécutable et sa sortie est correcte. Sortie de la commande ``make``:" + rst.get_codeblock('', make_output), "make")
+    elif make_output.find(correct_output) != -1:
+        # make output contains "Hello world", but also other things
+        score_1 += 25
+        feedback.set_problem_feedback("La commande ``make`` produit le bon exécutable, mais sa sortie contient plus que demandé. Sortie de la commande ``make``:" + rst.get_codeblock('', make_output), "make")
+    else:
+        # make does not outputs "Hello world"
+        feedback.set_problem_feedback("La commande ``make`` produit le bon exécutable, mais n'affiche pas \"Hello world\". Sortie de la commande ``make``:" + rst.get_codeblock('', make_output), "make")
+else:
+    feedback.set_problem_feedback("La commande ``make`` n'a pas produit le bon exécutable.", "make")
+
+# Set score for first problem
+feedback.set_problem_result("success" if score_1 >= 100 else "failed", "make")
+
+# Remove Makefile
+subprocess.run("rm -rf Makefile", shell=True)
+
+
+############################################################
+# Second Makefile, quiet compilation, execution, and clean #
+############################################################
+
+# Score for second problem
+score_2 = 0
+
+# Fetch and save the student code into a file for compilation
+input.parse_template("make-clean.tpl", "Makefile")
+
+# Remove source files
+subprocess.run("rm -rf *.c *.tpl *.h *.o", shell=True)
+
+# Set global score
+global_score = (score_1 + score_2) / 2
+feedback.set_grade(global_score)
+feedback.set_global_result("success" if global_score >= 100 else "failed")
+feedback.set_global_feedback("Bien joué ! Vous maîtrisez les Makefiles simples." if global_score >= 100 else "Le Makefile ne fait pas exactement ce qui est demandé.")

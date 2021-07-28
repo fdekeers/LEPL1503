@@ -1,0 +1,9 @@
+prog:
+	@gcc -o prog helloworld.c
+	@./prog
+
+.PHONY: clean
+
+clean:
+	@rm -rf *.o
+	@rm -rf prog
