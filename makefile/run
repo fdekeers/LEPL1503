@@ -4,7 +4,7 @@
 # Auteur: François De Keersmaeker
 # Licence: GPLv3
 
-import subprocess, shlex, os
+import subprocess, shlex, os, glob
 from inginious import feedback, rst, input
 
 ###################################################
@@ -27,7 +27,6 @@ make_output = p.communicate()[0].decode('utf-8')
 # Check compilation
 if p.returncode:
     # If compilation failed, exit with "failed" result
-    feedback.set_problem_result("failed", "make")
     feedback.set_problem_feedback("La compilation a échoué. La sortie de la commande ``make`` est la suivante:" + rst.get_codeblock('', make_output), "make")
 elif os.path.exists("prog"):
     # make builds the correct exec
@@ -43,7 +42,7 @@ elif os.path.exists("prog"):
         score_1 += 25
         feedback.set_problem_feedback("La commande ``make`` produit le bon exécutable, mais sa sortie contient plus que demandé. Sortie de la commande ``make``:" + rst.get_codeblock('', make_output), "make")
     else:
-        # make does not outputs "Hello world"
+        # make does not output "Hello world"
         feedback.set_problem_feedback("La commande ``make`` produit le bon exécutable, mais n'affiche pas \"Hello world\". Sortie de la commande ``make``:" + rst.get_codeblock('', make_output), "make")
 else:
     feedback.set_problem_feedback("La commande ``make`` n'a pas produit le bon exécutable.", "make")
@@ -51,8 +50,8 @@ else:
 # Set score for first problem
 feedback.set_problem_result("success" if score_1 >= 100 else "failed", "make")
 
-# Remove Makefile
-subprocess.run("rm -rf Makefile", shell=True)
+# Remove files
+subprocess.run("rm -rf Makefile *.o prog", shell=True)
 
 
 ############################################################
@@ -61,12 +60,68 @@ subprocess.run("rm -rf Makefile", shell=True)
 
 # Score for second problem
 score_2 = 0
+feedback_2 = ""
 
 # Fetch and save the student code into a file for compilation
 input.parse_template("make-clean.tpl", "Makefile")
 
+# Compilation
+p = subprocess.Popen(shlex.split("make"), stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
+make_output = p.communicate()[0].decode('utf-8')
+
+# Check compilation
+if p.returncode:
+    # If compilation failed, exit with "failed" result
+    feedback_2 += "La compilation a échoué. La sortie de la commande ``make`` est la suivante:" + rst.get_codeblock('', make_output)
+elif os.path.exists("prog"):
+    # make builds the correct exec
+    score_2 += 30
+    correct_output = "Hello world\n"
+    feedback_2 += "La commande ``make`` produit le bon exécutable. "
+    if make_output == correct_output:
+        # make outputs only "Hello world"
+        score_2 += 30
+        feedback_2 += "La sortie est correcte. "
+    elif make_output.find(correct_output) != -1:
+        # make output contains "Hello world", but also other things
+        score_2 += 15
+        feedback_2 += "La sortie contient plus que demandé. "
+    else:
+        # make does not output "Hello world"
+        feedback_2 += "La sortie ne contient pas \"Hello world\". "
+    feedback_2 += "Sortie de la commande ``make``:" + rst.get_codeblock('', make_output)
+else:
+    feedback_2 += "La commande ``make`` n'a pas produit le bon exécutable."
+
+# Clean
+p = subprocess.Popen(shlex.split("make clean"), stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
+make_output = p.communicate()[0].decode('utf-8')
+
+# Check clean
+if p.returncode:
+    # Clean failed, somehow
+    feedback_2 += "Le nettoyage a échoué. Sortie de la commande ``make clean``:" + rst.get_codeblock('', make_output)
+elif not os.path.exists("prog") and not glob.glob('*.o'):
+    # Clean succeeded
+    score_2 += 20
+    feedback_2 += "Le nettoyage a réussi. "
+    if len(make_output) > 0:
+        # Clean prints something, what we don't want
+        feedback_2 += "La sortie n'est pas vide. Sortie de la commande ``make clean``:" + rst.get_codeblock('', make_output)
+    else:
+        # Clean is quiet
+        score_2 += 20
+        feedback_2 += "La sortie est vide. "
+else:
+    # Clean succeeded, but didn't clean
+    feedback_2 += "Le nettoyage n'a pas supprimé les fichiers."
+
+# Set score for second problem
+feedback.set_problem_result("success" if score_2 >= 100 else "failed", "make-clean")
+feedback.set_problem_feedback(feedback_2, "make-clean")
+
 # Remove source files
-subprocess.run("rm -rf *.c *.tpl *.h *.o", shell=True)
+subprocess.run("rm -rf Makefile *.c *.tpl *.h *.o", shell=True)
 
 # Set global score
 global_score = (score_1 + score_2) / 2

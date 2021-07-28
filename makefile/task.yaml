@@ -1,4 +1,4 @@
-accessible: false
+accessible: true
 author: François De Keersmaeker
 categories: []
 contact_url: ''
@@ -46,7 +46,7 @@ problems:
         header: |-
             Fournissez le contenu d'un Makefile qui, lors d'un appel à la commande ``make``, compile ce code C en un exécutable ``prog``, et l'exécute.
             La sortie standard doit **uniquement** afficher ce qui est écrit par le programme (pas les commandes effectuées par le Makefile).
-        language: make
+        language: Makefile
         default: ''
     make-clean:
         type: code
@@ -54,7 +54,7 @@ problems:
         header: |-
             Fournissez le contenu d'un Makefile qui, lors d'un appel à la commande ``make``, compile ce code C en un exécutable ``prog``, et l'exécute. En plus, lors de l'appel à la commande ``make clean``, les fichiers produits par la compilation et l'exécutable doivent être supprimés.
             La sortie standard doit **uniquement** afficher ce qui est écrit par le programme (pas les commandes effectuées par le Makefile).
-        language: make
+        language: Makefile
         default: ''
 stored_submissions: 0
 submission_limit:
