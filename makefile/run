@@ -7,15 +7,15 @@
 import subprocess, shlex, os, glob
 from inginious import feedback, rst, input
 
+# Switch working directory to student/
+os.chdir("student")
+
 ###################################################
 # First Makefile, quiet compilation and execution #
 ###################################################
 
 # Score for first problem
 score_1 = 0
-
-# Switch working directory to student/
-os.chdir("student")
 
 # Fetch and save the student code into a file for compilation
 input.parse_template("make.tpl", "Makefile")
@@ -71,7 +71,7 @@ make_output = p.communicate()[0].decode('utf-8')
 
 # Check compilation
 if p.returncode:
-    # If compilation failed, exit with "failed" result
+    # Compilation failed
     feedback_2 += "La compilation a échoué. La sortie de la commande ``make`` est la suivante:" + rst.get_codeblock('', make_output)
 elif os.path.exists("prog"):
     # make builds the correct exec

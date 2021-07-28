@@ -1,10 +1,11 @@
 name: Décomposition d'un programme en modules - Sortie
-accessible: false
+accessible: true
 author: François De Keersmaeker
 context: |-
   Soit le programme C définit par les 3 fichiers suivants:
 
-  ``main.c``
+  ``main.c``:
+
   .. code-block:: c
 
     #include <stdlib.h>
@@ -28,7 +29,8 @@ context: |-
       return EXIT_SUCCESS;
     }
 
-  ``module_a.c``
+  ``module_a.c``:
+
   .. code-block:: c
 
     #include "module_a.h"
@@ -45,10 +47,11 @@ context: |-
     }
 
     static void func_c() {
-      printf("Ciao");
+      printf("Ciao\n");
     }
 
-  ``module_b.c``
+  ``module_b.c``:
+
   .. code-block:: c
 
     #include "module_b.h"
@@ -82,7 +85,9 @@ problems:
   output:
     name: Sortie
     type: code
-    header: Donnez le contenu exact de la sortie standard lors de l'exécution du programme.
+    header: |-
+      Donnez le contenu exact de la sortie standard lors de l'exécution du programme.
+      **Attention**: n'oubliez pas d'ajouter un saut de ligne (``\n``) après la dernière ligne.
     optional: false
 
 stored_submissions: 0

@@ -12,5 +12,5 @@ void func_b() {
 }
 
 static void func_c() {
-  printf("Ciao");
+  printf("Ciao\n");
 }

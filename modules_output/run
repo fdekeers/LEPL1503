@@ -1,52 +1,56 @@
 #!/bin/python3
 
-import os
-from inginious import feedback, rst, input
+# Script d'interface entre INGInious et l'exercice modules_output
+# Auteur: François De Keersmaeker
+# Licence: GPLv3
 
-success = True
+import subprocess, shlex, os
+from inginious import feedback, rst, input
 
 # Switch working directory to student/
 os.chdir("student")
 
-with open("../task.yaml", 'r') as stream:
-    problems = yaml.load(stream)['problems']
+# Global score and feedback
+score = 0
+feedback_str = ""
 
-    for name, meta in problems.items():
-        if meta['type'] == 'match':
-            answer = input.get_input(name)
-            if answer == meta['answer']:
-                feedback.set_problem_result("success", name)
-                feedback.set_problem_feedback("Votre réponse est correcte", name, True)
-                success = False
+# Fetch and save the student code into a file for correction
+input.parse_template("output.txt.tpl", "output.txt")
+
+# Compilation of solution files, to execute and compare output
+p = subprocess.Popen(shlex.split("make"), stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
+make_output = p.communicate()[0].decode('utf-8')
+
+if p.returncode:
+    # Compilation failed, somehow
+    feedback.set_tag("not_compile", True)
+    feedback.set_global_result("failed")
+    feedback.set_global_feedback("Une erreur est survenue lors de la compilation des fichiers source. Veuillez contacter l'administrateur du cours.")
+    exit(0)
+
+# Compare output files
+with open("output.txt", 'r') as answer:
+    with open("output_sol.txt", 'r') as solution:
+        lines_a = answer.readlines()
+        lines_s = solution.readlines()
+        length = len(lines_s)
+        for i in range(length):
+            if lines_a[i].strip() == lines_s[i].strip():
+                score += 100 / length
             else:
-                feedback.set_problem_result("failed", name)
-                feedback.set_problem_feedback("Votre réponse est incorrecte", name, True)
+                feedback_str += f"La ligne {i+1} n'est pas correcte.\n\n"
 
+if len(feedback_str) == 0:
+    feedback_str = "La sortie est correcte."
 
-# Read solution file
-lines = []
-with open("solutions/student_code_sol.txt", 'r') as f:
-    lines = f.readlines()
+# Set problem feedback
+feedback.set_problem_result("success" if score >= 100 else "failed", "output")
+feedback.set_problem_feedback(feedback_str, "output")
 
-# Put student's answer into a file for correcting
-input.parse_template("student_code.txt.tpl", "answer.txt")
+# Remove source files
+subprocess.run("rm -rf Makefile *.txt *.c *.tpl *.h *.o", shell=True)
 
-# Parse student's answer
-n = 0  # Line index
-with open("answer.txt", 'r') as f:
-    for line in f:
-        if line != lines[n]:
-            # Line is different, fail
-            feedback.set_problem_result("failed", "stdout")
-            feedback.set_problem_feedback(f"Erreur à la ligne {n+1}", "stdout")
-            success = False
-        n += 1
-
-# All lines are correct, success
-feedback.set_problem_result("success", "stdout")
-feedback.set_problem_feedback("La réponse est correcte.", "stdout")
-
-subprocess.run("rm -rf *.txt *.tpl")
-
-feedback.set_grade(100 if success else 0)
-feedback.set_global_result("success" if success else "failed")
+# Set global feedback
+feedback.set_grade(score)
+feedback.set_global_result("success" if score >= 100 else "failed")
+feedback.set_global_feedback("Bien joué !" if score >= 100 else "Il y a une erreur dans votre solution")
